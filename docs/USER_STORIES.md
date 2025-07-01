@@ -1,5 +1,20 @@
 # 👥 TrashQuest – User Stories
 
+
+## 📋 Table of Contents
+- [Introduction](#-introduction)
+- [Brad the Collector](#-brad-the-collector)
+- [Maria the Community Helper](#-maria-the-community-helper)
+- [Tim the Trail Tracker](#-tim-the-trail-tracker)
+- [Sarah the Privacy Advocate](#-sarah-the-privacy-advocate)
+- [Hannah the Offline Hero](#-hannah-the-offline-hero)
+- [Jackie the Aspiring Habit-Builder](#-jackie-the-aspiring-habit-builder)
+- [End Statement](#-end-statement)
+
+---
+
+## 🐲 Introduction
+
 These user stories guide the design and development of TrashQuest. Each one represents a unique motivation, accessibility need, or behavior pattern that helps create a more inclusive, accessible, and rewarding experience.
 
 ---
@@ -72,4 +87,5 @@ These user stories guide the design and development of TrashQuest. Each one repr
 
 ---
 
+## 🔚 End Statement
 Each persona pushes us to think deeply about tone, interaction design, and reward logic. Together, they help make TrashQuest more playful, empowering, and human-centered.
