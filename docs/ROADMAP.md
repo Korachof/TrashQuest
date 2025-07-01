@@ -1,15 +1,15 @@
 # 🗺️ TrashQuest – Project Roadmap
 
 ## 🧭 Table of Contents
-- [Introduction](#-introduction)
-- [Phase 1 – MVP](#phase-1--mvp-firebase-powered-prototype)
-- [Phase 2 – AWS Migration](#phase-2--portfolio-upgrade-aws-migration)
-- [Phase 3 – Post-MVP Features](#phase-3--post-mvp-features)
-- [Notes](#notes)
+- [Introduction](#introduction)
+- [Phase 1 – MVP](#-phase-1--mvp-firebase-powered-prototype)
+- [Phase 2 – AWS Migration](#-phase-2--portfolio-upgrade-aws-migration)
+- [Phase 3 – Post-MVP Features](#-phase-3--post-mvp-features)
+- [Notes](#-notes)
 
 ---
 
-## 🛣️ Introduction
+## Introduction
 This roadmap outlines the development phases of TrashQuest, from MVP to future enhancements. It’s designed to balance quick delivery with long-term scalability and job-readiness.
 
 ---
