@@ -43,7 +43,7 @@ These user stories guide the design and development of TrashQuest. Each one repr
 
 ---
 
-## 🗺️ Tim the Trail Tracker
+## 🗺 Tim the Trail Tracker
 
 > “As someone who enjoys cleaning up local neighborhoods, I want an app that lets me track locations of where I picked up garbage so I can have a memory of where I've gone.”
 
@@ -65,7 +65,7 @@ These user stories guide the design and development of TrashQuest. Each one repr
 
 ---
 
-## 🏕️ Hannah the Offline Hero
+## 🏕 Hannah the Offline Hero
 
 > “As a heavy mobile user often in remote areas, I want the app to work offline so I can still log cleanups without cell reception.”
 
