@@ -2,16 +2,16 @@
 
 ## 🧩 Table of Contents
 - [Introduction](#-introduction)
-- [Home Screen](#1-home-screen)
-- [Cleanup Submission Screen](#2-cleanup-submission-screen)
-- [Submission Confirmation](#3-submission-confirmation)
-- [EcoPack Draw Screen](#4-ecopack-draw-screen)
-- [Collection / “My Gallery”](#5-collection--my-gallery)
-- [Profile Screen](#6-profile-screen)
-- [Future Additions](#future-additions)
+- [Home Screen](#-1-home-screen)
+- [Cleanup Submission Screen](#-2-cleanup-submission-screen)
+- [Submission Confirmation](#-3-submission-confirmation)
+- [EcoPack Draw Screen](#-4-ecopack-draw-screen)
+- [Collection / “My Gallery”](#-5-collection--my-gallery)
+- [Profile Screen](#-6-profile-screen)
+- [Future Additions](#-future-additions)
 - [Notes](#-notes)
 
-## 🖼️ Introduction
+## 🖼 Introduction
 
 
 This document outlines the planned user interface flows for TrashQuest based on core user journeys. It serves as a structural reference for design and development.
