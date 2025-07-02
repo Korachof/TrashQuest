@@ -1,12 +1,11 @@
 // Root app component
 
 import React from 'react';
+import HomePage from './pages/HomePage'
 
 function App() {
   return (
-    <div className="App">
-      <h1>Welcome to TrashQuest ♻️</h1>
-    </div>
+    <HomePage />
   );
 }
 
