@@ -23,6 +23,15 @@ This changelog documents key updates to the TrashQuest project. It follows seman
 - Added `Table of Contents` to docs files ROADMAP, USER_STORIES, WIREFRAMES
 - Added `Changelog.md` with previous changes and planned changes + Versions ToC
 
+## [0.1.1] – 2025-07-02 - 2025-07-03
+### Added
+- Created core component scaffolding: `Header`, `Footer`, `SubmissionForm`, `EcoItemCard`, etc.
+- Initialized empty folders with `.gitkeep`: `assets/`, `utils/`, `styles/`
+- Added Boilerplate code to `Header`, etc.
+- Created rendering for a basic landing page using npm
+- Updated `HomePage.jsx` with semantic `<main>` tag and header integration
+
+
 ---
 
 ### Planned (Upcoming)
