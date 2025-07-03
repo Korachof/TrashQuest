@@ -3,7 +3,7 @@ import Header from '../components/layout/Header';
 import Footer from '../components/layout/Footer';
 import React from 'react';
 
-function HomePage() {
+function WelcomePage() {
   return (
     <>
         <Header />
@@ -16,4 +16,4 @@ function HomePage() {
   );
 }
 
-export default HomePage;
+export default WelcomePage;
