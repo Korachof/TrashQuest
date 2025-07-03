@@ -7,8 +7,8 @@ This changelog documents key updates to the TrashQuest project. It follows seman
 ---
 
 ## 📅 Versions
-- [0.1.0 – 2025-06-30 - 2025-07-01](#010--2025-06-30---2025-07-01)
-
+- [0.1.0 – 2025-06-30 - 2025-07-01]
+- [0.1.1 - 2025-07-02 - 2025-07-03]
 
 ## [0.1.0] – 2025-06-30 - 2025-07-01
 ### Added
