@@ -1,0 +1,1 @@
+// Dropdown for type of trash being submitted

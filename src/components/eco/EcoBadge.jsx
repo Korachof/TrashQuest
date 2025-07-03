@@ -1,0 +1,1 @@
+// Visual indicators for user achievements, eco-levels, etc.

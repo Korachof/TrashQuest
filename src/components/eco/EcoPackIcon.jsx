@@ -1,0 +1,1 @@
+// Icons to represent EcoPack in inventories/compact views
