@@ -29,7 +29,10 @@ This changelog documents key updates to the TrashQuest project. It follows seman
 - Initialized empty folders with `.gitkeep`: `assets/`, `utils/`, `styles/`
 - Added Boilerplate code to `Header`, etc.
 - Created rendering for a basic landing page using npm
+- Added content to `Header.jsx` for a basic page header.
 - Updated `HomePage.jsx` with semantic `<main>` tag and header integration
+- Added content to `Footer.jsx` for a basic page footer.
+- Updated `HomePage.jsx` with Footer integration
 
 
 ---
