@@ -1,4 +1,4 @@
-// Landing page/screen for users
+// Landing page for pre-logged in users.
 import Header from '../components/layout/Header';
 import Footer from '../components/layout/Footer';
 import React from 'react';

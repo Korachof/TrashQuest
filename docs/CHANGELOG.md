@@ -35,8 +35,7 @@ This changelog documents key updates to the TrashQuest project. It follows seman
 - Updated `HomePage.jsx` with Footer integration
 - Renamed `HomePage.jsx` to `WelcomePage.jsx` to clarify its role as the public splash screen
 - Refactored various files to match `WelcomePage.jsx` name change.
-
-
+- Added `DashBoardPage.jsx` for scaffolding.
 
 ---
 
