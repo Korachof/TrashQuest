@@ -7,6 +7,7 @@ function PageLayout({ children }) {
   return (
     <>
       <Header />
+      {/*Page style wrapper*/}
       <MainContainer>{children}</MainContainer>
       <Footer />
     </>
