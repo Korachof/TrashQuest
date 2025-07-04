@@ -3,6 +3,7 @@ import React from 'react';
 
 function MainContainer({ children }) {
   return (
+    // Normal page layout styling
     <main style={{
       textAlign: 'center',
       marginTop: '4rem',
