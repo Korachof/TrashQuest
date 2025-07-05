@@ -28,11 +28,11 @@ Components (buttons, links, etc) for user Navigation
 ## Layout System
 
 TrashQuest uses a reusable `PageLayout.jsx` to ensure consistent structure and styling across pages.
-
-```jsx
+<!--
 <PageLayout>
   {/* Page-specific content goes here */}
 </PageLayout>
+-->
 
 ## Notes
 - Git does not track empty folders. We use `.gitkeep` to retain empty scaffolding folders for `utils/`, `assets/`, and `styles/`.
