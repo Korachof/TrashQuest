@@ -1,5 +1,6 @@
 // Page for user to login to their profile.
 import PageLayout from '../components/layout/PageLayout';
+import React from 'react';
 
 
 function LoginPage() {
