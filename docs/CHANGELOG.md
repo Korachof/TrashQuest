@@ -50,7 +50,6 @@ This changelog documents key updates to the TrashQuest project. It follows seman
 - Resolved missing `React` imports across pages to prevent JSX render errors
 - Created LogoStyles const in Header.jsx and created a better visual style for the logo as a link, which involved keeping it eco green (`#28a745`) to match brand identity (For now).
 
-
 ---
 
 ### Planned (Upcoming)
