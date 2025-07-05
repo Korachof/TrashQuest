@@ -2,6 +2,11 @@
 import {Link} from 'react-router-dom'
 import React from 'react';
 
+const logoStyles = {
+    textDecoration: 'none',
+    color: '#28a745',
+    fontWeight: 'bold',
+}
 
 function Header() {
   return (
@@ -13,8 +18,8 @@ function Header() {
       alignItems: 'center',
       borderBottom: '1px solid #ccc'
     }}>
-        <Link to="/">
-            <h1 style={{ margin: 0, fontSize: '1.5rem', color: '#28a745' }}>TrashQuest ♻️</h1>
+        <Link to="/" style={logoStyles}>
+            <h1>TrashQuest ♻️</h1>
         </Link>
       <div>
         {/* Future buttons go here */}
