@@ -1,6 +1,7 @@
 // UI Header
-
+import {Link} from 'react-router-dom'
 import React from 'react';
+
 
 function Header() {
   return (
@@ -12,7 +13,9 @@ function Header() {
       alignItems: 'center',
       borderBottom: '1px solid #ccc'
     }}>
-      <h1 style={{ margin: 0, fontSize: '1.5rem', color: '#28a745' }}>TrashQuest ♻️</h1>
+        <Link to="/">
+            <h1 style={{ margin: 0, fontSize: '1.5rem', color: '#28a745' }}>TrashQuest ♻️</h1>
+        </Link>
       <div>
         {/* Future buttons go here */}
       </div>
