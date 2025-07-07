@@ -13,12 +13,23 @@ function SignupPage() {
     console.log('Signup submitted:', { displayName, email, password });
     // TODO: Hook into Firebase/AWS logic
   };
-
-  
   return (
     <PageLayout>
         <h1>Sign Up for TrashQuest 🌱</h1>
         <p>Create your eco profile and start cleaning the planet one quest at a time.</p>
+        <form onSubmit={handleSubmit} style={{ marginTop: '2rem', maxWidth: '400px' }}>
+        <label>
+          Display Name:
+          <input
+            type="text"
+            value={displayName}
+            onChange={(e) => setDisplayName(e.target.value)}
+            required
+            style={{ display: 'block', width: '100%', marginTop: '0.5rem' }}
+          />
+        </label>
+      </form>
+
         {/* Future: Add signup form fields here */}
         <p style={{ marginTop: '2rem' }}>
         Already have an account? <Link to="/login">Log in here</Link>
@@ -27,4 +38,4 @@ function SignupPage() {
   );
 }
 
-export default SignupPage;
+export default SignupPage;                 
