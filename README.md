@@ -47,5 +47,7 @@ This structure ensures clear, intuitive onboarding with room for future logic in
 ## Notes
 - Git does not track empty folders. We use `.gitkeep` to retain empty scaffolding folders for `utils/`, `assets/`, and `styles/`.
 - To keep a semantic structure and clean JSX returns, we are using <>...</> (React Fragments).
+- Signup form now uses a shared `FormGroup` component for consistent styling and layout
+
 
 
