@@ -20,9 +20,9 @@ Components (buttons, links, etc) for user Navigation
 - `StartQuestButton.jsx`: Navigates users from the WelcomePage to the LoginPage using React Router's `useNavigate()`.
 
 ## Routes
-
 - `/` — WelcomePage (public landing page)
 - `/login` — LoginPage (access dashboard features)
+- `/signup` — SignupPage (new user registration)
 - `/dashboard` — DashboardPage (requires authentication) *[coming soon]*
 
 ## Layout System
@@ -33,6 +33,16 @@ TrashQuest uses a reusable `PageLayout.jsx` to ensure consistent structure and s
   {/* Page-specific content goes here */}
 </PageLayout>
 -->
+
+## Auth Flow
+TrashQuest uses separate pages for login and signup:
+
+- Users start on `WelcomePage` with a call-to-action button.
+- `StartQuestButton.jsx` navigates to `/login`.
+- From `LoginPage`, users can navigate to `/signup` if they don’t have an account.
+- From `SignupPage`, returning users can navigate back to `/login`.
+
+This structure ensures clear, intuitive onboarding with room for future logic integration.
 
 ## Notes
 - Git does not track empty folders. We use `.gitkeep` to retain empty scaffolding folders for `utils/`, `assets/`, and `styles/`.
