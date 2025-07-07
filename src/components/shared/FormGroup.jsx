@@ -17,8 +17,10 @@ function FormGroup({ label, type, value, onChange, required = true }) {
             width: '100%',
             padding: '0.5rem',
             marginTop: '0.5rem',
-            boxSizing: 'border-box'}}
+            boxSizing: 'border-box',
+            border: '1px solid'}}
         />
+
   </div>
   );
 }
