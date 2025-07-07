@@ -66,10 +66,18 @@ This changelog documents key updates to the TrashQuest project. It follows seman
 - Added `/signup` route to `App.jsx` for public onboarding access
 - Linked `LoginPage.jsx` to `/signup` via `<Link>` for new users
 - Linked `SignupPage.jsx` back to `/login` for returning users
+- Created `FormGroup.jsx` in `components/shared/` to abstract label/input pairs for reuse across forms
+
+### Changed
+- Refactored `SignupPage.jsx` to use `FormGroup` for display name, email, and password inputs
+- Updated `<form>` styling in `SignupPage` to center all form elements (labels, inputs, and button) relative to the page
+- Improved visual hierarchy and spacing for form layout and call-to-action button
 
 ### Fixed
 - Fixed `App.jsx` showing up as `app.jsx` in Git.
 - Fixed staging issues with `App.jsx` not importing correctly due to cache.
+- Resolved persistent alignment issue where input fields and button were left-aligned despite centered headings
+
 
 ---
 
