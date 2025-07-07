@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import { Link } from 'react-router-dom';
 import PageLayout from '../components/layout/PageLayout';
+import FormGroup from '../components/shared/FormGroup';
 
 
 function SignupPage() {
@@ -18,36 +19,25 @@ function SignupPage() {
         <h1>Sign Up for TrashQuest 🌱</h1>
         <p>Create your eco profile and start cleaning the planet one quest at a time.</p>
         <form onSubmit={handleSubmit} style={{ marginTop: '2rem', maxWidth: '400px' }}>
-        <label>
-          Display Name:
-          <input
-            type="text"
-            value={displayName}
-            onChange={(e) => setDisplayName(e.target.value)}
-            required
-            style={{ display: 'block', width: '100%', marginTop: '0.5rem' }}
-          />
-        </label>
-        <label style={{ marginTop: '1rem' }}>
-          Email:
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-            style={{ display: 'block', width: '100%', marginTop: '0.5rem' }}
-          />
-        </label>
-        <label style={{ marginTop: '1rem' }}>
-          Password:
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-            style={{ display: 'block', width: '100%', marginTop: '0.5rem' }}
-          />
-        </label>
+        {/*Use FormGroup to set styling for all display fields*/}
+        <FormGroup
+          label="Display Name:"
+          type="text"
+          value={displayName}
+          onChange={(e) => setDisplayName(e.target.value)}
+        />
+        <FormGroup
+          label="Email:"
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <FormGroup
+          label="Password:"
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
         {/* Submission button; lives here, but the styling may be reused later. If so, I'll globalize that.*/}
         <button type="submit" style={{ marginTop: '2rem', padding: '0.8rem 1.6rem' }}>
           🌿 Create Account
