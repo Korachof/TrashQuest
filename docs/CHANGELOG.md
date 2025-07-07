@@ -69,6 +69,7 @@ This changelog documents key updates to the TrashQuest project. It follows seman
 
 ### Fixed
 - Fixed `App.jsx` showing up as `app.jsx` in Git.
+- Fixed staging issues with `App.jsx` not importing correctly due to cache.
 
 ---
 
