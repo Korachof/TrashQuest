@@ -7,6 +7,14 @@ function SignupPage() {
   const [displayName, setDisplayName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  // prevent reloading of page, and instead handle submission manually with firebase.
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log('Signup submitted:', { displayName, email, password });
+    // TODO: Hook into Firebase/AWS logic
+  };
+
+  
   return (
     <PageLayout>
         <h1>Sign Up for TrashQuest 🌱</h1>
