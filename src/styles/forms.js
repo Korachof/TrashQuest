@@ -10,7 +10,7 @@ const formContainer = {
 
 const inputField = {
   width: '100%',
-  maxWidth: '340px', // or whatever your ideal field size is
+  maxWidth: '340px', // field size
   marginLeft: 'auto',
   marginRight: 'auto',
   padding: '0.5rem',
@@ -25,5 +25,12 @@ const formGroupWrapper = {
   alignItems: 'stretch',
 };
 
+const formGroupLabel = {
+  marginTop: '1rem',
+  textAlign: 'center',
+  width: '100%',      // full-width labels
+};
 
-export { formContainer, inputField, formGroupWrapper };
+
+
+export { formContainer, inputField, formGroupWrapper, formGroupLabel };
