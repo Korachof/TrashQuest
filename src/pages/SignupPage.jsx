@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import { Link } from 'react-router-dom';
 import PageLayout from '../components/layout/PageLayout';
 import FormGroup from '../components/shared/FormGroup';
+import {formContainer} from '../styles/forms';
 
 
 function SignupPage() {
@@ -19,14 +20,9 @@ function SignupPage() {
         <h1>Sign Up for TrashQuest 🌱</h1>
         <p>Create your eco profile and start cleaning the planet one quest at a time.</p>
         <form onSubmit={handleSubmit}
-          style={{
-            margin: '2rem auto',
-            width: '100%',
-            maxWidth: '400px',
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            gap: '0.5rem'}}>
+          style={
+            {formContainer}}
+        >
         {/*Use FormGroup to set styling for all display fields*/}
         <FormGroup
           label="Display Name:"

@@ -1,0 +1,22 @@
+const formContainer = {
+  margin: '2rem auto',
+  width: '100%',
+  maxWidth: '400px',
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  gap: '0.5rem'
+};
+
+const inputField = {
+  width: '100%',
+  maxWidth: '340px', // or whatever your ideal field size is
+  marginLeft: 'auto',
+  marginRight: 'auto',
+  padding: '0.5rem',
+  marginTop: '0.5rem',
+  boxSizing: 'border-box',
+  border: '1px solid',
+};
+
+export { formContainer, inputField };
