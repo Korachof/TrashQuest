@@ -19,4 +19,11 @@ const inputField = {
   border: '1px solid',
 };
 
-export { formContainer, inputField };
+const formGroupWrapper = {
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'stretch',
+};
+
+
+export { formContainer, inputField, formGroupWrapper };
