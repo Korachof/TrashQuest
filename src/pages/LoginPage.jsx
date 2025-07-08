@@ -3,6 +3,7 @@ import React, {useState} from 'react';
 import { Link } from 'react-router-dom';
 import PageLayout from '../components/layout/PageLayout';
 import FormGroup from '../components/shared/FormGroup';
+import {formContainer} from '../styles/forms';
 
 
 function LoginPage() {
@@ -20,14 +21,8 @@ function LoginPage() {
       <h1>Login to Your Quest 🔐</h1>
       <p>Access your dashboard, earn ecoPoints, and track your progress.</p>
       <form onSubmit={handleSubmit}
-          style={{
-            margin: '2rem auto',
-            width: '100%',
-            maxWidth: '400px',
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            gap: '0.5rem'}}>
+          style={{formContainer}}
+      >
         {/*Use FormGroup to set styling for all display fields*/}
         <FormGroup
           label="Email"
