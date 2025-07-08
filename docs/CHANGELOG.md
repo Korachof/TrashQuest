@@ -79,6 +79,27 @@ This changelog documents key updates to the TrashQuest project. It follows seman
 - Resolved persistent alignment issue where input fields and button were left-aligned despite centered headings
 
 
+## [0.1.4] - 2025-07-07
+
+### Added
+- Created `FormButton.jsx` component for reusable submit buttons with shared styling.
+- Declared `formButton` styles in `forms.js` for centralized control.
+- Added styled button to `SignupPage.jsx` and wired up `handleSubmit`.
+
+### Changed
+- Refactored `FormGroup.jsx` to use abstracted styles:
+  - Introduced `formGroupWrapper` and `formGroupLabel` in `forms.js`.
+  - Removed inline styling for wrapper and label.
+- Updated `inputField` styling in `forms.js` to achieve proper centering and sizing:
+  - Switched back to `width: '100%'` with `maxWidth`.
+  - Added `marginLeft: 'auto'`, `marginRight: 'auto'` for centering.
+
+### Fixed
+- Resolved persistent input centering and width issues by coordinating `formContainer` and `inputField` layout logic.
+- Corrected import path for `inputField` in `FormGroup.jsx` (`../../styles/forms`).
+- Fixed syntax error in `forms.js` export statement that caused `ERR_ABORTED 500` crash.
+
+
 ---
 
 ### Planned (Upcoming)

@@ -44,6 +44,16 @@ TrashQuest uses separate pages for login and signup:
 
 This structure ensures clear, intuitive onboarding with room for future logic integration.
 
+## Shared Form Styling
+To maintain consistency and DRY principles across form views:
+
+- **FormGroup.jsx** uses `formGroupWrapper`, `formGroupLabel`, and `inputField` from `forms.js`.
+- **FormButton.jsx** provides a centralized component for form submissions like login and account creation.
+- Button and input styling are declared in `src/styles/forms.js`, making it easy to apply consistent theming across form pages.
+
+This structure allows for scalable refinement as visual design evolves—without changing page-level layout logic.
+
+
 ## Notes
 - Git does not track empty folders. We use `.gitkeep` to retain empty scaffolding folders for `utils/`, `assets/`, and `styles/`.
 - To keep a semantic structure and clean JSX returns, we are using <>...</> (React Fragments).
