@@ -30,7 +30,12 @@ const formGroupLabel = {
   textAlign: 'center',
   width: '100%',      // full-width labels
 };
+// Simple styling for now, will update later.
+const formButtonStyle = {
+  marginTop: '2rem',
+  padding: '0.8rem 1.6rem'
+}
 
 
 
-export { formContainer, inputField, formGroupWrapper, formGroupLabel };
+export { formContainer, inputField, formGroupWrapper, formGroupLabel, formButtonStyle };
