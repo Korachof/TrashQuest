@@ -1,10 +1,12 @@
 // Abstracted shared button for forms such as create account, log in, etc.
 
 import React from 'react';
+import { formButtonStyle } from '../../styles/forms';
 
 function FormButton({ children, ...props }) {
   return (
-    <button type="submit" style={ {marginTop: '2rem', padding: '0.8rem 1.6rem'} } {...props}>
+    // styling lives in src/styles.forms.js
+    <button type="submit" style={ formButtonStyle } {...props}>
       {children}
     </button>
   );
