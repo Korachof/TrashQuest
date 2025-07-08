@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import { Link } from 'react-router-dom';
 import PageLayout from '../components/layout/PageLayout';
 import FormGroup from '../components/shared/FormGroup';
+import FormButton from '../components/shared/FormButton';
 import {formContainer} from '../styles/forms';
 
 
@@ -43,9 +44,9 @@ function SignupPage() {
           onChange={(e) => setPassword(e.target.value)}
         />
         {/* Submission button; lives here, but the styling may be reused later. If so, I'll globalize that.*/}
-        <button type="submit" style={{ marginTop: '2rem', padding: '0.8rem 1.6rem' }}>
+        <FormButton>
           🌿 Create Account
-        </button>
+        </FormButton>
       </form>
         <p style={{ marginTop: '2rem' }}>
         Already have an account? <Link to="/login">Log in here</Link>
