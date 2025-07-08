@@ -53,6 +53,11 @@ To maintain consistency and DRY principles across form views:
 
 This structure allows for scalable refinement as visual design evolves—without changing page-level layout logic.
 
+## Shared Button Styling
+- `FormButton.jsx` handles form submission buttons with centralized styling via `formButtonStyle` in `forms.js`.
+- Consistent padding, margin, and colors ensure visual harmony across pages like `SignupPage`, `LoginPage`, and future profile actions.
+- Styling abstraction allows for easy modification and theming as TrashQuest evolves.
+
 ## Future Considerations
 - Create `LEARNING.md` to log architectural decisions and debugging insights
 - Add `check-env.ps1` to confirm project folder before launching dev server
@@ -63,6 +68,8 @@ This structure allows for scalable refinement as visual design evolves—without
 ## Notes
 - Git does not track empty folders. We use `.gitkeep` to retain empty scaffolding folders for `utils/`, `assets/`, and `styles/`.
 - To keep a semantic structure and clean JSX returns, we are using <>...</> (React Fragments).
+- Project now uses `.editorconfig` and VS Code `settings.json` to enforce 2-space indentation across all files.
+- Terminal scripts and PowerShell commands are tailored for Windows development consistency.
 - Signup form now uses a shared `FormGroup` component for consistent styling and layout
 
 
