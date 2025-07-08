@@ -3,6 +3,7 @@ import React, {useState} from 'react';
 import { Link } from 'react-router-dom';
 import PageLayout from '../components/layout/PageLayout';
 import FormGroup from '../components/shared/FormGroup';
+import FormButton from '../components/shared/FormButton';
 import {formContainer} from '../styles/forms';
 
 
@@ -36,6 +37,10 @@ function LoginPage() {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
+        {/* Log in button; lives in src/components/shared, but the styling may be reused later. If so, I'll globalize that.*/}
+        <FormButton>
+          🌿 Log in
+        </FormButton>
       </form>
       <p style={{ marginTop: '2rem' }}>
       Don't have an account? <Link to="/signup">Sign up here</Link>
