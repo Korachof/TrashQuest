@@ -85,6 +85,9 @@ This changelog documents key updates to the TrashQuest project. It follows seman
 - Created `FormButton.jsx` component for reusable submit buttons with shared styling.
 - Declared `formButton` styles in `forms.js` for centralized control.
 - Added styled button to `SignupPage.jsx` and wired up `handleSubmit`.
+- Created `formButtonStyle` in `forms.js` for reusable button styling.
+- Updated `FormButton.jsx` to reference `formButtonStyle` for cleaner abstraction.
+- Applied `FormButton` component to `SignupPage.jsx` and confirmed correct rendering and submit behavior.
 
 ### Changed
 - Refactored `FormGroup.jsx` to use abstracted styles:
@@ -93,12 +96,16 @@ This changelog documents key updates to the TrashQuest project. It follows seman
 - Updated `inputField` styling in `forms.js` to achieve proper centering and sizing:
   - Switched back to `width: '100%'` with `maxWidth`.
   - Added `marginLeft: 'auto'`, `marginRight: 'auto'` for centering.
+   Renamed style constant from `formButton` to `formButtonStyle` to avoid naming conflicts with the component.
+- Updated `.editorconfig` and VS Code `settings.json` to enforce 2-space indentation globally.
+- Inserted future consideration notes into `README.md`, capturing possible additions like `LEARNING.md` and `check-env.ps1`.
 
 ### Fixed
 - Resolved persistent input centering and width issues by coordinating `formContainer` and `inputField` layout logic.
 - Corrected import path for `inputField` in `FormGroup.jsx` (`../../styles/forms`).
 - Fixed syntax error in `forms.js` export statement that caused `ERR_ABORTED 500` crash.
-
+- Resolved React styling error by replacing invalid syntax with properly nested style object (`style={{ ... }}`).
+- Clarified `FormButton` usage patterns vs. inline `<button>` calls to prevent prop misassignment.
 
 ---
 
