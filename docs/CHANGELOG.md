@@ -59,7 +59,7 @@ This changelog documents key updates to the TrashQuest project. It follows seman
 - Resolved missing `React` imports across pages to prevent JSX render errors
 
 
-## [0.1.3] - 2025-07-06
+## [0.1.3] - 2025-07-07
 
 ### Added
 - Created `SignupPage.jsx` with layout via reusable `PageLayout`
@@ -79,7 +79,7 @@ This changelog documents key updates to the TrashQuest project. It follows seman
 - Resolved persistent alignment issue where input fields and button were left-aligned despite centered headings
 
 
-## [0.1.4] - 2025-07-07
+## [0.1.4] - 2025-07-08
 
 ### Added
 - Created `FormButton.jsx` component for reusable submit buttons with shared styling.
