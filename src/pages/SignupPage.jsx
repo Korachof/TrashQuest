@@ -43,7 +43,7 @@ function SignupPage() {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        {/* Submission button; lives here, but the styling may be reused later. If so, I'll globalize that.*/}
+        {/* Submission button; lives in src/components/shared, but the styling may be reused later. If so, I'll globalize that.*/}
         <FormButton>
           🌿 Create Account
         </FormButton>
