@@ -8,6 +8,7 @@ import FormGroup from '../components/shared/FormGroup';
 function LoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  // prevent reloading of page, and instead handle submission manually with firebase.
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('Signup submitted:', { displayName, email, password });
@@ -27,13 +28,13 @@ function LoginPage() {
             flexDirection: 'column',
             alignItems: 'center',
             gap: '0.5rem'}}>
+        {/*Use FormGroup to set styling for all display fields*/}
         <FormGroup
           label="Email"
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
-
         <FormGroup
           label="Password"
           type="password"
