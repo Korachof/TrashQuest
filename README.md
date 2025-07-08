@@ -53,6 +53,12 @@ To maintain consistency and DRY principles across form views:
 
 This structure allows for scalable refinement as visual design evolves—without changing page-level layout logic.
 
+## Future Considerations
+- Create `LEARNING.md` to log architectural decisions and debugging insights
+- Add `check-env.ps1` to confirm project folder before launching dev server
+- Explore button variant support in `FormButton.jsx` (primary, secondary)
+- Consider hover styling for form buttons in `formButtonStyle`
+- Add optional accessibility labels to `FormGroup` components
 
 ## Notes
 - Git does not track empty folders. We use `.gitkeep` to retain empty scaffolding folders for `utils/`, `assets/`, and `styles/`.
