@@ -5,6 +5,7 @@ import PageLayout from '../components/layout/PageLayout';
 import FormGroup from '../components/shared/FormGroup';
 import FormButton from '../components/shared/FormButton';
 import {formContainer} from '../styles/forms';
+import { linkNavigationText } from '../styles/typography';
 
 
 function LoginPage() {
@@ -42,7 +43,7 @@ function LoginPage() {
           🌿 Log in
         </FormButton>
       </form>
-      <p style={{ marginTop: '2rem' }}>
+      <p style={linkNavigationText}>
       Don't have an account? <Link to="/signup">Sign up here</Link>
       </p>
     </PageLayout>
