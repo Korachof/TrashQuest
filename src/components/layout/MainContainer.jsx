@@ -12,6 +12,7 @@ function MainContainer({ children }) {
         maxWidth: '700px',
         marginLeft: 'auto',
         marginRight: 'auto',
+        flexGrow: 1,
       }}
     >
       {children}
