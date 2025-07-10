@@ -21,6 +21,7 @@ function Footer() {
         gap: '0.7rem',
         flexWrap: 'wrap', // for smaller screens
         marginBottom: '0.5rem'}}>
+          <Link to="/terms">Terms of Use</Link>
           <Link to="/privacy">Privacy Policy</Link>
           <Link to="/about">About Us</Link>
           <Link to="/contact">Contact Us</Link>
