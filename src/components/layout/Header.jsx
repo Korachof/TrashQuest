@@ -1,6 +1,8 @@
 // UI Header
 import {Link} from 'react-router-dom'
 import React from 'react';
+import { navContainer } from '../../styles/layout';
+
 
 const logoStyles = {
     textDecoration: 'none',
@@ -22,12 +24,7 @@ function Header() {
         <Link to="/" style={logoStyles}>
             <h1>TrashQuest ♻️</h1>
         </Link>
-      <nav style = {{
-        display: 'flex',
-        justifyContent: 'center',
-        gap: '0.7rem',
-        flexWrap: 'wrap', // for smaller screens
-        }}>
+      <nav style = {navContainer}>
           <Link to="/how-it-works">How it Works</Link>
           <Link to="/resources">Resources</Link>
       </nav>
