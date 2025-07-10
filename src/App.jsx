@@ -1,5 +1,4 @@
 // Root app component
-
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import WelcomePage from './pages/WelcomePage'
@@ -9,6 +8,7 @@ import ContactPage from './pages/ContactPage';
 import AboutPage from './pages/AboutPage';
 import PrivacyPage from './pages/PrivacyPage';
 import TermsPage from './pages/TermsPage';
+import HowItWorksPage from './pages/HowItWorksPage';
 
 
 function App() {
@@ -22,10 +22,12 @@ function App() {
         <Route path ="/about" element={<AboutPage />} />
         <Route path ="/privacy" element={<PrivacyPage />} />
         <Route path ="/terms" element={<TermsPage />} />
+        <Route path ="/how-it-works" element={<HowItWorksPage />} />
       </Routes>
     </BrowserRouter>
   );
 }
+
 
 export default App;
 
