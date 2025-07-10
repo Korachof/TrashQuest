@@ -26,6 +26,7 @@ function Header() {
       <nav style = {navContainer}>
           <Link to="/how-it-works">How it Works</Link>
           <Link to="/resources">Resources</Link>
+          <Link to="/login">Sign In</Link>
       </nav>
     </header>
   );
