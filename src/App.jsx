@@ -15,15 +15,22 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
+        {/* Landing page routes */}
         <Route path="/" element={<WelcomePage />}/>
+
+        {/* User Login/Authentication routes */}
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignupPage />} />
-        <Route path="/contact" element={<ContactPage />} />
-        <Route path ="/about" element={<AboutPage />} />
-        <Route path ="/privacy" element={<PrivacyPage />} />
-        <Route path ="/terms" element={<TermsPage />} />
+
+        {/* Header routes */}
         <Route path ="/how-it-works" element={<HowItWorksPage />} />
         <Route path ="/resources" element={<ResourcesPage />} />
+
+        {/* Footer routes */}
+        <Route path ="/terms" element={<TermsPage />} />
+        <Route path ="/privacy" element={<PrivacyPage />} />
+        <Route path ="/about" element={<AboutPage />} />
+        <Route path="/contact" element={<ContactPage />} />
       </Routes>
     </BrowserRouter>
   );
