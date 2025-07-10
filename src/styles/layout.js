@@ -6,7 +6,7 @@ const navContainer = {
   alignItems: 'center',
   gap: '0.7rem',
   flexWrap: 'wrap', // for smaller screens
-  marginBottom: '0.5rem'
+  marginBottom: '0.5rem',
 };
 
-export {navContainer};
+export { navContainer };

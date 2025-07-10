@@ -7,7 +7,6 @@ import FormButton from '../components/shared/FormButton';
 import {formContainer} from '../styles/forms';
 import { linkNavigationText } from '../styles/typography';
 
-
 function LoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');

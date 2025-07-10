@@ -8,7 +8,7 @@ const formContainer = {
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
-  gap: '0.5rem'
+  gap: '0.5rem',
 };
 
 // Styling for input fields within form groups (text, email, password, etc.)
@@ -34,13 +34,19 @@ const formGroupWrapper = {
 const formGroupLabel = {
   marginTop: '1rem',
   textAlign: 'center',
-  width: '100%',      // full-width labels
+  width: '100%', // full-width labels
 };
 // Shared styling for form submission buttons (Signup/Login flows)
 // Simple styling for now, will update later.
 const formButtonStyle = {
   marginTop: '2rem',
-  padding: '0.8rem 1.6rem'
-}
+  padding: '0.8rem 1.6rem',
+};
 
-export { formContainer, inputField, formGroupWrapper, formGroupLabel, formButtonStyle };
+export {
+  formContainer,
+  inputField,
+  formGroupWrapper,
+  formGroupLabel,
+  formButtonStyle,
+};

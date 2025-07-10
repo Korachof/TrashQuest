@@ -2,9 +2,8 @@
 import React from 'react';
 import PageLayout from '../components/layout/PageLayout';
 
-
 function TermsPage() {
-  const effectiveDate = new Date('07/10/2025')
+  const effectiveDate = new Date('07/10/2025');
   return (
     <PageLayout>
       <h1>Terms of Use</h1>
@@ -12,6 +11,5 @@ function TermsPage() {
     </PageLayout>
   );
 }
-
 
 export default TermsPage;

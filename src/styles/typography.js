@@ -4,5 +4,4 @@ const linkNavigationText = {
   marginTop: '2rem',
 };
 
-
-export {linkNavigationText}
+export { linkNavigationText };

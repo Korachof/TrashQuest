@@ -13,7 +13,7 @@ function WelcomePage() {
       <p>Clean the planet, one collectible at a time.</p>
       <StartQuestButton />
     </PageLayout>
-  )
+  );
 }
 
 export default WelcomePage;

@@ -1,7 +1,7 @@
 // Root app component
 import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import WelcomePage from './pages/WelcomePage'
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import WelcomePage from './pages/WelcomePage';
 import LoginPage from './pages/LoginPage';
 import SignupPage from './pages/SignupPage';
 import ContactPage from './pages/ContactPage';
@@ -16,20 +16,20 @@ function App() {
     <BrowserRouter>
       <Routes>
         {/* Landing page routes */}
-        <Route path="/" element={<WelcomePage />}/>
+        <Route path="/" element={<WelcomePage />} />
 
         {/* User Login/Authentication routes */}
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignupPage />} />
 
         {/* Header routes */}
-        <Route path ="/how-it-works" element={<HowItWorksPage />} />
-        <Route path ="/resources" element={<ResourcesPage />} />
+        <Route path="/how-it-works" element={<HowItWorksPage />} />
+        <Route path="/resources" element={<ResourcesPage />} />
 
         {/* Footer routes */}
-        <Route path ="/terms" element={<TermsPage />} />
-        <Route path ="/privacy" element={<PrivacyPage />} />
-        <Route path ="/about" element={<AboutPage />} />
+        <Route path="/terms" element={<TermsPage />} />
+        <Route path="/privacy" element={<PrivacyPage />} />
+        <Route path="/about" element={<AboutPage />} />
         <Route path="/contact" element={<ContactPage />} />
       </Routes>
     </BrowserRouter>
@@ -37,4 +37,3 @@ function App() {
 }
 
 export default App;
-

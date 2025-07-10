@@ -2,7 +2,6 @@
 import React from 'react';
 import PageLayout from '../components/layout/PageLayout';
 
-
 function AboutPage() {
   return (
     <PageLayout>
@@ -11,6 +10,5 @@ function AboutPage() {
     </PageLayout>
   );
 }
-
 
 export default AboutPage;
