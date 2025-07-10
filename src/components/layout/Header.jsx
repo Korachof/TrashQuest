@@ -18,12 +18,18 @@ function Header() {
       alignItems: 'center',
       borderBottom: '1px solid #ccc'
     }}>
+      {/* Logo */}
         <Link to="/" style={logoStyles}>
             <h1>TrashQuest ♻️</h1>
         </Link>
-      <div>
-        {/* Future buttons go here */}
-      </div>
+      <nav style = {{
+        display: 'flex',
+        justifyContent: 'center',
+        gap: '0.7rem',
+        flexWrap: 'wrap', // for smaller screens
+        }}>
+          <Link to="/how-it-works">How it Works</Link>
+      </nav>
     </header>
   );
 }
