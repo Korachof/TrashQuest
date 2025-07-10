@@ -3,10 +3,10 @@
 import React from 'react';
 import { formButtonStyle } from '../../styles/forms';
 
-function FormButton({ children, type="submit", ...props }) {
+function FormButton({ children, type = 'submit', ...props }) {
   return (
     // styling lives in src/styles.forms.js
-    <button type={type} style={ formButtonStyle } {...props}>
+    <button type={type} style={formButtonStyle} {...props}>
       {children}
     </button>
   );

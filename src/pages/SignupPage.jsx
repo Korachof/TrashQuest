@@ -1,11 +1,10 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import PageLayout from '../components/layout/PageLayout';
 import FormGroup from '../components/shared/FormGroup';
 import FormButton from '../components/shared/FormButton';
-import {formContainer} from '../styles/forms';
+import { formContainer } from '../styles/forms';
 import { linkNavigationText } from '../styles/typography';
-
 
 function SignupPage() {
   const [displayName, setDisplayName] = useState('');
@@ -19,12 +18,12 @@ function SignupPage() {
   };
   return (
     <PageLayout>
-        <h1>Sign Up for TrashQuest 🌱</h1>
-        <p>Create your eco profile and start cleaning the planet one quest at a time.</p>
-        <form onSubmit={handleSubmit}
-          style={
-            {formContainer}}
-        >
+      <h1>Sign Up for TrashQuest 🌱</h1>
+      <p>
+        Create your eco profile and start cleaning the planet one quest at a
+        time.
+      </p>
+      <form onSubmit={handleSubmit} style={{ formContainer }}>
         {/*Use FormGroup to set styling for all display fields*/}
         <FormGroup
           label="Display Name:"
@@ -45,15 +44,13 @@ function SignupPage() {
           onChange={(e) => setPassword(e.target.value)}
         />
         {/* Submission button; lives in src/components/shared, but the styling may be reused later. If so, I'll globalize that.*/}
-        <FormButton>
-          🌿 Create Account
-        </FormButton>
+        <FormButton>🌿 Create Account</FormButton>
       </form>
-        <p style={linkNavigationText}>
+      <p style={linkNavigationText}>
         Already have an account? <Link to="/login">Log in here</Link>
-        </p>
+      </p>
     </PageLayout>
   );
 }
 
-export default SignupPage;                 
+export default SignupPage;

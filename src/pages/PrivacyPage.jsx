@@ -2,7 +2,6 @@
 import React from 'react';
 import PageLayout from '../components/layout/PageLayout';
 
-
 function PrivacyPage() {
   const lastModifiedDate = new Date('07/10/2025');
   return (
@@ -13,6 +12,5 @@ function PrivacyPage() {
     </PageLayout>
   );
 }
-
 
 export default PrivacyPage;

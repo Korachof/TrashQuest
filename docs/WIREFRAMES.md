@@ -1,6 +1,7 @@
 # 🧩 TrashQuest – Wireframes & UI Flow
 
 ## 🧩 Table of Contents
+
 - [Introduction](#-introduction)
 - [Home Screen](#-1-home-screen)
 - [Cleanup Submission Screen](#-2-cleanup-submission-screen)
@@ -13,7 +14,6 @@
 
 ## 🖼 Introduction
 
-
 This document outlines the planned user interface flows for TrashQuest based on core user journeys. It serves as a structural reference for design and development.
 
 ---
@@ -23,6 +23,7 @@ This document outlines the planned user interface flows for TrashQuest based on 
 **Purpose**: Launch point for cleanup actions, reward redemption, and navigation.
 
 **Key Elements**:
+
 - Welcome message / mission tagline
 - EcoPoints balance (e.g., “You have 15 EcoPoints”)
 - Primary CTA: “Start Cleanup”
@@ -36,12 +37,14 @@ This document outlines the planned user interface flows for TrashQuest based on 
 **Purpose**: Allow users to submit completed cleanup actions.
 
 **Flow**:
+
 1. Select trash size/type (tag)
 2. Select action taken
 3. Optionally upload a photo
 4. Tap “Submit” → confirmation screen
 
 **Extras**:
+
 - GPS toggle (if location is on)
 - Skip photo option for accessibility
 - Points preview or expected gain
@@ -53,6 +56,7 @@ This document outlines the planned user interface flows for TrashQuest based on 
 **Purpose**: Celebrate the submission and offer reward options
 
 **Content**:
+
 - Success message (e.g., “Thanks, Maria! +2 EcoPoints earned”)
 - “Open EcoPack” button (if enough points)
 - Soft encouragement or link to user stats
@@ -64,6 +68,7 @@ This document outlines the planned user interface flows for TrashQuest based on 
 **Purpose**: Gacha-style reward reveal
 
 **Design**:
+
 - Card flip animation or drop sequence
 - 1-3 cards max per pack draw
 - Rarity colors or sparkle effects
@@ -76,6 +81,7 @@ This document outlines the planned user interface flows for TrashQuest based on 
 **Purpose**: View owned EcoItems, badges, and stats
 
 **Modes**:
+
 - Grid of earned items
 - Filter by type: Critters, Gear, Badges
 - Optional “Garden” mode for Maria-style emotional design
@@ -87,6 +93,7 @@ This document outlines the planned user interface flows for TrashQuest based on 
 **Purpose**: Account info, settings, log out
 
 **Content**:
+
 - Avatar, username, EcoPoints
 - “Where I’ve Cleaned” stats or location log
 - Theme toggle (dark/light mode)
@@ -103,4 +110,5 @@ This document outlines the planned user interface flows for TrashQuest based on 
 ---
 
 ## 🎶 Notes
+
 > 🧠 Note: These wireframes are logic-first. Visual design should follow accessibility, color contrast, and empathy-driven tone matching the user's persona.
