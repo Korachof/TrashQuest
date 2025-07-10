@@ -15,9 +15,14 @@ function Footer() {
       marginTop: '3rem'
     }}>
       {/*Nav Links*/}
-      <nav style = {{ display: 'flex', justifyContent: 'center', gap: '0.7rem', marginBottom: '0.5rem'}}>
-        <Link to="/about">About Us</Link>
-        <Link to="/contact">Contact Us</Link>
+      <nav style = {{
+        display: 'flex',
+        justifyContent: 'center',
+        gap: '0.7rem',
+        flexWrap: 'wrap', // for smaller screens
+        marginBottom: '0.5rem'}}>
+          <Link to="/about">About Us</Link>
+          <Link to="/contact">Contact Us</Link>
       </nav>
       <p>
         Made for the Ultimate Quest: The Planet🌎 | © {new Date().getFullYear()} TrashQuest
