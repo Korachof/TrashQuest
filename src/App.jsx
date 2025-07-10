@@ -6,6 +6,7 @@ import WelcomePage from './pages/WelcomePage'
 import LoginPage from './pages/LoginPage';
 import SignupPage from './pages/SignupPage';
 import ContactPage from './pages/ContactPage';
+import AboutPage from './pages/AboutPage';
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/contact" element={<ContactPage />} />
+        <Route path ="/about" element={<AboutPage />} />
       </Routes>
     </BrowserRouter>
   );
