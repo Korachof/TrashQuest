@@ -18,8 +18,14 @@ TrashQuest is an environmentally-focused app that encourages trash cleanup with 
 ### Pages
 
 - `WelcomePage.jsx`: Public-facing entry screen for TrashQuest
-- `LoginPage.jsx`: Public-facing login screen for users.
 - `DashboardPage.jsx`: (Coming soon) Post-login user dashboard with personalized content
+- `LoginPage.jsx`: Public-facing login screen for users.
+- `HowItWorksPage.jsx`: Public-facing overview of how TrashQuest works
+- `ResourcesPage.jsx`: Collection of learning materials and eco-education links
+- `TermsPage.jsx`: Legal terms of service and usage guidelines
+- `PrivacyPage.jsx`: Details on TrashQuest’s data handling and user privacy policies
+- `AboutPage.jsx`: Background story and mission behind TrashQuest
+- `ContactPage.jsx`: User-facing contact form and support information
 
 ### Component Structure
 
@@ -37,13 +43,20 @@ Components (buttons, links, etc) for user Navigation
 
 - `TrashQuest Header Logo` (in-progress): Navigates users from any page back to either `WelcomePage.jsx` or `DashboardPage.jsx`, depending on if they are logged in or not.
 - `StartQuestButton.jsx`: Navigates users from the WelcomePage to the LoginPage using React Router's `useNavigate()`.
+- Navigation layout styles (used in `Header.jsx` and `Footer.jsx`) are centralized in `styles/layout.js` under **navContainer**. This enforces consistent flex behavior, spacing, and alignment across navigation components.
 
 ### Routes
 
 - `/` — WelcomePage (public landing page)
 - `/login` — LoginPage (access dashboard features)
 - `/signup` — SignupPage (new user registration)
-- `/dashboard` — DashboardPage (requires authentication) _[coming soon]_
+- `/dashboard` — DashboardPage (requires authentication) [coming soon]
+- `/how-it-works` — HowItWorksPage (educational overview for new users)
+- `/resources` — ResourcesPage (eco-learning hub)
+- `/terms` — TermsPage (user agreement and service terms)
+- `/privacy` — PrivacyPage (explains data collection and usage)
+- `/about` — AboutPage (TrashQuest mission and team info)
+- `/contact` — ContactPage (reach out to support or leave feedback)
 
 ### Layout System
 
@@ -91,6 +104,7 @@ This structure allows for scalable refinement as visual design evolves—without
 - Add optional accessibility labels to `FormGroup` components
 - Add a **variant style prop** to formButton with styling variants like "primary" and "secondary" using a conditional style switch.
 - Explore refactoring FormGroup to integrate semantic input components and shared styles via inputField
+- Update header layout using `flex` with logo + nav dev cluster
 
 ### Notes
 
@@ -99,3 +113,4 @@ This structure allows for scalable refinement as visual design evolves—without
 - Project now uses `.editorconfig` and VS Code `settings.json` to enforce 2-space indentation across all files.
 - Terminal scripts and PowerShell commands are tailored for Windows development consistency.
 - Signup form now uses a shared `FormGroup` component for consistent styling and layout
+- Prettier is now configured in .prettierrc at the project root. Developers using VS Code should install the Prettier extension and enable "editor.formatOnSave" in settings.

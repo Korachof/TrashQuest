@@ -119,6 +119,38 @@ This changelog documents key updates to the TrashQuest project. It follows seman
 - Resolved React styling error by replacing invalid syntax with properly nested style object (`style={{ ... }}`).
 - Clarified `FormButton` usage patterns vs. inline `<button>` calls to prevent prop misassignment.
 
+## [0.1.5] - 2025-07-09 - 2025-07-10
+
+### Added
+
+- `.prettierrc` configuration for standardized code formatting
+- Prettier integration with VS Code for auto-format on save
+- Shared `navContainer` style for consistent header/footer layout
+- Updated header layout using `flex` with logo + nav cluster
+- Spacer logic for controlled logo-nav separation
+- Routing and component creation for the following pages:
+  - **Header-linked pages**:
+    - `HowItWorksPage`
+    - `ResourcesPage`
+    - `LoginPage` - Added new link to existing page in Header
+  - **Footer-linked pages**:
+    - `TermsPage`
+    - `PrivacyPage`
+    - `AboutPage`
+    - `ContactPage`
+
+### Changed
+
+- Refactored `Header.jsx` and `Footer.jsx` to use `navContainer` style abstraction for nav layout
+- Linked newly created pages to appropriate nav sections (Header and Footer)
+- Improved vertical alignment using `alignItems: 'center'` in flex containers
+- Consolidated reusable styles into `styles/layout.js`
+- Enabled consistent navigation link structure and spacing across app
+- Clarified Prettier vs. EditorConfig usage in `.editorconfig`
+- Tested Prettier auto-formatting and confirmed clean file saves
+
+- Clarified Prettier vs. EditorConfig purpose in `README.md`
+
 ---
 
 ### Planned (Upcoming)
