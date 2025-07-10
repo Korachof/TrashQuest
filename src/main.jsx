@@ -4,6 +4,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 
+// sets default browser/app margins and padding to 0 to avoid unneeded scrollbars
 document.body.style.margin = '0';
 document.body.style.padding = '0';
 
