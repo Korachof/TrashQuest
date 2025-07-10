@@ -13,7 +13,6 @@ function Footer() {
         fontSize: '0.95rem',
         color: '#28a745',
         borderTop: '1px solid #ccc',
-        marginTop: '3rem',
       }}
     >
       {/*Nav Links*/}

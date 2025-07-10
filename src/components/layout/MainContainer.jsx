@@ -7,8 +7,9 @@ function MainContainer({ children }) {
     <main
       style={{
         textAlign: 'center',
-        marginTop: '4rem',
-        padding: '0 1rem',
+        paddingTop: '4rem',
+        paddingLeft: '1rem',
+        paddingRight: '1rem',
         maxWidth: '700px',
         marginLeft: 'auto',
         marginRight: 'auto',
