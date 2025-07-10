@@ -9,7 +9,7 @@ import AboutPage from './pages/AboutPage';
 import PrivacyPage from './pages/PrivacyPage';
 import TermsPage from './pages/TermsPage';
 import HowItWorksPage from './pages/HowItWorksPage';
-
+import ResourcesPage from './pages/ResourcesPage';
 
 function App() {
   return (
@@ -23,11 +23,11 @@ function App() {
         <Route path ="/privacy" element={<PrivacyPage />} />
         <Route path ="/terms" element={<TermsPage />} />
         <Route path ="/how-it-works" element={<HowItWorksPage />} />
+        <Route path ="/resources" element={<ResourcesPage />} />
       </Routes>
     </BrowserRouter>
   );
 }
-
 
 export default App;
 
