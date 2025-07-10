@@ -150,6 +150,13 @@ This changelog documents key updates to the TrashQuest project. It follows seman
 - Tested Prettier auto-formatting and confirmed clean file saves
 
 - Clarified Prettier vs. EditorConfig purpose in `README.md`
+- Changed default padding of `MainContainer.jsx` and `PageLayout.jsx` and `Footer.jsx` for some basic default style settings.
+
+### Fixed
+
+- Fixed persistent vertical scrollbar issue caused by default `<body>` margin in Chrome.
+  - Added inline margin reset (`document.body.style.margin = '0'`) to `main.jsx` to eliminate unexpected overflow.
+  - Verified layout container (`PageLayout`) stays within `100vh` without side effects.
 
 ---
 

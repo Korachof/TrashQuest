@@ -68,6 +68,14 @@ TrashQuest uses a reusable `PageLayout.jsx` to ensure consistent structure and s
 </PageLayout>
 -->
 
+To ensure consistent vertical sizing and prevent browser scrollbars on sparse pages:
+
+- All pages are wrapped in `PageLayout.jsx` with `minHeight: 100vh`.
+- Chrome applies default margin to `<body>`, which triggers overflow.
+- This is resolved in `main.jsx` using:
+
+<!-- document.body.style.margin = '0'; -->
+
 ### Authentication Flow
 
 TrashQuest uses separate pages for login and signup:
