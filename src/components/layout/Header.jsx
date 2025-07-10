@@ -29,6 +29,7 @@ function Header() {
         flexWrap: 'wrap', // for smaller screens
         }}>
           <Link to="/how-it-works">How it Works</Link>
+          <Link to="/resources">Resources</Link>
       </nav>
     </header>
   );
