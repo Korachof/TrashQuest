@@ -3,7 +3,6 @@ import {Link} from 'react-router-dom'
 import React from 'react';
 import { navContainer } from '../../styles/layout';
 
-
 const logoStyles = {
     textDecoration: 'none',
     color: '#28a745',

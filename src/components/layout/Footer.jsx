@@ -1,7 +1,7 @@
 // UI footer
 import React from 'react';
 import {Link} from 'react-router-dom';
-
+import { navContainer } from '../../styles/layout';
 
 function Footer() {
   return (
@@ -15,12 +15,7 @@ function Footer() {
       marginTop: '3rem'
     }}>
       {/*Nav Links*/}
-      <nav style = {{
-        display: 'flex',
-        justifyContent: 'center',
-        gap: '0.7rem',
-        flexWrap: 'wrap', // for smaller screens
-        marginBottom: '0.5rem'}}>
+      <nav style = {navContainer}>
           <Link to="/terms">Terms of Use</Link>
           <Link to="/privacy">Privacy Policy</Link>
           <Link to="/about">About Us</Link>
@@ -32,6 +27,5 @@ function Footer() {
     </footer>
   );
 }
-
 
 export default Footer;
