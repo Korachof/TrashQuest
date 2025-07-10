@@ -8,6 +8,7 @@ import SignupPage from './pages/SignupPage';
 import ContactPage from './pages/ContactPage';
 import AboutPage from './pages/AboutPage';
 import PrivacyPage from './pages/PrivacyPage';
+import TermsPage from './pages/TermsPage';
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
         <Route path="/contact" element={<ContactPage />} />
         <Route path ="/about" element={<AboutPage />} />
         <Route path ="/privacy" element={<PrivacyPage />} />
+        <Route path ="/terms" element={<TermsPage />} />
       </Routes>
     </BrowserRouter>
   );
