@@ -11,29 +11,33 @@ const layoutPageStyleWrapper = {
 };
 
 const mainContainerStyleWrapper = {
-  textAlign: 'center',
+  boxSizing: 'border-box',
   flexGrow: 1,
   maxWidth: '700px',
   margin: '0 auto',
   padding: '4rem 1rem 0',
-  boxSizing: 'border-box',
+  textAlign: 'center',
 };
 
 const headerStyleContainer = {
-  backgroundColor: '#f0f0f0',
-  padding: '1rem 2rem',
+  boxSizing: 'border-box',
   display: 'flex',
   justifyContent: 'space-between',
   alignItems: 'center',
+  padding: '1rem 2rem',
+  backgroundColor: '#f0f0f0',
   borderBottom: '1px solid #ccc',
 };
 
 const footerStyleContainer = {
-  backgroundColor: '#f8f8f8',
+  boxSizing: 'border-box',
   padding: '1rem',
   textAlign: 'center',
   fontSize: '0.95rem',
+  textAlign: 'center',
+  fontSize: '0.95rem',
   color: '#28a745',
+  backgroundColor: '#f8f8f8',
   borderTop: '1px solid #ccc',
 };
 
