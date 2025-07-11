@@ -19,6 +19,24 @@ const mainContainerStyleWrapper = {
   boxSizing: 'border-box',
 };
 
+const headerStyleContainer = {
+  backgroundColor: '#f0f0f0',
+  padding: '1rem 2rem',
+  display: 'flex',
+  justifyContent: 'space-between',
+  alignItems: 'center',
+  borderBottom: '1px solid #ccc',
+};
+
+const footerStyleContainer = {
+  backgroundColor: '#f8f8f8',
+  padding: '1rem',
+  textAlign: 'center',
+  fontSize: '0.95rem',
+  color: '#28a745',
+  borderTop: '1px solid #ccc',
+};
+
 const navContainer = {
   display: 'flex',
   justifyContent: 'center',
@@ -28,4 +46,10 @@ const navContainer = {
   marginBottom: '0.5rem',
 };
 
-export { layoutPageStyleWrapper, mainContainerStyleWrapper, navContainer };
+export {
+  layoutPageStyleWrapper,
+  mainContainerStyleWrapper,
+  headerStyleContainer,
+  footerStyleContainer,
+  navContainer,
+};

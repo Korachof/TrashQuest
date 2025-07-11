@@ -2,19 +2,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { navContainer } from '../../styles/layout';
+import { footerStyleContainer } from '../../styles/layout';
 
 function Footer() {
   return (
-    <footer
-      style={{
-        backgroundColor: '#f8f8f8',
-        padding: '1rem',
-        textAlign: 'center',
-        fontSize: '0.95rem',
-        color: '#28a745',
-        borderTop: '1px solid #ccc',
-      }}
-    >
+    <footer style={footerStyleContainer}>
       {/*Nav Links*/}
       <nav style={navContainer}>
         <Link to="/terms">Terms of Use</Link>

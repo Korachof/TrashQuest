@@ -2,6 +2,7 @@
 import { Link } from 'react-router-dom';
 import React from 'react';
 import { navContainer } from '../../styles/layout';
+import { headerStyleContainer } from '../../styles/layout';
 
 const logoStyles = {
   textDecoration: 'none',
@@ -11,16 +12,7 @@ const logoStyles = {
 
 function Header() {
   return (
-    <header
-      style={{
-        backgroundColor: '#f0f0f0',
-        padding: '1rem 2rem',
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        borderBottom: '1px solid #ccc',
-      }}
-    >
+    <header style={headerStyleContainer}>
       {/* Logo */}
       <Link to="/" style={logoStyles}>
         <h1>TrashQuest ♻️</h1>
