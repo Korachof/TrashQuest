@@ -158,6 +158,15 @@ This changelog documents key updates to the TrashQuest project. It follows seman
   - Added inline margin reset (`document.body.style.margin = '0'`) to `main.jsx` to eliminate unexpected overflow.
   - Verified layout container (`PageLayout`) stays within `100vh` without side effects.
 
+## [0.1.6] - 2025-07-11
+
+### Changed
+
+- Refactored `MainContainer.jsx` layout styles to improve consistency and maintainability.
+- Consolidated padding and margin into shorthand syntax for clarity.
+- Moved layout styling to `layoutMainContainerStyle` in `styles/layout.js`.
+- Ensured alignment with existing layout patterns (`boxSizing: 'border-box'`, centralized maxWidth).
+
 ---
 
 ### Planned (Upcoming)

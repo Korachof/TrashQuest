@@ -70,7 +70,7 @@ TrashQuest uses a reusable `PageLayout.jsx` to ensure consistent structure and s
 
 To ensure consistent vertical sizing and prevent browser scrollbars on sparse pages:
 
-- All pages are wrapped in `PageLayout.jsx` with `minHeight: 100vh`.
+- All pages are wrapped in `PageLayout.jsx` with `height: 100vh`.
 - Chrome applies default margin to `<body>`, which triggers overflow.
 - This is resolved in `main.jsx` using:
 
@@ -86,6 +86,18 @@ TrashQuest uses separate pages for login and signup:
 - From `SignupPage`, returning users can navigate back to `/login`.
 
 This structure ensures clear, intuitive onboarding with room for future logic integration.
+
+### Shared Styles
+
+All layout-related styles are extracted into `styles/layout.js` for reuse across components.
+
+Current shared constants include:
+
+- `layoutPageStyleWrapper`: wraps overall page structure (used in `PageLayout.jsx`)
+- `layoutMainContainerStyle`: used for central page content alignment (used in `MainContainer.jsx`)
+- `navContainer`: navigation layout styling for header components
+
+This approach ensures consistent spacing, sizing, and alignment throughout TrashQuest without relying on external CSS files.
 
 ### Shared Form Styling
 
