@@ -1,5 +1,5 @@
 // Set up React Context -> track the logged in user through the app
-
+import React from 'react';
 import { createContext, useState } from 'react';
 
 /* set to null because we don't have default data yet;
