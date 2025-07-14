@@ -167,6 +167,29 @@ This changelog documents key updates to the TrashQuest project. It follows seman
 - Moved layout styling to `layoutMainContainerStyle` in `styles/layout.js`.
 - Ensured alignment with existing layout patterns (`boxSizing: 'border-box'`, centralized maxWidth).
 
+## [0.1.7] – 2025-07-14
+
+### 🆕 Added
+
+- Created `firebase.js` to initialize Firebase with secure configuration
+- Restricted **Firebase API key** to `localhost:5173` using Google Cloud Console
+- Enabled only essential Firebase services: Auth, Identity Toolkit, Token Service
+- Added app restriction to **Firebase API key** to prevent unauthorized usage
+- Documented API key exposure and cleanup in `README.md`
+- Reconnected local Git repo to GitHub after history rewrite
+
+### 🔄 Changed
+
+- Updated Firebase project settings to disable unused APIs (e.g., In-App Messaging, ML Kit, Management API)
+- Refined `firebase.js` to use the restricted key and reflect updated service access
+- Updated `.gitignore` and project structure to support secure development practices
+
+### 🐞 Fixed
+
+- Scrubbed exposed Firebase API key from Git history using `git filter-repo`
+- Removed temporary `replacement.txt` used for Git history rewrite
+- Resolved Git remote disconnection caused by history rewrite and restored push access
+
 ---
 
 ### Planned (Upcoming)

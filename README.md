@@ -134,3 +134,4 @@ This structure allows for scalable refinement as visual design evolves—without
 - Terminal scripts and PowerShell commands are tailored for Windows development consistency.
 - Signup form now uses a shared `FormGroup` component for consistent styling and layout
 - Prettier is now configured in .prettierrc at the project root. Developers using VS Code should install the Prettier extension and enable "editor.formatOnSave" in settings.
+- A **Firebase API key** was previously exposed in commit history. It has been secured, restricted, and scrubbed from Git. History was rewritten on July 14, 2025, to remove the key. All current configurations are safe.
