@@ -84,6 +84,12 @@ This project uses Firebase to support authentication and backend services. The c
 - Enables only essential services: Authentication, Identity Toolkit, and Token Service
 - Is designed strictly for development use—no production credentials are stored or exposed
 
+## ⚙️ Firebase Setup (Coming Soon)
+
+Further integration with Firebase is planned, including Auth flows and backend services.
+
+Setup instructions and contributor guidelines will be added once the implementation is finalized.
+
 ### Authentication Flow
 
 TrashQuest uses separate pages for login and signup:
