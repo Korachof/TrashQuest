@@ -76,6 +76,14 @@ To ensure consistent vertical sizing and prevent browser scrollbars on sparse pa
 
 <!-- document.body.style.margin = '0'; -->
 
+## 🔥 Firebase Integration
+
+This project uses Firebase to support authentication and backend services. The configuration is handled in [`src/firebase.js`](src/firebase.js), which:
+
+- Initializes Firebase with a restricted API key scoped to `localhost:5173`
+- Enables only essential services: Authentication, Identity Toolkit, and Token Service
+- Is designed strictly for development use—no production credentials are stored or exposed
+
 ### Authentication Flow
 
 TrashQuest uses separate pages for login and signup:
