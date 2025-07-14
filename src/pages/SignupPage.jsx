@@ -5,6 +5,7 @@ import FormGroup from '../components/shared/FormGroup';
 import FormButton from '../components/shared/FormButton';
 import { formContainer } from '../styles/forms';
 import { linkNavigationText } from '../styles/typography';
+import { headingTextStyle } from '../styles/typography';
 
 function SignupPage() {
   const [displayName, setDisplayName] = useState('');
