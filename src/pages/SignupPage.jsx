@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import PageLayout from '../components/layout/PageLayout';
+import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
+import { auth } from '../firebase';
 import FormGroup from '../components/shared/FormGroup';
 import FormButton from '../components/shared/FormButton';
 import { formContainer } from '../styles/forms';
@@ -11,11 +13,29 @@ function SignupPage() {
   const [displayName, setDisplayName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [errorMsg, setErrorMsg] = useState('');
+  const [successMsg, setSuccessMsg] = useState('');
   // prevent reloading of page, and instead handle submission manually with firebase.
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     console.log('Signup submitted:', { displayName, email, password });
-    // TODO: Hook into Firebase/AWS logic
+
+    try {
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      await updateProfile(userCredential.user, { displayName });
+
+      setSuccessMsg(`Signup successful! Welcome, ${displayName}`);
+      setErrorMsg('');
+      // TODO: Add redirect logic if needed
+    } catch (error) {
+      console.error('Signup error:', error.code, error.message);
+      setErrorMsg(error.message);
+      setSuccessMsg('');
+    }
   };
   return (
     <PageLayout>
@@ -44,9 +64,13 @@ function SignupPage() {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        {/* Submission button; lives in src/components/shared, but the styling may be reused later. If so, I'll globalize that.*/}
+        {/* Submission button; lives in src/components/shared, but the styling may be reused
+        later. If so, I'll globalize that.*/}
         <FormButton>🌿 Create Account</FormButton>
       </form>
+      {successMsg && <p style={{ color: 'green' }}>{successMsg}</p>}
+      {errorMsg && <p style={{ color: 'red' }}>{errorMsg}</p>}
+
       <p style={linkNavigationText}>
         Already have an account? <Link to="/login">Log in here</Link>
       </p>
