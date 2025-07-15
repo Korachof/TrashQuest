@@ -15,6 +15,22 @@ TrashQuest is an environmentally-focused app that encourages trash cleanup with 
 - [Future Considerations](#future-considerations)
 - [Notes](#notes)
 
+## 🚀 Tech Stack
+
+- **React**: Component-based UI
+- **Vite**: Lightning-fast dev server and bundler
+- **Firebase**: Auth, Firestore, and Storage
+- **Modular Architecture**: Built for scalability and reuse
+
+---
+
+## 🔧 Local Development
+
+### Install dependencies
+
+<!-- bash
+npm install */} -->
+
 ### Pages
 
 - `WelcomePage.jsx`: Public-facing entry screen for TrashQuest

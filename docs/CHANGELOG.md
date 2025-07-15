@@ -169,7 +169,7 @@ This changelog documents key updates to the TrashQuest project. It follows seman
 
 ## [0.1.7] – 2025-07-14
 
-### 🆕 Added
+### Added
 
 - Created `firebase.js` to initialize Firebase with secure configuration
 - Restricted **Firebase API key** to `localhost:5173` using Google Cloud Console
@@ -178,17 +178,31 @@ This changelog documents key updates to the TrashQuest project. It follows seman
 - Documented API key exposure and cleanup in `README.md`
 - Reconnected local Git repo to GitHub after history rewrite
 
-### 🔄 Changed
+### Changed
 
 - Updated Firebase project settings to disable unused APIs (e.g., In-App Messaging, ML Kit, Management API)
 - Refined `firebase.js` to use the restricted key and reflect updated service access
 - Updated `.gitignore` and project structure to support secure development practices
 
-### 🐞 Fixed
+### Fixed
 
 - Scrubbed exposed **Firebase API key** from Git history using `git filter-repo`
 - Removed temporary `replacement.txt` used for Git history rewrite
 - Resolved Git remote disconnection caused by history rewrite and restored push access
+
+## [0.1.8] - 2025-07-15
+
+### Added
+
+- Vite build system integrated for improved development speed and production readiness
+- `.env.local` created for secure Firebase config handling
+- New `vite.config.js` added with React plugin setup
+
+### Changed
+
+- `firebase.js` refactored to pull config from `import.meta.env` variables
+- `package.json` updated with Vite-based dev/build/preview scripts
+- Security: **Firebase API keys** now stored in `.env.local` and excluded from version control via `.gitignore`
 
 ---
 
