@@ -8,6 +8,7 @@ import FormButton from '../components/shared/FormButton';
 import { formContainer } from '../styles/forms';
 import { linkNavigationText } from '../styles/typography';
 import { headingTextStyle } from '../styles/typography';
+import { isStrongPassword } from '../utils/validation';
 
 function SignupPage() {
   const [displayName, setDisplayName] = useState('');
@@ -18,6 +19,15 @@ function SignupPage() {
   // prevent reloading of page, and instead handle submission manually with firebase.
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!isStrongPassword(password)) {
+      setErrorMsg(
+        'Password must be at least 8 characters and include an uppercase letter, a number, and a symbol.'
+      );
+      setSuccessMsg('');
+      return;
+    }
+
     console.log('Signup submitted:', { displayName, email, password });
 
     try {
