@@ -186,7 +186,7 @@ This changelog documents key updates to the TrashQuest project. It follows seman
 
 ### 🐞 Fixed
 
-- Scrubbed exposed Firebase API key from Git history using `git filter-repo`
+- Scrubbed exposed **Firebase API key** from Git history using `git filter-repo`
 - Removed temporary `replacement.txt` used for Git history rewrite
 - Resolved Git remote disconnection caused by history rewrite and restored push access
 
