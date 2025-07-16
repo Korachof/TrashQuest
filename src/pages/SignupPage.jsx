@@ -8,6 +8,7 @@ import FormButton from '../components/shared/FormButton';
 import { formContainer } from '../styles/forms';
 import { linkNavigationText, headingTextStyle } from '../styles/typography';
 import { isStrongPassword, clearMessages } from '../utils/validation';
+import { redirectAfterSuccess } from '../../utils/navigation';
 
 function SignupPage() {
   const [displayName, setDisplayName] = useState('');
@@ -15,6 +16,7 @@ function SignupPage() {
   const [password, setPassword] = useState('');
   const [errorMsg, setErrorMsg] = useState('');
   const [successMsg, setSuccessMsg] = useState('');
+  const navigate = useNavigate();
   // prevent reloading of page, and instead handle submission manually with firebase.
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -41,7 +43,8 @@ function SignupPage() {
 
       setSuccessMsg(`Signup successful! Welcome, ${displayName}`);
       setErrorMsg('');
-      // TODO: Add redirect logic if needed
+      // redirect to Dashboard (may change to WELCOME/TUTORIAL later)
+      redirectAfterSuccess(navigate);
     } catch (error) {
       console.error('Signup error:', error.code, error.message);
       setSuccessMsg(''); // Clear any potential lingering success messages
