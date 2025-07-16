@@ -8,7 +8,7 @@ import FormButton from '../components/shared/FormButton';
 import { formContainer } from '../styles/forms';
 import { linkNavigationText } from '../styles/typography';
 import { headingTextStyle } from '../styles/typography';
-import { isStrongPassword } from '../utils/validation';
+import { isStrongPassword, clearMessages } from '../utils/validation';
 
 function SignupPage() {
   const [displayName, setDisplayName] = useState('');
@@ -21,14 +21,16 @@ function SignupPage() {
     e.preventDefault();
 
     if (!isStrongPassword(password)) {
+      clearMessages(setErrorMsg, setSuccessMsg);
       setErrorMsg(
         'Password must be at least 8 characters and include an uppercase letter, a number, and a symbol.'
       );
-      setSuccessMsg('');
       return;
     }
 
     console.log('Signup submitted:', { displayName, email, password });
+
+    clearMessages(setErrorMsg, setSuccessMsg);
 
     try {
       const userCredential = await createUserWithEmailAndPassword(
@@ -43,8 +45,8 @@ function SignupPage() {
       // TODO: Add redirect logic if needed
     } catch (error) {
       console.error('Signup error:', error.code, error.message);
+      clearMessages(setErrorMsg, setSuccessMsg);
       setErrorMsg(error.message);
-      setSuccessMsg('');
     }
   };
   return (
