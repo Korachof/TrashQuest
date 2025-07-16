@@ -44,7 +44,7 @@ function SignupPage() {
       // TODO: Add redirect logic if needed
     } catch (error) {
       console.error('Signup error:', error.code, error.message);
-      clearMessages(setErrorMsg, setSuccessMsg);
+      setSuccessMsg(''); // Clear any potential lingering success messages
       setErrorMsg(error.message);
     }
   };
