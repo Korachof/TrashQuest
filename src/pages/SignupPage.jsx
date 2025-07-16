@@ -6,8 +6,7 @@ import { auth } from '../firebase';
 import FormGroup from '../components/shared/FormGroup';
 import FormButton from '../components/shared/FormButton';
 import { formContainer } from '../styles/forms';
-import { linkNavigationText } from '../styles/typography';
-import { headingTextStyle } from '../styles/typography';
+import { linkNavigationText, headingTextStyle } from '../styles/typography';
 import { isStrongPassword, clearMessages } from '../utils/validation';
 
 function SignupPage() {
