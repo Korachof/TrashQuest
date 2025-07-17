@@ -1,6 +1,8 @@
 // Root app component
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { onAuthStateChanged } from 'firebase/auth';
+import { auth } from './firebase';
 import WelcomePage from './pages/WelcomePage';
 import LoginPage from './pages/LoginPage';
 import SignupPage from './pages/SignupPage';
@@ -13,6 +15,19 @@ import ResourcesPage from './pages/ResourcesPage';
 import DashboardPage from './pages/DashboardPage';
 
 function App() {
+  const [currentUser, setCurrentUser] = useState(null);
+
+  /* Listen for changes to the user's authentication state (login/logout).
+     When the auth state changes, update the currentUser state accordingly.
+     This ensures the app always knows if a user is signed in or not. */
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      setCurrentUser(user);
+    });
+
+    return () => unsubscribe(); // cleanup when App unmounts
+  }, []);
+
   return (
     <BrowserRouter>
       <Routes>
