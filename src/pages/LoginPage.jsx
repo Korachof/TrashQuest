@@ -56,6 +56,8 @@ function LoginPage() {
         {/* Log in button; lives in src/components/shared, but the styling may be reused later. If so, I'll globalize that.*/}
         <FormButton>🌿 Log in</FormButton>
       </form>
+      {successMsg && <p style={{ color: 'green' }}>{successMsg}</p>}
+      {errorMsg && <p style={{ color: 'red' }}>{errorMsg}</p>}
       <p style={linkNavigationText}>
         Don't have an account? <Link to="/signup">Sign up here</Link>
       </p>
