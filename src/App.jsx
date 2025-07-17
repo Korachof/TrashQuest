@@ -10,6 +10,7 @@ import PrivacyPage from './pages/PrivacyPage';
 import TermsPage from './pages/TermsPage';
 import HowItWorksPage from './pages/HowItWorksPage';
 import ResourcesPage from './pages/ResourcesPage';
+import DashboardPage from './pages/DashboardPage';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       <Routes>
         {/* Landing page routes */}
         <Route path="/" element={<WelcomePage />} />
+        <Route path="/dashboard" element={<DashboardPage />} />
 
         {/* User Login/Authentication routes */}
         <Route path="/login" element={<LoginPage />} />
