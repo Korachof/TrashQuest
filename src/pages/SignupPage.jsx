@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import PageLayout from '../components/layout/PageLayout';
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import { auth } from '../firebase';
@@ -8,7 +8,7 @@ import FormButton from '../components/shared/FormButton';
 import { formContainer } from '../styles/forms';
 import { linkNavigationText, headingTextStyle } from '../styles/typography';
 import { isStrongPassword, clearMessages } from '../utils/validation';
-import { redirectAfterSuccess } from '../../utils/navigation';
+import { redirectAfterSuccess } from '../utils/navigation';
 
 function SignupPage() {
   const [displayName, setDisplayName] = useState('');

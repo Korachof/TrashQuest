@@ -1,11 +1,9 @@
 // Global navigation utilities
 
-export const redirectAfterSuccess = (
-  navigate,
-  path = '/dashboard',
-  delay = 2000
-) => {
+const redirectAfterSuccess = (navigate, path = '/dashboard', delay = 2000) => {
   setTimeout(() => {
     navigate(path);
   }, delay);
 };
+
+export { redirectAfterSuccess };

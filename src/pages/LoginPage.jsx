@@ -5,7 +5,7 @@ import PageLayout from '../components/layout/PageLayout';
 import FormGroup from '../components/shared/FormGroup';
 import FormButton from '../components/shared/FormButton';
 import { formContainer } from '../styles/forms';
-import { linkNavigationTex, headingTextStyle } from '../styles/typography';
+import { linkNavigationText, headingTextStyle } from '../styles/typography';
 
 function LoginPage() {
   const [email, setEmail] = useState('');
