@@ -15,6 +15,7 @@ import HowItWorksPage from './pages/HowItWorksPage';
 import ResourcesPage from './pages/ResourcesPage';
 import DashboardPage from './pages/DashboardPage';
 import ProfilePage from './pages/ProfilePage';
+import ProtectedRoute from './components/shared/ProtectedRoute';
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
@@ -38,7 +39,11 @@ function App() {
           <Route path="/" element={<WelcomePage />} />
           <Route
             path="/dashboard"
-            element={<DashboardPage currentUser={currentUser} />}
+            element={
+              <ProtectedRoute currentUser={currentUser}>
+                <DashboardPage currentUser={currentUser} />
+              </ProtectedRoute>
+            }
           />
 
           {/* User Login/Authentication routes */}
@@ -52,7 +57,11 @@ function App() {
           {/* Signed in Header routes */}
           <Route
             path="/profile"
-            element={<ProfilePage currentUser={currentUser} />}
+            element={
+              <ProtectedRoute currentUser={currentUser}>
+                <ProfilePage currentUser={currentUser} />
+              </ProtectedRoute>
+            }
           />
 
           {/* Footer routes */}
