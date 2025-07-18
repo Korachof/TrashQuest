@@ -41,6 +41,9 @@ function Header({ currentUser }) {
 
         {currentUser ? (
           <>
+            {/* Link to profile page only shows on log in */}
+            <Link to="/profile">Profile</Link>
+            {/* If user is logged in, change Sign in to Log Out button */}
             <button onClick={() => setShowConfirm(true)}>Log Out</button>
             {showConfirm && (
               <ConfirmLogout

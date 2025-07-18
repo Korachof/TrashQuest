@@ -14,6 +14,7 @@ import TermsPage from './pages/TermsPage';
 import HowItWorksPage from './pages/HowItWorksPage';
 import ResourcesPage from './pages/ResourcesPage';
 import DashboardPage from './pages/DashboardPage';
+import ProfilePage from './pages/ProfilePage';
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
@@ -47,6 +48,12 @@ function App() {
           {/* Header routes */}
           <Route path="/how-it-works" element={<HowItWorksPage />} />
           <Route path="/resources" element={<ResourcesPage />} />
+
+          {/* Signed in Header routes */}
+          <Route
+            path="/profile"
+            element={<ProfilePage currentUser={currentUser} />}
+          />
 
           {/* Footer routes */}
           <Route path="/terms" element={<TermsPage />} />

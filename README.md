@@ -151,7 +151,7 @@ This structure ensures clear, intuitive onboarding with room for future logic in
 
 All layout-related styles are extracted into `styles/layout.js` for reuse across components.
 
-### Current shared constants
+### Shared constants
 
 - `layoutPageStyleWrapper`: wraps overall page structure (used in `PageLayout.jsx`)
 - `layoutMainContainerStyle`: used for central page content alignment (used in `MainContainer.jsx`)
