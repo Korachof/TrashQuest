@@ -214,6 +214,11 @@ This changelog documents key updates to the TrashQuest project. It follows seman
 - Personalized dashboard greeting using `currentUser.displayName` or email
 - `ConfirmLogout` component in `components/shared` for logout confirmation
 - Confirmation popup triggered on "Log Out" click with Yes/No options
+- Created new `ProfilePage.jsx` displaying current user details (name and email)
+- Added route for `/profile` with content personalized via `currentUser`
+- Conditionally rendered “Profile” link in `Header.jsx` when user is authenticated
+- Introduced `ProtectedRoute` component to guard sensitive routes
+- Wrapped `/dashboard` and `/profile` routes in `ProtectedRoute` to prevent access when logged out
 
 ### Changed
 
@@ -222,10 +227,14 @@ This changelog documents key updates to the TrashQuest project. It follows seman
 - Moved layout responsibility to `App.jsx` using shared `PageLayout` wrapper
 - Removed redundant `<PageLayout>` usage from individual page components
 - Centralized `popupStyles` in `styles/layout.js` for consistency
+- Removed fallback auth check logic from `ProfilePage.jsx` since access is now handled by routing layer
+- Updated `Header.jsx` navigation to streamline conditional rendering blocks and maintain styling consistency
 
 ### Fixed
 
 - Logout confirmation popup no longer appears after login due to `useEffect` reset on `currentUser` change
+- Improved UX by restricting access to sensitive pages and avoiding redundant conditional checks inside components
+- Rotated API key credentials in Google Cloud Console to make sure old exposed key isn't still being used.
 
 ---
 
