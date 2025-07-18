@@ -5,10 +5,10 @@ import { headingTextStyle } from '../styles/typography';
 
 function HowItWorksPage() {
   return (
-    <PageLayout>
+    <div>
       <h1 style={headingTextStyle}>How It Works</h1>
       <p>Learn how Trash Quest Works here!</p>
-    </PageLayout>
+    </div>
   );
 }
 

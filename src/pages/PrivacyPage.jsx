@@ -6,10 +6,10 @@ import { headingTextStyle } from '../styles/typography';
 function PrivacyPage() {
   const lastModifiedDate = new Date('07/10/2025');
   return (
-    <PageLayout>
+    <div>
       <h1 style={headingTextStyle}>Privacy Policy</h1>
       <p>Last Modified: {lastModifiedDate.toLocaleDateString()}</p>
-    </PageLayout>
+    </div>
   );
 }
 

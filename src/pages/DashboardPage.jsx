@@ -6,11 +6,11 @@ import { headingTextStyle } from '../styles/typography';
 
 function DashboardPage() {
   return (
-    <PageLayout>
+    <div>
       <h1 style={headingTextStyle}>🚀 Welcome to your Dashboard</h1>
       <p>You're successfully signed in and redirected.</p>
       {/* Future: profile preview, eco stats, navigation */}
-    </PageLayout>
+    </div>
   );
 }
 

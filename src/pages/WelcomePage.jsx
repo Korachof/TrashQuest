@@ -9,11 +9,11 @@ import React from 'react';
 function WelcomePage() {
   return (
     // PageLayout: Page scaffold including header, MainContainer, and footer
-    <PageLayout>
+    <div>
       <h1 style={headingTextStyle}>Welcome to TrashQuest ♻️</h1>
       <p>Clean the planet, one collectible at a time.</p>
       <StartQuestButton />
-    </PageLayout>
+    </div>
   );
 }
 
