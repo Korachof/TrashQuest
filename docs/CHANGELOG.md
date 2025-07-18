@@ -204,6 +204,29 @@ This changelog documents key updates to the TrashQuest project. It follows seman
 - `package.json` updated with Vite-based dev/build/preview scripts
 - Security: **Firebase API keys** now stored in `.env.local` and excluded from version control via `.gitignore`
 
+## [0.1.9] — 2025-07-16 - 2025-07-18
+
+### Added
+
+- Firebase `onAuthStateChanged` listener to track user login/logout state
+- `currentUser` state in `App.jsx` and passed to relevant components
+- Conditional logic in `Header.jsx` to show "Sign In" or "Log Out" based on auth state
+- Personalized dashboard greeting using `currentUser.displayName` or email
+- `ConfirmLogout` component in `components/shared` for logout confirmation
+- Confirmation popup triggered on "Log Out" click with Yes/No options
+
+### Changed
+
+- Logo link in `Header.jsx` now redirects to `/dashboard` if user is logged in, otherwise to `/`
+- Sign in link in `Header.jsx` now changes to a log out button when user is signed in.
+- Moved layout responsibility to `App.jsx` using shared `PageLayout` wrapper
+- Removed redundant `<PageLayout>` usage from individual page components
+- Centralized `popupStyles` in `styles/layout.js` for consistency
+
+### Fixed
+
+- Logout confirmation popup no longer appears after login due to `useEffect` reset on `currentUser` change
+
 ---
 
 ### Planned (Upcoming)
