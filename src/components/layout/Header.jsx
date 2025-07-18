@@ -21,8 +21,11 @@ function Header({ currentUser }) {
 
   return (
     <header style={headerStyleContainer}>
-      {/* Logo */}
-      <Link to="/" style={logoStyles}>
+      {/*
+      Logo link redirects to Dashboard if user is logged in,
+      otherwise to Welcome Page
+      */}
+      <Link to={currentUser ? '/dashboard' : '/'} style={logoStyles}>
         <h1>TrashQuest ♻️</h1>
       </Link>
       <nav style={navContainer}>
