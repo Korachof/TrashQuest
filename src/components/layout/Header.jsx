@@ -1,5 +1,5 @@
 // UI Header
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { signOut } from 'firebase/auth';
 import { auth } from '../../firebase';
@@ -15,6 +15,11 @@ const logoStyles = {
 function Header({ currentUser }) {
   const navigate = useNavigate();
   const [showConfirm, setShowConfirm] = useState(false);
+
+  useEffect(() => {
+    // Reset confirmation popup whenever auth state/current user changes
+    setShowConfirm(false);
+  }, [currentUser]);
 
   const handleLogout = async () => {
     await signOut(auth);
