@@ -1,8 +1,9 @@
 // UI Header
-import { Link } from 'react-router-dom';
 import React from 'react';
-import { navContainer } from '../../styles/layout';
-import { headerStyleContainer } from '../../styles/layout';
+import { Link, useNavigate } from 'react-router-dom';
+import { signOut } from 'firebase/auth';
+import { auth } from '../../firebase';
+import { navContainer, headerStyleContainer } from '../../styles/layout';
 
 const logoStyles = {
   textDecoration: 'none',
@@ -10,7 +11,14 @@ const logoStyles = {
   fontWeight: 'bold',
 };
 
-function Header() {
+function Header({ currentUser }) {
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    await signOut(auth);
+    navigate('/');
+  };
+
   return (
     <header style={headerStyleContainer}>
       {/* Logo */}
@@ -20,7 +28,12 @@ function Header() {
       <nav style={navContainer}>
         <Link to="/how-it-works">How it Works</Link>
         <Link to="/resources">Resources</Link>
-        <Link to="/login">Sign In</Link>
+
+        {currentUser ? (
+          <button onClick={handleLogout}>Log Out</button>
+        ) : (
+          <Link to="/login">Sign In</Link>
+        )}
       </nav>
     </header>
   );

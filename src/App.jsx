@@ -31,7 +31,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <PageLayout>
+      <PageLayout currentUser={currentUser}>
         <Routes>
           {/* Landing page routes */}
           <Route path="/" element={<WelcomePage />} />

@@ -4,10 +4,10 @@ import React from 'react';
 import MainContainer from './MainContainer';
 import { layoutPageStyleWrapper } from '../../styles/layout';
 
-function PageLayout({ children }) {
+function PageLayout({ children, currentUser }) {
   return (
     <div style={layoutPageStyleWrapper}>
-      <Header />
+      <Header currentUser={currentUser} />
       {/*Page style wrapper*/}
       <MainContainer>{children}</MainContainer>
       <Footer />
