@@ -1,9 +1,10 @@
 // UI Header
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { signOut } from 'firebase/auth';
 import { auth } from '../../firebase';
 import { navContainer, headerStyleContainer } from '../../styles/layout';
+import ConfirmLogout from '../shared/ConfirmLogout';
 
 const logoStyles = {
   textDecoration: 'none',
@@ -13,6 +14,7 @@ const logoStyles = {
 
 function Header({ currentUser }) {
   const navigate = useNavigate();
+  const [showConfirm, setShowConfirm] = useState(false);
 
   const handleLogout = async () => {
     await signOut(auth);
@@ -33,7 +35,15 @@ function Header({ currentUser }) {
         <Link to="/resources">Resources</Link>
 
         {currentUser ? (
-          <button onClick={handleLogout}>Log Out</button>
+          <>
+            <button onClick={() => setShowConfirm(true)}>Log Out</button>
+            {showConfirm && (
+              <ConfirmLogout
+                onConfirm={handleLogout}
+                onCancel={() => setShowConfirm(false)}
+              />
+            )}
+          </>
         ) : (
           <Link to="/login">Sign In</Link>
         )}

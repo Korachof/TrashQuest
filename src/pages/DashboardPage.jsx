@@ -1,5 +1,4 @@
 // Landing Page for post-logged in users
-
 import React from 'react';
 import PageLayout from '../components/layout/PageLayout';
 import { headingTextStyle } from '../styles/typography';

@@ -50,10 +50,21 @@ const navContainer = {
   marginBottom: '0.5rem',
 };
 
+const popupStyles = {
+  position: 'absolute',
+  top: '60px',
+  right: '20px',
+  backgroundColor: '#fff',
+  border: '1px solid #ccc',
+  padding: '1rem',
+  zIndex: 1000,
+};
+
 export {
   layoutPageStyleWrapper,
   mainContainerStyleWrapper,
   headerStyleContainer,
   footerStyleContainer,
   navContainer,
+  popupStyles,
 };
