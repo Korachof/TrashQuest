@@ -21,6 +21,7 @@ function SignupPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    // Password Strength Check
     if (!isStrongPassword(password)) {
       clearMessages(setErrorMsg, setSuccessMsg);
       setErrorMsg(
