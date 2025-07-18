@@ -5,6 +5,7 @@ import { signOut } from 'firebase/auth';
 import { auth } from '../../firebase';
 import { navContainer, headerStyleContainer } from '../../styles/layout';
 import ConfirmLogout from '../shared/ConfirmLogout';
+import { FaUser } from 'react-icons/fa';
 
 const logoStyles = {
   textDecoration: 'none',
@@ -42,7 +43,13 @@ function Header({ currentUser }) {
         {currentUser ? (
           <>
             {/* Link to profile page only shows on log in */}
-            <Link to="/profile">Profile</Link>
+            <Link
+              to="/profile"
+              style={{ display: 'inline-flex', gap: '0.2rem' }}
+            >
+              <FaUser />
+              {currentUser.displayName}
+            </Link>
             {/* If user is logged in, change Sign in to Log Out button */}
             <button onClick={() => setShowConfirm(true)}>Log Out</button>
             {showConfirm && (
