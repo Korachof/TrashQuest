@@ -4,16 +4,48 @@ TrashQuest is an environmentally-focused app that encourages trash cleanup with 
 
 ## Table of Contents
 
+- [Features](#features)
+- [Tech Stack](#-tech-stack)
+- [Local Development](#-local-development)
 - [Pages](#pages)
 - [Component Structure](#component-structure)
 - [Navigation Components](#navigation-components)
 - [Routes](#routes)
 - [Layout System](#layout-system)
+- [Firebase Integration](#-firebase-integration)
+- [Firebase Setup - Coming Soon](#️-firebase-setup-coming-soon)
 - [Authentication Flow](#authentication-flow)
-- [Shared Form Styling](#shared-form-styling)
-- [Shared Button Styling](#shared-button-styling)
+- [Shared Styles](#shared-styles)
 - [Future Considerations](#future-considerations)
 - [Notes](#notes)
+
+---
+
+## Features
+
+- **User Authentication via Firebase**
+
+  - Tracks login/logout state in real time
+  - Enables dynamic routing and personalized content
+
+- **Dynamic Header Navigation**
+
+  - Displays "Sign In" or "Log Out" based on user session
+  - Logo link redirects to `/dashboard` when logged in, `/` otherwise
+
+- **Logout Confirmation Dialog**
+
+  - Prevents accidental sign-outs with a Yes/No popup
+  - Reusable component for future confirmation needs
+
+- **Centralized Layout Wrapper**
+
+  - Shared `PageLayout` component wraps all routes
+  - Simplifies structure and ensures consistent header/footer across pages
+
+- **Personalized Dashboard Greeting**
+  - Displays user's name or email on dashboard
+  - Enhances user experience with a welcoming touch
 
 ## 🚀 Tech Stack
 
@@ -22,8 +54,6 @@ TrashQuest is an environmentally-focused app that encourages trash cleanup with 
 - **Firebase**: Auth, Firestore, and Storage
 - **Modular Architecture**: Built for scalability and reuse
 
----
-
 ## 🔧 Local Development
 
 ### Install dependencies
@@ -31,7 +61,7 @@ TrashQuest is an environmentally-focused app that encourages trash cleanup with 
 <!-- bash
 npm install */} -->
 
-### Pages
+## Pages
 
 - `WelcomePage.jsx`: Public-facing entry screen for TrashQuest
 - `DashboardPage.jsx`: (Coming soon) Post-login user dashboard with personalized content
@@ -43,7 +73,7 @@ npm install */} -->
 - `AboutPage.jsx`: Background story and mission behind TrashQuest
 - `ContactPage.jsx`: User-facing contact form and support information
 
-### Component Structure
+## Component Structure
 
 Components are organized by domain for scalability:
 
@@ -53,7 +83,7 @@ Components are organized by domain for scalability:
 - `navigation/`: Reusable buttons for UI flow
 - `shared/`: Generic utilities like Loader and ErrorMessage
 
-### Navigation Components
+## Navigation Components
 
 Components (buttons, links, etc) for user Navigation
 
@@ -61,7 +91,7 @@ Components (buttons, links, etc) for user Navigation
 - `StartQuestButton.jsx`: Navigates users from the WelcomePage to the LoginPage using React Router's `useNavigate()`.
 - Navigation layout styles (used in `Header.jsx` and `Footer.jsx`) are centralized in `styles/layout.js` under **navContainer**. This enforces consistent flex behavior, spacing, and alignment across navigation components.
 
-### Routes
+## Routes
 
 - `/` — WelcomePage (public landing page)
 - `/login` — LoginPage (access dashboard features)
@@ -74,7 +104,7 @@ Components (buttons, links, etc) for user Navigation
 - `/about` — AboutPage (TrashQuest mission and team info)
 - `/contact` — ContactPage (reach out to support or leave feedback)
 
-### Layout System
+## Layout System
 
 TrashQuest uses a reusable `PageLayout.jsx` to ensure consistent structure and styling across pages.
 
@@ -106,7 +136,7 @@ Further integration with Firebase is planned, including Auth flows and backend s
 
 Setup instructions and contributor guidelines will be added once the implementation is finalized.
 
-### Authentication Flow
+## Authentication Flow
 
 TrashQuest uses separate pages for login and signup:
 
@@ -117,11 +147,11 @@ TrashQuest uses separate pages for login and signup:
 
 This structure ensures clear, intuitive onboarding with room for future logic integration.
 
-### Shared Styles
+## Shared Styles
 
 All layout-related styles are extracted into `styles/layout.js` for reuse across components.
 
-Current shared constants include:
+### Current shared constants
 
 - `layoutPageStyleWrapper`: wraps overall page structure (used in `PageLayout.jsx`)
 - `layoutMainContainerStyle`: used for central page content alignment (used in `MainContainer.jsx`)
@@ -145,7 +175,7 @@ This structure allows for scalable refinement as visual design evolves—without
 - Consistent padding, margin, and colors ensure visual harmony across pages like `SignupPage`, `LoginPage`, and future profile actions.
 - Styling abstraction allows for easy modification and theming as TrashQuest evolves.
 
-### Future Considerations
+## Future Considerations
 
 - Create `LEARNING.md` to log architectural decisions and debugging insights
 - Add `check-env.ps1` to confirm project folder before launching dev server
@@ -156,7 +186,7 @@ This structure allows for scalable refinement as visual design evolves—without
 - Explore refactoring FormGroup to integrate semantic input components and shared styles via inputField
 - Update header layout using `flex` with logo + nav dev cluster
 
-### Notes
+## Notes
 
 - Git does not track empty folders. We use `.gitkeep` to retain empty scaffolding folders for `utils/`, `assets/`, and `styles/`.
 - To keep a semantic structure and clean JSX returns, we are using <>...</> (React Fragments).
