@@ -35,7 +35,10 @@ function App() {
         <Routes>
           {/* Landing page routes */}
           <Route path="/" element={<WelcomePage />} />
-          <Route path="/dashboard" element={<DashboardPage />} />
+          <Route
+            path="/dashboard"
+            element={<DashboardPage currentUser={currentUser} />}
+          />
 
           {/* User Login/Authentication routes */}
           <Route path="/login" element={<LoginPage />} />
