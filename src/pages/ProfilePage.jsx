@@ -1,7 +1,12 @@
 // User Profile
-import React from 'react';
+import React, { useEffect } from 'react';
 
 function ProfilePage({ currentUser }) {
+  // Set page tab title
+  useEffect(() => {
+    document.title = 'Profile | TrashQuest';
+  }, []);
+
   return (
     <div>
       <h1>Profile</h1>

@@ -1,5 +1,5 @@
 // Page for user to login to their profile.
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { auth } from '../firebase';
 import PageLayout from '../components/layout/PageLayout';
@@ -34,6 +34,12 @@ function LoginPage() {
       setErrorMsg(error.message);
     }
   };
+
+  // Set page tab title
+  useEffect(() => {
+    document.title = 'Login | TrashQuest';
+  }, []);
+
   return (
     // PageLayout: Page scaffold including header, MainContainer, and footer
     <div>

@@ -37,7 +37,7 @@ function Header({ currentUser }) {
         <h1>TrashQuest ♻️</h1>
       </Link>
       <nav style={navContainer}>
-        <Link to="/how-it-works">How it Works</Link>
+        <Link to="/how-it-works">How It Works</Link>
         <Link to="/resources">Resources</Link>
 
         {currentUser ? (

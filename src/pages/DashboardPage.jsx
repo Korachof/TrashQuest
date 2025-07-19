@@ -1,5 +1,5 @@
 // Landing Page for post-logged in users
-import React from 'react';
+import React, { useEffect } from 'react';
 import PageLayout from '../components/layout/PageLayout';
 import { headingTextStyle } from '../styles/typography';
 
@@ -7,6 +7,10 @@ function DashboardPage({ currentUser }) {
   const displayName =
     currentUser?.displayName || currentUser?.email || 'Explorer';
 
+  // Set page tab title
+  useEffect(() => {
+    document.title = 'Dashboard | TrashQuest';
+  }, []);
   return (
     <div>
       <h1 style={headingTextStyle}>
