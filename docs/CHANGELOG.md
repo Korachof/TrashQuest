@@ -236,6 +236,32 @@ This changelog documents key updates to the TrashQuest project. It follows seman
 - Improved UX by restricting access to sensitive pages and avoiding redundant conditional checks inside components
 - Rotated API key credentials in Google Cloud Console to make sure old exposed key isn't still being used.
 
+## [0.2.1] - 2025-07-19
+
+### Added
+
+- Updated `document.title` in all page components to reflect accurate tab titles:
+  - `/` → "Welcome | TrashQuest"
+  - `/dashboard` → "Dashboard | TrashQuest"
+  - `/login` → "Sign In | TrashQuest"
+  - `/signup` → "Create Account | TrashQuest"
+  - `/how-it-works` → "How It Works | TrashQuest"
+  - `/resources` → "Resources | TrashQuest"
+  - `/profile` → "Your Profile | TrashQuest"
+  - `/terms` → "Terms of Service | TrashQuest"
+  - `/privacy` → "Privacy Policy | TrashQuest"
+  - `/about` → "About Us | TrashQuest"
+  - `/contact` → "Contact Us | TrashQuest"
+
+### Changed
+
+- Improved navigation clarity by setting explicit titles per route for enhanced tab behavior
+- Strengthened SEO and accessibility by programmatically defining page context via `document.title`
+
+### Fixed
+
+- Prevented stale or incorrect tab titles from persisting across page navigation
+
 ---
 
 ### Planned (Upcoming)
