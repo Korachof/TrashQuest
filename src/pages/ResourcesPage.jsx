@@ -1,9 +1,14 @@
 // Resources page to house external resources for user education
-import React from 'react';
+import React, { useEffect } from 'react';
 import PageLayout from '../components/layout/PageLayout';
 import { headingTextStyle } from '../styles/typography';
 
 function ResourcesPage() {
+  // Set page tab title
+  useEffect(() => {
+    document.title = 'Resources | TrashQuest';
+  }, []);
+
   return (
     <div>
       <h1 style={headingTextStyle}>Resources</h1>

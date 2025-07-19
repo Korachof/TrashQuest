@@ -1,12 +1,15 @@
 // Landing page for pre-logged in users.
+import React, { useEffect } from 'react';
 import Header from '../components/layout/Header';
 import Footer from '../components/layout/Footer';
 import PageLayout from '../components/layout/PageLayout';
 import StartQuestButton from '../components/navigation/StartQuestButton';
 import { headingTextStyle } from '../styles/typography';
-import React from 'react';
 
 function WelcomePage() {
+  useEffect(() => {
+    document.title = 'Welcome | TrashQuest';
+  }, []);
   return (
     // PageLayout: Page scaffold including header, MainContainer, and footer
     <div>

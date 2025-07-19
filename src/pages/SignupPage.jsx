@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import PageLayout from '../components/layout/PageLayout';
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
@@ -52,6 +52,12 @@ function SignupPage() {
       setErrorMsg(error.message);
     }
   };
+
+  // Set page tab title
+  useEffect(() => {
+    document.title = 'Signup | TrashQuest';
+  }, []);
+
   return (
     <div>
       <h1 style={headingTextStyle}>Sign Up for TrashQuest 🌱</h1>
