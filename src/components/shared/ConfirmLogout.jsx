@@ -1,5 +1,6 @@
 // Pop up that confirms the user's logout request
 import React from 'react';
+
 import { popupStyles } from '../../styles/layout';
 
 function ConfirmLogout({ onConfirm, onCancel }) {
