@@ -18,30 +18,17 @@ import ProfilePage from './pages/ProfilePage';
 import ProtectedRoute from './components/shared/ProtectedRoute';
 
 function App() {
-  const [currentUser, setCurrentUser] = useState(null);
-
-  /* Listen for changes to the user's authentication state (login/logout).
-     When the auth state changes, update the currentUser state accordingly.
-     This ensures the app always knows if a user is signed in or not. */
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      setCurrentUser(user);
-    });
-
-    return () => unsubscribe(); // cleanup when App unmounts
-  }, []);
-
   return (
     <BrowserRouter>
-      <PageLayout currentUser={currentUser}>
+      <PageLayout>
         <Routes>
           {/* Landing page routes */}
           <Route path="/" element={<WelcomePage />} />
           <Route
             path="/dashboard"
             element={
-              <ProtectedRoute currentUser={currentUser}>
-                <DashboardPage currentUser={currentUser} />
+              <ProtectedRoute>
+                <DashboardPage />
               </ProtectedRoute>
             }
           />
@@ -58,8 +45,8 @@ function App() {
           <Route
             path="/profile"
             element={
-              <ProtectedRoute currentUser={currentUser}>
-                <ProfilePage currentUser={currentUser} />
+              <ProtectedRoute>
+                <ProfilePage />
               </ProtectedRoute>
             }
           />
