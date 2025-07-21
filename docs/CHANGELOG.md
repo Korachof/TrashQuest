@@ -262,6 +262,25 @@ This changelog documents key updates to the TrashQuest project. It follows seman
 
 - Prevented stale or incorrect tab titles from persisting across page navigation
 
+## [0.2.2] - 2025-07-21
+
+### Added
+
+- `useRedirectIfAuthenticated` custom hook to redirect authenticated users from login and signup pages
+- `AuthContext` created to provide centralized access to the current authenticated user
+- Context provider (`<AuthProvider>`) wrapped around key routes/pages to enable global access to auth state
+
+### Changed
+
+- `LoginPage.jsx` and `SignupPage.jsx` updated to use `useRedirectIfAuthenticated` for lifecycle-based redirects
+- `ProfilePage.jsx`, `Dashboard.jsx`, and other authenticated routes updated to consume `useAuth()` from `AuthContext` for accessing current user data
+
+### Fixed
+
+- Incorrect import path in `useRedirectIfAuthenticated.js` referencing `AuthContext`; updated to match actual folder structure (`context/`)
+- Runtime errors caused by missing or incorrect React imports resolved by standardizing usage across JSX files
+- Vite build errors related to casing conflicts and stale cache resolved by renaming files and restarting dev server
+
 ---
 
 ### Planned (Upcoming)
