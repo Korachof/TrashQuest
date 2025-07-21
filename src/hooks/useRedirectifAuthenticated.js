@@ -15,4 +15,4 @@ const useRedirectIfAuthenticated = (redirectPath = '/dashboard') => {
   }, [currentUser, navigate, redirectPath]);
 };
 
-export default useRedirectIfAuthenticated;
+export { useRedirectIfAuthenticated };

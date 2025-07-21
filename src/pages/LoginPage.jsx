@@ -9,6 +9,7 @@ import FormButton from '../components/shared/FormButton';
 import { formContainer } from '../styles/forms';
 import { linkNavigationText, headingTextStyle } from '../styles/typography';
 import { redirectAfterSuccess } from '../utils/navigation';
+import { useRedirectIfAuthenticated } from '../hooks/useRedirectIfAuthenticated';
 
 function LoginPage() {
   const [displayName, setDisplayName] = useState('');
