@@ -16,6 +16,7 @@ import ResourcesPage from './pages/ResourcesPage';
 import DashboardPage from './pages/DashboardPage';
 import ProfilePage from './pages/ProfilePage';
 import ProtectedRoute from './components/shared/ProtectedRoute';
+import { AuthProvider } from './context/authContext';
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
@@ -32,46 +33,48 @@ function App() {
   }, []);
 
   return (
-    <BrowserRouter>
-      <PageLayout currentUser={currentUser}>
-        <Routes>
-          {/* Landing page routes */}
-          <Route path="/" element={<WelcomePage />} />
-          <Route
-            path="/dashboard"
-            element={
-              <ProtectedRoute currentUser={currentUser}>
-                <DashboardPage currentUser={currentUser} />
-              </ProtectedRoute>
-            }
-          />
+    <AuthProvider>
+      <BrowserRouter>
+        <PageLayout currentUser={currentUser}>
+          <Routes>
+            {/* Landing page routes */}
+            <Route path="/" element={<WelcomePage />} />
+            <Route
+              path="/dashboard"
+              element={
+                <ProtectedRoute currentUser={currentUser}>
+                  <DashboardPage currentUser={currentUser} />
+                </ProtectedRoute>
+              }
+            />
 
-          {/* User Login/Authentication routes */}
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/signup" element={<SignupPage />} />
+            {/* User Login/Authentication routes */}
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/signup" element={<SignupPage />} />
 
-          {/* Header routes */}
-          <Route path="/how-it-works" element={<HowItWorksPage />} />
-          <Route path="/resources" element={<ResourcesPage />} />
+            {/* Header routes */}
+            <Route path="/how-it-works" element={<HowItWorksPage />} />
+            <Route path="/resources" element={<ResourcesPage />} />
 
-          {/* Signed in Header routes */}
-          <Route
-            path="/profile"
-            element={
-              <ProtectedRoute currentUser={currentUser}>
-                <ProfilePage currentUser={currentUser} />
-              </ProtectedRoute>
-            }
-          />
+            {/* Signed in Header routes */}
+            <Route
+              path="/profile"
+              element={
+                <ProtectedRoute currentUser={currentUser}>
+                  <ProfilePage currentUser={currentUser} />
+                </ProtectedRoute>
+              }
+            />
 
-          {/* Footer routes */}
-          <Route path="/terms" element={<TermsPage />} />
-          <Route path="/privacy" element={<PrivacyPage />} />
-          <Route path="/about" element={<AboutPage />} />
-          <Route path="/contact" element={<ContactPage />} />
-        </Routes>
-      </PageLayout>
-    </BrowserRouter>
+            {/* Footer routes */}
+            <Route path="/terms" element={<TermsPage />} />
+            <Route path="/privacy" element={<PrivacyPage />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/contact" element={<ContactPage />} />
+          </Routes>
+        </PageLayout>
+      </BrowserRouter>
+    </AuthProvider>
   );
 }
 
