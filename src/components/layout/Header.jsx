@@ -6,6 +6,7 @@ import { auth } from '../../firebase';
 import { navContainer, headerStyleContainer } from '../../styles/layout';
 import ConfirmLogout from '../shared/ConfirmLogout';
 import { FaUser } from 'react-icons/fa';
+import { useAuth } from '../../context/AuthContext';
 
 const logoStyles = {
   textDecoration: 'none',
@@ -13,7 +14,9 @@ const logoStyles = {
   fontWeight: 'bold',
 };
 
-function Header({ currentUser }) {
+function Header() {
+  // Grab the current user
+  const { currentUser } = useAuth();
   const navigate = useNavigate();
   const [showConfirm, setShowConfirm] = useState(false);
 
