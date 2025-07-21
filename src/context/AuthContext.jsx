@@ -1,4 +1,5 @@
 // Watch for changes to user and hold that info for other processes
+import React from 'react';
 import { createContext, useContext, useEffect, useState } from 'react';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from '../firebase'; // Your initialized Firebase auth instance
