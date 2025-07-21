@@ -1,7 +1,11 @@
 // User Profile
 import React, { useEffect } from 'react';
+import { useAuth } from '../context/AuthContext';
 
-function ProfilePage({ currentUser }) {
+function ProfilePage() {
+  // Get current user
+  const { currentUser } = useAuth();
+
   // Set page tab title
   useEffect(() => {
     document.title = 'Profile | TrashQuest';

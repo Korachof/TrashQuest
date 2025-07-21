@@ -2,8 +2,11 @@
 import React, { useEffect } from 'react';
 import PageLayout from '../components/layout/PageLayout';
 import { headingTextStyle } from '../styles/typography';
+import { useAuth } from '../context/AuthContext';
 
-function DashboardPage({ currentUser }) {
+function DashboardPage() {
+  // Grab the current user
+  const { currentUser } = useAuth();
   const displayName =
     currentUser?.displayName || currentUser?.email || 'Explorer';
 
