@@ -18,6 +18,10 @@ function LoginPage() {
   const [errorMsg, setErrorMsg] = useState('');
   const [successMsg, setSuccessMsg] = useState('');
   const navigate = useNavigate();
+
+  // If user is logged in, redirect to /dashboard
+  useRedirectIfAuthenticated();
+
   // prevent reloading of page, and instead handle submission manually with firebase.
   const handleSubmit = async (e) => {
     e.preventDefault();
