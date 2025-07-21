@@ -28,7 +28,7 @@ export function AuthProvider({ children }) {
 
   // Provide currentUser and authLoading to all components via the context
   return (
-    <AuthContext.Provider value={{ currentUser, authLoading }}>
+    <AuthContext.Provider value={{ currentUser, authLoading, setCurrentUser }}>
       {children}
     </AuthContext.Provider>
   );

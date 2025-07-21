@@ -16,6 +16,7 @@ function SignupPage() {
   const [password, setPassword] = useState('');
   const [errorMsg, setErrorMsg] = useState('');
   const [successMsg, setSuccessMsg] = useState('');
+  const { setCurrentUser } = useAuth();
   const navigate = useNavigate();
   // prevent reloading of page, and instead handle submission manually with firebase.
   const handleSubmit = async (e) => {
@@ -41,6 +42,8 @@ function SignupPage() {
         password
       );
       await updateProfile(userCredential.user, { displayName });
+
+      setCurrentUser({ ...userCredential.user, displayName });
 
       setSuccessMsg(`Signup successful! Welcome, ${displayName}`);
       setErrorMsg('');
