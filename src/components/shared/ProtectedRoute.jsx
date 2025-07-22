@@ -4,7 +4,7 @@ import { Navigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import Loader from './Loader';
 
-function ProtectedRoute({ children }) {
+function ProtectedRoute({ children, redirectTo = '/login' }) {
   // Grab last updated user
   const { currentUser, authLoading } = useAuth();
 
@@ -13,7 +13,8 @@ function ProtectedRoute({ children }) {
     return <Loader />;
   }
   if (!currentUser) {
-    return <Navigate to="/login" replace />;
+    // Redirect prop, default to login
+    return <Navigate to={redirectTo} replace />;
   }
 
   return children;
