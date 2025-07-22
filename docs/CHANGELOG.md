@@ -269,17 +269,23 @@ This changelog documents key updates to the TrashQuest project. It follows seman
 - `useRedirectIfAuthenticated` custom hook to redirect authenticated users from login and signup pages
 - `AuthContext` created to provide centralized access to the current authenticated user
 - Context provider (`<AuthProvider>`) wrapped around key routes/pages to enable global access to auth state
+- Reusable `useEscape()` hook for Escape key behavior in modals
+- Escape key functionality to `ConfirmLogout` modal via `useEscape()`
+- Future consideration note for arrow key + Enter navigation in modals (README)
 
 ### Changed
 
 - `LoginPage.jsx` and `SignupPage.jsx` updated to use `useRedirectIfAuthenticated` for lifecycle-based redirects
 - `ProfilePage.jsx`, `Dashboard.jsx`, and other authenticated routes updated to consume `useAuth()` from `AuthContext` for accessing current user data
+- `ProtectedRoute` updated to support optional `redirectTo` prop with default fallback to `/login`
 
 ### Fixed
 
 - Incorrect import path in `useRedirectIfAuthenticated.js` referencing `AuthContext`; updated to match actual folder structure (`context/`)
 - Runtime errors caused by missing or incorrect React imports resolved by standardizing usage across JSX files
 - Vite build errors related to casing conflicts and stale cache resolved by renaming files and restarting dev server
+- `redirectTo is not defined` error in `ProtectedRoute` by updating parameter destructuring
+- Import path bug for `useEscape()` in `ConfirmLogout`
 
 ---
 

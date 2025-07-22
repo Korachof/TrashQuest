@@ -185,6 +185,7 @@ This structure allows for scalable refinement as visual design evolves—without
 - Add a **variant style prop** to formButton with styling variants like "primary" and "secondary" using a conditional style switch.
 - Explore refactoring FormGroup to integrate semantic input components and shared styles via inputField
 - Update header layout using `flex` with logo + nav dev cluster
+- Keyboard Navigation for Modals: Consider adding arrow key + Enter navigation support for modal buttons and abstracting into a reusable hook for future components.
 
 ## Notes
 
