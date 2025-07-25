@@ -68,7 +68,9 @@ function SignupPage() {
 
   return (
     <>
-      <h1 style={headingTextStyle}>Sign Up for TrashQuest 🌱</h1>
+      <h1 id="signup-heading" style={headingTextStyle}>
+        Sign Up for TrashQuest 🌱
+      </h1>
       <p>
         Create your eco profile and start cleaning the planet one quest at a
         time.

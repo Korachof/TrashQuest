@@ -15,7 +15,7 @@ function DashboardPage() {
   }, []);
   return (
     <>
-      <h1 style={headingTextStyle}>
+      <h1 id="dashboard-heading" style={headingTextStyle}>
         🚀 Welcome to your Dashboard, {displayName}
       </h1>
       <p>You're successfully signed in and redirected.</p>

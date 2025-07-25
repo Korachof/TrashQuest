@@ -47,7 +47,9 @@ function LoginPage() {
   return (
     // PageLayout: Page scaffold including header, MainContainer, and footer
     <>
-      <h1 style={headingTextStyle}>Login to Your Quest 🔐</h1>
+      <h1 id="login_heading" style={headingTextStyle}>
+        Login to Your Quest 🔐
+      </h1>
       <p>Access your dashboard, earn ecoPoints, and track your progress.</p>
       <form onSubmit={handleSubmit} style={{ formContainer }}>
         {/*Use FormGroup to set styling for all display fields*/}

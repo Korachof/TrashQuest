@@ -12,7 +12,9 @@ function TermsPage() {
 
   return (
     <>
-      <h1 style={headingTextStyle}>Terms of Use</h1>
+      <h1 id="terms-heading" style={headingTextStyle}>
+        Terms of Use
+      </h1>
       <p>Effective {effectiveDate.toLocaleDateString()} </p>
     </>
   );

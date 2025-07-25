@@ -10,7 +10,9 @@ function ResourcesPage() {
 
   return (
     <>
-      <h1 style={headingTextStyle}>Resources</h1>
+      <h1 id="resources-heading" style={headingTextStyle}>
+        Resources
+      </h1>
       <p>
         Want to learn more about the planet and what else you can do to help?
         Check out the links below!

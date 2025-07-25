@@ -10,7 +10,9 @@ function HowItWorksPage() {
 
   return (
     <>
-      <h1 style={headingTextStyle}>How It Works</h1>
+      <h1 id="how-it-works-heading" style={headingTextStyle}>
+        How It Works
+      </h1>
       <p>Learn how Trash Quest Works here!</p>
     </>
   );

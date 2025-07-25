@@ -9,7 +9,9 @@ function ContactPage() {
   }, []);
   return (
     <>
-      <h1 style={headingTextStyle}>Contact Us</h1>
+      <h1 id="contact-us-heading" style={headingTextStyle}>
+        Contact Us
+      </h1>
       <p>
         Use the form below (coming soon!) to contact us. We'd love to hear from
         you!

@@ -1,6 +1,7 @@
 // User Profile
 import React, { useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
+import { headingTextStyle } from '../styles/typography';
 
 function ProfilePage() {
   // Get current user
@@ -13,7 +14,9 @@ function ProfilePage() {
 
   return (
     <>
-      <h1>Profile</h1>
+      <h1 id="profile-heading" style={headingTextStyle}>
+        Profile
+      </h1>
 
       {!currentUser ? (
         <p>You must be logged in to view your profile.</p>

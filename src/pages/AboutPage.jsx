@@ -10,7 +10,9 @@ function AboutPage() {
 
   return (
     <>
-      <h1 style={headingTextStyle}>About Us</h1>
+      <h1 id="about-us-heading" style={headingTextStyle}>
+        About Us
+      </h1>
       <p>Learn more about us at Trash Quest!</p>
     </>
   );
