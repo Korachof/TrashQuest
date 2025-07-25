@@ -44,7 +44,28 @@ describe('ProtectedRoute', () => {
   });
 
   test('redirects to default route if unauthenticated', () => {
-    // logic
+    // Step 1: Mock an unauthenticated user
+    vi.mocked(useAuth).mockReturnValue({
+      currentUser: null, // No user logged in
+      authLoading: false, // Loading is done
+    });
+
+    // Step 2: Create test content (this should NOT appear)
+    const TestChild = () => (
+      <div data-testid="protected-content">Protected Content</div>
+    );
+
+    // Step 3: Render the component
+    render(
+      <MemoryRouter>
+        <ProtectedRoute>
+          <TestChild />
+        </ProtectedRoute>
+      </MemoryRouter>
+    );
+
+    // Step 4: Verify protected content does NOT render
+    expect(screen.queryByTestId('protected-content')).not.toBeInTheDocument();
   });
 
   test('redirects to custom route if redirectTo prop is provided', () => {
