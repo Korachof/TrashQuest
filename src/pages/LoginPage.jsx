@@ -2,7 +2,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { auth } from '../firebase';
-import PageLayout from '../components/layout/PageLayout';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import FormGroup from '../components/shared/FormGroup';
 import FormButton from '../components/shared/FormButton';

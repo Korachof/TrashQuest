@@ -287,6 +287,31 @@ This changelog documents key updates to the TrashQuest project. It follows seman
 - `redirectTo is not defined` error in `ProtectedRoute` by updating parameter destructuring
 - Import path bug for `useEscape()` in `ConfirmLogout`
 
+## [0.2.3] - 2025-07-25
+
+### Added
+
+- Configured complete Vitest testing environment with jsdom for React component testing
+- Created comprehensive test suite for `ProtectedRoute.jsx` component with 3 test cases:
+  - Authenticated users can access protected content
+  - Unauthenticated users are redirected (protected content hidden)
+  - Loading state displays Loader component correctly
+- Added `vite.config.js` with testing configuration and globals setup
+- Created `src/test-setup.js` to initialize testing library extensions
+- Implemented component mocking for `useAuth` hook and `Loader` component using Vitest
+- Added `@vitejs/plugin-react` for JSX processing in tests
+- Added `jsdom` for browser environment simulation in Node.js testing
+
+### Changed
+
+- Updated `package.json` test script from error message to `"vitest"`
+- Refactored test code to follow DRY principles by extracting shared `TestChild` component
+- Removed redundant imports for Page Layout on all pages. We don't need them anymore.
+
+### Fixed
+
+- Corrected import path discrepancy in `ProtectedRoute.test.jsx` for AuthContext (from `../../` to `../../../`)
+
 ---
 
 ### Planned (Upcoming)

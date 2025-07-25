@@ -1,6 +1,5 @@
 // Contact Page -> Lives on Footer
 import React, { useEffect } from 'react';
-import PageLayout from '../components/layout/PageLayout';
 import { headingTextStyle } from '../styles/typography';
 
 function ContactPage() {

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import PageLayout from '../components/layout/PageLayout';
+import { useAuth } from '../context/AuthContext';
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import { auth } from '../firebase';
 import FormGroup from '../components/shared/FormGroup';

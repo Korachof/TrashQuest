@@ -1,6 +1,5 @@
 // About Us Page
 import React, { useEffect } from 'react';
-import PageLayout from '../components/layout/PageLayout';
 import { headingTextStyle } from '../styles/typography';
 
 function AboutPage() {

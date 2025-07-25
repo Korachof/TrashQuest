@@ -1,6 +1,5 @@
 // Landing Page for post-logged in users
 import React, { useEffect } from 'react';
-import PageLayout from '../components/layout/PageLayout';
 import { headingTextStyle } from '../styles/typography';
 import { useAuth } from '../context/AuthContext';
 
