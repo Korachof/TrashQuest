@@ -9,10 +9,10 @@ function AboutPage() {
   }, []);
 
   return (
-    <div>
+    <>
       <h1 style={headingTextStyle}>About Us</h1>
       <p>Learn more about us at Trash Quest!</p>
-    </div>
+    </>
   );
 }
 

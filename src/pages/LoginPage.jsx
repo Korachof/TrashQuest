@@ -46,7 +46,7 @@ function LoginPage() {
 
   return (
     // PageLayout: Page scaffold including header, MainContainer, and footer
-    <div>
+    <>
       <h1 style={headingTextStyle}>Login to Your Quest 🔐</h1>
       <p>Access your dashboard, earn ecoPoints, and track your progress.</p>
       <form onSubmit={handleSubmit} style={{ formContainer }}>
@@ -71,7 +71,7 @@ function LoginPage() {
       <p style={linkNavigationText}>
         Don't have an account? <Link to="/signup">Sign up here</Link>
       </p>
-    </div>
+    </>
   );
 }
 

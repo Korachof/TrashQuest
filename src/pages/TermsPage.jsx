@@ -11,10 +11,10 @@ function TermsPage() {
   }, []);
 
   return (
-    <div>
+    <>
       <h1 style={headingTextStyle}>Terms of Use</h1>
       <p>Effective {effectiveDate.toLocaleDateString()} </p>
-    </div>
+    </>
   );
 }
 

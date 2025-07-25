@@ -9,11 +9,11 @@ function WelcomePage() {
   }, []);
   return (
     // PageLayout: Page scaffold including header, MainContainer, and footer
-    <div>
+    <>
       <h1 style={headingTextStyle}>Welcome to TrashQuest ♻️</h1>
       <p>Clean the planet, one collectible at a time.</p>
       <StartQuestButton />
-    </div>
+    </>
   );
 }
 

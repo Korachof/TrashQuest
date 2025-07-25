@@ -11,10 +11,10 @@ function PrivacyPage() {
   }, []);
 
   return (
-    <div>
+    <>
       <h1 style={headingTextStyle}>Privacy Policy</h1>
       <p>Last Modified: {lastModifiedDate.toLocaleDateString()}</p>
-    </div>
+    </>
   );
 }
 

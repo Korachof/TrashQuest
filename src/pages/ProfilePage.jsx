@@ -12,7 +12,7 @@ function ProfilePage() {
   }, []);
 
   return (
-    <div>
+    <>
       <h1>Profile</h1>
 
       {!currentUser ? (
@@ -27,7 +27,7 @@ function ProfilePage() {
           </p>
         </div>
       )}
-    </div>
+    </>
   );
 }
 

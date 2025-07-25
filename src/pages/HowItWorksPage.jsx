@@ -9,10 +9,10 @@ function HowItWorksPage() {
   }, []);
 
   return (
-    <div>
+    <>
       <h1 style={headingTextStyle}>How It Works</h1>
       <p>Learn how Trash Quest Works here!</p>
-    </div>
+    </>
   );
 }
 

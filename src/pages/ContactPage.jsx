@@ -8,13 +8,13 @@ function ContactPage() {
     document.title = 'Contact Us | TrashQuest';
   }, []);
   return (
-    <div>
+    <>
       <h1 style={headingTextStyle}>Contact Us</h1>
       <p>
         Use the form below (coming soon!) to contact us. We'd love to hear from
         you!
       </p>
-    </div>
+    </>
   );
 }
 

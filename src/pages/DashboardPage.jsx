@@ -14,13 +14,13 @@ function DashboardPage() {
     document.title = 'Dashboard | TrashQuest';
   }, []);
   return (
-    <div>
+    <>
       <h1 style={headingTextStyle}>
         🚀 Welcome to your Dashboard, {displayName}
       </h1>
       <p>You're successfully signed in and redirected.</p>
       {/* Future: profile preview, eco stats, navigation */}
-    </div>
+    </>
   );
 }
 
