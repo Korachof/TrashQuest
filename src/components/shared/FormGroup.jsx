@@ -1,6 +1,5 @@
 // A global form styling function for display labels/fields.
 import React from 'react';
-
 import {
   inputField,
   formGroupWrapper,
