@@ -7,5 +7,8 @@ export default defineConfig({
   test: {
     environment: 'jsdom',
     setupFiles: ['./src/test-setup.js'],
+    /* Make test functions like expect, describe, etc.
+    available before vitest makes them available */
+    globals: true,
   },
 });
