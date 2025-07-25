@@ -51,7 +51,11 @@ function LoginPage() {
         Login to Your Quest 🔐
       </h1>
       <p>Access your dashboard, earn ecoPoints, and track your progress.</p>
-      <form onSubmit={handleSubmit} style={{ formContainer }}>
+      <form
+        onSubmit={handleSubmit}
+        style={{ formContainer }}
+        aria-labelledby="login-heading"
+      >
         {/*Use FormGroup to set styling for all display fields*/}
         <FormGroup
           label="Email"

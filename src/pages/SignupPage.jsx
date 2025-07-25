@@ -75,7 +75,11 @@ function SignupPage() {
         Create your eco profile and start cleaning the planet one quest at a
         time.
       </p>
-      <form onSubmit={handleSubmit} style={{ formContainer }}>
+      <form
+        onSubmit={handleSubmit}
+        style={{ formContainer }}
+        aria-labelledby="signup-heading"
+      >
         {/*Use FormGroup to set styling for all display fields*/}
         <FormGroup
           label="Display Name:"
