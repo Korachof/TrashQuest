@@ -17,6 +17,11 @@ vi.mock('../Loader', () => ({
 }));
 
 describe('ProtectedRoute', () => {
+  // Reusable constants for tests
+  const TestChild = () => (
+    <div data-testid="protected-content">Protected Content</div>
+  );
+
   // If user is logged in, protected content will show
   test('renders children if authenticated', () => {
     // Step 1: what mock useAuth should return
@@ -26,9 +31,7 @@ describe('ProtectedRoute', () => {
     });
 
     // Step 2: Create test content for ProtectedRoute
-    const TestChild = () => (
-      <div data-testid="protected-content">Protected Content</div>
-    );
+    TestChild();
 
     // Step 3: Render Protected route with the test content
     render(
@@ -51,9 +54,7 @@ describe('ProtectedRoute', () => {
     });
 
     // Step 2: Create test content (this should NOT appear)
-    const TestChild = () => (
-      <div data-testid="protected-content">Protected Content</div>
-    );
+    TestChild();
 
     // Step 3: Render the component
     render(
