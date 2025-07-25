@@ -22,7 +22,7 @@ describe('ProtectedRoute', () => {
     <div data-testid="protected-content">Protected Content</div>
   );
 
-  // If user is logged in, protected content will show
+  // Test 1: If user is logged in, protected content will show
   test('renders children if authenticated', () => {
     // Step 1: what mock useAuth should return
     vi.mocked(useAuth).mockReturnValue({
@@ -46,6 +46,7 @@ describe('ProtectedRoute', () => {
     expect(screen.getByTestId('protected-content')).toBeInTheDocument();
   });
 
+  // Test 2: If user is not logged in, should be redirected to /login
   test('redirects to default route if unauthenticated', () => {
     // Step 1: Mock an unauthenticated user
     vi.mocked(useAuth).mockReturnValue({
@@ -69,7 +70,25 @@ describe('ProtectedRoute', () => {
     expect(screen.queryByTestId('protected-content')).not.toBeInTheDocument();
   });
 
-  test('redirects to custom route if redirectTo prop is provided', () => {
-    // logic
+  // Test 3: Verify that loader is properly rendering
+  test('shows loader while authentication is loading', () => {
+    // Step 1: Mock loading state
+    vi.mocked(useAuth).mockReturnValue({
+      currentUser: null, // user state isn't important
+      authLoading: true, // This is what matters
+    });
+
+    // Step 2: Render the component
+    render(
+      <MemoryRouter>
+        <ProtectedRoute>
+          <TestChild />
+        </ProtectedRoute>
+      </MemoryRouter>
+    );
+
+    // Step 3: Verify loader appears and protected content does NOT
+    expect(screen.getByTestId('loader')).toBeInTheDocument();
+    expect(screen.queryByTestId('protected-content')).not.toBeInTheDocument();
   });
 });
