@@ -287,7 +287,7 @@ This changelog documents key updates to the TrashQuest project. It follows seman
 - `redirectTo is not defined` error in `ProtectedRoute` by updating parameter destructuring
 - Import path bug for `useEscape()` in `ConfirmLogout`
 
-## [0.2.3] - 2025-07-25
+## [0.2.3] - 2025-07-25 - 2025-07-26
 
 ### Added
 
@@ -301,16 +301,30 @@ This changelog documents key updates to the TrashQuest project. It follows seman
 - Implemented component mocking for `useAuth` hook and `Loader` component using Vitest
 - Added `@vitejs/plugin-react` for JSX processing in tests
 - Added `jsdom` for browser environment simulation in Node.js testing
+- Implemented comprehensive accessibility improvements across all pages:
+  - Added semantic `id` attributes to all page headings (`h1` elements)
+  - Enhanced form accessibility with proper label-input connections via `htmlFor` and `id` attributes
+  - Added `aria-labelledby` attributes to forms connecting them to their headings
+  - Implemented live regions for success/error messages using `role="status"` and `role="alert"` with `aria-live` announcements
+  - Added `required` prop support to FormGroup component (defaults to `true`)
+- Established testing workflow and component mocking strategies
 
 ### Changed
 
 - Updated `package.json` test script from error message to `"vitest"`
 - Refactored test code to follow DRY principles by extracting shared `TestChild` component
 - Removed redundant imports for Page Layout on all pages. We don't need them anymore.
+- Refactored all page components to use React Fragments (`<>`) instead of wrapper `<div>` elements for cleaner DOM structure
+- Updated FormGroup component to accept `id` prop for proper label-input association
+- Enhanced FormButton component accessibility (already had proper `type="submit"` default)
+- Removed redundant PageLayout imports from individual page components (already wrapped in App.jsx)
 
 ### Fixed
 
 - Corrected import path discrepancy in `ProtectedRoute.test.jsx` for AuthContext (from `../../` to `../../../`)
+- Better screen reader support for form interactions and dynamic content updates
+- Cleaner component structure with semantic HTML and reduced DOM nesting
+- Enhanced keyboard navigation and form usability
 
 ---
 

@@ -82,18 +82,21 @@ function SignupPage() {
       >
         {/*Use FormGroup to set styling for all display fields*/}
         <FormGroup
+          id="display-name"
           label="Display Name:"
           type="text"
           value={displayName}
           onChange={(e) => setDisplayName(e.target.value)}
         />
         <FormGroup
+          id="email"
           label="Email:"
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
         <FormGroup
+          id="password"
           label="Password:"
           type="password"
           value={password}
