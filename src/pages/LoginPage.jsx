@@ -58,12 +58,14 @@ function LoginPage() {
       >
         {/*Use FormGroup to set styling for all display fields*/}
         <FormGroup
+          id="email"
           label="Email"
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
         <FormGroup
+          id="password"
           label="Password"
           type="password"
           value={password}
