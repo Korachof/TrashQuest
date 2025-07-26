@@ -9,6 +9,7 @@ import { formContainer } from '../styles/forms';
 import { linkNavigationText, headingTextStyle } from '../styles/typography';
 import { redirectAfterSuccess } from '../utils/navigation';
 import { useRedirectIfAuthenticated } from '../hooks/useRedirectIfAuthenticated';
+import ForgotPasswordModal from '../components/shared/ForgotPasswordModal';
 
 function LoginPage() {
   const [displayName, setDisplayName] = useState('');
@@ -17,6 +18,7 @@ function LoginPage() {
   const [errorMsg, setErrorMsg] = useState('');
   const [successMsg, setSuccessMsg] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [showForgotPassword, setShowForgotPassword] = useState(false);
   const navigate = useNavigate();
 
   // If user is logged in, redirect to /dashboard
@@ -90,9 +92,30 @@ function LoginPage() {
           {errorMsg}
         </p>
       )}
+      <p>
+        <button
+          type="button"
+          onClick={() => setShowForgotPassword(true)}
+          style={{
+            background: 'none',
+            border: 'none',
+            color: 'blue',
+            textDecoration: 'underline',
+            cursor: 'pointer',
+          }}
+        >
+          Forgot password?
+        </button>
+      </p>
       <p style={linkNavigationText}>
         Don't have an account? <Link to="/signup">Sign up here</Link>
       </p>
+
+      {/* Modal logic for forgot Password */}
+      <ForgotPasswordModal
+        isOpen={showForgotPassword}
+        onClose={() => setShowForgotPassword(false)}
+      />
     </>
   );
 }
