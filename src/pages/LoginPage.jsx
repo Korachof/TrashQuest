@@ -78,7 +78,7 @@ function LoginPage() {
           onChange={(e) => setPassword(e.target.value)}
         />
         {/* Log in button; lives in src/components/shared, but the styling may be reused later. If so, I'll globalize that.*/}
-        <FormButton>🌿 Log in</FormButton>
+        <FormButton isLoading={isLoading}>🌿 Log in</FormButton>
       </form>
       {successMsg && (
         <p style={{ color: 'green' }} role="status" aria-live="polite">
