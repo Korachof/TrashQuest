@@ -18,6 +18,7 @@ function SignupPage() {
   const [errorMsg, setErrorMsg] = useState('');
   const [successMsg, setSuccessMsg] = useState('');
   const { setCurrentUser } = useAuth();
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
   // If user is logged in, redirect to /dashboard
@@ -26,6 +27,7 @@ function SignupPage() {
   // prevent reloading of page, and instead handle submission manually with firebase.
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true); // start loading
 
     // Password Strength Check
     if (!isStrongPassword(password)) {
@@ -58,6 +60,8 @@ function SignupPage() {
       console.error('Signup error:', error.code, error.message);
       setSuccessMsg(''); // Clear any potential lingering success messages
       setErrorMsg(error.message);
+    } finally {
+      setIsLoading(false); // Stop loading (runs whether success or error)
     }
   };
 
@@ -104,7 +108,9 @@ function SignupPage() {
         />
         {/* Submission button; lives in src/components/shared, but the styling may be reused
         later. If so, I'll globalize that.*/}
-        <FormButton>🌿 Create Account</FormButton>
+        <FormButton isLoading={isLoading} loadingText="🔄 Signing up...">
+          🌿 Create Account
+        </FormButton>
       </form>
       {successMsg && <p style={{ color: 'green' }}>{successMsg}</p>}
       {errorMsg && <p style={{ color: 'red' }}>{errorMsg}</p>}
