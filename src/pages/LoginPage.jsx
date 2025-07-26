@@ -16,6 +16,7 @@ function LoginPage() {
   const [password, setPassword] = useState('');
   const [errorMsg, setErrorMsg] = useState('');
   const [successMsg, setSuccessMsg] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
   // If user is logged in, redirect to /dashboard
@@ -24,7 +25,10 @@ function LoginPage() {
   // prevent reloading of page, and instead handle submission manually with firebase.
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true); // start loading
+
     console.log('Login submitted:', { displayName, email, password });
+
     // Firebase logic
     try {
       const result = await signInWithEmailAndPassword(auth, email, password);
@@ -36,6 +40,8 @@ function LoginPage() {
       console.error('Login error:', error.code, error.message);
       setSuccessMsg('');
       setErrorMsg(error.message);
+    } finally {
+      setIsLoading(false); // Stop loading (runs whether success or error)
     }
   };
 

@@ -1,5 +1,4 @@
 // Simple loading message between user navigation
-
 import React from 'react';
 
 function Loader() {
