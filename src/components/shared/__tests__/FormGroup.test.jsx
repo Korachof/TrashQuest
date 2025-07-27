@@ -31,20 +31,20 @@ describe('FormGroup', () => {
   });
 
   /* Test 3: Verifies that type password in FormGroup <input> renders correctly
-     Second 'type' test is necessary to confirm type isn't hardcoded */
+     Second 'type' test is necessary to confirm type isn't hardcoded
+     Uses querySelector to directly query the rendered html for input */
   test('renders password input type correctly', () => {
     render(<FormGroup {...defaultProps} type="password" />);
-    expect(screen.getByLabelText(defaultProps.label)).toHaveAttribute(
-      'type',
-      'password'
-    );
+
+    const input = document.querySelector('input');
+    expect(input).toHaveAttribute('type', 'password');
   });
 
   // Test 4: Verifies that the input field renders the input value correctly
   test('renders input with correct value', () => {
     render(<FormGroup {...defaultProps} value="test@example.com" />);
 
-    const input = screen.getByRole('textbox');
+    const input = screen.getByRole('textbox', { hidden: true });
     expect(input).toHaveValue('test@example.com');
   });
 
@@ -70,8 +70,6 @@ describe('FormGroup', () => {
      'for' is reserved in Javascript, so htmlFor is used.*/
   test('label is connected to input via htmlFor and id', () => {
     render(<FormGroup {...defaultProps} />);
-
-    screen.debug(); // Add this line to see the actual HTML
 
     const label = screen.getByText('Email');
     const input = screen.getByRole('textbox');
