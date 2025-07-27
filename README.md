@@ -186,6 +186,19 @@ This structure allows for scalable refinement as visual design evolves—without
 - Explore refactoring FormGroup to integrate semantic input components and shared styles via inputField
 - Update header layout using `flex` with logo + nav dev cluster
 - Keyboard Navigation for Modals: Consider adding arrow key + Enter navigation support for modal buttons and abstracting into a reusable hook for future components.
+- Test other components like FormGroup, Header, or AuthContext
+- Add integration tests for the login/signup flow
+- Build the actual trash logging form (photo upload, location, trash type)
+- Create the gacha/reward system for opening "eco capsules"
+- Design the dashboard with user stats and progress
+- Improve error handling and validation
+- Add "forgot password" styling to make the modal look better
+- Add confirmation dialogs for important actions
+- User profile page with stats and settings
+- Simple leaderboard or progress tracking
+- Basic trash collection history/log
+- Add more comprehensive error boundaries
+- Create a proper build/deployment pipeline
 
 ## Notes
 
