@@ -25,18 +25,42 @@ describe('FormGroup', () => {
   });
 
   // Test 2: Verifies that type email in FormGroup <input> renders correctly
-  test('renders email input correctly', () => {
+  test('renders email input type correctly', () => {
     render(<FormGroup {...defaultProps} type="email" />);
     expect(screen.getByRole('textbox')).toHaveAttribute('type', 'email');
   });
 
   /* Test 3: Verifies that type password in FormGroup <input> renders correctly
      Second 'type' test is necessary to confirm type isn't hardcoded */
-  test('renders password input correctly', () => {
+  test('renders password input type correctly', () => {
     render(<FormGroup {...defaultProps} type="password" />);
     expect(screen.getByLabelText(defaultProps.label)).toHaveAttribute(
       'type',
       'password'
     );
+  });
+
+  // Test 4: Verifies that the input field renders the input value correctly
+  test('renders input with correct value', () => {
+    render(<FormGroup {...defaultProps} value="test@example.com" />);
+
+    const input = screen.getByRole('textbox');
+    expect(input).toHaveValue('test@example.com');
+  });
+
+  // Test 5: Verifies that FormGroup inputs are set to required by default
+  test('input is required by default', () => {
+    render(<FormGroup {...defaultProps} />);
+
+    const input = screen.getByRole('textbox');
+    expect(input).toBeRequired();
+  });
+
+  // Test 6: Verifies that FormGroup input requirement can be changed to FALSE
+  test('input can be optional when required=false', () => {
+    render(<FormGroup {...defaultProps} required={false} />);
+
+    const input = screen.getByRole('textbox');
+    expect(input).not.toBeRequired();
   });
 });
