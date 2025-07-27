@@ -44,7 +44,7 @@ describe('FormGroup', () => {
   test('renders input with correct value', () => {
     render(<FormGroup {...defaultProps} value="test@example.com" />);
 
-    const input = screen.getByRole('textbox', { hidden: true });
+    const input = screen.getByRole('textbox');
     expect(input).toHaveValue('test@example.com');
   });
 
