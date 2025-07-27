@@ -63,4 +63,20 @@ describe('FormGroup', () => {
     const input = screen.getByRole('textbox');
     expect(input).not.toBeRequired();
   });
+
+  /* Test 7: Verifies that input label is connected to htmlfor and id.
+     Confirms that screen readers and clicking work correctly 
+     use 'for' instead of 'htmlFor' because in testing we need the actual html name
+     'for' is reserved in Javascript, so htmlFor is used.*/
+  test('label is connected to input via htmlFor and id', () => {
+    render(<FormGroup {...defaultProps} />);
+
+    screen.debug(); // Add this line to see the actual HTML
+
+    const label = screen.getByText('Email');
+    const input = screen.getByRole('textbox');
+
+    expect(label).toHaveAttribute('for', 'email-input');
+    expect(input).toHaveAttribute('id', 'email-input');
+  });
 });
