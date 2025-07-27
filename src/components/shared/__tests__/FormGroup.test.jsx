@@ -1,6 +1,6 @@
 // Tests for the FormGroup component
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import FormGroup from '../FormGroup';
 import { vi } from 'vitest';
 
@@ -65,8 +65,8 @@ describe('FormGroup', () => {
   });
 
   /* Test 7: Verifies that input label is connected to htmlfor and id.
-     Confirms that screen readers and clicking work correctly 
-     use 'for' instead of 'htmlFor' because in testing we need the actual html name
+     Confirms that screen readers and clicking work correctly;
+     Use 'for' instead of 'htmlFor' because in testing we need the actual html name;
      'for' is reserved in Javascript, so htmlFor is used.*/
   test('label is connected to input via htmlFor and id', () => {
     render(<FormGroup {...defaultProps} />);
@@ -76,5 +76,18 @@ describe('FormGroup', () => {
 
     expect(label).toHaveAttribute('for', 'email-input');
     expect(input).toHaveAttribute('id', 'email-input');
+  });
+
+  /* Test 8: Verifies that onChange is properly called when the user types into a field.
+     Uses fireEvent to simulate user typing activity */
+  test('calls onChange when user types', () => {
+    const mockOnChange = vi.fn();
+
+    render(<FormGroup {...defaultProps} onChange={mockOnChange} />);
+
+    const input = screen.getByRole('textbox');
+    fireEvent.change(input, { target: { value: 'new value' } });
+
+    expect(mockOnChange).toHaveBeenCalledTimes(1);
   });
 });
