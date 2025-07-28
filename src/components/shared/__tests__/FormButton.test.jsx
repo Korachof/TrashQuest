@@ -27,4 +27,40 @@ describe('FormButton', () => {
     const button = screen.getByRole('button');
     expect(button).toHaveAttribute('type', 'button');
   });
+
+  // Test 4: Verifies that the button is enabled by default
+  test('is enabled by default', () => {
+    render(<FormButton>Submit</FormButton>);
+
+    const button = screen.getByRole('button');
+    expect(button).not.toBeDisabled();
+  });
+
+  // Test 5: Verifies that the button becomes disabled while loading
+  test('is disabled when loading', () => {
+    render(<FormButton isLoading={true}>Submit</FormButton>);
+
+    const button = screen.getByRole('button');
+    expect(button).toBeDisabled();
+  });
+
+  // Test 6: Verifies that the button shows default "loggin in..." text while loading
+  test('shows default loading text when loading', () => {
+    render(<FormButton isLoading={true}>Submit</FormButton>);
+
+    expect(screen.getByText('🔄 Logging in...')).toBeInTheDocument();
+    expect(screen.queryByText('Submit')).not.toBeInTheDocument();
+  });
+
+  // Test 7: Verifies that the button shows custom "loading" text when provided
+  test('shows custom loading text when provided', () => {
+    render(
+      <FormButton isLoading={true} loadingText="🔄 Creating account...">
+        Sign Up
+      </FormButton>
+    );
+
+    expect(screen.getByText('🔄 Creating account...')).toBeInTheDocument();
+    expect(screen.queryByText('Sign Up')).not.toBeInTheDocument();
+  });
 });
