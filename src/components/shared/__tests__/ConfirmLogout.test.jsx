@@ -3,11 +3,6 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import ConfirmLogout from '../ConfirmLogout';
 import { vi } from 'vitest';
 
-// Mock the useEscape hook that ConfirmLogout uses
-vi.mock('../../hooks/useEscape', () => ({
-  default: vi.fn(),
-}));
-
 describe('ConfirmLogout', () => {
   const mockOnConfirm = vi.fn();
   const mockOnCancel = vi.fn();
@@ -51,5 +46,25 @@ describe('ConfirmLogout', () => {
     fireEvent.click(yesButton);
 
     expect(mockOnConfirm).toHaveBeenCalledTimes(1);
+  });
+
+  // Test 5: Verifies that clicking No calls onCancel
+  test('calls onCancel when No button is clicked', () => {
+    render(<ConfirmLogout {...defaultProps} />);
+
+    const noButton = screen.getByText('No');
+    fireEvent.click(noButton);
+
+    expect(mockOnCancel).toHaveBeenCalledTimes(1);
+  });
+
+  /* Test 6: Verifies that useEscape hook is called with onCancel
+     Escape key should trigger the cancel function when pressed */
+  test('pressing Escape key calls onCancel', () => {
+    render(<ConfirmLogout {...defaultProps} />);
+
+    fireEvent.keyDown(document, { key: 'Escape' });
+
+    expect(mockOnCancel).toHaveBeenCalledTimes(1);
   });
 });
