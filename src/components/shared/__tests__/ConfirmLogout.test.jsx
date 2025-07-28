@@ -12,8 +12,8 @@ describe('ConfirmLogout', () => {
   const mockOnConfirm = vi.fn();
   const mockOnCancel = vi.fn();
   const defaultProps = {
-    onConfirm: vi.fn(),
-    onCancel: vi.fn(),
+    onConfirm: mockOnConfirm,
+    onCancel: mockOnCancel,
   };
 
   beforeEach(() => {
@@ -45,12 +45,7 @@ describe('ConfirmLogout', () => {
 
   // Test 4: Verifies that clicking Yes calls onConfirm
   test('calls onConfirm when Yes button is clicked', () => {
-    render(
-      <ConfirmLogout
-        onConfirm={mockOnConfirm}
-        onCancel={defaultProps.onCancel}
-      />
-    );
+    render(<ConfirmLogout {...defaultProps} />);
 
     const yesButton = screen.getByText('Yes');
     fireEvent.click(yesButton);
