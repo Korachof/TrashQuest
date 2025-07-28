@@ -1,6 +1,6 @@
 // Reusable modal component for overlays and dialogs
 import React, { useEffect } from 'react';
-import useEscape from hooks/useEscape
+import useEscape from '../../hooks/useEscape';
 
 function Modal({ isOpen, onClose, children }) {
   // Close modal on Escape key press
