@@ -1,6 +1,6 @@
 // Tests for the FormButton component
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import FormButton from '../FormButton';
 import { vi } from 'vitest';
 
@@ -62,5 +62,57 @@ describe('FormButton', () => {
 
     expect(screen.getByText('🔄 Creating account...')).toBeInTheDocument();
     expect(screen.queryByText('Sign Up')).not.toBeInTheDocument();
+  });
+
+  // test 8: Verifies that the button shows fallback loading text when LoadingText is empty
+  test('shows fallback loading text when loadingText is empty', () => {
+    render(
+      <FormButton isLoading={true} loadingText="">
+        Submit
+      </FormButton>
+    );
+
+    expect(screen.getByText('Loading...')).toBeInTheDocument();
+    expect(screen.queryByText('Submit')).not.toBeInTheDocument();
+  });
+
+  /* Test 9: Verifies that onClick is called when button is clicked
+     Should be called a total of 1 time per click, no more, no less */
+  test('calls onClick when clicked', () => {
+    const mockOnClick = vi.fn();
+    render(<FormButton onClick={mockOnClick}>Click Me</FormButton>);
+
+    const button = screen.getByRole('button');
+    fireEvent.click(button);
+
+    expect(mockOnClick).toHaveBeenCalledTimes(1);
+  });
+
+  // Test 10: Verifies that onClick is NOT called when button is disabled/loading
+  test('does not call onClick when disabled/loading', () => {
+    const mockOnClick = vi.fn();
+    render(
+      <FormButton onClick={mockOnClick} isLoading={true}>
+        Submit
+      </FormButton>
+    );
+
+    const button = screen.getByRole('button');
+    fireEvent.click(button);
+
+    expect(mockOnClick).not.toHaveBeenCalled();
+  });
+
+  // Test 11: Verifies that additional props are passed through when provided
+  test('passes additional props through', () => {
+    render(
+      <FormButton data-testid="custom-button" aria-label="Custom submit">
+        Submit
+      </FormButton>
+    );
+
+    const button = screen.getByRole('button');
+    expect(button).toHaveAttribute('data-testid', 'custom-button');
+    expect(button).toHaveAttribute('aria-label', 'Custom submit');
   });
 });
