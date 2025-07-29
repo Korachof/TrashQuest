@@ -16,6 +16,8 @@ function Modal({ isOpen, onClose, children }) {
       aria-modal="true"
       style={modalOverlayStyle}
     >
+      {/* stopPropation: Prevent clicks inside modal content from bubbling up to the overlay,
+      which would trigger onClose and close the modal unexpectedly */}
       <div onClick={(e) => e.stopPropagation()} style={modalContentStyle}>
         <button onClick={onClose} aria-label="Close modal">
           ×

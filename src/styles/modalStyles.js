@@ -25,7 +25,6 @@ export const modalContentStyle = {
   position: 'relative',
   maxWidth: '500px',
   width: '90%',
-  modalTextStyle,
 };
 
 // Modal-specific text styles

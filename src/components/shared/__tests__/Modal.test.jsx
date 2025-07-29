@@ -66,4 +66,24 @@ describe('Modal', () => {
 
     expect(mockOnClose).toHaveBeenCalledTimes(1);
   });
+
+  // Test 7: Verifies that clicking outside modal (overlay) calls onClose
+  test('clicking outside modal calls onClose', () => {
+    render(<Modal {...defaultProps} />);
+
+    const overlay = screen.getByRole('dialog');
+    fireEvent.click(overlay);
+
+    expect(mockOnClose).toHaveBeenCalledTimes(1);
+  });
+
+  // Test 8: Verifies that clicking inside modal (overlay) does not call onClose
+  test('clicking inside modal content does not call onClose', () => {
+    render(<Modal {...defaultProps} />);
+
+    const modalContent = screen.getByTestId('modal-content');
+    fireEvent.click(modalContent);
+
+    expect(mockOnClose).not.toHaveBeenCalled();
+  });
 });
