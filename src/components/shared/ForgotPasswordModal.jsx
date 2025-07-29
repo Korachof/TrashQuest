@@ -6,7 +6,7 @@ import Modal from './Modal';
 import FormGroup from './FormGroup';
 import FormButton from './FormButton';
 import { formContainer } from '../../styles/forms';
-import { headingTextStyle } from '../../styles/typography';
+import { modalHeadingStyle, modalTextStyle } from '../../styles/modalStyles';
 
 function ForgotPasswordModal({ isOpen, onClose }) {
   const [email, setEmail] = useState('');
@@ -45,8 +45,8 @@ function ForgotPasswordModal({ isOpen, onClose }) {
 
   return (
     <Modal isOpen={isOpen} onClose={handleClose}>
-      <h2 style={headingTextStyle}>Reset Your Password 🔑</h2>
-      <p>
+      <h2 style={modalHeadingStyle}>Reset Your Password 🔑</h2>
+      <p style={modalTextStyle}>
         Enter your email address and we'll send you a link to reset your
         password.
       </p>
@@ -75,6 +75,7 @@ function ForgotPasswordModal({ isOpen, onClose }) {
           {errorMsg}
         </p>
       )}
+      <button onClick={handleClose}>Close</button>
     </Modal>
   );
 }

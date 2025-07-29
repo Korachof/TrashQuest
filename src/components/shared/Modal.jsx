@@ -1,6 +1,7 @@
 // Reusable modal component for overlays and dialogs
 import React, { useEffect } from 'react';
 import useEscape from '../../hooks/useEscape';
+import { modalOverlayStyle, modalContentStyle } from '../../styles/modalStyles';
 
 function Modal({ isOpen, onClose, children }) {
   useEscape(onClose, isOpen);
@@ -9,8 +10,13 @@ function Modal({ isOpen, onClose, children }) {
   if (!isOpen) return null;
 
   return (
-    <div onClick={onClose} role="dialog" aria-modal="true">
-      <div onClick={(e) => e.stopPropagation()}>
+    <div
+      onClick={onClose}
+      role="dialog"
+      aria-modal="true"
+      style={modalOverlayStyle}
+    >
+      <div onClick={(e) => e.stopPropagation()} style={modalContentStyle}>
         <button onClick={onClose} aria-label="Close modal">
           ×
         </button>
