@@ -3,8 +3,7 @@ import React, { useEffect } from 'react';
 import useEscape from '../../hooks/useEscape';
 
 function Modal({ isOpen, onClose, children }) {
-  useEscape(onClose);
-
+  useEscape(onClose, isOpen);
   // Don't render anything if modal is closed
   if (!isOpen) return null;
 
