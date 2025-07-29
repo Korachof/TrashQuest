@@ -67,4 +67,34 @@ describe('ConfirmLogout', () => {
 
     expect(mockOnCancel).toHaveBeenCalledTimes(1);
   });
+
+  // Test 7: Verifies that "Yes" Button is indeed a button component
+  test('Yes button is a button element', () => {
+    render(<ConfirmLogout {...defaultProps} />);
+
+    const yesButton = screen.getByText('Yes');
+    expect(yesButton.tagName).toBe('BUTTON');
+  });
+
+  // Test 8: Verifies that "No" Button is indeed a button component
+  test('No button is a button element', () => {
+    render(<ConfirmLogout {...defaultProps} />);
+
+    const noButton = screen.getByText('No');
+    expect(noButton.tagName).toBe('BUTTON');
+  });
+
+  // Test 9: Verifies that onConfirm is not called on render
+  test('does not call onConfirm or onCancel on initial render', () => {
+    render(<ConfirmLogout {...defaultProps} />);
+
+    expect(mockOnCancel).not.toHaveBeenCalled();
+  });
+
+  // Test 10: Verifies that onCancel is not called on render
+  test('does not call onConfirm or onCancel on initial render', () => {
+    render(<ConfirmLogout {...defaultProps} />);
+
+    expect(mockOnCancel).not.toHaveBeenCalled();
+  });
 });
