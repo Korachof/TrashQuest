@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import Modal from '../Modal';
 import { vi } from 'vitest';
 
@@ -36,5 +36,24 @@ describe('Modal', () => {
     render(<Modal {...defaultProps} />);
 
     expect(screen.getByLabelText('Close modal')).toBeInTheDocument();
+  });
+
+  // Test 4: Verifies that pressing Escape key calls OnClose
+  test('pressing Escape key calls onClose', () => {
+    render(<Modal {...defaultProps} />);
+
+    fireEvent.keyDown(document, { key: 'Escape' });
+
+    expect(mockOnClose).toHaveBeenCalledTimes(1);
+  });
+
+  // Test 5: Verifies that clicking close button calls onClose
+  test('clicking close button calls onClose', () => {
+    render(<Modal {...defaultProps} />);
+
+    const closeButton = screen.getByLabelText('Close modal');
+    fireEvent.click(closeButton);
+
+    expect(mockOnClose).toHaveBeenCalledTimes(1);
   });
 });
