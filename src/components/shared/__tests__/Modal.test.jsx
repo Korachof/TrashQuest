@@ -31,7 +31,7 @@ describe('Modal', () => {
     expect(screen.queryByTestId('modal-content')).not.toBeInTheDocument();
   });
 
-  // Test 3: Verifies that the c lose button renders correctly
+  // Test 3: Verifies that the close button renders correctly
   test('renders close button', () => {
     render(<Modal {...defaultProps} />);
 
@@ -47,7 +47,17 @@ describe('Modal', () => {
     expect(mockOnClose).toHaveBeenCalledTimes(1);
   });
 
-  // Test 5: Verifies that clicking close button calls onClose
+  /* Test 5: Verifies that pressing escape key does not call onClose
+     when modal is closed */
+  test('pressing Escape when modal is closed does not call onClose', () => {
+    render(<Modal {...defaultProps} isOpen={false} />);
+
+    fireEvent.keyDown(document, { key: 'Escape' });
+
+    expect(mockOnClose).not.toHaveBeenCalled();
+  });
+
+  // Test 6: Verifies that clicking close button calls onClose
   test('clicking close button calls onClose', () => {
     render(<Modal {...defaultProps} />);
 

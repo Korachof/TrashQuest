@@ -4,6 +4,7 @@ import useEscape from '../../hooks/useEscape';
 
 function Modal({ isOpen, onClose, children }) {
   useEscape(onClose, isOpen);
+
   // Don't render anything if modal is closed
   if (!isOpen) return null;
 
