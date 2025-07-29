@@ -1,0 +1,40 @@
+import React from 'react';
+import { render, screen } from '@testing-library/react';
+import Modal from '../Modal';
+import { vi } from 'vitest';
+
+describe('Modal', () => {
+  // Reusable constants for tests
+  const mockOnClose = vi.fn();
+  const defaultProps = {
+    isOpen: true,
+    onClose: mockOnClose,
+    children: <div data-testid="modal-content">Test Modal Content</div>,
+  };
+
+  // Clear the mocks before each next test
+  beforeEach(() => {
+    vi.clearAllMocks();
+  });
+
+  // Test 1: Verifies that modal renders when isOpen is true
+  test('renders when isOpen is true', () => {
+    render(<Modal {...defaultProps} />);
+
+    expect(screen.getByTestId('modal-content')).toBeInTheDocument();
+  });
+
+  // Test 2: Verifies that modal does not render when isOpen is false
+  test('does not render when isOpen is false', () => {
+    render(<Modal {...defaultProps} isOpen={false} />);
+
+    expect(screen.queryByTestId('modal-content')).not.toBeInTheDocument();
+  });
+
+  // Test 3: Verifies that the c lose button renders correctly
+  test('renders close button', () => {
+    render(<Modal {...defaultProps} />);
+
+    expect(screen.getByLabelText('Close modal')).toBeInTheDocument();
+  });
+});
