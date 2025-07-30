@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import ForgotPasswordModal from '../ForgotPasswordModal';
 import { sendPasswordResetEmail } from 'firebase/auth';
 import { vi } from 'vitest';
@@ -41,5 +41,15 @@ describe('ForgotPasswordModal', () => {
     render(<ForgotPasswordModal {...defaultProps} />);
 
     expect(screen.getByText('Send Reset Email')).toBeInTheDocument();
+  });
+
+  // Test 4: Verifies that user can type in email field
+  test('allows user to type in email field', () => {
+    render(<ForgotPasswordModal {...defaultProps} />);
+
+    const emailInput = screen.getByLabelText('Email');
+    fireEvent.change(emailInput, { target: { value: 'test@example.com' } });
+
+    expect(emailInput).toHaveValue('test@example.com');
   });
 });
