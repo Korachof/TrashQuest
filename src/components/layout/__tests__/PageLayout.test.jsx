@@ -72,4 +72,67 @@ describe('PageLayout', () => {
     const testContent = screen.getByTestId('test-content');
     expect(mainContainer).toContainElement(testContent);
   });
+
+  // Test 5: Verifies that the components are rendering in correct order
+  test('renders components in correct order', () => {
+    render(
+      <PageLayout>
+        <div data-testid="test-content">Test Content</div>
+      </PageLayout>
+    );
+
+    const wrapper = screen.getByTestId('mock-header').parentElement;
+    const children = Array.from(wrapper.children);
+
+    expect(children[0]).toHaveAttribute('data-testid', 'mock-header');
+    expect(children[1]).toHaveAttribute('data-testid', 'mock-main');
+    expect(children[2]).toHaveAttribute('data-testid', 'mock-footer');
+  });
+
+  // Test 6: Verifies that styles are being applied as expected
+  test('applies layout styles', () => {
+    render(
+      <PageLayout>
+        <div data-testid="test-content">Test Content</div>
+      </PageLayout>
+    );
+
+    const wrapper = screen.getByTestId('mock-header').parentElement;
+    expect(wrapper).toHaveStyle({
+      display: 'flex',
+      flexDirection: 'column',
+    });
+  });
+
+  // Test 7: Verifies that the authorization hook is being called correctly
+  test('calls useAuth hook', () => {
+    render(
+      <PageLayout>
+        <div data-testid="test-content">Test Content</div>
+      </PageLayout>
+    );
+
+    expect(useAuth).toHaveBeenCalled();
+  });
+
+  // Test 8: Verifies that the authorization hook is called exactly once
+  test('calls useAuth hook exactly once', () => {
+    render(
+      <PageLayout>
+        <div data-testid="test-content">Test Content</div>
+      </PageLayout>
+    );
+
+    expect(useAuth).toHaveBeenCalledTimes(1);
+  });
+
+  /* Test 9: Verifies that PageLayout still renders even if no children (like
+     a <div>) are passed through */
+  test('renders without children', () => {
+    expect(() => render(<PageLayout />)).not.toThrow();
+
+    expect(screen.getByTestId('mock-header')).toBeInTheDocument();
+    expect(screen.getByTestId('mock-main')).toBeInTheDocument();
+    expect(screen.getByTestId('mock-footer')).toBeInTheDocument();
+  });
 });
