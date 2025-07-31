@@ -88,4 +88,37 @@ describe('Footer', () => {
       '/contact'
     );
   });
+
+  // Test 10: Verifies that the Footer tagline text renders
+  test('trashquest tagline text renders', () => {
+    render(<Footer />);
+
+    expect(
+      screen.getByText(/Made for the Ultimate Quest: The Planet🌎/)
+    ).toBeInTheDocument();
+  });
+
+  // Test 11: Verifies that the copyright text renders
+  test('copyright text renders', () => {
+    render(<Footer />);
+
+    expect(screen.getByText(/TrashQuest/)).toBeInTheDocument();
+  });
+
+  // Test 12: Verifies that the first copyright year (2025) renders
+  test('displays first copyright year (2025) in copyright', () => {
+    render(<Footer />);
+
+    expect(screen.getByText(/2025/)).toBeInTheDocument();
+  });
+
+  // Test 13: Verifies that the current year is displayed in copyright
+  test('displays current year in copyright', () => {
+    const currentYear = new Date().getFullYear();
+    render(<Footer />);
+
+    expect(
+      screen.getByText(new RegExp(currentYear.toString()))
+    ).toBeInTheDocument();
+  });
 });
