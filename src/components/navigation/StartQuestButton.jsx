@@ -1,9 +1,8 @@
 // Landing page button to start Questing
-
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-function StartQuestButton() {
+export default function StartQuestButton() {
   const navigate = useNavigate();
 
   return (
@@ -24,5 +23,3 @@ function StartQuestButton() {
     </button>
   );
 }
-
-export default StartQuestButton;
