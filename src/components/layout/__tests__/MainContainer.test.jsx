@@ -27,7 +27,7 @@ describe('MainContainer', () => {
     expect(screen.getByTestId('test-content')).toBeInTheDocument();
   });
 
-  // Test 3: Verifies that the main element contains the children
+  // Test 3: Verifies that the <main> element contains children
   test('main element contains children', () => {
     render(
       <MainContainer>

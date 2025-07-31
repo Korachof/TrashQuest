@@ -343,7 +343,7 @@ This changelog documents key updates to the TrashQuest project. It follows seman
   - `ForgotPasswordModal.jsx`
   - `StartQuestButton.jsx`
   - `MainContainer.test.jsx`
-  - A good chunk of `PageLayout.jsx`
+  - `PageLayout.jsx`
 - Created `styles/modalStyles.js` file
   - Added reusable modal styles `modalOverlayStyle`, `modalContentStyle`, `modalHeadingStyle`, and `modalTextStyle` for ease of design work in the future
 
