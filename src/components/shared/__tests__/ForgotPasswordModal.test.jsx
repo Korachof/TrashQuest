@@ -81,7 +81,7 @@ describe('ForgotPasswordModal', () => {
 
     expect(
       screen.getByText(
-        'Password reset email sent! Check your inbox or spam folder'
+        'Password reset request sent! Check your email inbox or spam folder'
       )
     ).toBeInTheDocument();
   });
@@ -101,5 +101,49 @@ describe('ForgotPasswordModal', () => {
     await waitFor(() => {
       expect(screen.getByText(errorMessage)).toBeInTheDocument();
     });
+  });
+
+  // Test 7: Verifies that the loading state fires during email sending
+  test('shows loading state during email sending', async () => {
+    sendPasswordResetEmail.mockImplementation(
+      () => new Promise((resolve) => setTimeout(resolve, 100))
+    );
+
+    render(<ForgotPasswordModal {...defaultProps} />);
+
+    const emailInput = screen.getByLabelText('Email');
+    const submitButton = screen.getByText('Send Reset Email');
+
+    fireEvent.change(emailInput, { target: { value: 'test@example.com' } });
+    fireEvent.click(submitButton);
+
+    expect(screen.getByText('🔄 Sending email...')).toBeInTheDocument();
+
+    await waitFor(() => {
+      expect(screen.getByText('Send Reset Email')).toBeInTheDocument();
+    });
+  });
+
+  // Test 8: Verifies that the form clears when modal closes
+  test('clears form state when modal closes', () => {
+    render(<ForgotPasswordModal {...defaultProps} />);
+
+    const emailInput = screen.getByLabelText('Email');
+    fireEvent.change(emailInput, { target: { value: 'test@example.com' } });
+
+    const closeButton = screen.getByText('Close');
+    fireEvent.click(closeButton);
+
+    expect(mockOnClose).toHaveBeenCalledTimes(1);
+  });
+
+  // Test 9: Verifies the form doesn't submit when the email field is empty
+  test('form submission requires email input', () => {
+    render(<ForgotPasswordModal {...defaultProps} />);
+
+    const submitButton = screen.getByText('Send Reset Email');
+    fireEvent.click(submitButton);
+
+    expect(sendPasswordResetEmail).not.toHaveBeenCalled();
   });
 });

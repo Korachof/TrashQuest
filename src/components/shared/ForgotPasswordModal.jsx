@@ -23,7 +23,7 @@ function ForgotPasswordModal({ isOpen, onClose }) {
     try {
       await sendPasswordResetEmail(auth, email);
       setSuccessMsg(
-        'Password reset email sent! Check your inbox or spam folder'
+        'Password reset request sent! Check your email inbox or spam folder'
       );
       setEmail(''); // Clear the form
     } catch (error) {
