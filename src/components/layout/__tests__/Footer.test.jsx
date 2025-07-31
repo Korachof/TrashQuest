@@ -17,21 +17,29 @@ describe('Footer', () => {
     vi.clearAllMocks();
   });
 
-  // Test 1: Verifies that the footer element is rendered correctly
-  test('renders footer element', () => {
+  // Test 1: Verifies that the footer element is rendering correctly
+  test('footer element renders', () => {
     render(<Footer />);
 
     const footerElement = screen.getByRole('contentinfo');
     expect(footerElement).toBeInTheDocument();
   });
 
-  // Test 2: Verifies that the Terms of Use nav link is rendering
+  // Test 2: Verifies that nav element is rendering
+  test('nav element renders', () => {
+    render(<Footer />);
+
+    const navElement = screen.getByRole('navigation');
+    expect(navElement).toBeInTheDocument();
+  });
+
+  // Test 3: Verifies that the Terms of Use nav link is rendering
   test('terms of use link renders', () => {
     render(<Footer />);
     expect(screen.getByText('Terms of Use')).toBeInTheDocument();
   });
 
-  // Test 3: Verifies that Terms of Use Nav link has correct href attribute
+  // Test 4: Verifies that Terms of Use Nav link has correct href attribute
   test('terms of use nav link has correct href attribute', () => {
     render(<Footer />);
 
@@ -41,13 +49,13 @@ describe('Footer', () => {
     );
   });
 
-  // Test 4: Verifies that the Privacy Policy nav link is rendering
+  // Test 5: Verifies that the Privacy Policy nav link is rendering
   test('privacy policy link renders', () => {
     render(<Footer />);
     expect(screen.getByText('Privacy Policy')).toBeInTheDocument();
   });
 
-  // Test 5: Verifies that Privacy Policy Nav link has correct href attribute
+  // Test 6: Verifies that Privacy Policy Nav link has correct href attribute
   test('privacy policy nav link has correct href attribute', () => {
     render(<Footer />);
 
@@ -57,13 +65,13 @@ describe('Footer', () => {
     );
   });
 
-  // Test 6: Verifies that the About Us nav link is rendering
+  // Test 7: Verifies that the About Us nav link is rendering
   test('about us link renders', () => {
     render(<Footer />);
     expect(screen.getByText('About Us')).toBeInTheDocument();
   });
 
-  // Test 7: Verifies that About Us Nav link has correct href attribute
+  // Test 8: Verifies that About Us Nav link has correct href attribute
   test('about us nav link has correct href attribute', () => {
     render(<Footer />);
 
@@ -73,13 +81,13 @@ describe('Footer', () => {
     );
   });
 
-  // Test 8: Verifies that the Contact Us nav link is rendering
+  // Test 9: Verifies that the Contact Us nav link is rendering
   test('contact us link renders', () => {
     render(<Footer />);
     expect(screen.getByText('Contact Us')).toBeInTheDocument();
   });
 
-  // Test 9: Verifies that Privacy Policy Nav link has correct href attribute
+  // Test 10: Verifies that Privacy Policy Nav link has correct href attribute
   test('contact us nav link has correct href attribute', () => {
     render(<Footer />);
 
@@ -89,7 +97,7 @@ describe('Footer', () => {
     );
   });
 
-  // Test 10: Verifies that the Footer tagline text renders
+  // Test 11: Verifies that the Footer tagline text renders
   test('trashquest tagline text renders', () => {
     render(<Footer />);
 
@@ -98,21 +106,21 @@ describe('Footer', () => {
     ).toBeInTheDocument();
   });
 
-  // Test 11: Verifies that the copyright text renders
+  // Test 12: Verifies that the copyright text renders
   test('copyright text renders', () => {
     render(<Footer />);
 
     expect(screen.getByText(/TrashQuest/)).toBeInTheDocument();
   });
 
-  // Test 12: Verifies that the first copyright year (2025) renders
+  // Test 13: Verifies that the first copyright year (2025) renders
   test('displays first copyright year (2025) in copyright', () => {
     render(<Footer />);
 
     expect(screen.getByText(/2025/)).toBeInTheDocument();
   });
 
-  // Test 13: Verifies that the current year is displayed in copyright
+  // Test 14: Verifies that the current year is displayed in copyright
   test('displays current year in copyright', () => {
     const currentYear = new Date().getFullYear();
     render(<Footer />);
