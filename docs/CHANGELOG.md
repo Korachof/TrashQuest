@@ -326,6 +326,44 @@ This changelog documents key updates to the TrashQuest project. It follows seman
 - Cleaner component structure with semantic HTML and reduced DOM nesting
 - Enhanced keyboard navigation and form usability
 
+## [0.2.3] - 2025-07-27 - 2025-07-31
+
+### Added
+
+- Loading states to `FormButton` so buttons won't be operable after clicking, and will provide a custom, reusable loading text in the button during the process
+- Functionality to the scaffolded `Modal.jsx` file, including closing on Escape press.
+- **forgot password** functionality by creating `ForgotPasswordModal.jsx`
+- "Forgot Password" link added to `LoginPage`
+- Vitest Testing suites for
+  - `FormGroup.jsx`
+  - `FormButton.jsx`
+  - `ConfirmLogout.jsx`
+  - `Loader.jsx`
+  - `Modal.jsx`
+  - `ForgotPasswordModal.jsx`
+  - `StartQuestButton.jsx`
+  - `MainContainer.test.jsx`
+  - A good chunk of `PageLayout.jsx`
+- Created `styles/modalStyles.js` file
+  - Added reusable modal styles `modalOverlayStyle`, `modalContentStyle`, `modalHeadingStyle`, and `modalTextStyle` for ease of design work in the future
+
+### Changed
+
+- Updated `LoginPage` to add loading state functionality
+- Updated `LoginPage` to include Modal functionality
+- Updated Forgot Password email sent text for user satisfaction
+- Imported and used `modalStyles.js` styles in `Modal`
+- Imported and used `modalStyles.js` styles in `ForgotPasswordModal`
+
+### Fixed
+
+- Lots of debugging to get the `Modal` overlay styles to work correctly. Had lots of issues with text overlapping and modal text showing beneath the actual modal layer. Found the issues and fixed.
+- Small bug fixes as I tested various suites. Nothing major.
+
+### Issues
+
+- Added an issue to the **Github Repository** and emailed Firebase support due to Forgot Password emails connecting to old API Browser key and not working correctly. Tried to debug and find settings in Firebase and Google Consoles, but at this point I need support to figure out how to update to new API key.
+
 ---
 
 ### Planned (Upcoming)
