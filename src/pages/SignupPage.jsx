@@ -11,7 +11,7 @@ import { isStrongPassword, clearMessages } from '../utils/validation';
 import { redirectAfterSuccess } from '../utils/navigation';
 import { useRedirectIfAuthenticated } from '../hooks/useRedirectIfAuthenticated';
 
-function SignupPage() {
+export default function SignupPage() {
   const [displayName, setDisplayName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -121,5 +121,3 @@ function SignupPage() {
     </>
   );
 }
-
-export default SignupPage;

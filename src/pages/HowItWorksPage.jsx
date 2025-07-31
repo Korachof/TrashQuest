@@ -2,7 +2,7 @@
 import React, { useEffect } from 'react';
 import { headingTextStyle } from '../styles/typography';
 
-function HowItWorksPage() {
+export default function HowItWorksPage() {
   // Set page tab title
   useEffect(() => {
     document.title = 'How It Works | TrashQuest';
@@ -17,5 +17,3 @@ function HowItWorksPage() {
     </>
   );
 }
-
-export default HowItWorksPage;

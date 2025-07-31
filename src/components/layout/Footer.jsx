@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { navContainer } from '../../styles/layout';
 import { footerStyleContainer } from '../../styles/layout';
 
-function Footer() {
+export default function Footer() {
   return (
     <footer style={footerStyleContainer}>
       {/*Nav Links*/}
@@ -21,5 +21,3 @@ function Footer() {
     </footer>
   );
 }
-
-export default Footer;

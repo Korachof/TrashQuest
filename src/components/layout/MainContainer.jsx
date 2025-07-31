@@ -2,11 +2,9 @@
 import React from 'react';
 import { mainContainerStyleWrapper } from '../../styles/layout';
 
-function MainContainer({ children }) {
+export default function MainContainer({ children }) {
   return (
     // Normal page layout styling
     <main style={mainContainerStyleWrapper}>{children}</main>
   );
 }
-
-export default MainContainer;

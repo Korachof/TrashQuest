@@ -6,7 +6,14 @@ import {
   formGroupLabel,
 } from '../../styles/forms';
 
-function FormGroup({ label, type, value, onChange, required = true, id }) {
+export default function FormGroup({
+  label,
+  type,
+  value,
+  onChange,
+  required = true,
+  id,
+}) {
   return (
     // styling in src/styles/forms.js
     <div style={formGroupWrapper}>
@@ -24,5 +31,3 @@ function FormGroup({ label, type, value, onChange, required = true, id }) {
     </div>
   );
 }
-
-export default FormGroup;

@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 import { headingTextStyle } from '../styles/typography';
 import { useAuth } from '../context/AuthContext';
 
-function DashboardPage() {
+export default function DashboardPage() {
   // Grab the current user
   const { currentUser } = useAuth();
   const displayName =
@@ -23,5 +23,3 @@ function DashboardPage() {
     </>
   );
 }
-
-export default DashboardPage;

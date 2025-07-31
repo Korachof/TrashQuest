@@ -2,7 +2,7 @@
 import React, { useEffect } from 'react';
 import { headingTextStyle } from '../styles/typography';
 
-function PrivacyPage() {
+export default function PrivacyPage() {
   const lastModifiedDate = new Date('07/10/2025');
 
   // Set page tab title
@@ -19,5 +19,3 @@ function PrivacyPage() {
     </>
   );
 }
-
-export default PrivacyPage;

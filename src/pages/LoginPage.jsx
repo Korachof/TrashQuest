@@ -11,7 +11,7 @@ import { redirectAfterSuccess } from '../utils/navigation';
 import { useRedirectIfAuthenticated } from '../hooks/useRedirectIfAuthenticated';
 import ForgotPasswordModal from '../components/shared/ForgotPasswordModal';
 
-function LoginPage() {
+export default function LoginPage() {
   const [displayName, setDisplayName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -119,5 +119,3 @@ function LoginPage() {
     </>
   );
 }
-
-export default LoginPage;

@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { headingTextStyle } from '../styles/typography';
 
-function ProfilePage() {
+export default function ProfilePage() {
   // Get current user
   const { currentUser } = useAuth();
 
@@ -33,5 +33,3 @@ function ProfilePage() {
     </>
   );
 }
-
-export default ProfilePage;

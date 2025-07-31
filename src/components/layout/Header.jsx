@@ -14,7 +14,7 @@ const logoStyles = {
   fontWeight: 'bold',
 };
 
-function Header() {
+export default function Header() {
   // Grab the current user
   const { currentUser } = useAuth();
   const navigate = useNavigate();
@@ -69,5 +69,3 @@ function Header() {
     </header>
   );
 }
-
-export default Header;

@@ -8,7 +8,7 @@ import FormButton from './FormButton';
 import { formContainer } from '../../styles/forms';
 import { modalHeadingStyle, modalTextStyle } from '../../styles/modalStyles';
 
-function ForgotPasswordModal({ isOpen, onClose }) {
+export default function ForgotPasswordModal({ isOpen, onClose }) {
   const [email, setEmail] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [successMsg, setSuccessMsg] = useState('');
@@ -79,5 +79,3 @@ function ForgotPasswordModal({ isOpen, onClose }) {
     </Modal>
   );
 }
-
-export default ForgotPasswordModal;

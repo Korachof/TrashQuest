@@ -2,7 +2,7 @@
 import React, { useEffect } from 'react';
 import { headingTextStyle } from '../styles/typography';
 
-function ResourcesPage() {
+export default function ResourcesPage() {
   // Set page tab title
   useEffect(() => {
     document.title = 'Resources | TrashQuest';
@@ -20,5 +20,3 @@ function ResourcesPage() {
     </>
   );
 }
-
-export default ResourcesPage;

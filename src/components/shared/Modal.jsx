@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 import useEscape from '../../hooks/useEscape';
 import { modalOverlayStyle, modalContentStyle } from '../../styles/modalStyles';
 
-function Modal({ isOpen, onClose, children }) {
+export default function Modal({ isOpen, onClose, children }) {
   useEscape(onClose, isOpen);
 
   // Don't render anything if modal is closed
@@ -27,5 +27,3 @@ function Modal({ isOpen, onClose, children }) {
     </div>
   );
 }
-
-export default Modal;

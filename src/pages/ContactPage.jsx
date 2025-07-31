@@ -2,7 +2,7 @@
 import React, { useEffect } from 'react';
 import { headingTextStyle } from '../styles/typography';
 
-function ContactPage() {
+export default function ContactPage() {
   // Set page tab title
   useEffect(() => {
     document.title = 'Contact Us | TrashQuest';
@@ -19,5 +19,3 @@ function ContactPage() {
     </>
   );
 }
-
-export default ContactPage;

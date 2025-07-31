@@ -4,7 +4,7 @@ import { Navigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import Loader from './Loader';
 
-function ProtectedRoute({ children, redirectTo = '/login' }) {
+export default function ProtectedRoute({ children, redirectTo = '/login' }) {
   // Grab last updated user
   const { currentUser, authLoading } = useAuth();
 
@@ -19,5 +19,3 @@ function ProtectedRoute({ children, redirectTo = '/login' }) {
 
   return children;
 }
-
-export default ProtectedRoute;

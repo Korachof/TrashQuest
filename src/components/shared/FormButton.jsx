@@ -2,7 +2,7 @@
 import React from 'react';
 import { formButtonStyle } from '../../styles/forms';
 
-function FormButton({
+export default function FormButton({
   children,
   type = 'submit',
   isLoading = false,
@@ -17,5 +17,3 @@ function FormButton({
     </button>
   );
 }
-
-export default FormButton;

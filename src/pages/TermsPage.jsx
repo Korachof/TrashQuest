@@ -2,7 +2,7 @@
 import React, { useEffect } from 'react';
 import { headingTextStyle } from '../styles/typography';
 
-function TermsPage() {
+export default function TermsPage() {
   const effectiveDate = new Date('07/10/2025');
 
   // Set page tab title
@@ -19,5 +19,3 @@ function TermsPage() {
     </>
   );
 }
-
-export default TermsPage;

@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 import StartQuestButton from '../components/navigation/StartQuestButton';
 import { headingTextStyle } from '../styles/typography';
 
-function WelcomePage() {
+export default function WelcomePage() {
   useEffect(() => {
     document.title = 'Welcome | TrashQuest';
   }, []);
@@ -18,5 +18,3 @@ function WelcomePage() {
     </>
   );
 }
-
-export default WelcomePage;

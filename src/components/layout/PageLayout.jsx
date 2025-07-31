@@ -5,7 +5,7 @@ import MainContainer from './MainContainer';
 import { layoutPageStyleWrapper } from '../../styles/layout';
 import { useAuth } from '../../context/AuthContext';
 
-function PageLayout({ children }) {
+export default function PageLayout({ children }) {
   const { currentUser } = useAuth();
   return (
     <div style={layoutPageStyleWrapper}>
@@ -16,5 +16,3 @@ function PageLayout({ children }) {
     </div>
   );
 }
-
-export default PageLayout;

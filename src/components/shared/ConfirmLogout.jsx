@@ -4,7 +4,7 @@ import useEscape from '../../hooks/useEscape';
 
 import { popupStyles } from '../../styles/layout';
 
-function ConfirmLogout({ onConfirm, onCancel }) {
+export default function ConfirmLogout({ onConfirm, onCancel }) {
   useEscape(onCancel);
   return (
     <div style={popupStyles}>
@@ -14,5 +14,3 @@ function ConfirmLogout({ onConfirm, onCancel }) {
     </div>
   );
 }
-
-export default ConfirmLogout;
