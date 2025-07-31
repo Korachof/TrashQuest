@@ -27,7 +27,7 @@ describe('PageLayout', () => {
     useAuth.mockReturnValue({ currentUser: null });
   });
 
-  // Verifies that the Header component is rendering correctly
+  // Test 1: Verifies that the Header component is rendering correctly
   test('renders Header component', () => {
     render(
       <PageLayout>
@@ -38,7 +38,7 @@ describe('PageLayout', () => {
     expect(screen.getByTestId('mock-header')).toBeInTheDocument();
   });
 
-  // Verifies that the Footer component is rendering correctly
+  // Test 2: Verifies that the Footer component is rendering correctly
   test('renders Footer component', () => {
     render(
       <PageLayout>
@@ -47,5 +47,29 @@ describe('PageLayout', () => {
     );
 
     expect(screen.getByTestId('mock-footer')).toBeInTheDocument();
+  });
+
+  // Test 3: Verifies that the MainContainer component is rendering correctly
+  test('renders MainContainer component', () => {
+    render(
+      <PageLayout>
+        <div data-testid="test-content">Test Content</div>
+      </PageLayout>
+    );
+
+    expect(screen.getByTestId('mock-main')).toBeInTheDocument();
+  });
+
+  // Test 4: Verifies that PageLayout is passing children to MainContainer correctly
+  test('passes children to MainContainer', () => {
+    render(
+      <PageLayout>
+        <div data-testid="test-content">Test Content</div>
+      </PageLayout>
+    );
+
+    const mainContainer = screen.getByTestId('mock-main');
+    const testContent = screen.getByTestId('test-content');
+    expect(mainContainer).toContainElement(testContent);
   });
 });
