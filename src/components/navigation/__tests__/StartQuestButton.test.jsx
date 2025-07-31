@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import StartQuestButton from '../StartQuestButton';
@@ -45,5 +45,31 @@ describe('StartQuestButton', () => {
 
     const button = screen.getByText('Start Your TrashQuest Now! 🚀');
     expect(button.tagName).toBe('BUTTON');
+  });
+
+  // Test 3: Verifies that clicking the button calls navigation with correct path
+  test('navigates to login page when clicked', () => {
+    render(
+      <MemoryRouter>
+        <StartQuestButton />
+      </MemoryRouter>
+    );
+
+    const button = screen.getByText('Start Your TrashQuest Now! 🚀');
+    fireEvent.click(button);
+
+    expect(mockNavigate).toHaveBeenCalledTimes(1);
+    expect(mockNavigate).toHaveBeenCalledWith('/login');
+  });
+
+  // Test 4: Verifies that navigation isn't called on rendering of the button
+  test('does not navigate on initial render', () => {
+    render(
+      <MemoryRouter>
+        <StartQuestButton />
+      </MemoryRouter>
+    );
+
+    expect(mockNavigate).not.toHaveBeenCalled();
   });
 });
