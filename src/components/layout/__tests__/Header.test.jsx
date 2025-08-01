@@ -61,24 +61,40 @@ describe('Header', () => {
   });
 
   // Test 3: Verifies that the "how it works" nav link is rendering
-  test('navigation link -- how it works -- renders', () => {
+  test('How It Works nav link renders', () => {
     render(<Header />);
     expect(screen.getByText('How It Works')).toBeInTheDocument();
   });
 
-  // Test 4: Verifies that the "resources" nav link is rendering
-  test('navigation link -- resources -- renders', () => {
+  // Test 4: Verifies How It Works link has correct href
+  test('How It Works link has correct href', () => {
+    render(<Header />);
+
+    const howItWorksLink = screen.getByText('How It Works').closest('a');
+    expect(howItWorksLink).toHaveAttribute('href', '/how-it-works');
+  });
+
+  // Test 5: Verifies that the "resources" nav link is rendering
+  test('Resources nav link renderrs', () => {
     render(<Header />);
     expect(screen.getByText('Resources')).toBeInTheDocument();
   });
 
-  // Test 5: Verifies that the Sign In link appears when not authenticated
+  // Test 6: Verifies Resources link has correct href
+  test('Resources link has correct href', () => {
+    render(<Header />);
+
+    const resourcesLink = screen.getByText('Resources').closest('a');
+    expect(resourcesLink).toHaveAttribute('href', '/resources');
+  });
+
+  // Test 7: Verifies that the Sign In link appears when not authenticated
   test('sign in link shows when not authenticated', () => {
     render(<Header />);
     expect(screen.getByText('Sign In')).toBeInTheDocument();
   });
 
-  // Test 6: Verifies that the logo links to home when not authenticated
+  // Test 8: Verifies that the logo links to home when not authenticated
   test('logo links to home when not authenticated', () => {
     useAuth.mockReturnValue({ currentUser: null });
 
@@ -87,7 +103,7 @@ describe('Header', () => {
     expect(logoLink).toHaveAttribute('href', '/');
   });
 
-  // Test 7: Verifies that the Log Out button appears when authenticated
+  // Test 9: Verifies that the Log Out button appears when authenticated
   test('log out button shows when authenticated', () => {
     useAuth.mockReturnValue({
       currentUser: { displayName: 'Test User' },
@@ -97,7 +113,7 @@ describe('Header', () => {
     expect(screen.getByText('Log Out')).toBeInTheDocument();
   });
 
-  // Test 8: Verifies that the user name appears when authenticated
+  // Test 10: Verifies that the user name appears when authenticated
   test('user name shows when authenticated', () => {
     useAuth.mockReturnValue({
       currentUser: { displayName: 'Test User' },
@@ -107,7 +123,7 @@ describe('Header', () => {
     expect(screen.getByText('Test User')).toBeInTheDocument();
   });
 
-  // Test 9: Verifies that the logo links to dashboard when authenticated
+  // Test 11: Verifies that the logo links to dashboard when authenticated
   test('logo links to dashboard when authenticated', () => {
     useAuth.mockReturnValue({
       currentUser: { displayName: 'Test User' },
@@ -118,7 +134,7 @@ describe('Header', () => {
     expect(logoLink).toHaveAttribute('href', '/dashboard');
   });
 
-  // Test 10: Verifies log out dialogue does NOT show before clicking Log Out
+  // Test 12: Verifies log out dialogue does NOT show before clicking Log Out
   test('logout confirmation dialogue DOES NOT show BEFORE click', () => {
     useAuth.mockReturnValue({
       currentUser: { displayName: 'Test User' },
@@ -129,7 +145,7 @@ describe('Header', () => {
     expect(screen.queryByText('Confirm Logout')).not.toBeInTheDocument();
   });
 
-  // Test 11: Verifies log out dialogue shows after clicking Log Out
+  // Test 13: Verifies log out dialogue shows after clicking Log Out
   test('logout confirmation dialogue DOES show AFTER click', () => {
     useAuth.mockReturnValue({
       currentUser: { displayName: 'Test User' },
@@ -144,7 +160,7 @@ describe('Header', () => {
     expect(screen.getByTestId('confirm-logout')).toBeInTheDocument();
   });
 
-  // Test 12: Verifies Cancel dialogue shows after clicking Log Out
+  // Test 14: Verifies Cancel dialogue shows after clicking Log Out
   test('cancel dialogue option DOES show AFTER click', () => {
     useAuth.mockReturnValue({
       currentUser: { displayName: 'Test User' },
@@ -158,7 +174,7 @@ describe('Header', () => {
     expect(screen.getByTestId('cancel-button')).toBeInTheDocument();
   });
 
-  // Test 13: Verifies the log out confirmation dialogue hides after clicking Cancel
+  // Test 15: Verifies the log out confirmation dialogue hides after clicking Cancel
   test('clicking cancel hides confirmation dialog', () => {
     useAuth.mockReturnValue({
       currentUser: { displayName: 'Test User' },
@@ -180,7 +196,7 @@ describe('Header', () => {
     expect(screen.queryByTestId('cancel-button')).not.toBeInTheDocument();
   });
 
-  // Test 14: Verifies clicking confirm to Log Out calls Signout Exactly Once
+  // Test 16: Verifies clicking confirm to Log Out calls Signout Exactly Once
   test('clicking confirm to log out calls sign out function', async () => {
     // Access the mock through vi.mocked()
     const mockSignOut = vi.mocked(signOut);
@@ -204,7 +220,7 @@ describe('Header', () => {
     expect(mockSignOut).toHaveBeenCalled(1);
   });
 
-  // Test 15: Verifies clicking confirm to log out navigates to Home Page
+  // Test 17: Verifies clicking confirm to log out navigates to Home Page
   test('clicking confirm navigates to home page', async () => {
     const mockSignOut = vi.mocked(signOut);
     mockSignOut.mockResolvedValue();
