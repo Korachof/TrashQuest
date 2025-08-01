@@ -4,11 +4,17 @@ import { vi } from 'vitest';
 import Header from '../Header';
 import { useAuth } from '../../../context/AuthContext';
 import ConfirmLogout from '../../shared/ConfirmLogout';
+import { signOut } from 'firebase/auth';
+import { useNavigate } from 'react-router-dom';
+import { auth } from '../../../firebase';
 
-// Mock only what we absolutely need to get the component to render
+// reusable mockNavigate mock
+const mockNavigate = vi.fn();
+
+// Resuable mocks
 vi.mock('react-router-dom', () => ({
   Link: ({ children, to }) => <a href={to}>{children}</a>,
-  useNavigate: () => vi.fn(),
+  useNavigate: () => mockNavigate, // Return our specific mock
 }));
 
 vi.mock('../../../context/AuthContext', () => ({
@@ -20,7 +26,7 @@ vi.mock('firebase/auth', () => ({
   getAuth: vi.fn(),
 }));
 
-vi.mock('../../firebase', () => ({
+vi.mock('../../../firebase', () => ({
   auth: {},
 }));
 
@@ -172,5 +178,52 @@ describe('Header', () => {
     expect(screen.queryByTestId('confirm-logout')).not.toBeInTheDocument();
     expect(screen.queryByTestId('confirm-button')).not.toBeInTheDocument();
     expect(screen.queryByTestId('cancel-button')).not.toBeInTheDocument();
+  });
+
+  // Test 14: Verifies clicking confirm to Log Out calls Signout Exactly Once
+  test('clicking confirm to log out calls sign out function', async () => {
+    // Access the mock through vi.mocked()
+    const mockSignOut = vi.mocked(signOut);
+    mockSignOut.mockResolvedValue();
+
+    useAuth.mockReturnValue({
+      currentUser: { displayName: 'Test User' },
+    });
+
+    render(<Header />);
+
+    // Show the dialog
+    const logOutButton = screen.getByText('Log Out');
+    fireEvent.click(logOutButton);
+
+    // Click confirm
+    const confirmButton = screen.getByTestId('confirm-button');
+    fireEvent.click(confirmButton);
+
+    // Should call signOut
+    expect(mockSignOut).toHaveBeenCalled(1);
+  });
+
+  // Test 15: Verifies clicking confirm to log out navigates to Home Page
+  test('clicking confirm navigates to home page', async () => {
+    const mockSignOut = vi.mocked(signOut);
+    mockSignOut.mockResolvedValue();
+
+    useAuth.mockReturnValue({
+      currentUser: { displayName: 'Test User' },
+    });
+
+    render(<Header />);
+
+    const logOutButton = screen.getByText('Log Out');
+    fireEvent.click(logOutButton);
+
+    const confirmButton = screen.getByTestId('confirm-button');
+    fireEvent.click(confirmButton);
+
+    // Wait for async operations to complete
+    await vi.waitFor(() => {
+      expect(mockNavigate).toHaveBeenCalledWith('/');
+    });
   });
 });
