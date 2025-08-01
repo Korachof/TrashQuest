@@ -3,6 +3,7 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import { vi } from 'vitest';
 import Header from '../Header';
 import { useAuth } from '../../../context/AuthContext';
+import ConfirmLogout from '../../shared/ConfirmLogout';
 
 // Mock only what we absolutely need to get the component to render
 vi.mock('react-router-dom', () => ({
@@ -23,12 +24,8 @@ vi.mock('../../firebase', () => ({
   auth: {},
 }));
 
-vi.mock('../shared/ConfirmLogout', () => ({
-  default: () => <div>Confirm Logout</div>,
-}));
-
-vi.mock('react-icons/fa', () => ({
-  FaUser: () => <span>User Icon</span>,
+vi.mock('../../shared/ConfirmLogout', () => ({
+  default: () => <div data-testid="confirm-logout">Confirm Logout</div>,
 }));
 
 describe('Header', () => {
@@ -103,5 +100,31 @@ describe('Header', () => {
     render(<Header />);
     const logoLink = screen.getByText('TrashQuest ♻️').closest('a');
     expect(logoLink).toHaveAttribute('href', '/dashboard');
+  });
+
+  // Test 10: Verifies log out dialogue does NOT show before clicking Log Out
+  test('logout confirmation dialogue DOES NOT show BEFORE click', () => {
+    useAuth.mockReturnValue({
+      currentUser: { displayName: 'Test User' },
+    });
+
+    render(<Header />);
+
+    expect(screen.queryByText('Confirm Logout')).not.toBeInTheDocument();
+  });
+
+  // Test 11: Verifies log out dialogue shows after clicking Log Out
+  test('logout confirmation dialogue DOES show AFTER click', () => {
+    useAuth.mockReturnValue({
+      currentUser: { displayName: 'Test User' },
+    });
+
+    render(<Header />);
+
+    const logOutButton = screen.getByText('Log Out');
+    fireEvent.click(logOutButton);
+
+    expect(screen.getByText('Confirm Logout')).toBeInTheDocument();
+    expect(screen.getByTestId('confirm-logout')).toBeInTheDocument();
   });
 });
