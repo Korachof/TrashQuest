@@ -2,6 +2,7 @@ import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { vi } from 'vitest';
 import Header from '../Header';
+import { useAuth } from '../../../context/AuthContext';
 
 // Mock only what we absolutely need to get the component to render
 vi.mock('react-router-dom', () => ({
@@ -56,5 +57,31 @@ describe('Header', () => {
   test('navigation link -- resources -- renders', () => {
     render(<Header />);
     expect(screen.getByText('Resources')).toBeInTheDocument();
+  });
+
+  // Test 5: Verifies that the Sign In link appears when not authenticated
+  test('sign in link shows when not authenticated', () => {
+    render(<Header />);
+    expect(screen.getByText('Sign In')).toBeInTheDocument();
+  });
+
+  // Test 6: Verifies that the Log Out button appears when authenticated
+  test('log out button shows when authenticated', () => {
+    useAuth.mockReturnValue({
+      currentUser: { displayName: 'Test User' },
+    });
+
+    render(<Header />);
+    expect(screen.getByText('Log Out')).toBeInTheDocument();
+  });
+
+  // Test 7: Verifies that the user name appears when authenticated
+  test('user name shows when authenticated', () => {
+    useAuth.mockReturnValue({
+      currentUser: { displayName: 'Test User' },
+    });
+
+    render(<Header />);
+    expect(screen.getByText('Test User')).toBeInTheDocument();
   });
 });
