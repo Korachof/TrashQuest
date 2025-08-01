@@ -30,6 +30,10 @@ vi.mock('../../../firebase', () => ({
   auth: {},
 }));
 
+vi.mock('react-icons/fa', () => ({
+  FaUser: () => <span>User Icon</span>,
+}));
+
 vi.mock('../../shared/ConfirmLogout', () => ({
   default: ({ onConfirm, onCancel }) => (
     <div data-testid="confirm-logout">
@@ -241,5 +245,56 @@ describe('Header', () => {
     await vi.waitFor(() => {
       expect(mockNavigate).toHaveBeenCalledWith('/');
     });
+  });
+
+  // Test 18: Verifies Profile link shows user info
+  test('profile link shows user info when authenticated', () => {
+    useAuth.mockReturnValue({
+      currentUser: { displayName: 'Test User' },
+    });
+
+    render(<Header />);
+
+    // Check that user icon and name are displayed
+    expect(screen.getByText('User Icon')).toBeInTheDocument();
+    expect(screen.getByText('Test User')).toBeInTheDocument();
+  });
+
+  // Test 19: Verifies profile link shows correct href when authenticated
+  test('profile link shows correct href when authenticated', () => {
+    useAuth.mockReturnValue({
+      currentUser: { displayName: 'Test User' },
+    });
+
+    render(<Header />);
+
+    const profileLink = screen.getByText('Test User').closest('a');
+    expect(profileLink).toHaveAttribute('href', '/profile');
+  });
+
+  // Test 20: Verifies useEffect hides private dialogue when currentUser changes
+  test('useEffect hides dialog when currentUser changes', () => {
+    // Start with authenticated user
+    useAuth.mockReturnValue({
+      currentUser: { displayName: 'Test User' },
+    });
+
+    const { rerender } = render(<Header />);
+
+    // Show the confirmation dialog
+    const logOutButton = screen.getByText('Log Out');
+    fireEvent.click(logOutButton);
+    expect(screen.getByTestId('confirm-logout')).toBeInTheDocument();
+
+    // Change currentUser (simulate logout)
+    useAuth.mockReturnValue({
+      currentUser: null,
+    });
+
+    // Re-render with new auth state
+    rerender(<Header />);
+
+    // Dialog should be hidden due to useEffect
+    expect(screen.queryByTestId('confirm-logout')).not.toBeInTheDocument();
   });
 });
