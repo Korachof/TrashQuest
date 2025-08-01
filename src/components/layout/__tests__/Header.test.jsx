@@ -25,7 +25,17 @@ vi.mock('../../firebase', () => ({
 }));
 
 vi.mock('../../shared/ConfirmLogout', () => ({
-  default: () => <div data-testid="confirm-logout">Confirm Logout</div>,
+  default: ({ onConfirm, onCancel }) => (
+    <div data-testid="confirm-logout">
+      <p>Confirm Logout</p>
+      <button onClick={onConfirm} data-testid="confirm-button">
+        Yes
+      </button>
+      <button onClick={onCancel} data-testid="cancel-button">
+        No
+      </button>
+    </div>
+  ),
 }));
 
 describe('Header', () => {
@@ -126,5 +136,41 @@ describe('Header', () => {
 
     expect(screen.getByText('Confirm Logout')).toBeInTheDocument();
     expect(screen.getByTestId('confirm-logout')).toBeInTheDocument();
+  });
+
+  // Test 12: Verifies Cancel dialogue shows after clicking Log Out
+  test('cancel dialogue option DOES show AFTER click', () => {
+    useAuth.mockReturnValue({
+      currentUser: { displayName: 'Test User' },
+    });
+
+    render(<Header />);
+
+    const logOutButton = screen.getByText('Log Out');
+    fireEvent.click(logOutButton);
+
+    expect(screen.getByTestId('cancel-button')).toBeInTheDocument();
+  });
+
+  // Test 13: Verifies the log out confirmation dialogue hides after clicking Cancel
+  test('clicking cancel hides confirmation dialog', () => {
+    useAuth.mockReturnValue({
+      currentUser: { displayName: 'Test User' },
+    });
+
+    render(<Header />);
+
+    // Show the dialog
+    const logOutButton = screen.getByText('Log Out');
+    fireEvent.click(logOutButton);
+
+    // Click cancel
+    const cancelButton = screen.getByTestId('cancel-button');
+    fireEvent.click(cancelButton);
+
+    // Dialog should be hidden
+    expect(screen.queryByTestId('confirm-logout')).not.toBeInTheDocument();
+    expect(screen.queryByTestId('confirm-button')).not.toBeInTheDocument();
+    expect(screen.queryByTestId('cancel-button')).not.toBeInTheDocument();
   });
 });
