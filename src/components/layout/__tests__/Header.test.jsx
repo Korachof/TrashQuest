@@ -65,7 +65,16 @@ describe('Header', () => {
     expect(screen.getByText('Sign In')).toBeInTheDocument();
   });
 
-  // Test 6: Verifies that the Log Out button appears when authenticated
+  // Test 6: Verifies that the logo links to home when not authenticated
+  test('logo links to home when not authenticated', () => {
+    useAuth.mockReturnValue({ currentUser: null });
+
+    render(<Header />);
+    const logoLink = screen.getByText('TrashQuest ♻️').closest('a');
+    expect(logoLink).toHaveAttribute('href', '/');
+  });
+
+  // Test 7: Verifies that the Log Out button appears when authenticated
   test('log out button shows when authenticated', () => {
     useAuth.mockReturnValue({
       currentUser: { displayName: 'Test User' },
@@ -75,7 +84,7 @@ describe('Header', () => {
     expect(screen.getByText('Log Out')).toBeInTheDocument();
   });
 
-  // Test 7: Verifies that the user name appears when authenticated
+  // Test 8: Verifies that the user name appears when authenticated
   test('user name shows when authenticated', () => {
     useAuth.mockReturnValue({
       currentUser: { displayName: 'Test User' },
@@ -83,5 +92,16 @@ describe('Header', () => {
 
     render(<Header />);
     expect(screen.getByText('Test User')).toBeInTheDocument();
+  });
+
+  // Test 9: Verifies that the logo links to dashboard when authenticated
+  test('logo links to dashboard when authenticated', () => {
+    useAuth.mockReturnValue({
+      currentUser: { displayName: 'Test User' },
+    });
+
+    render(<Header />);
+    const logoLink = screen.getByText('TrashQuest ♻️').closest('a');
+    expect(logoLink).toHaveAttribute('href', '/dashboard');
   });
 });
