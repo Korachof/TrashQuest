@@ -89,4 +89,35 @@ describe('AuthContext', () => {
       expect(screen.getByTestId('loading')).toHaveTextContent('Done');
     });
   });
+
+  // Test 4: Verifies that currentUser updates when Firebase returns an authenticated user
+  test('updates currentUser when Firebase returns authenticated user', async () => {
+    let authCallback;
+
+    // Capture the callback function passed to onAuthStateChanged
+    onAuthStateChanged.mockImplementation((auth, callback) => {
+      authCallback = callback;
+      return mockUnsubscribe;
+    });
+
+    render(
+      <AuthProvider>
+        <TestComponent />
+      </AuthProvider>
+    );
+
+    // Initially should show no user
+    expect(screen.getByTestId('user')).toHaveTextContent('No user');
+
+    // Simulate Firebase returning an authenticated user
+    const mockUser = { displayName: 'Test User', uid: '123' };
+
+    // use act() wrapper to tell React that the update is intentional
+    await act(async () => {
+      authCallback(mockUser);
+    });
+
+    // Should now show user exists
+    expect(screen.getByTestId('user')).toHaveTextContent('User exists');
+  });
 });
