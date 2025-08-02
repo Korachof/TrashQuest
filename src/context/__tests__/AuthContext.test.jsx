@@ -120,4 +120,35 @@ describe('AuthContext', () => {
     // Should now show user exists
     expect(screen.getByTestId('user')).toHaveTextContent('User exists');
   });
+
+  // Test 5: Verifies that unsubscribe function is called when AuthProvider unmounts
+  test('calls unsubscribe function on unmount', () => {
+    const { unmount } = render(
+      <AuthProvider>
+        <TestComponent />
+      </AuthProvider>
+    );
+
+    // Verify Firebase listener was set up
+    expect(onAuthStateChanged).toHaveBeenCalledTimes(1);
+
+    // Unmount the component
+    unmount();
+
+    // Verify cleanup function was called
+    expect(mockUnsubscribe).toHaveBeenCalledTimes(1);
+  });
+
+  // Test 6: Verifies that useAuth throws error when used outside AuthProvider
+  test('useAuth throws error when used outside AuthProvider', () => {
+    // Suppress console.error for this test since we expect an error
+    const consoleSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
+
+    expect(() => {
+      render(<TestComponent />);
+    }).toThrow();
+
+    // Restore console.error
+    consoleSpy.mockRestore();
+  });
 });
