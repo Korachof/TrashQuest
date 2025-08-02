@@ -85,9 +85,13 @@ describe('ForgotPasswordModal', () => {
       )
     ).toBeInTheDocument();
   });
+
   // Test 6: Verifies error handling is working when sending an email fails
   test('displays error message when email sending fails', async () => {
+    // Add a spy so the error console message doesn't show during tests
+    const consoleSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
     const errorMessage = 'User not found';
+
     sendPasswordResetEmail.mockRejectedValueOnce(new Error(errorMessage));
 
     render(<ForgotPasswordModal {...defaultProps} />);
@@ -101,6 +105,9 @@ describe('ForgotPasswordModal', () => {
     await waitFor(() => {
       expect(screen.getByText(errorMessage)).toBeInTheDocument();
     });
+
+    // Restore console.error
+    consoleSpy.mockRestore();
   });
 
   // Test 7: Verifies that the loading state fires during email sending
