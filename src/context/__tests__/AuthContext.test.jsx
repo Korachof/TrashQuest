@@ -1,5 +1,11 @@
 import React from 'react';
-import { render, screen, waitFor, act } from '@testing-library/react';
+import {
+  render,
+  screen,
+  waitFor,
+  act,
+  fireEvent,
+} from '@testing-library/react';
 import { vi } from 'vitest';
 import { useAuth, AuthProvider } from '../AuthContext';
 import { onAuthStateChanged } from 'firebase/auth';
@@ -21,11 +27,17 @@ vi.mock('../../firebase', () => ({
 /* Simple test component
 React Context requires a component to test */
 function TestComponent() {
-  const { currentUser, authLoading } = useAuth();
+  const { currentUser, authLoading, setCurrentUser } = useAuth();
   return (
     <div>
       <span data-testid="user">{currentUser ? 'User exists' : 'No user'}</span>
       <span data-testid="loading">{authLoading ? 'Loading' : 'Done'}</span>
+      <button
+        onClick={() => setCurrentUser({ displayName: 'Manual User' })}
+        data-testid="set-user-button"
+      >
+        Set User
+      </button>
     </div>
   );
 }
@@ -150,5 +162,36 @@ describe('AuthContext', () => {
 
     // Restore console.error
     consoleSpy.mockRestore();
+  });
+
+  // Test 7: Verifies that no user is shown initially
+  test('currentUser is properly initialized as no user', async () => {
+    render(
+      <AuthProvider>
+        <TestComponent />
+      </AuthProvider>
+    );
+
+    // Initially should show no user
+    expect(screen.getByTestId('user')).toHaveTextContent('No user');
+  });
+
+  // Test 8: Verifies that setCurrentUser function updates user based on context
+  test('setCurrentUser updates the user context state', async () => {
+    render(
+      <AuthProvider>
+        <TestComponent />
+      </AuthProvider>
+    );
+
+    // Click button to set user manually
+    const setUserButton = screen.getByTestId('set-user-button');
+
+    await act(async () => {
+      fireEvent.click(setUserButton);
+    });
+
+    // Should now show user exists
+    expect(screen.getByTestId('user')).toHaveTextContent('User exists');
   });
 });
