@@ -84,7 +84,7 @@ describe('AuthContext', () => {
       authCallback(null);
     });
 
-    // Loading should now be false
+    // Loading should now be false, and should be labeled Done.
     await waitFor(() => {
       expect(screen.getByTestId('loading')).toHaveTextContent('Done');
     });
