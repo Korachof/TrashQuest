@@ -377,7 +377,7 @@ This changelog documents key updates to the TrashQuest project. It follows seman
 
 ### Added
 
-- Vitest testing suite for `Header.jsx`
+- Vitest testing suites for `Footer.jsx` and `Header.jsx`
 
 ### Fixed
 
