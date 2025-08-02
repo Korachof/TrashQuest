@@ -373,11 +373,17 @@ This changelog documents key updates to the TrashQuest project. It follows seman
 - `src/` scaffolding with `/components`, `/pages`, etc.
 - MVP feature implementation: submission form, EcoPack draw, streak logic
 
-## [0.2.4] - 2025-08-01
+## [0.2.4] - 2025-08-01 - 2025-08-02
 
 ### Added
 
-- Vitest testing suites for `Footer.jsx` and `Header.jsx`
+- Vitest testing suites for `Footer.jsx`, `Header.jsx`, and `AuthContext.jsx`
+
+### Changed
+
+- Removed an old firebase.js file that had no content inside of it from original scaffold
+- Added a spy call to `ForgotPasswordModal.test.jsx` inside of **Test 6** to avoid the error console log from showing during testing.
+- Deleted a redundant `context` folder (from `root`), including deleting an internal `AuthProvider.jsx` file. I checked through imports and files, and found no reference to it. It was likely created during initial scaffolding and then forgotten about as I created more files and made `src/context/AuthContext.jsx`
 
 ### Fixed
 
