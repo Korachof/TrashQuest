@@ -373,6 +373,18 @@ This changelog documents key updates to the TrashQuest project. It follows seman
 - `src/` scaffolding with `/components`, `/pages`, etc.
 - MVP feature implementation: submission form, EcoPack draw, streak logic
 
+## [0.2.4] - 2025-08-01
+
+### Added
+
+- Vitest testing suite for `Header.jsx`
+
+### Fixed
+
+- Refactored files to use default export directly
+- Debugged and fixed testing suite issues for `Header.jsx`
+  - Realized that some of the previous issues with mocks had to do with imports not quite matching.
+
 ---
 
 > ✏️ Tip: You can use GitHub’s release tagging to link each version later (e.g. via `git tag v0.1.0`)
