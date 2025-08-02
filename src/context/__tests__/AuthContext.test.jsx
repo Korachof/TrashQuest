@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor, act } from '@testing-library/react';
 import { vi } from 'vitest';
 import { useAuth, AuthProvider } from '../AuthContext';
 import { onAuthStateChanged } from 'firebase/auth';
@@ -45,5 +45,48 @@ describe('AuthContext', () => {
 
     expect(screen.getByTestId('user')).toHaveTextContent('No user');
     expect(screen.getByTestId('loading')).toHaveTextContent('Loading');
+  });
+
+  // Test 2: Verifies that onAuthStateChanged is called when AuthProvider mounts
+  test('calls onAuthStateChanged on mount', () => {
+    render(
+      <AuthProvider>
+        <TestComponent />
+      </AuthProvider>
+    );
+
+    expect(onAuthStateChanged).toHaveBeenCalledTimes(1);
+    expect(onAuthStateChanged).toHaveBeenCalledWith({}, expect.any(Function));
+  });
+
+  // Test 3: Verifies that authLoading becomes false after Firebase responds
+  test('sets authLoading to false after Firebase responds', async () => {
+    let authCallback;
+
+    // Capture the callback function passed to onAuthStateChanged
+    onAuthStateChanged.mockImplementation((auth, callback) => {
+      authCallback = callback;
+      return mockUnsubscribe;
+    });
+
+    render(
+      <AuthProvider>
+        <TestComponent />
+      </AuthProvider>
+    );
+
+    // Initially should be loading
+    expect(screen.getByTestId('loading')).toHaveTextContent('Loading');
+
+    /* Simulate Firebase responding (with or without a user) - wrapped in act()
+       act() wrapper tells React that this update is intentional */
+    await act(async () => {
+      authCallback(null);
+    });
+
+    // Loading should now be false
+    await waitFor(() => {
+      expect(screen.getByTestId('loading')).toHaveTextContent('Done');
+    });
   });
 });
