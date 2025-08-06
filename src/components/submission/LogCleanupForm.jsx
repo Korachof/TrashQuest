@@ -1,1 +1,225 @@
 // UI for user "cleanup" entries
+// Form for users to log their cleanup activities
+import React, { useState } from 'react';
+import FormGroup from '../shared/FormGroup';
+import FormButton from '../shared/FormButton';
+import TrashTypeSelect from './TrashTypeSelect';
+import { formContainer } from '../../styles/forms';
+
+// Points values for each size
+const POINTS_VALUES = {
+  'Single Small Item': 3,
+  'Single Large Item': 10,
+  'Grocery Bag (~4 gallons)': 60,
+  'Standard Garbage Bag (~13 gallons)': 180,
+  'Commercial Garbage Bag (~30 gallons)': 450,
+};
+
+// Cleanup types with educational info
+const CLEANUP_TYPES = [
+  { value: 'General Trash', label: 'General Trash' },
+  { value: 'General Recycling', label: 'General Recycling' },
+  { value: 'Electronics Recycling', label: 'Electronics Recycling' },
+  {
+    value: 'Hazardous Waste Disposal',
+    label: 'Hazardous Waste Disposal ⚠️',
+    warning: true,
+  },
+];
+
+// Area options
+const AREA_OPTIONS = ['Downtown', 'Residential', 'Park', 'Highway', 'Beach'];
+
+export default function LogCleanupForm() {
+  const [formData, setFormData] = useState({
+    // Today's date as default
+    date: new Date().toISOString().split('T')[0],
+    size: '',
+    type: '',
+    area: '',
+    city: '',
+    state: '',
+  });
+  const [isLoading, setIsLoading] = useState(false);
+
+  // Calculate points based on selected size
+  const calculatePoints = () => {
+    return POINTS_VALUES[formData.size] || 0;
+  };
+
+  // Check if form is valid (all required fields filled)
+  const isFormValid = () => {
+    return formData.date && formData.size && formData.type && formData.area;
+  };
+
+  // Handle input changes
+  const handleInputChange = (field, value) => {
+    setFormData((prev) => ({
+      ...prev,
+      [field]: value,
+    }));
+  };
+
+  // Handle form submission
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (!isFormValid()) {
+      alert('Please fill in all required fields.');
+      return;
+    }
+
+    setIsLoading(true);
+
+    try {
+      // TODO: Save to Firestore
+      const cleanupEntry = {
+        ...formData,
+        pointsEarned: calculatePoints(),
+        timestamp: new Date(),
+      };
+
+      console.log('Cleanup entry to save:', cleanupEntry);
+
+      // TODO: Update user's total points
+      // TODO: Navigate to dashboard with success message
+
+      alert('Cleanup logged successfully!');
+    } catch (error) {
+      console.error('Error logging cleanup:', error);
+      alert('Error logging cleanup. Please try again.');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleCancel = () => {
+    // TODO: Navigate back to dashboard or previous page
+    console.log('Cancel clicked');
+  };
+
+  return (
+    <div>
+      <h1>Log Your Cleanup 🌱</h1>
+      <p>Record your cleanup activity and earn Eco Points!</p>
+
+      <form onSubmit={handleSubmit} style={formContainer}>
+        {/* Date Field */}
+        <FormGroup
+          id="cleanup-date"
+          label="Date*"
+          type="date"
+          value={formData.date}
+          onChange={(e) => handleInputChange('date', e.target.value)}
+          required
+        />
+
+        {/* Size Selection */}
+        <FormGroup
+          id="cleanup-size"
+          label="Cleanup Size*"
+          type="select"
+          value={formData.size}
+          onChange={(e) => handleInputChange('size', e.target.value)}
+          required
+        >
+          <option value="">Select size...</option>
+          {Object.keys(POINTS_VALUES).map((size) => (
+            <option key={size} value={size}>
+              {size} ({POINTS_VALUES[size]} points)
+            </option>
+          ))}
+        </FormGroup>
+
+        {/* Type Selection */}
+        <TrashTypeSelect
+          value={formData.type}
+          onChange={(e) => handleInputChange('type', e.target.value)}
+          required={true}
+        />
+
+        {/* Area Selection */}
+        <FormGroup
+          id="cleanup-area"
+          label="General Area*"
+          type="select"
+          value={formData.area}
+          onChange={(e) => handleInputChange('area', e.target.value)}
+          required
+        >
+          <option value="">Select area...</option>
+          {AREA_OPTIONS.map((area) => (
+            <option key={area} value={area}>
+              {area}
+            </option>
+          ))}
+        </FormGroup>
+
+        {/* City (Optional) */}
+        <FormGroup
+          id="cleanup-city"
+          label="City (Optional)"
+          type="text"
+          value={formData.city}
+          onChange={(e) => handleInputChange('city', e.target.value)}
+          placeholder="Enter city name"
+        />
+
+        {/* State (Optional) */}
+        <FormGroup
+          id="cleanup-state"
+          label="State (Optional)"
+          type="text"
+          value={formData.state}
+          onChange={(e) => handleInputChange('state', e.target.value)}
+          placeholder="Enter state"
+        />
+
+        {/* Points Preview */}
+        {formData.size && (
+          <div
+            style={{
+              background: '#d4edda',
+              border: '1px solid #c3e6cb',
+              padding: '1rem',
+              borderRadius: '4px',
+              marginBottom: '1rem',
+              textAlign: 'center',
+            }}
+          >
+            <h3 style={{ margin: 0, color: '#155724' }}>
+              🎉 You'll earn {calculatePoints()} Eco Points!
+            </h3>
+          </div>
+        )}
+
+        {/* Form Buttons */}
+        <div style={{ display: 'flex', gap: '1rem', marginTop: '2rem' }}>
+          <FormButton
+            isLoading={isLoading}
+            loadingText="Logging Cleanup..."
+            disabled={!isFormValid()}
+            type="submit"
+          >
+            Log Cleanup
+          </FormButton>
+
+          <button
+            type="button"
+            onClick={handleCancel}
+            style={{
+              padding: '0.75rem 1.5rem',
+              background: '#6c757d',
+              color: 'white',
+              border: 'none',
+              borderRadius: '4px',
+              cursor: 'pointer',
+            }}
+          >
+            Cancel
+          </button>
+        </div>
+      </form>
+    </div>
+  );
+}
