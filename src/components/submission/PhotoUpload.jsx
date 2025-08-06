@@ -1,1 +1,0 @@
-// Camera or file input to upload photo for trash validation
