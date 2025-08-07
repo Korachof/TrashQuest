@@ -51,7 +51,14 @@ function App() {
               </ProtectedRoute>
             }
           />
-          <Route path="/log-cleanup" element={<LogCleanupPage />} />
+          <Route
+            path="/log-cleanup"
+            element={
+              <ProtectedRoute>
+                <LogCleanupPage />
+              </ProtectedRoute>
+            }
+          />
 
           {/* Footer routes */}
           <Route path="/terms" element={<TermsPage />} />
