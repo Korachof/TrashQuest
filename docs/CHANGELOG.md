@@ -364,15 +364,6 @@ This changelog documents key updates to the TrashQuest project. It follows seman
 
 - Added an issue to the **Github Repository** and emailed Firebase support due to Forgot Password emails connecting to old API Browser key and not working correctly. Tried to debug and find settings in Firebase and Google Consoles, but at this point I need support to figure out how to update to new API key.
 
----
-
-### Planned (Upcoming)
-
-- `DATA_MODELS.md` with Firestore schema plans
-- Firebase project setup (`Auth`, `Firestore`, `Storage`)
-- `src/` scaffolding with `/components`, `/pages`, etc.
-- MVP feature implementation: submission form, EcoPack draw, streak logic
-
 ## [0.2.4] - 2025-08-01 - 2025-08-02
 
 ### Added
@@ -390,6 +381,41 @@ This changelog documents key updates to the TrashQuest project. It follows seman
 - Refactored files to use default export directly
 - Debugged and fixed testing suite issues for `Header.jsx`
   - Realized that some of the previous issues with mocks had to do with imports not quite matching.
+
+## [0.2.5] - 2025-08-03 - 2025-08-07
+
+### Added
+
+- Created a LogCleanup nav page
+- Added the `log-cleanup` route to `App.jsx`
+- Created a LogCleanupForm.jsx, still untested until pages are connected
+- Added `LogCleanupPage` to the `Header`, making it only visible for authenticated users.
+- Added a `ProtectedRoute` wrapper to `log-cleanup`'s navigation, preventing users from navigating to that page if they aren't authenticated. Redirects to `/login`
+- Created `PublicOnlyRoute.jsx` file and placed it in `components/shared`. Works similar to `ProtectedRoute.jsx`.
+
+### Changed
+
+- Deleted submissions based scaffolded files that were from an earlier design
+- Redesigned the way **log cleanup submissions** will be logged, including removing `UploadPhoto`
+- Removed imports for `useRedirectIfAuthenticated` from `SignUpPage` and `LoginPage`
+- Removed function calls for **useRedirectIfAuthenticated** from `SignUpPage` and `LoginPage`.
+- Imported and wrapped `PublicOnlyRoute` in `App.jsx` for **/signup** and **login**
+- Deleted `useRedirectIfAuthenticated` from the **components/hooks**. Ran a script beforehand to make sure I had removed all imports and references beforehand.
+
+### Fixed
+
+- A few typos that were causing some route and nav bugs for `log-cleanup`
+- Changed **PublicOnlyRoute** function in `PublicOnlyRoute.jsx` to **PublicOnlyRoute**
+- Fixed inconsistent re-route handling procedures. Standardized to a route wrapper instead of using a hook. Updated any re-routes needed to follow this logic.
+
+---
+
+### Planned (Upcoming)
+
+- `DATA_MODELS.md` with Firestore schema plans
+- Firebase project setup (`Auth`, `Firestore`, `Storage`)
+- `src/` scaffolding with `/components`, `/pages`, etc.
+- MVP feature implementation: submission form, EcoPack draw, streak logic
 
 ---
 
