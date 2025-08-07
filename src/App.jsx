@@ -17,6 +17,7 @@ import DashboardPage from './pages/DashboardPage';
 import ProfilePage from './pages/ProfilePage';
 import LogCleanupPage from './pages/LogCleanupPage';
 import ProtectedRoute from './components/shared/ProtectedRoute';
+import PublicOnlyRoute from './components/shared/PublicOnlyRoute';
 
 function App() {
   return (
@@ -35,7 +36,14 @@ function App() {
           />
 
           {/* User Login/Authentication routes */}
-          <Route path="/login" element={<LoginPage />} />
+          <Route
+            path="/login"
+            element={
+              <PublicOnlyRoute>
+                <LoginPage />
+              </PublicOnlyRoute>
+            }
+          />
           <Route path="/signup" element={<SignupPage />} />
 
           {/* Header routes */}

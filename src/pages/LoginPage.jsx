@@ -8,7 +8,6 @@ import FormButton from '../components/shared/FormButton';
 import { formContainer } from '../styles/forms';
 import { linkNavigationText, headingTextStyle } from '../styles/typography';
 import { redirectAfterSuccess } from '../utils/navigation';
-import { useRedirectIfAuthenticated } from '../hooks/useRedirectIfAuthenticated';
 import ForgotPasswordModal from '../components/shared/ForgotPasswordModal';
 
 export default function LoginPage() {
@@ -20,9 +19,6 @@ export default function LoginPage() {
   const [isLoading, setIsLoading] = useState(false);
   const [showForgotPassword, setShowForgotPassword] = useState(false);
   const navigate = useNavigate();
-
-  // If user is logged in, redirect to /dashboard
-  useRedirectIfAuthenticated();
 
   // prevent reloading of page, and instead handle submission manually with firebase.
   const handleSubmit = async (e) => {

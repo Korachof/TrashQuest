@@ -4,7 +4,7 @@ import { Navigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import Loader from './Loader';
 
-export default function RedirectIfAuthenticated({
+export default function PublicOnlyRoute({
   children,
   redirectTo = '/dashboard',
 }) {
