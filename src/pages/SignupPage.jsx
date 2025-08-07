@@ -9,7 +9,6 @@ import { formContainer } from '../styles/forms';
 import { linkNavigationText, headingTextStyle } from '../styles/typography';
 import { isStrongPassword, clearMessages } from '../utils/validation';
 import { redirectAfterSuccess } from '../utils/navigation';
-import { useRedirectIfAuthenticated } from '../hooks/useRedirectIfAuthenticated';
 
 export default function SignupPage() {
   const [displayName, setDisplayName] = useState('');
@@ -20,9 +19,6 @@ export default function SignupPage() {
   const { setCurrentUser } = useAuth();
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
-
-  // If user is logged in, redirect to /dashboard
-  useRedirectIfAuthenticated();
 
   // prevent reloading of page, and instead handle submission manually with firebase.
   const handleSubmit = async (e) => {

@@ -44,7 +44,14 @@ function App() {
               </PublicOnlyRoute>
             }
           />
-          <Route path="/signup" element={<SignupPage />} />
+          <Route
+            path="/signup"
+            element={
+              <PublicOnlyRoute>
+                <SignupPage />
+              </PublicOnlyRoute>
+            }
+          />
 
           {/* Header routes */}
           <Route path="/how-it-works" element={<HowItWorksPage />} />
