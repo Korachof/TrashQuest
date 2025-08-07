@@ -43,6 +43,9 @@ export default function Header() {
         <Link to="/how-it-works">How It Works</Link>
         <Link to="/resources">Resources</Link>
 
+        {/* Add Log Cleanup link only when authenticated */}
+        {currentUser && <Link to="/log-cleanup">Log Cleanup</Link>}
+
         {currentUser ? (
           <>
             {/* Link to profile page only shows on log in */}
