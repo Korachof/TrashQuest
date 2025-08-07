@@ -25,7 +25,14 @@ function App() {
       <PageLayout>
         <Routes>
           {/* Landing page routes */}
-          <Route path="/" element={<WelcomePage />} />
+          <Route
+            path="/"
+            element={
+              <PublicOnlyRoute>
+                <WelcomePage />{' '}
+              </PublicOnlyRoute>
+            }
+          />
           <Route
             path="/dashboard"
             element={

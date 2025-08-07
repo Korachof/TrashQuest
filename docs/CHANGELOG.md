@@ -401,6 +401,7 @@ This changelog documents key updates to the TrashQuest project. It follows seman
 - Removed function calls for **useRedirectIfAuthenticated** from `SignUpPage` and `LoginPage`.
 - Imported and wrapped `PublicOnlyRoute` in `App.jsx` for **/signup** and **login**
 - Deleted `useRedirectIfAuthenticated` from the **components/hooks**. Ran a script beforehand to make sure I had removed all imports and references beforehand.
+- Added a `PublicOnlyRoute` wrapper to the `/` **Welcome Page** route, so it will navigate an authorized user to the dashboard instead.
 
 ### Fixed
 
