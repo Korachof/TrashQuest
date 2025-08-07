@@ -15,6 +15,7 @@ import HowItWorksPage from './pages/HowItWorksPage';
 import ResourcesPage from './pages/ResourcesPage';
 import DashboardPage from './pages/DashboardPage';
 import ProfilePage from './pages/ProfilePage';
+import LogCleanupPage from './pages/LogCleanupPage';
 import ProtectedRoute from './components/shared/ProtectedRoute';
 
 function App() {
@@ -50,7 +51,7 @@ function App() {
               </ProtectedRoute>
             }
           />
-          <route path="/log-cleanup" element={<LogCleanupPage />} />
+          <Route path="/log-cleanup" element={<LogCleanupPage />} />
 
           {/* Footer routes */}
           <Route path="/terms" element={<TermsPage />} />
