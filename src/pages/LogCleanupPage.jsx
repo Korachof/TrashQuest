@@ -1,6 +1,7 @@
 // Navigation page for user to log their cleanup info and gain points
 import React, { useEffect } from 'react';
 import { headingTextStyle } from '../styles/typography';
+import LogCleanupForm from '../components/submission/LogCleanupForm';
 
 export default function LogCleanupPage() {
   const lastModifiedDate = new Date('07/10/2025');
@@ -18,9 +19,7 @@ export default function LogCleanupPage() {
       <p>
         This is where you'll log your cleanup activities and earn Eco Points!
       </p>
-      <p>
-        <em>Form coming soon...</em>
-      </p>
+      <LogCleanupForm />
     </>
   );
 }

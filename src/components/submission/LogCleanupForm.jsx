@@ -99,10 +99,7 @@ export default function LogCleanupForm() {
   };
 
   return (
-    <div>
-      <h1>Log Your Cleanup 🌱</h1>
-      <p>Record your cleanup activity and earn Eco Points!</p>
-
+    <>
       <form onSubmit={handleSubmit} style={formContainer}>
         {/* Date Field */}
         <FormGroup
@@ -204,22 +201,11 @@ export default function LogCleanupForm() {
             Log Cleanup
           </FormButton>
 
-          <button
-            type="button"
-            onClick={handleCancel}
-            style={{
-              padding: '0.75rem 1.5rem',
-              background: '#6c757d',
-              color: 'white',
-              border: 'none',
-              borderRadius: '4px',
-              cursor: 'pointer',
-            }}
-          >
+          <FormButton type="button" onClick={handleCancel}>
             Cancel
-          </button>
+          </FormButton>
         </div>
       </form>
-    </div>
+    </>
   );
 }
