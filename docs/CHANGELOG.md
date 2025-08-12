@@ -411,6 +411,19 @@ This changelog documents key updates to the TrashQuest project. It follows seman
 
 ---
 
+## [0.2.6] - 2025-08-12
+
+### Added
+
+- Created the Firebase firestore database
+- Created structure for **users**
+- Created sturcture for **cleanupEntries**
+
+### Changed
+
+- Changed firestore security rules from strict to allow users to change access and change their entries in the database, but no one elses'
+- Added **Firestore initalization** in my `firebase.js` file.
+
 ### Planned (Upcoming)
 
 - `DATA_MODELS.md` with Firestore schema plans
