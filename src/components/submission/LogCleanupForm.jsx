@@ -1,6 +1,7 @@
 // UI for user "cleanup" entries
 // Form for users to log their cleanup activities
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
   collection,
   addDoc,
@@ -43,6 +44,7 @@ const AREA_OPTIONS = ['Downtown', 'Residential', 'Park', 'Highway', 'Beach'];
 
 export default function LogCleanupForm() {
   const { currentUser } = useAuth();
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     // Today's date as default
     date: new Date().toISOString().split('T')[0],
@@ -126,6 +128,7 @@ export default function LogCleanupForm() {
       alert(
         `Cleanup logged successfully! You earned ${pointsEarned} Eco Points!`
       );
+      navigate('/dashboard');
     } catch (error) {
       console.error('Error logging cleanup:', error);
       alert('Error logging cleanup. Please try again.');
@@ -135,7 +138,7 @@ export default function LogCleanupForm() {
   };
 
   const handleCancel = () => {
-    // TODO: Navigate back to dashboard or previous page
+    navigate('/dashboard');
     console.log('Cancel clicked');
   };
 
