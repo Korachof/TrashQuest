@@ -138,8 +138,19 @@ export default function LogCleanupForm() {
   };
 
   const handleCancel = () => {
-    navigate('/dashboard');
+    // Reset form to initial state
+    setFormData({
+      date: new Date().toISOString().split('T')[0], // Reset to today's date
+      size: '',
+      type: '',
+      area: '',
+      city: '',
+      state: '',
+    });
     console.log('Cancel clicked');
+
+    // Reset loading states just in case
+    setIsLoading(false);
   };
 
   return (
