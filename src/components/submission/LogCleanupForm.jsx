@@ -200,6 +200,7 @@ export default function LogCleanupForm() {
           type="text"
           value={formData.city}
           onChange={(e) => handleInputChange('city', e.target.value)}
+          required={false}
           placeholder="Enter city name"
         />
 
@@ -210,6 +211,7 @@ export default function LogCleanupForm() {
           type="text"
           value={formData.state}
           onChange={(e) => handleInputChange('state', e.target.value)}
+          required={false}
           placeholder="Enter state"
         />
 
