@@ -124,7 +124,7 @@ export default function LogCleanupForm() {
       }
 
       alert(
-        'Cleanup logged successfully! You earned ${pointsEarned} Eco Points!'
+        `Cleanup logged successfully! You earned ${pointsEarned} Eco Points!`
       );
     } catch (error) {
       console.error('Error logging cleanup:', error);
