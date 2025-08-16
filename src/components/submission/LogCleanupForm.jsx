@@ -1,10 +1,20 @@
 // UI for user "cleanup" entries
 // Form for users to log their cleanup activities
 import React, { useState } from 'react';
+import {
+  collection,
+  addDoc,
+  doc,
+  updateDoc,
+  getDoc,
+  increment,
+} from 'firebase/firestore';
+import { db } from '../../firebase';
 import FormGroup from '../shared/FormGroup';
 import FormButton from '../shared/FormButton';
 import TrashTypeSelect from './TrashTypeSelect';
 import { formContainer } from '../../styles/forms';
+import { useAuth } from '../../context/AuthContext';
 
 // Points values for each size
 const POINTS_VALUES = {
@@ -31,6 +41,7 @@ const CLEANUP_TYPES = [
 const AREA_OPTIONS = ['Downtown', 'Residential', 'Park', 'Highway', 'Beach'];
 
 export default function LogCleanupForm() {
+  const { currentUser } = useAuth();
   const [formData, setFormData] = useState({
     // Today's date as default
     date: new Date().toISOString().split('T')[0],
@@ -72,19 +83,33 @@ export default function LogCleanupForm() {
     setIsLoading(true);
 
     try {
-      // TODO: Save to Firestore
+      const pointsEarned = calculatePoints();
+      // save cleanup entry to Firestore
       const cleanupEntry = {
-        ...formData,
-        pointsEarned: calculatePoints(),
-        timestamp: new Date(),
+        userId: currentUser.uid,
+        date: formData.date,
+        size: formData.size,
+        type: formData.type,
+        area: formData.area,
+        city: formData.city || null,
+        state: formData.state || null,
+        pointsEarned: pointsEarned,
+        createdAt: new Date(),
       };
 
       console.log('Cleanup entry to save:', cleanupEntry);
 
-      // TODO: Update user's total points
-      // TODO: Navigate to dashboard with success message
+      await addDoc(collection(db, 'cleanupEntries'), cleanupEntry);
 
-      alert('Cleanup logged successfully!');
+      // Update user's total points
+      const userRef = doc(db, 'users', currentUser.uid);
+      await updateDoc(userRef, {
+        totalEcoPoints: increment(pointsEarned),
+      });
+
+      alert(
+        'Cleanup logged successfully! You earned ${pointsEarned} Eco Points!'
+      );
     } catch (error) {
       console.error('Error logging cleanup:', error);
       alert('Error logging cleanup. Please try again.');
