@@ -8,6 +8,7 @@ import {
   updateDoc,
   getDoc,
   increment,
+  setDoc,
 } from 'firebase/firestore';
 import { db } from '../../firebase';
 import FormGroup from '../shared/FormGroup';
@@ -103,9 +104,24 @@ export default function LogCleanupForm() {
 
       // Update user's total points
       const userRef = doc(db, 'users', currentUser.uid);
-      await updateDoc(userRef, {
-        totalEcoPoints: increment(pointsEarned),
-      });
+      const userDoc = await getDoc(userRef);
+
+      if (!userDoc.exists()) {
+        // Create user document if it doesn't exist
+        await setDoc(userRef, {
+          email: currentUser.email,
+          displayName: currentUser.displayName,
+          totalEcoPoints: pointsEarned,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        });
+      } else {
+        // Update the existing user document
+        await updateDoc(userRef, {
+          totalEcoPoints: increment(pointsEarned),
+          updatedAt: new Date(),
+        });
+      }
 
       alert(
         'Cleanup logged successfully! You earned ${pointsEarned} Eco Points!'
