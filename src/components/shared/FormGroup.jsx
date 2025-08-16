@@ -13,6 +13,7 @@ export default function FormGroup({
   onChange,
   required = true,
   id,
+  children,
 }) {
   return (
     // styling in src/styles/forms.js
@@ -20,14 +21,29 @@ export default function FormGroup({
       <label htmlFor={id} style={formGroupLabel}>
         {label}
       </label>
-      <input
-        id={id}
-        type={type}
-        value={value}
-        onChange={onChange}
-        required={required}
-        style={inputField}
-      />
+
+      {/* Render select dropdown if type is "select" */}
+      {type === 'select' ? (
+        <select
+          id={id}
+          value={value}
+          onChange={onChange}
+          required={required}
+          style={inputField}
+        >
+          {children}
+        </select>
+      ) : (
+        //Render inputs
+        <input
+          id={id}
+          type={type}
+          value={value}
+          onChange={onChange}
+          required={required}
+          style={inputField}
+        />
+      )}
     </div>
   );
 }
