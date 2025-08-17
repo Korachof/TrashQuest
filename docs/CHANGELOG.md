@@ -409,8 +409,6 @@ This changelog documents key updates to the TrashQuest project. It follows seman
 - Changed **PublicOnlyRoute** function in `PublicOnlyRoute.jsx` to **PublicOnlyRoute**
 - Fixed inconsistent re-route handling procedures. Standardized to a route wrapper instead of using a hook. Updated any re-routes needed to follow this logic.
 
----
-
 ## [0.2.6] - 2025-08-12
 
 ### Added
@@ -449,6 +447,8 @@ This changelog documents key updates to the TrashQuest project. It follows seman
 - Fixed bugs that were causing errors in submitting the `LogCleanupForm`
 - Fixed the variable from the alert message in `LogCleanupForm` that is supposed to show EcoPoints. Needed to change from regular single quotes to backticks.
 - Fixed a bug that was causing the city and state fields in `LogCleanupForm` to be required even though they weren't explictly set.
+
+---
 
 ### Planned (Upcoming)
 
