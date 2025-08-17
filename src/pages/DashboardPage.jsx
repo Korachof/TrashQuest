@@ -6,6 +6,7 @@ import { headingTextStyle } from '../styles/typography';
 import { useAuth } from '../context/AuthContext';
 import PointsDisplay from '../components/shared/PointsDisplay';
 import LogCleanupButton from '../components/navigation/LogCleanupButton';
+import CleanupEntriesList from '../components/eco/CleanupEntriesList';
 
 export default function DashboardPage() {
   // Grab the current user
@@ -36,6 +37,9 @@ export default function DashboardPage() {
 
       {/* Log Cleanup Button */}
       <LogCleanupButton />
+
+      {/* Recent Cleanup Entries */}
+      <CleanupEntriesList limitEntries={3} showViewAll={true} />
 
       <p>You're successfully signed in and redirected.</p>
       {/* Future: profile preview, eco stats, navigation */}
