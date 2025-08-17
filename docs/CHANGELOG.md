@@ -424,6 +424,32 @@ This changelog documents key updates to the TrashQuest project. It follows seman
 - Changed firestore security rules from strict to allow users to change access and change their entries in the database, but no one elses'
 - Added **Firestore initalization** in my `firebase.js` file.
 
+## [0.2.7] - 2025-08-16 - 2025-08-17
+
+### Added
+
+- Created a `PointsDisplay` reusable component with size props to make it reusable across a variety of display types and components.
+- Added code to `LogCleanupButton` to take props for sizing to make it reusable across pages and components.
+- Created a `buttonStyles` file that houses reusable styles for buttons across the app. Uses swiches for **size** (small, medium, large) and **color** (font and bg color - primary and secondary) to make it reusable across the app for different styles of buttons.
+
+### Changed
+
+- Added functionality to `LogCleanupForm` to calculate and store user points from logged cleanup entries.
+- Changed navigation for `LogCleanupForm` so that it navigates to user Dashboard after a completed entry, and resets the form when a user hits cancel.
+- Added a points visual to `DashboardPage` so user can see updated totals.
+- Renamed `LogTrashButton` to `LogCleanupButton`
+- Refactored `LogCleanupButton` to take in the styles from `buttonStyles` and make it more reusable. Has default parameters for sizing and color (large and primary).
+- Changed the `DashboardPage` to take in the `LogCleanupButton` with the changes.
+- Refactored `StartQuestButton` component to take in buttonStyles. I did not make this one as reusable, as it doesn't take in default parameters for sizing and color as I think it will only be used in one place.
+- Changed a few basic values in `buttonStyling` to match the original values in the original `StartQuestButton`.
+
+### Fixed
+
+- Fixed the dropdowns not showing up correctly in `LogCleanupForm`
+- Fixed bugs that were causing errors in submitting the `LogCleanupForm`
+- Fixed the variable from the alert message in `LogCleanupForm` that is supposed to show EcoPoints. Needed to change from regular single quotes to backticks.
+- Fixed a bug that was causing the city and state fields in `LogCleanupForm` to be required even though they weren't explictly set.
+
 ### Planned (Upcoming)
 
 - `DATA_MODELS.md` with Firestore schema plans
