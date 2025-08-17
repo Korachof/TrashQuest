@@ -429,6 +429,8 @@ This changelog documents key updates to the TrashQuest project. It follows seman
 - Created a `PointsDisplay` reusable component with size props to make it reusable across a variety of display types and components.
 - Added code to `LogCleanupButton` to take props for sizing to make it reusable across pages and components.
 - Created a `buttonStyles` file that houses reusable styles for buttons across the app. Uses swiches for **size** (small, medium, large) and **color** (font and bg color - primary and secondary) to make it reusable across the app for different styles of buttons.
+- Created `CleanupEntriesList.jsx`, an **Eco** component that shows user logged cleanup entries. Reusable so it can be truncated or show the entire list on a dedicated page.
+- An index to Firebase for **cleanup entries** that allows for ordering the entries by **desc**
 
 ### Changed
 
@@ -440,6 +442,7 @@ This changelog documents key updates to the TrashQuest project. It follows seman
 - Changed the `DashboardPage` to take in the `LogCleanupButton` with the changes.
 - Refactored `StartQuestButton` component to take in buttonStyles. I did not make this one as reusable, as it doesn't take in default parameters for sizing and color as I think it will only be used in one place.
 - Changed a few basic values in `buttonStyling` to match the original values in the original `StartQuestButton`.
+- Updated `DashboardPage` to take `CleanupEntries` list. Shows the last 3 entries and a view all button that will navigate to a dedicate entries page.
 
 ### Fixed
 
