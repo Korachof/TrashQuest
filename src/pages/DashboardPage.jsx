@@ -35,9 +35,7 @@ export default function DashboardPage() {
       />
 
       {/* Log Cleanup Button */}
-      <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
-        <LogCleanupButton size="large" />
-      </div>
+      <LogCleanupButton />
 
       <p>You're successfully signed in and redirected.</p>
       {/* Future: profile preview, eco stats, navigation */}

@@ -1,9 +1,11 @@
 // Prominent button for navigating to log cleanup page
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { getButtonStyle } from '../../styles/buttonStyles';
 
 export default function LogCleanupButton({
   size = 'large',
+  color = 'primary',
   style = {},
   text = 'Log New Cleanup',
 }) {
@@ -13,38 +15,7 @@ export default function LogCleanupButton({
     navigate('/log-cleanup');
   };
 
-  // Size-based styling
-  const getSizeStyles = () => {
-    switch (size) {
-      case 'small':
-        return {
-          padding: '0.5rem 1rem',
-          fontSize: '0.9rem',
-        };
-      case 'medium':
-        return {
-          padding: '0.75rem 1.5rem',
-          fontSize: '1rem',
-        };
-      case 'large':
-      default:
-        return {
-          padding: '1rem 2rem',
-          fontSize: '1.2rem',
-        };
-    }
-  };
-
-  const buttonStyle = {
-    background: '#28a745',
-    color: 'white',
-    border: 'none',
-    borderRadius: '8px',
-    cursor: 'pointer',
-    fontWeight: 'bold',
-    ...getSizeStyles(),
-    ...style,
-  };
+  const buttonStyle = getButtonStyle(size, color, style);
 
   return (
     <button onClick={handleClick} style={buttonStyle}>
