@@ -431,6 +431,7 @@ This changelog documents key updates to the TrashQuest project. It follows seman
 - Created a `buttonStyles` file that houses reusable styles for buttons across the app. Uses swiches for **size** (small, medium, large) and **color** (font and bg color - primary and secondary) to make it reusable across the app for different styles of buttons.
 - Created `CleanupEntriesList.jsx`, an **Eco** component that shows user logged cleanup entries. Reusable so it can be truncated or show the entire list on a dedicated page.
 - An index to Firebase for **cleanup entries** that allows for ordering the entries by **desc**
+- Created `CleanupEntriesListPage.jsx`, to house the complete entries list from an authorized user. Added the boilerplate code that all of my pages use, including calling `ProtectedRoute`. For now, the logic to connect to the user's entries isn't there just yet. Simple page first.
 
 ### Changed
 
@@ -443,6 +444,7 @@ This changelog documents key updates to the TrashQuest project. It follows seman
 - Refactored `StartQuestButton` component to take in buttonStyles. I did not make this one as reusable, as it doesn't take in default parameters for sizing and color as I think it will only be used in one place.
 - Changed a few basic values in `buttonStyling` to match the original values in the original `StartQuestButton`.
 - Updated `DashboardPage` to take `CleanupEntries` list. Shows the last 3 entries and a view all button that will navigate to a dedicate entries page.
+- Added the route to `App.jsx` for `CleanupEntriesListPage.jsx`.
 
 ### Fixed
 
@@ -459,7 +461,4 @@ This changelog documents key updates to the TrashQuest project. It follows seman
 - Firebase project setup (`Auth`, `Firestore`, `Storage`)
 - `src/` scaffolding with `/components`, `/pages`, etc.
 - MVP feature implementation: submission form, EcoPack draw, streak logic
-
----
-
-> ✏️ Tip: You can use GitHub’s release tagging to link each version later (e.g. via `git tag v0.1.0`)
+- Use GitHub’s release tagging to link each version later (e.g. via `git tag v0.1.0`)

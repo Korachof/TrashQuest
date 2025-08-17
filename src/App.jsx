@@ -18,6 +18,7 @@ import ProfilePage from './pages/ProfilePage';
 import LogCleanupPage from './pages/LogCleanupPage';
 import ProtectedRoute from './components/shared/ProtectedRoute';
 import PublicOnlyRoute from './components/shared/PublicOnlyRoute';
+import CleanupEntriesListPage from './pages/CleanupEntriesListPage';
 
 function App() {
   return (
@@ -42,7 +43,7 @@ function App() {
             }
           />
 
-          {/* User Login/Authentication routes */}
+          {/* User Login/Authentication Routes */}
           <Route
             path="/login"
             element={
@@ -64,7 +65,7 @@ function App() {
           <Route path="/how-it-works" element={<HowItWorksPage />} />
           <Route path="/resources" element={<ResourcesPage />} />
 
-          {/* Signed in Header routes */}
+          {/* Authorized Header Routes */}
           <Route
             path="/profile"
             element={
@@ -82,7 +83,17 @@ function App() {
             }
           />
 
-          {/* Footer routes */}
+          {/* Other Authorized Routes */}
+          <Route
+            path="/cleanup-entries"
+            element={
+              <ProtectedRoute>
+                <CleanupEntriesListPage />
+              </ProtectedRoute>
+            }
+          />
+
+          {/* Footer Routes */}
           <Route path="/terms" element={<TermsPage />} />
           <Route path="/privacy" element={<PrivacyPage />} />
           <Route path="/about" element={<AboutPage />} />
