@@ -1,25 +1,23 @@
 // Landing page button to start Questing
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { getButtonStyle } from '../../styles/buttonStyles';
 
-export default function StartQuestButton() {
+export default function StartQuestButton({
+  style = {},
+  text = 'Start your TrashQuest Now!',
+}) {
   const navigate = useNavigate();
 
+  const handleClick = () => {
+    navigate('/login');
+  };
+
+  const buttonStyle = getButtonStyle(style);
+
   return (
-    <button
-      onClick={() => navigate('/login')}
-      style={{
-        padding: '1rem 2rem',
-        fontSize: '1.1rem',
-        backgroundColor: '#28a745',
-        color: '#fff',
-        border: 'none',
-        borderRadius: '8px',
-        cursor: 'pointer',
-        marginTop: '2rem',
-      }}
-    >
-      Start Your TrashQuest Now! 🚀
+    <button onClick={handleClick} style={buttonStyle}>
+      {text}
     </button>
   );
 }

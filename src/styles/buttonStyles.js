@@ -17,7 +17,7 @@ export const getSizeStyles = (size) => {
     default:
       return {
         padding: '1rem 2rem',
-        fontSize: '1.2rem',
+        fontSize: '1.1rem',
       };
   }
 };
@@ -53,7 +53,7 @@ export const getButtonStyle = (
     border: 'none',
     borderRadius: '8px',
     cursor: 'pointer',
-    fontWeight: 'bold',
+    fontWeight: 'normal',
     ...getSizeStyles(size),
     ...getColorStyles(color),
     ...customStyle,
