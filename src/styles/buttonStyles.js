@@ -29,18 +29,18 @@ export const getColorStyles = (color) => {
   switch (color) {
     case 'primary':
       return {
-        background: '#28a745',
-        color: 'white',
+        background: colors.primaryButton,
+        color: colors.buttonTextColor,
       };
     case 'secondary':
       return {
-        background: '#6c757d',
-        color: 'white',
+        background: colors.secondaryButton,
+        color: colors.buttonTextColor,
       };
     default:
       return {
-        background: '#28a745',
-        color: 'white',
+        background: colors.primaryButton,
+        color: colors.buttonTextColor,
       };
   }
 };
