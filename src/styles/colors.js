@@ -1,6 +1,6 @@
 // Colors file for reusable colors throughout the app
 
-export const color = {
+export const colors = {
   // App Primary Colors
   primaryButton: '#28a745',
 

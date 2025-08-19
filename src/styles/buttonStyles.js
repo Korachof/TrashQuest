@@ -1,3 +1,5 @@
+import { colors } from './colors';
+
 // Reusable button styling functions and base styles
 
 // Size-based styling function
