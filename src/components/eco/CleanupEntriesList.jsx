@@ -117,14 +117,7 @@ export default function CleanupEntriesList({
         <div style={{ textAlign: 'center', marginTop: '1rem' }}>
           <button
             onClick={() => (window.location.href = '/cleanup-entries')}
-            style={{
-              background: '#007bff',
-              color: 'white',
-              border: 'none',
-              padding: '0.5rem 1rem',
-              borderRadius: '4px',
-              cursor: 'pointer',
-            }}
+            style={getButtonStyle('medium', 'secondary')}
           >
             View All Entries
           </button>
