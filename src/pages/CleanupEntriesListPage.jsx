@@ -1,9 +1,13 @@
 // Dedicated page for all logged cleanup entries for a user
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { headingTextStyle } from '../styles/typography';
 import CleanupEntriesList from '../components/eco/CleanupEntriesList';
+import { getButtonStyle } from '../styles/buttonStyles';
 
 export default function CleanupEntriesListPage() {
+  // set default entries quantity
+  const [limitEntries, setLimitEntries] = useState(10);
+
   // Set page tab title
   useEffect(() => {
     document.title = 'Cleanup List | TrashQuest';
@@ -14,7 +18,19 @@ export default function CleanupEntriesListPage() {
       <h1 id="cleanup-entries-list-heading" style={headingTextStyle}>
         Cleanup Activities List
       </h1>
-      <CleanupEntriesList />
+      <CleanupEntriesList limitEntries={limitEntries} />
+
+      {/* Show All Button - only show if we're currently limiting */}
+      {limitEntries !== null && (
+        <div style={{ textAlign: 'center', marginTop: '2rem' }}>
+          <button
+            onClick={() => setLimitEntries(null)}
+            style={getButtonStyle('medium', 'primary')}
+          >
+            Show All Entries
+          </button>
+        </div>
+      )}
     </>
   );
 }

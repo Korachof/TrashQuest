@@ -92,25 +92,25 @@ This roadmap outlines the development phases of TrashQuest, from MVP to future e
 
 Implement form submission logic
 
-- [ ] Save cleanup entry to Firestore
-- [ ] Update user's total eco points
-- [ ] Handle success/error states
+- [x] Save cleanup entry to Firestore
+- [x] Update user's total eco points
+- [x] Handle success/error states
 
 Add navigation after submission
 
 - [ ] Redirect to dashboard with success message
-- [ ] Handle cancel button navigation
+- [x] Handle cancel button navigation
 
 #### Phase 3: Dashboard Enhancement
 
 Update Dashboard to display points
 
-- [ ] Show user's total eco points
-- [ ] Add prominent "Log Cleanup" button
+- [x] Show user's total eco points
+- [x] Add prominent "Log Cleanup" button
 
 Show recent cleanup entries (optional for MVP)
 
-- [ ] Display last few cleanups
+- [x] Display last few cleanups
 - [ ] Basic activity feed
 
 Add a collectibles structure and configure any needed security rules
@@ -122,3 +122,4 @@ Test the complete flow
 - [ ] User logs cleanup → points awarded → dashboard updates
 - [ ] Add error handling and loading states
 - [ ] Polish UI/UX
+- [ ] Add pagination to pages with many entries/results
