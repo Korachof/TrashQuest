@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { doc, getDoc } from 'firebase/firestore';
 import { db } from '../../firebase';
 import { useAuth } from '../../context/AuthContext';
+import { colors } from '../../styles/colors';
 
 export default function PointsDisplay({
   size = 'large', // 'large', 'medium', 'small'
@@ -51,7 +52,7 @@ export default function PointsDisplay({
     background: '#d4edda',
     borderRadius: '8px',
     textAlign: 'center',
-    color: '#155724',
+    color: colors.EcoDisplayTextColor,
     ...getSizeStyles(),
     ...style,
   };

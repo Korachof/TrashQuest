@@ -11,6 +11,7 @@ import {
 import { db } from '../../firebase';
 import { useAuth } from '../../context/AuthContext';
 import { getButtonStyle } from '../../styles/buttonStyles';
+import { colors } from '../../styles/colors';
 
 export default function CleanupEntriesList({
   limitEntries = null, // null = show all, number = limit results
@@ -101,7 +102,7 @@ export default function CleanupEntriesList({
                   background: '#d4edda',
                   padding: '0.25rem 0.5rem',
                   borderRadius: '4px',
-                  color: '#155724',
+                  color: colors.EcoDisplayTextColor,
                   fontWeight: 'bold',
                 }}
               >

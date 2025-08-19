@@ -10,6 +10,7 @@ export const colors = {
   // Text Colors
   headingTextColor: '#333',
   bodyTextColor: '#444',
+  EcoDisplayTextColor: '#155724',
   buttonTextColor: '#ffffff',
   navButtonTextColor: '#0000EE',
 };
