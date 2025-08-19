@@ -468,6 +468,8 @@ This changelog documents key updates to the TrashQuest project. It follows seman
 - Added the button styling component to `CleanupEntriesList` to take on reusable button styling.
 - Incorporated `colors.js` into `buttonStyles` so the buttons can draw from those colors directly instead of hardcoding.
 - Added a **navButtonTextColor** into `colors.js` and used that in `LoginPage.jsx` so the nav button color is reused.
+- Added a **ecoDisplayTextColor** option in colors, to be reused for Eco-text display items.
+- Imported `colors` to both `CleanupEntriesList` and `PointsDisplay` and used **ecoDisplayTextColor** for the points gained and displayed.
 
 ### Fixed
 
