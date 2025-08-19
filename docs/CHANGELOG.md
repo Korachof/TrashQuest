@@ -453,6 +453,26 @@ This changelog documents key updates to the TrashQuest project. It follows seman
 - Fixed the variable from the alert message in `LogCleanupForm` that is supposed to show EcoPoints. Needed to change from regular single quotes to backticks.
 - Fixed a bug that was causing the city and state fields in `LogCleanupForm` to be required even though they weren't explictly set.
 
+## [0.2.8] - 2025-08-19
+
+### Added
+
+- Created a `colors.js` file in styles that allows for reusable colors across the app instead of hardcoded colors. Will make design changes much easier in the future.
+- Created a `jsconfig` file that will hopefully create more consistency in how **VS Code** recognizes files and imports them.
+
+### Changed
+
+- Incorporated `CleanupEntriesList` into `CleanupEntriesListPage` to show all entries once user navigates there.
+- Updated the `src_structure.txt` file
+- Updated `CleanupEntriesListPage` so it only shows the 10 most recent, and then offers a **Show All** button to view the rest.
+- Added the button styling component to `CleanupEntriesList` to take on reusable button styling.
+- Incorporated `colors.js` into `buttonStyles` so the buttons can draw from those colors directly instead of hardcoding.
+- Added a **navButtonTextColor** into `colors.js` and used that in `LoginPage.jsx` so the nav button color is reused.
+
+### Fixed
+
+- Inconsistent file recognition with **VS Code**.
+
 ---
 
 ### Planned (Upcoming)
