@@ -9,6 +9,7 @@ import { formContainer } from '../styles/forms';
 import { linkNavigationText, headingTextStyle } from '../styles/typography';
 import { redirectAfterSuccess } from '../utils/navigation';
 import ForgotPasswordModal from '../components/shared/ForgotPasswordModal';
+import { colors } from '../styles/colors';
 
 export default function LoginPage() {
   const [displayName, setDisplayName] = useState('');
@@ -95,7 +96,7 @@ export default function LoginPage() {
           style={{
             background: 'none',
             border: 'none',
-            color: 'blue',
+            color: colors.navButtonTextColor,
             textDecoration: 'underline',
             cursor: 'pointer',
           }}
