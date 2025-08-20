@@ -98,15 +98,32 @@ export default function CleanupEntriesList({
                 </small>
               </div>
               <div
-                style={{
-                  background: '#d4edda',
-                  padding: '0.25rem 0.5rem',
-                  borderRadius: '4px',
-                  color: colors.EcoDisplayTextColor,
-                  fontWeight: 'bold',
-                }}
+                style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}
               >
-                +{entry.pointsEarned} pts
+                <div
+                  style={{
+                    background: '#d4edda',
+                    padding: '0.25rem 0.5rem',
+                    borderRadius: '4px',
+                    color: colors.EcoDisplayTextColor,
+                    fontWeight: 'bold',
+                  }}
+                >
+                  +{entry.pointsEarned} pts
+                </div>
+                <button
+                  onClick={() => handleDelete(entry.id)}
+                  style={{
+                    background: 'none',
+                    border: 'none',
+                    fontSize: '1.2rem',
+                    cursor: 'pointer',
+                    color: '#666',
+                    padding: '0.25rem',
+                  }}
+                >
+                  ×
+                </button>
               </div>
             </div>
           </div>
