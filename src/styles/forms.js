@@ -38,15 +38,5 @@ const formGroupLabel = {
 };
 // Shared styling for form submission buttons (Signup/Login flows)
 // Simple styling for now, will update later.
-const formButtonStyle = {
-  marginTop: '2rem',
-  padding: '0.8rem 1.6rem',
-};
 
-export {
-  formContainer,
-  inputField,
-  formGroupWrapper,
-  formGroupLabel,
-  formButtonStyle,
-};
+export { formContainer, inputField, formGroupWrapper, formGroupLabel };
