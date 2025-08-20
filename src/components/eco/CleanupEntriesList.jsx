@@ -12,6 +12,7 @@ import { db } from '../../firebase';
 import { useAuth } from '../../context/AuthContext';
 import { getButtonStyle } from '../../styles/buttonStyles';
 import { colors } from '../../styles/colors';
+import DeleteCleanupEntryModal from './DeleteCleanupEntryModal';
 
 export default function CleanupEntriesList({
   limitEntries = null, // null = show all, number = limit results
@@ -20,6 +21,9 @@ export default function CleanupEntriesList({
   const { currentUser } = useAuth();
   const [entries, setEntries] = useState([]);
   const [loading, setLoading] = useState(true);
+  // Handle delete entry modal state variables
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [entryToDelete, setEntryToDelete] = useState(null);
 
   // Fetch cleanup entries
   useEffect(() => {
@@ -66,6 +70,12 @@ export default function CleanupEntriesList({
       </div>
     );
   }
+
+  const handleDelete = (entryId) => {
+    const entry = entries.find((e) => e.id === entryId);
+    setEntryToDelete(entry);
+    setShowDeleteModal(true);
+  };
 
   return (
     <div>
@@ -129,6 +139,17 @@ export default function CleanupEntriesList({
           </div>
         ))}
       </div>
+
+      <DeleteCleanupEntryModal
+        isOpen={showDeleteModal}
+        entry={entryToDelete}
+        currentPoints={0} // temporary - we'll fix this later
+        onDeleteSuccess={(deletedEntryId) => {
+          setEntries(entries.filter((entry) => entry.id !== deletedEntryId));
+          setShowDeleteModal(false);
+        }}
+        onCancel={() => setShowDeleteModal(false)}
+      />
 
       {/* View All Button */}
       {showViewAll && (
