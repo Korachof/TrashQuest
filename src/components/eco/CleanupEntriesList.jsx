@@ -12,10 +12,10 @@ export default function CleanupEntriesList({
 }) {
   const { entries, loading, currentPoints, deleteEntry } =
     useCleanupEntries(limitEntries);
+  const navigate = useNavigate();
   // Handle delete entry modal state variables
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [entryToDelete, setEntryToDelete] = useState(null);
-  const navigate = useNavigate();
 
   if (loading) {
     return <div>Loading cleanup entries...</div>;
