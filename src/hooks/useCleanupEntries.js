@@ -7,6 +7,8 @@ import {
   orderBy,
   limit,
   getDocs,
+  getDoc,
+  doc,
 } from 'firebase/firestore';
 import { db } from '../firebase';
 import { useAuth } from '../context/AuthContext';
@@ -15,6 +17,7 @@ export default function useCleanupEntries(limitEntries) {
   const { currentUser } = useAuth();
   const [entries, setEntries] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [currentPoints, setCurrentPoints] = useState(0);
 
   // Fetch cleanup entries
   useEffect(() => {
@@ -45,10 +48,15 @@ export default function useCleanupEntries(limitEntries) {
       } finally {
         setLoading(false);
       }
+      // Fetch user points
+      const userDoc = await getDoc(doc(db, 'users', currentUser.uid));
+      if (userDoc.exists()) {
+        setCurrentPoints(userDoc.data().totalEcoPoints || 0);
+      }
     };
 
     fetchEntries();
   }, [currentUser, limitEntries]);
 
-  return { entries, loading };
+  return { entries, loading, currentPoints };
 }

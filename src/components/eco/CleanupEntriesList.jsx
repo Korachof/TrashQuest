@@ -9,7 +9,7 @@ export default function CleanupEntriesList({
   limitEntries = null, // null = show all, number = limit results
   showViewAll = false, // show "View All" button
 }) {
-  const { entries, loading } = useCleanupEntries(limitEntries);
+  const { entries, loading, currentPoints } = useCleanupEntries(limitEntries);
   // Handle delete entry modal state variables
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [entryToDelete, setEntryToDelete] = useState(null);
@@ -98,7 +98,7 @@ export default function CleanupEntriesList({
       <DeleteCleanupEntryModal
         isOpen={showDeleteModal}
         entry={entryToDelete}
-        currentPoints={0} // temporary - we'll fix this later
+        currentPoints={currentPoints}
         onDeleteSuccess={(deletedEntryId) => {
           setEntries(entries.filter((entry) => entry.id !== deletedEntryId));
           setShowDeleteModal(false);
