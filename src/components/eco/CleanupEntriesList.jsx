@@ -1,63 +1,18 @@
 // Component to display a list of user's cleanup entries
 import React, { useState, useEffect } from 'react';
-import {
-  collection,
-  query,
-  where,
-  orderBy,
-  limit,
-  getDocs,
-} from 'firebase/firestore';
-import { db } from '../../firebase';
-import { useAuth } from '../../context/AuthContext';
 import { getButtonStyle } from '../../styles/buttonStyles';
 import { colors } from '../../styles/colors';
 import DeleteCleanupEntryModal from './DeleteCleanupEntryModal';
+import useCleanupEntries from '../../hooks/useCleanupEntries';
 
 export default function CleanupEntriesList({
   limitEntries = null, // null = show all, number = limit results
   showViewAll = false, // show "View All" button
 }) {
-  const { currentUser } = useAuth();
-  const [entries, setEntries] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const { entries, loading } = useCleanupEntries(limitEntries);
   // Handle delete entry modal state variables
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [entryToDelete, setEntryToDelete] = useState(null);
-
-  // Fetch cleanup entries
-  useEffect(() => {
-    const fetchEntries = async () => {
-      if (!currentUser) return;
-
-      try {
-        let q = query(
-          collection(db, 'cleanupEntries'),
-          where('userId', '==', currentUser.uid),
-          orderBy('createdAt', 'desc') // Most recent first
-        );
-
-        // Add limit if specified
-        if (limitEntries) {
-          q = query(q, limit(limitEntries));
-        }
-
-        const querySnapshot = await getDocs(q);
-        const entriesData = querySnapshot.docs.map((doc) => ({
-          id: doc.id,
-          ...doc.data(),
-        }));
-
-        setEntries(entriesData);
-      } catch (error) {
-        console.error('Error fetching cleanup entries:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchEntries();
-  }, [currentUser, limitEntries]);
 
   if (loading) {
     return <div>Loading cleanup entries...</div>;
