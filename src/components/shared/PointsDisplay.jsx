@@ -1,5 +1,6 @@
 // src/components/shared/PointsDisplay.jsx
 import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { doc, getDoc } from 'firebase/firestore';
 import { db } from '../../firebase';
 import { useAuth } from '../../context/AuthContext';
@@ -13,6 +14,7 @@ export default function PointsDisplay({
   const { currentUser } = useAuth();
   const [totalPoints, setTotalPoints] = useState(0);
   const [loading, setLoading] = useState(true);
+  const location = useLocation(); // keep track if the page changes
 
   // Fetch user's points
   useEffect(() => {
@@ -33,7 +35,7 @@ export default function PointsDisplay({
     };
 
     fetchUserPoints();
-  }, [currentUser]);
+  }, [currentUser, location.key]);
 
   // Size-based styling
   const getSizeStyles = () => {

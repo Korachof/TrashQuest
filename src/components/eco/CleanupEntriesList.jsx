@@ -102,8 +102,8 @@ export default function CleanupEntriesList({
         isOpen={showDeleteModal}
         entry={entryToDelete}
         currentPoints={currentPoints}
-        onConfirm={() => {
-          deleteEntry(entryToDelete.id);
+        onConfirm={async () => {
+          await deleteEntry(entryToDelete.id);
           setShowDeleteModal(false);
           navToDashboard('/dashboard');
         }}
