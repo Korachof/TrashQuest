@@ -1,5 +1,6 @@
 // Component to display a list of user's cleanup entries
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { getButtonStyle } from '../../styles/buttonStyles';
 import { colors } from '../../styles/colors';
 import DeleteCleanupEntryModal from './DeleteCleanupEntryModal';
@@ -14,6 +15,7 @@ export default function CleanupEntriesList({
   // Handle delete entry modal state variables
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [entryToDelete, setEntryToDelete] = useState(null);
+  const navToDashboard = useNavigate();
 
   if (loading) {
     return <div>Loading cleanup entries...</div>;
@@ -103,6 +105,7 @@ export default function CleanupEntriesList({
         onConfirm={() => {
           deleteEntry(entryToDelete.id);
           setShowDeleteModal(false);
+          navToDashboard('/dashboard');
         }}
         onCancel={() => setShowDeleteModal(false)}
       />
