@@ -475,6 +475,38 @@ This changelog documents key updates to the TrashQuest project. It follows seman
 
 - Inconsistent file recognition with **VS Code**.
 
+## [0.2.9] - 2025-08-20
+
+### Added
+
+- Created a `DeleteCleanupEntryModal.jsx` file that shows a modal for all users when they click the X button for deleting a logged entry.
+- Created a `useCleanupEntries` hook, which is used to fetch and update data for `CleanupEntriesList`
+- Added a **isCancel prop** to `FormButton` to allow for differences in cancel button styling.
+- Added delete logic to `CleanupEntriesList` to allow for deletion of logged entries.
+- Added logic to `CleanupEntriesList` to take on the `DeleteCleanupEntryModal`.
+- Added **deleteEntry** to the hook call in `CleanupEntriesList` and changed **onDeleteSuccess** to **onConfirm**
+- Added logic so `CleanupEntriesList` navigates back to dashboard after a deleted entry is confirmed.
+- Added **useLocation** to `PointsDisplay` and use **location.key** when fetching user points to properly reload the information on the page, so that `PointsDisplay` doesn't require a refesh
+
+### Changed
+
+- Passed the **isCancel prop** into `LogCleanupForm` to allow for styling differences in the form.
+- Deleted **formButtonStyles** from `styles/forms`, as the new standard will be using `buttonStyles` for all buttons.
+- Deleted most of the logic from `jsconfig` to stop **VS Code** from assuming all imports are on the same level as the file using the import
+- Moved the useEffect block from `CleanupEntriesList` to `useCleanupEntries` and deleted any leftover imports and constants.
+- Added user points fetching to the `useCleanupEntries` hook.
+- Updated the return for `usecleanupEntries` to include the user points, and updated `CleanupEntriesList` to match.
+- Removed the **handleConfirmDelete** logic in `DeleteCleanupEntryModal` and added the delete logic to `useCleanupEntries`.
+- Added an **await to onConfirm** for `CleanupEntriesList`, so it will wait for that process to finish.
+- Changed the **onClick** function in `CleanupEntriesList` to use **React Router** instead of **window.location.href** for consistency and efficiency.
+
+### Fixed
+
+- **Cancel button** now has a different color than the Confirm button.
+- User points showing as **0** in the `DeleteCleanupEntryModal`.
+- User points not updating when a deletion occurs, creating permanent user points discrepencies.
+- A bug preventing user points from updating properly via `PointsDisplay` without a refresh
+
 ---
 
 ### Planned (Upcoming)
