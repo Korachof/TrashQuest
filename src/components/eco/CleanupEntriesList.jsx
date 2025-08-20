@@ -15,7 +15,7 @@ export default function CleanupEntriesList({
   // Handle delete entry modal state variables
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [entryToDelete, setEntryToDelete] = useState(null);
-  const navToDashboard = useNavigate();
+  const navigate = useNavigate();
 
   if (loading) {
     return <div>Loading cleanup entries...</div>;
@@ -105,7 +105,7 @@ export default function CleanupEntriesList({
         onConfirm={async () => {
           await deleteEntry(entryToDelete.id);
           setShowDeleteModal(false);
-          navToDashboard('/dashboard');
+          navigate('/dashboard');
         }}
         onCancel={() => setShowDeleteModal(false)}
       />
@@ -114,7 +114,7 @@ export default function CleanupEntriesList({
       {showViewAll && (
         <div style={{ textAlign: 'center', marginTop: '1rem' }}>
           <button
-            onClick={() => (window.location.href = '/cleanup-entries')}
+            onClick={() => navigate('/cleanup-entries')}
             style={getButtonStyle('medium', 'secondary')}
           >
             View All Entries
