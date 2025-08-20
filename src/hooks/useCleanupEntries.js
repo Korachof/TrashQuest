@@ -9,6 +9,9 @@ import {
   getDocs,
   getDoc,
   doc,
+  deleteDoc,
+  updateDoc,
+  increment,
 } from 'firebase/firestore';
 import { db } from '../firebase';
 import { useAuth } from '../context/AuthContext';
@@ -58,5 +61,24 @@ export default function useCleanupEntries(limitEntries) {
     fetchEntries();
   }, [currentUser, limitEntries]);
 
-  return { entries, loading, currentPoints };
+  // Handle deleting entries
+  const deleteEntry = async (entryId) => {
+    const entry = entries.find((e) => e.id === entryId);
+    if (!entry) return;
+
+    try {
+      await deleteDoc(doc(db, 'cleanupEntries', entryId));
+      await updateDoc(doc(db, 'users', currentUser.uid), {
+        totalEcoPoints: increment(-entry.pointsEarned),
+        updatedAt: new Date(),
+      });
+
+      setEntries(entries.filter((e) => e.id !== entryId));
+      setCurrentPoints((prev) => prev - entry.pointsEarned);
+    } catch (error) {
+      console.error('Error deleting entry:', error);
+    }
+  };
+
+  return { entries, loading, currentPoints, deleteEntry };
 }

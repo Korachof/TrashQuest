@@ -1,5 +1,5 @@
 // Component to display a list of user's cleanup entries
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { getButtonStyle } from '../../styles/buttonStyles';
 import { colors } from '../../styles/colors';
 import DeleteCleanupEntryModal from './DeleteCleanupEntryModal';
@@ -9,7 +9,8 @@ export default function CleanupEntriesList({
   limitEntries = null, // null = show all, number = limit results
   showViewAll = false, // show "View All" button
 }) {
-  const { entries, loading, currentPoints } = useCleanupEntries(limitEntries);
+  const { entries, loading, currentPoints, deleteEntry } =
+    useCleanupEntries(limitEntries);
   // Handle delete entry modal state variables
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [entryToDelete, setEntryToDelete] = useState(null);
@@ -99,8 +100,8 @@ export default function CleanupEntriesList({
         isOpen={showDeleteModal}
         entry={entryToDelete}
         currentPoints={currentPoints}
-        onDeleteSuccess={(deletedEntryId) => {
-          setEntries(entries.filter((entry) => entry.id !== deletedEntryId));
+        onConfirm={() => {
+          deleteEntry(entryToDelete.id);
           setShowDeleteModal(false);
         }}
         onCancel={() => setShowDeleteModal(false)}

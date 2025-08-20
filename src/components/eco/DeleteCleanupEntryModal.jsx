@@ -1,7 +1,5 @@
 // Modal for confirming deletion of cleanup entries
 import React from 'react';
-import { deleteDoc, doc, updateDoc, increment } from 'firebase/firestore';
-import { db } from '../../firebase';
 import Modal from '../shared/Modal';
 import FormButton from '../shared/FormButton';
 
@@ -9,30 +7,15 @@ export default function DeleteCleanupEntryModal({
   isOpen,
   entry,
   currentPoints,
-  onDeleteSuccess,
+  onConfirm,
   onCancel,
 }) {
   if (!entry) return null;
 
   const newPointsTotal = currentPoints - entry.pointsEarned;
 
-  const handleConfirmDelete = async () => {
-    try {
-      // Delete from Firestore
-      await deleteDoc(doc(db, 'cleanupEntries', entry.id));
-
-      // Subtract points from user's total
-      const userRef = doc(db, 'users', entry.userId);
-      await updateDoc(userRef, {
-        totalEcoPoints: increment(-entry.pointsEarned),
-        updatedAt: new Date(),
-      });
-
-      // Tell parent component deletion was successful
-      onDeleteSuccess(entry.id);
-    } catch (error) {
-      console.error('Error deleting entry:', error);
-    }
+  const handleConfirmDelete = () => {
+    onConfirm();
   };
 
   return (
