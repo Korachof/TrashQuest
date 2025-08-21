@@ -16,6 +16,7 @@ import FormGroup from '../shared/FormGroup';
 import FormButton from '../shared/FormButton';
 import TrashTypeSelect from './TrashTypeSelect';
 import { formContainer } from '../../styles/forms';
+import { usePoints } from '../../context/PointsContext';
 import { useAuth } from '../../context/AuthContext';
 
 // Points values for each size
@@ -62,6 +63,7 @@ export default function LogCleanupForm({
     state: existingEntry?.state || '',
   });
   const [isLoading, setIsLoading] = useState(false);
+  const { updateUserPoints } = usePoints();
 
   // Calculate points based on selected size
   const calculatePoints = () => {
@@ -158,6 +160,7 @@ export default function LogCleanupForm({
         alert(
           `Cleanup logged successfully! You earned ${pointsEarned} Eco Points!`
         );
+        updateUserPoints(pointsEarned); // Update PointsContext
         navigate('/dashboard');
       }
     } catch (error) {
