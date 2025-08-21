@@ -135,7 +135,9 @@ export default function CleanupEntriesList({
       <UpdateCleanupEntryModal
         isOpen={showEditModal}
         entry={entryToEdit}
-        onUpdate={() => console.log('Update clicked')}
+        onUpdate={() => {
+          window.location.reload(); // Temporary - we'll improve this
+        }}
         onCancel={() => setShowEditModal(false)}
       />
 

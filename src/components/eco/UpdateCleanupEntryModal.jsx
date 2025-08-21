@@ -18,6 +18,7 @@ export default function UpdateCleanupEntryModal({
         editMode={true}
         existingEntry={entry}
         onCancel={onCancel}
+        onUpdate={onUpdate}
       />
     </Modal>
   );

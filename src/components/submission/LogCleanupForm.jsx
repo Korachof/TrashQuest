@@ -47,6 +47,7 @@ export default function LogCleanupForm({
   editMode = false,
   existingEntry = null,
   onCancel = null,
+  onUpdate = null,
 }) {
   const { currentUser } = useAuth();
   const navigate = useNavigate();
@@ -149,6 +150,7 @@ export default function LogCleanupForm({
       if (editMode) {
         alert('Entry updated successfully!');
         if (onCancel) onCancel(); // Close the modal
+        if (onUpdate) onUpdate(); // refresh list
       } else {
         alert(
           `Cleanup logged successfully! You earned ${pointsEarned} Eco Points!`
