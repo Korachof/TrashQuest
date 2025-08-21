@@ -1,7 +1,5 @@
 // Landing Page for post-logged in users
-import React, { useEffect, useState } from 'react';
-import { doc, getDoc } from 'firebase/firestore';
-import { db } from '../firebase';
+import React, { useEffect } from 'react';
 import { headingTextStyle } from '../styles/typography';
 import { useAuth } from '../context/AuthContext';
 import PointsDisplay from '../components/shared/PointsDisplay';
@@ -13,10 +11,6 @@ export default function DashboardPage() {
   const { currentUser } = useAuth();
   const displayName =
     currentUser?.displayName || currentUser?.email || 'Explorer';
-
-  // Points states
-  const [totalPoints, setTotalPoints] = useState(0);
-  const [loading, setLoading] = useState(true);
 
   // Set page tab title
   useEffect(() => {
