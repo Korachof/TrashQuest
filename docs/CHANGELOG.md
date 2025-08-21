@@ -532,6 +532,7 @@ This changelog documents key updates to the TrashQuest project. It follows seman
 - Cleaned up `DashboardPage` by removing stale, unused imports and state variables.
 - Deleted `EcoPointsDisplay`, since it was from my old scaffold and is redundant with `PointsDisplay`.
 - Set **updatePoints** in `LogCleanupForm` to current user points, so that new entries points value would be defined immediately.
+- Changed **overflow** for **layoutPageStyleWrapper** in `styles/layout.js` from **clip** to **auto** to allow for scrolling.
 
 ### Fixed
 
@@ -539,6 +540,7 @@ This changelog documents key updates to the TrashQuest project. It follows seman
 - Fixed an issue where `PointsDisplay` was refreshing much later/required a refresh than the edited entries were refreshing.
 - Fixed a bug where new entries were using **updatePoints** in `LogCleanupForm` for their points totals, but because it wasn't declared as anything, they were set as undefined and causing **Firestore** issues where the user's **totalEcoPoints** was being set to **NaN**.
 - Fixed a bug where `PointsDisplay` wasn't properly updating without a refresh for specifically new entries.
+- Fixed a small bug in for **layoutPageStyleWrapper** in `styles/layout.js` where **overflow** was set to **clip** instead of **auto**. Fixed that, and now scrollbars are working correctly.
 
 ---
 

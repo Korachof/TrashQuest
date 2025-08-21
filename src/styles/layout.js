@@ -3,11 +3,11 @@
 const layoutPageStyleWrapper = {
   display: 'flex',
   flexDirection: 'column',
-  height: '100vh',
+  minHeight: '100vh',
   boxSizing: 'border-box',
   margin: 0,
   padding: 0,
-  overflow: 'clip',
+  overflow: 'auto',
 };
 
 const mainContainerStyleWrapper = {
