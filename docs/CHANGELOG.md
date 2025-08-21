@@ -521,6 +521,7 @@ This changelog documents key updates to the TrashQuest project. It follows seman
 - Added state management to handle edited entries and to properly refresh data on the screen.
 - Created a `PointsContext.jsx` file that grabs and updates the user points in one dedicated place.
 - Wrapped my **App** with **PointsProvider** from `PointsContext`
+- Added an import for `PointsContext` to `LogCleanupForm`, and a line right after a successful newly created log entry that properly updates `PointsContext`, allowing for `PointsDisplay` to properly display points totals after new entries are created.
 
 ### Changed
 
@@ -530,11 +531,14 @@ This changelog documents key updates to the TrashQuest project. It follows seman
 - Removed the fetching logic for user points from `useCleanupEntries` and used **usePoints** directly from `PointsContext` for both deleting and updating.
 - Cleaned up `DashboardPage` by removing stale, unused imports and state variables.
 - Deleted `EcoPointsDisplay`, since it was from my old scaffold and is redundant with `PointsDisplay`.
+- Set **updatePoints** in `LogCleanupForm` to current user points, so that new entries points value would be defined immediately.
 
 ### Fixed
 
 - Fixed an issue where the `UpdateCleanupEntryModal` wasn't closing properly on cancel, and was instead just clearing the form.
 - Fixed an issue where `PointsDisplay` was refreshing much later/required a refresh than the edited entries were refreshing.
+- Fixed a bug where new entries were using **updatePoints** in `LogCleanupForm` for their points totals, but because it wasn't declared as anything, they were set as undefined and causing **Firestore** issues where the user's **totalEcoPoints** was being set to **NaN**.
+- Fixed a bug where `PointsDisplay` wasn't properly updating without a refresh for specifically new entries.
 
 ---
 
