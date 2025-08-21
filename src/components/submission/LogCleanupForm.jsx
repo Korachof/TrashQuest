@@ -125,7 +125,7 @@ export default function LogCleanupForm({
       const userRef = doc(db, 'users', currentUser.uid);
       const userDoc = await getDoc(userRef);
 
-      let updatePoints;
+      let updatePoints = pointsEarned;
       if (editMode && existingEntry) {
         // Calculate point difference for edit
         updatePoints = pointsEarned - existingEntry.pointsEarned;
