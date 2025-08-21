@@ -42,17 +42,21 @@ const CLEANUP_TYPES = [
 // Area options
 const AREA_OPTIONS = ['Downtown', 'Residential', 'Park', 'Highway', 'Beach'];
 
-export default function LogCleanupForm() {
+export default function LogCleanupForm({
+  // Set component parameters for updating logged entries
+  existingEntry = null,
+}) {
   const { currentUser } = useAuth();
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     // Today's date as default
-    date: new Date().toISOString().split('T')[0],
-    size: '',
-    type: '',
-    area: '',
-    city: '',
-    state: '',
+    // If we're editing, pre-fill fields with existing data
+    date: existingEntry?.date || new Date().toISOString().split('T')[0],
+    size: existingEntry?.size || '',
+    type: existingEntry?.type || '',
+    area: existingEntry?.area || '',
+    city: existingEntry?.city || '',
+    state: existingEntry?.state || '',
   });
   const [isLoading, setIsLoading] = useState(false);
 
