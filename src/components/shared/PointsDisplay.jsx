@@ -1,9 +1,6 @@
 // src/components/shared/PointsDisplay.jsx
-import React, { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
-import { doc, getDoc } from 'firebase/firestore';
-import { db } from '../../firebase';
-import { useAuth } from '../../context/AuthContext';
+import React from 'react';
+import { usePoints } from '../../context/PointsContext';
 import { colors } from '../../styles/colors';
 
 export default function PointsDisplay({
@@ -11,31 +8,7 @@ export default function PointsDisplay({
   showIcon = true,
   style = {},
 }) {
-  const { currentUser } = useAuth();
-  const [totalPoints, setTotalPoints] = useState(0);
-  const [loading, setLoading] = useState(true);
-  const location = useLocation(); // keep track if the page changes
-
-  // Fetch user's points
-  useEffect(() => {
-    const fetchUserPoints = async () => {
-      if (currentUser) {
-        try {
-          const userRef = doc(db, 'users', currentUser.uid);
-          const userDoc = await getDoc(userRef);
-
-          if (userDoc.exists()) {
-            setTotalPoints(userDoc.data().totalEcoPoints || 0);
-          }
-        } catch (error) {
-          console.error('Error fetching user points:', error);
-        }
-      }
-      setLoading(false);
-    };
-
-    fetchUserPoints();
-  }, [currentUser, location.key]);
+  const { userPoints, loading } = usePoints();
 
   // Size-based styling
   const getSizeStyles = () => {
@@ -66,7 +39,7 @@ export default function PointsDisplay({
       ) : (
         <>
           {showIcon && '🌱 '}
-          {totalPoints} Eco Points
+          {userPoints} Eco Points
         </>
       )}
     </div>
