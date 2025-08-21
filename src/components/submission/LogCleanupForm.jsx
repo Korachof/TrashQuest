@@ -44,7 +44,9 @@ const AREA_OPTIONS = ['Downtown', 'Residential', 'Park', 'Highway', 'Beach'];
 
 export default function LogCleanupForm({
   // Set component parameters for updating logged entries
+  editMode = false,
   existingEntry = null,
+  onCancel = null,
 }) {
   const { currentUser } = useAuth();
   const navigate = useNavigate();
@@ -106,7 +108,16 @@ export default function LogCleanupForm({
 
       console.log('Cleanup entry to save:', cleanupEntry);
 
-      await addDoc(collection(db, 'cleanupEntries'), cleanupEntry);
+      if (editMode && existingEntry) {
+        // Update existing entry
+        await updateDoc(
+          doc(db, 'cleanupEntries', existingEntry.id),
+          cleanupEntry
+        );
+      } else {
+        // Create new entry
+        await addDoc(collection(db, 'cleanupEntries'), cleanupEntry);
+      }
 
       // Update user's total points
       const userRef = doc(db, 'users', currentUser.uid);
