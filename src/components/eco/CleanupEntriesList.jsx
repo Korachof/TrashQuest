@@ -16,6 +16,9 @@ export default function CleanupEntriesList({
   // Handle delete entry modal state variables
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [entryToDelete, setEntryToDelete] = useState(null);
+  // Handle edit entry modal state variables
+  const [showEditModal, setShowEditModal] = useState(false);
+  const [entryToEdit, setEntryToEdit] = useState(null);
 
   if (loading) {
     return <div>Loading cleanup entries...</div>;
@@ -35,8 +38,9 @@ export default function CleanupEntriesList({
     setShowDeleteModal(true);
   };
   const handleEdit = (entryId) => {
-    console.log('Edit clicked for entry:', entryId);
-    // TODO: Route to LogCleanup for Editing
+    const entry = entries.find((e) => e.id === entryId);
+    setEntryToEdit(entry);
+    setShowEditModal(true);
   };
 
   return (
