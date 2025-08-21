@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { getButtonStyle } from '../../styles/buttonStyles';
 import { colors } from '../../styles/colors';
 import DeleteCleanupEntryModal from './DeleteCleanupEntryModal';
+import UpdateCleanupEntryModal from './UpdateCleanupEntryModal';
 import useCleanupEntries from '../../hooks/useCleanupEntries';
 
 export default function CleanupEntriesList({
@@ -129,6 +130,13 @@ export default function CleanupEntriesList({
           navigate('/dashboard');
         }}
         onCancel={() => setShowDeleteModal(false)}
+      />
+
+      <UpdateCleanupEntryModal
+        isOpen={showEditModal}
+        entry={entryToEdit}
+        onUpdate={() => console.log('Update clicked')}
+        onCancel={() => setShowEditModal(false)}
       />
 
       {/* View All Button */}
