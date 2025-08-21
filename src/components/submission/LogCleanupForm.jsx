@@ -123,6 +123,12 @@ export default function LogCleanupForm({
       const userRef = doc(db, 'users', currentUser.uid);
       const userDoc = await getDoc(userRef);
 
+      let updatePoints;
+      if (editMode && existingEntry) {
+        // Calculate point difference for edit
+        updatePoints = pointsEarned - existingEntry.pointsEarned;
+      }
+
       if (!userDoc.exists()) {
         // Create user document if it doesn't exist
         await setDoc(userRef, {
@@ -135,7 +141,7 @@ export default function LogCleanupForm({
       } else {
         // Update the existing user document
         await updateDoc(userRef, {
-          totalEcoPoints: increment(pointsEarned),
+          totalEcoPoints: increment(updatePoints),
           updatedAt: new Date(),
         });
       }
