@@ -34,6 +34,10 @@ export default function CleanupEntriesList({
     setEntryToDelete(entry);
     setShowDeleteModal(true);
   };
+  const handleEdit = (entryId) => {
+    console.log('Edit clicked for entry:', entryId);
+    // TODO: Route to LogCleanup for Editing
+  };
 
   return (
     <div>
@@ -91,6 +95,19 @@ export default function CleanupEntriesList({
                   }}
                 >
                   ×
+                </button>
+                <button
+                  onClick={() => handleEdit(entry.id)}
+                  style={{
+                    background: 'none',
+                    border: 'none',
+                    fontSize: '0.9rem',
+                    cursor: 'pointer',
+                    color: colors.navButtonTextColor,
+                    padding: '0.25rem',
+                  }}
+                >
+                  Edit
                 </button>
               </div>
             </div>
