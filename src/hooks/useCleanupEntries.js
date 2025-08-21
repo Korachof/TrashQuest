@@ -80,5 +80,14 @@ export default function useCleanupEntries(limitEntries) {
     }
   };
 
-  return { entries, loading, currentPoints, deleteEntry };
+  // handle updating entries
+  const updateEntry = (updatedEntry) => {
+    setEntries(
+      entries.map((entry) =>
+        entry.id === updatedEntry.id ? updatedEntry : entry
+      )
+    );
+  };
+
+  return { entries, loading, currentPoints, deleteEntry, updateEntry };
 }

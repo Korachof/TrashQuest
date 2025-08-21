@@ -11,7 +11,7 @@ export default function CleanupEntriesList({
   limitEntries = null, // null = show all, number = limit results
   showViewAll = false, // show "View All" button
 }) {
-  const { entries, loading, currentPoints, deleteEntry } =
+  const { entries, loading, currentPoints, deleteEntry, updateEntry } =
     useCleanupEntries(limitEntries);
   const navigate = useNavigate();
   // Handle delete entry modal state variables
@@ -135,8 +135,8 @@ export default function CleanupEntriesList({
       <UpdateCleanupEntryModal
         isOpen={showEditModal}
         entry={entryToEdit}
-        onUpdate={() => {
-          window.location.reload(); // Temporary - we'll improve this
+        onUpdate={(updatedEntry) => {
+          updateEntry(updatedEntry);
         }}
         onCancel={() => setShowEditModal(false)}
       />

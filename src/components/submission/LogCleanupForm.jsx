@@ -105,6 +105,7 @@ export default function LogCleanupForm({
         state: formData.state || null,
         pointsEarned: pointsEarned,
         createdAt: new Date(),
+        ...(editMode && existingEntry && { id: existingEntry.id }), // Add ID when editing
       };
 
       console.log('Cleanup entry to save:', cleanupEntry);
@@ -150,7 +151,9 @@ export default function LogCleanupForm({
       if (editMode) {
         alert('Entry updated successfully!');
         if (onCancel) onCancel(); // Close the modal
-        if (onUpdate) onUpdate(); // refresh list
+        if (onUpdate) {
+          onUpdate(cleanupEntry);
+        }
       } else {
         alert(
           `Cleanup logged successfully! You earned ${pointsEarned} Eco Points!`
