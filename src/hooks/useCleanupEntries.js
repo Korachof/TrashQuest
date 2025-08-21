@@ -7,7 +7,6 @@ import {
   orderBy,
   limit,
   getDocs,
-  getDoc,
   doc,
   deleteDoc,
   updateDoc,
@@ -79,6 +78,12 @@ export default function useCleanupEntries(limitEntries) {
 
   // handle updating entries
   const updateEntry = (updatedEntry) => {
+    // Find the old entry to calculate point difference
+    const oldEntry = entries.find((entry) => entry.id === updatedEntry.id);
+    if (oldEntry) {
+      const pointDifference = updatedEntry.pointsEarned - oldEntry.pointsEarned;
+      updateUserPoints(pointDifference);
+    }
     setEntries(
       entries.map((entry) =>
         entry.id === updatedEntry.id ? updatedEntry : entry
