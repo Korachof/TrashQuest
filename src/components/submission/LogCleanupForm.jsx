@@ -286,7 +286,11 @@ export default function LogCleanupForm({
             Log Cleanup
           </FormButton>
 
-          <FormButton type="button" isCancel={true} onClick={handleCancel}>
+          <FormButton
+            type="button"
+            isCancel={true}
+            onClick={editMode ? onCancel : handleCancel}
+          >
             Cancel
           </FormButton>
         </div>
