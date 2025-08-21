@@ -146,10 +146,15 @@ export default function LogCleanupForm({
         });
       }
 
-      alert(
-        `Cleanup logged successfully! You earned ${pointsEarned} Eco Points!`
-      );
-      navigate('/dashboard');
+      if (editMode) {
+        alert('Entry updated successfully!');
+        if (onCancel) onCancel(); // Close the modal
+      } else {
+        alert(
+          `Cleanup logged successfully! You earned ${pointsEarned} Eco Points!`
+        );
+        navigate('/dashboard');
+      }
     } catch (error) {
       console.error('Error logging cleanup:', error);
       alert('Error logging cleanup. Please try again.');
