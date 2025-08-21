@@ -15,12 +15,13 @@ import {
 } from 'firebase/firestore';
 import { db } from '../firebase';
 import { useAuth } from '../context/AuthContext';
+import { usePoints } from '../context/PointsContext';
 
 export default function useCleanupEntries(limitEntries) {
   const { currentUser } = useAuth();
   const [entries, setEntries] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [currentPoints, setCurrentPoints] = useState(0);
+  const { userPoints, updateUserPoints } = usePoints();
 
   // Fetch cleanup entries
   useEffect(() => {
@@ -51,13 +52,7 @@ export default function useCleanupEntries(limitEntries) {
       } finally {
         setLoading(false);
       }
-      // Fetch user points
-      const userDoc = await getDoc(doc(db, 'users', currentUser.uid));
-      if (userDoc.exists()) {
-        setCurrentPoints(userDoc.data().totalEcoPoints || 0);
-      }
     };
-
     fetchEntries();
   }, [currentUser, limitEntries]);
 
@@ -73,8 +68,10 @@ export default function useCleanupEntries(limitEntries) {
         updatedAt: new Date(),
       });
 
+      // Update points in context
+      updateUserPoints(-entry.pointsEarned);
+
       setEntries(entries.filter((e) => e.id !== entryId));
-      setCurrentPoints((prev) => prev - entry.pointsEarned);
     } catch (error) {
       console.error('Error deleting entry:', error);
     }
@@ -89,5 +86,11 @@ export default function useCleanupEntries(limitEntries) {
     );
   };
 
-  return { entries, loading, currentPoints, deleteEntry, updateEntry };
+  return {
+    entries,
+    loading,
+    currentPoints: userPoints,
+    deleteEntry,
+    updateEntry,
+  };
 }
