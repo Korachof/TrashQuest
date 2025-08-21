@@ -507,6 +507,35 @@ This changelog documents key updates to the TrashQuest project. It follows seman
 - User points not updating when a deletion occurs, creating permanent user points discrepencies.
 - A bug preventing user points from updating properly via `PointsDisplay` without a refresh
 
+## [0.3.1] - 2025-08-21
+
+### Added
+
+- Added an edit button to each **cleanup entry**
+- Added **cleanup entry** handling and fetching logic for editing
+- Added **state variables** to `CleanupEntriesList`
+- Created a `UpdateCleanupEntryModal.jsx` modal that pops up when a user hits the edit button on any entry. Uses `LogCleanupForm` directly.
+- Added the `UpdatecleanupEntryModal` reference to `CleanupEntries`
+- Added logic to **HandleSubmit** in `LogCleanupForm` so the alert changes depending if they are creating or updating.
+- Added a refresh for **onUpdate** so it properly refreshes the current page/state with user points.
+- Added state management to handle edited entries and to properly refresh data on the screen.
+- Created a `PointsContext.jsx` file that grabs and updates the user points in one dedicated place.
+- Wrapped my **App** with **PointsProvider** from `PointsContext`
+
+### Changed
+
+- Modified `LogCleanupForm` to accept and handle existing entries, instead of just new ones. Includes new props for cancelling, editing, and existing entries.
+- Edited the form button in `LogCleanupForm` with a tenary operator so it uses onCancel in edit mode, and handleCancel when it just wants a refresh.
+- Removed the points fetch logic and so on from `PointsDisplay` and used `PointsDisplay` directly.
+- Removed the fetching logic for user points from `useCleanupEntries` and used **usePoints** directly from `PointsContext` for both deleting and updating.
+- Cleaned up `DashboardPage` by removing stale, unused imports and state variables.
+- Deleted `EcoPointsDisplay`, since it was from my old scaffold and is redundant with `PointsDisplay`.
+
+### Fixed
+
+- Fixed an issue where the `UpdateCleanupEntryModal` wasn't closing properly on cancel, and was instead just clearing the form.
+- Fixed an issue where `PointsDisplay` was refreshing much later/required a refresh than the edited entries were refreshing.
+
 ---
 
 ### Planned (Upcoming)
