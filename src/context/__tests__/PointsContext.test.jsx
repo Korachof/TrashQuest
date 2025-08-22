@@ -76,4 +76,101 @@ describe('PointsProvider', () => {
     // Step 4: Verify children render
     expect(screen.getByTestId('user-points')).toBeInTheDocument();
   });
+
+  // Test 2: Correctly goes into loading state when points context is fetched
+  test('uses loading state when fetching points context', async () => {
+    // Step 1: Mock authenticated user
+    vi.mocked(useAuth).mockReturnValue({
+      currentUser: { uid: 'user123' },
+    });
+
+    // Step 2: Mock Firestore response with points data
+    vi.mocked(getDoc).mockResolvedValue({
+      exists: () => true,
+      data: () => ({ totalEcoPoints: 250 }),
+    });
+
+    // Step 3: Render component
+    render(
+      <PointsProvider>
+        <TestComponent />
+      </PointsProvider>
+    );
+
+    // Step 4: Initially should be loading
+    expect(screen.getByTestId('loading-state')).toHaveTextContent('loading');
+  });
+
+  // Test 3: Verifies that points load and verify
+  test('points load and verify correctly', async () => {
+    // Step 1: Mock authenticated user
+    vi.mocked(useAuth).mockReturnValue({
+      currentUser: { uid: 'user123' },
+    });
+
+    // Step 2: Mock Firestore response with points data
+    vi.mocked(getDoc).mockResolvedValue({
+      exists: () => true,
+      data: () => ({ totalEcoPoints: 250 }),
+    });
+
+    // Step 3: Render component
+    render(
+      <PointsProvider>
+        <TestComponent />
+      </PointsProvider>
+    );
+
+    // Step 5: Wait for points to load and verify
+    await waitFor(() => {
+      expect(screen.getByTestId('user-points')).toHaveTextContent('250');
+      expect(screen.getByTestId('loading-state')).toHaveTextContent('loaded');
+    });
+  });
+
+  // Test 4: Verifies that Firestore is called exactly once when fetching user points
+  test('firestore is called exactly once when fetching user points', async () => {
+    // Step 1: Mock authenticated user
+    vi.mocked(useAuth).mockReturnValue({
+      currentUser: { uid: 'user123' },
+    });
+
+    // Step 2: Mock Firestore response with points data
+    vi.mocked(getDoc).mockResolvedValue({
+      exists: () => true,
+      data: () => ({ totalEcoPoints: 250 }),
+    });
+
+    // Step 3: Render component
+    render(
+      <PointsProvider>
+        <TestComponent />
+      </PointsProvider>
+    );
+
+    expect(getDoc).toHaveBeenCalledTimes(1);
+  });
+
+  // Test 5: Verifies that Firestore was called correctly when fetching user points
+  test('firestore calls correct username and id when fetching points', async () => {
+    // Step 1: Mock authenticated user
+    vi.mocked(useAuth).mockReturnValue({
+      currentUser: { uid: 'user123' },
+    });
+
+    // Step 2: Mock Firestore response with points data
+    vi.mocked(getDoc).mockResolvedValue({
+      exists: () => true,
+      data: () => ({ totalEcoPoints: 250 }),
+    });
+
+    // Step 3: Render component
+    render(
+      <PointsProvider>
+        <TestComponent />
+      </PointsProvider>
+    );
+
+    expect(doc).toHaveBeenCalledWith({}, 'users', 'user123');
+  });
 });
