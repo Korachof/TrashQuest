@@ -3,7 +3,7 @@ import { doc, getDoc } from 'firebase/firestore';
 import { db } from '../firebase';
 import { useAuth } from './AuthContext';
 
-const UserContext = createContext();
+const PointsContext = createContext();
 
 export function PointsProvider({ children }) {
   const { currentUser } = useAuth();
@@ -36,16 +36,16 @@ export function PointsProvider({ children }) {
   };
 
   return (
-    <UserContext.Provider value={{ userPoints, updateUserPoints, loading }}>
+    <PointsContext.Provider value={{ userPoints, updateUserPoints, loading }}>
       {children}
-    </UserContext.Provider>
+    </PointsContext.Provider>
   );
 }
 
 export function usePoints() {
-  const context = useContext(UserContext);
+  const context = useContext(PointsContext);
   if (!context) {
-    throw new Error('usePoints must be used within UserProvider');
+    throw new Error('usePoints must be used within PointsProvider');
   }
   return context;
 }
