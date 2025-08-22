@@ -524,6 +524,8 @@ This changelog documents key updates to the TrashQuest project. It follows seman
 - Added an import for `PointsContext` to `LogCleanupForm`, and a line right after a successful newly created log entry that properly updates `PointsContext`, allowing for `PointsDisplay` to properly display points totals after new entries are created.
 - Created a `LogCleanupButton.test.jsx` to test `LogCleanupButton`. Added 6 tests to test the behavior.
 - Created a `PointsContext.test.jsx` to test `PointsContext`. Added 19 tests to test the behavior.
+- Added two more tests to `ProtectedRoute.test.jsx`.
+- Created a `PublicOnlyRoute.test.jsx` and added 6 tests to test `PublicOnlyRoute` behavior.
 
 ### Changed
 
