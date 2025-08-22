@@ -275,4 +275,62 @@ describe('PointsProvider', () => {
       expect(screen.getByTestId('loading-state')).toHaveTextContent('loaded');
     });
   });
+
+  // Test 10: Verifies that if the user is unauthenticated, points fetching still loads
+  test('points fetching process finishes loading when user is unauthenticated', async () => {
+    // Step 1: Mock unauthenticated user
+    vi.mocked(useAuth).mockReturnValue({
+      currentUser: null,
+    });
+
+    // Step 2: Render component
+    render(
+      <PointsProvider>
+        <TestComponent />
+      </PointsProvider>
+    );
+
+    // Step 3: Wait for loading to complete
+    await waitFor(() => {
+      expect(screen.getByTestId('loading-state')).toHaveTextContent('loaded');
+    });
+  });
+
+  // Test 11: Verifies that if a user is unauthenticated, points show as 0
+  test('sets points to 0 when user is not authenticated', async () => {
+    // Step 1: Mock unauthenticated user
+    vi.mocked(useAuth).mockReturnValue({
+      currentUser: null,
+    });
+
+    // Step 2: Render component
+    render(
+      <PointsProvider>
+        <TestComponent />
+      </PointsProvider>
+    );
+
+    // Step 3: Wait for loading to complete
+    await waitFor(() => {
+      expect(screen.getByTestId('user-points')).toHaveTextContent('0');
+    });
+  });
+
+  // Test 12: Verifies that Firestore is NOT called when user is unauthenticated
+  test('verifies that firestore is not called if user is unauthenticated', async () => {
+    // Step 1: Mock unauthenticated user
+    vi.mocked(useAuth).mockReturnValue({
+      currentUser: null,
+    });
+
+    // Step 2: Render component
+    render(
+      <PointsProvider>
+        <TestComponent />
+      </PointsProvider>
+    );
+
+    // Step 4: Verify Firestore was not called
+    expect(getDoc).not.toHaveBeenCalled();
+  });
 });
