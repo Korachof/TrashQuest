@@ -330,7 +330,92 @@ describe('PointsProvider', () => {
       </PointsProvider>
     );
 
-    // Step 4: Verify Firestore was not called
+    // Step 3: Verify Firestore was not called
     expect(getDoc).not.toHaveBeenCalled();
+  });
+
+  // Test 13: Verifies that PointsDisplay handles firestore errors gracefully
+  test('handles Firestore errors and logs them', async () => {
+    // Step 1: Mock authenticated user
+    vi.mocked(useAuth).mockReturnValue({
+      currentUser: { uid: 'erroruser' },
+    });
+
+    // Step 2: Mock Firestore error
+    const errorMessage = 'Network error';
+    vi.mocked(getDoc).mockRejectedValue(new Error(errorMessage));
+
+    // Step 3: Render component
+    render(
+      <PointsProvider>
+        <TestComponent />
+      </PointsProvider>
+    );
+
+    // Step 4: Wait for error handling and verify state
+    await waitFor(() => {});
+
+    // Step 5: Verify error was logged
+    expect(console.error).toHaveBeenCalledWith(
+      'Error fetching user points:',
+      expect.any(Error)
+    );
+  });
+
+  // Test 14: updateUserPoints function loads the correct points
+  test('updateUserPoints loads points correctly', async () => {
+    // Step 1: Mock authenticated user with initial points
+    vi.mocked(useAuth).mockReturnValue({
+      currentUser: { uid: 'user123' },
+    });
+
+    vi.mocked(getDoc).mockResolvedValue({
+      exists: () => true,
+      data: () => ({ totalEcoPoints: 100 }),
+    });
+
+    // Step 2: Render component
+    render(
+      <PointsProvider>
+        <TestComponent />
+      </PointsProvider>
+    );
+
+    // Step 3: Wait for initial load
+    await waitFor(() => {
+      expect(screen.getByTestId('user-points')).toHaveTextContent('100');
+    });
+  });
+
+  // Test 15: updateUserPoints function adds points correctly"
+  test('updateUserPoints adds points correctly', async () => {
+    // Step 1: Mock authenticated user with initial points
+    vi.mocked(useAuth).mockReturnValue({
+      currentUser: { uid: 'user123' },
+    });
+
+    vi.mocked(getDoc).mockResolvedValue({
+      exists: () => true,
+      data: () => ({ totalEcoPoints: 100 }),
+    });
+
+    // Step 2: Render component
+    render(
+      <PointsProvider>
+        <TestComponent />
+      </PointsProvider>
+    );
+
+    // Step 3: Wait for initial load
+    await waitFor(() => {});
+
+    // Step 4: Click button to add points
+    const addButton = screen.getByTestId('add-points-btn');
+    await act(async () => {
+      addButton.click();
+    });
+
+    // Step 5: Verify points were added
+    expect(screen.getByTestId('user-points')).toHaveTextContent('110');
   });
 });
