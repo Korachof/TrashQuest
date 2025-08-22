@@ -54,7 +54,7 @@ describe('LogCleanupButton', () => {
   });
 
   // Test 4: Verifies that clicking the button calls navigation exactly once.
-  test('navigates to log-cleanup page when clicked', () => {
+  test('calls navigation exactly once when clicked', () => {
     render(
       <MemoryRouter>
         <LogCleanupButton />
