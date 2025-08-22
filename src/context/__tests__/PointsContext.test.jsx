@@ -545,4 +545,24 @@ describe('PointsProvider', () => {
       expect(screen.getByTestId('user-points')).toHaveTextContent('200');
     });
   });
+
+  // Test 19: usePoints hook throws error when used outside points provider
+  describe('usePoints hook', () => {
+    test('throws error when used outside of PointsProvider', () => {
+      const TestComponentWithoutProvider = () => {
+        try {
+          usePoints();
+          return <div>Should not reach here</div>;
+        } catch (error) {
+          return <div data-testid="error-message">{error.message}</div>;
+        }
+      };
+
+      render(<TestComponentWithoutProvider />);
+
+      expect(screen.getByTestId('error-message')).toHaveTextContent(
+        'usePoints must be used within PointsProvider'
+      );
+    });
+  });
 });
