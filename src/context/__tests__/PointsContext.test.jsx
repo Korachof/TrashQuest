@@ -173,4 +173,106 @@ describe('PointsProvider', () => {
 
     expect(doc).toHaveBeenCalledWith({}, 'users', 'user123');
   });
+
+  // Test 6: Verifies that points content correctly loads when user has no points
+  test('points document finishes loading when user has 0 totalEcoPoints', async () => {
+    // Step 1: Mock authenticated user
+    vi.mocked(useAuth).mockReturnValue({
+      currentUser: { uid: 'newuser456' },
+    });
+
+    // Step 2: Mock Firestore response without points data
+    vi.mocked(getDoc).mockResolvedValue({
+      exists: () => true,
+      data: () => ({ name: 'John Doe' }), // No totalEcoPoints field
+    });
+
+    // Step 3: Render component
+    render(
+      <PointsProvider>
+        <TestComponent />
+      </PointsProvider>
+    );
+
+    // Step 4: Wait for loading to complete and verify default points
+    await waitFor(() => {
+      expect(screen.getByTestId('loading-state')).toHaveTextContent('loaded');
+    });
+  });
+
+  // Test 7: Verifies that user points default to 0 if they have no points data
+  test('defaults to 0 points when user document has 0 totalEcoPoints', async () => {
+    // Step 1: Mock authenticated user
+    vi.mocked(useAuth).mockReturnValue({
+      currentUser: { uid: 'newuser456' },
+    });
+
+    // Step 2: Mock Firestore response without points data
+    vi.mocked(getDoc).mockResolvedValue({
+      exists: () => true,
+      data: () => ({ name: 'John Doe' }), // No totalEcoPoints field
+    });
+
+    // Step 3: Render component
+    render(
+      <PointsProvider>
+        <TestComponent />
+      </PointsProvider>
+    );
+
+    // Step 4: Wait for loading to complete and verify default points
+    await waitFor(() => {
+      expect(screen.getByTestId('user-points')).toHaveTextContent('0');
+    });
+  });
+
+  // Test 8: Verifies that if a user does not exist, their points returns 0
+  test('returns 0 points when user document does not exist', async () => {
+    // Step 1: Mock authenticated user
+    vi.mocked(useAuth).mockReturnValue({
+      currentUser: { uid: 'nonexistent789' },
+    });
+
+    // Step 2: Mock Firestore response for non-existent document
+    vi.mocked(getDoc).mockResolvedValue({
+      exists: () => false,
+    });
+
+    // Step 3: Render component
+    render(
+      <PointsProvider>
+        <TestComponent />
+      </PointsProvider>
+    );
+
+    // Step 4: Wait for loading to complete and verify points remain 0
+    await waitFor(() => {
+      expect(screen.getByTestId('user-points')).toHaveTextContent('0');
+    });
+  });
+
+  // Test 9: Verifies that the process finishes loading even when a user is non-existent
+  test('points fetching process completes even if user does not exist', async () => {
+    // Step 1: Mock authenticated user
+    vi.mocked(useAuth).mockReturnValue({
+      currentUser: { uid: 'nonexistent789' },
+    });
+
+    // Step 2: Mock Firestore response for non-existent document
+    vi.mocked(getDoc).mockResolvedValue({
+      exists: () => false,
+    });
+
+    // Step 3: Render component
+    render(
+      <PointsProvider>
+        <TestComponent />
+      </PointsProvider>
+    );
+
+    // Step 4: Wait for loading to complete and verify points remain 0
+    await waitFor(() => {
+      expect(screen.getByTestId('loading-state')).toHaveTextContent('loaded');
+    });
+  });
 });
