@@ -387,7 +387,7 @@ describe('PointsProvider', () => {
     });
   });
 
-  // Test 15: updateUserPoints function adds points correctly"
+  // Test 15: updateUserPoints function adds points correctly
   test('updateUserPoints adds points correctly', async () => {
     // Step 1: Mock authenticated user with initial points
     vi.mocked(useAuth).mockReturnValue({
@@ -417,5 +417,132 @@ describe('PointsProvider', () => {
 
     // Step 5: Verify points were added
     expect(screen.getByTestId('user-points')).toHaveTextContent('110');
+  });
+
+  // Test 16: updateUserPoints function subtracts points correctly
+  test('updateUserPoints subtracts points correctly', async () => {
+    // Step 1: Mock authenticated user with initial points
+    vi.mocked(useAuth).mockReturnValue({
+      currentUser: { uid: 'user123' },
+    });
+
+    vi.mocked(getDoc).mockResolvedValue({
+      exists: () => true,
+      data: () => ({ totalEcoPoints: 50 }),
+    });
+
+    // Step 2: Render component
+    render(
+      <PointsProvider>
+        <TestComponent />
+      </PointsProvider>
+    );
+
+    // Step 3: Wait for initial load
+    await waitFor(() => {});
+
+    // Step 4: Click button to subtract points
+    const subtractButton = screen.getByTestId('subtract-points-btn');
+    await act(async () => {
+      subtractButton.click();
+    });
+
+    // Step 5: Verify points were subtracted
+    expect(screen.getByTestId('user-points')).toHaveTextContent('45');
+  });
+
+  // Test 17: Verifies that when currentUser changes, getDoc is called exactly twice.
+  test('re-fetches points when currentUser changes', async () => {
+    // Step 1: Mock initial user
+    const mockUseAuth = vi.mocked(useAuth);
+    mockUseAuth.mockReturnValue({
+      currentUser: { uid: 'user1' },
+    });
+
+    vi.mocked(getDoc).mockResolvedValue({
+      exists: () => true,
+      data: () => ({ totalEcoPoints: 100 }),
+    });
+
+    // Step 2: Render component
+    const { rerender } = render(
+      <PointsProvider>
+        <TestComponent />
+      </PointsProvider>
+    );
+
+    // Step 3: Wait for initial load
+    await waitFor(() => {
+      expect(screen.getByTestId('user-points')).toHaveTextContent('100');
+    });
+
+    // Step 4: Change to different user
+    mockUseAuth.mockReturnValue({
+      currentUser: { uid: 'user2' },
+    });
+
+    vi.mocked(getDoc).mockResolvedValue({
+      exists: () => true,
+      data: () => ({ totalEcoPoints: 200 }),
+    });
+
+    // Step 5: Re-render component
+    rerender(
+      <PointsProvider>
+        <TestComponent />
+      </PointsProvider>
+    );
+
+    // Step 6: wait for points updated for new user
+    await waitFor(() => {});
+
+    // Step 7: Verify getDoc was called for both users
+    expect(getDoc).toHaveBeenCalledTimes(2);
+  });
+
+  // Test 18: Verify that when currentUser changes, points updates correctly
+  test('re-fetches points when currentUser changes', async () => {
+    // Step 1: Mock initial user
+    const mockUseAuth = vi.mocked(useAuth);
+    mockUseAuth.mockReturnValue({
+      currentUser: { uid: 'user1' },
+    });
+
+    vi.mocked(getDoc).mockResolvedValue({
+      exists: () => true,
+      data: () => ({ totalEcoPoints: 100 }),
+    });
+
+    // Step 2: Render component
+    const { rerender } = render(
+      <PointsProvider>
+        <TestComponent />
+      </PointsProvider>
+    );
+
+    // Step 3: Wait for initial load
+    await waitFor(() => {});
+
+    // Step 4: Change to different user
+    mockUseAuth.mockReturnValue({
+      currentUser: { uid: 'user2' },
+    });
+
+    vi.mocked(getDoc).mockResolvedValue({
+      exists: () => true,
+      data: () => ({ totalEcoPoints: 200 }),
+    });
+
+    // Step 5: Re-render component
+    rerender(
+      <PointsProvider>
+        <TestComponent />
+      </PointsProvider>
+    );
+
+    // Step 6: Verify points updated for new user
+    await waitFor(() => {
+      expect(screen.getByTestId('user-points')).toHaveTextContent('200');
+    });
   });
 });
