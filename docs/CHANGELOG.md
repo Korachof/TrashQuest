@@ -507,7 +507,7 @@ This changelog documents key updates to the TrashQuest project. It follows seman
 - User points not updating when a deletion occurs, creating permanent user points discrepencies.
 - A bug preventing user points from updating properly via `PointsDisplay` without a refresh
 
-## [0.3.1] - 2025-08-21
+## [0.3.1] - 2025-08-21 - 2025-08-22
 
 ### Added
 
@@ -522,6 +522,8 @@ This changelog documents key updates to the TrashQuest project. It follows seman
 - Created a `PointsContext.jsx` file that grabs and updates the user points in one dedicated place.
 - Wrapped my **App** with **PointsProvider** from `PointsContext`
 - Added an import for `PointsContext` to `LogCleanupForm`, and a line right after a successful newly created log entry that properly updates `PointsContext`, allowing for `PointsDisplay` to properly display points totals after new entries are created.
+- Created a `LogCleanupButton.test.jsx` to test `LogCleanupButton`. Added 6 tests to test the behavior.
+- Created a `PointsContext.test.jsx` to test `PointsContext`. Added 19 tests to test the behavior.
 
 ### Changed
 
@@ -533,6 +535,9 @@ This changelog documents key updates to the TrashQuest project. It follows seman
 - Deleted `EcoPointsDisplay`, since it was from my old scaffold and is redundant with `PointsDisplay`.
 - Set **updatePoints** in `LogCleanupForm` to current user points, so that new entries points value would be defined immediately.
 - Changed **overflow** for **layoutPageStyleWrapper** in `styles/layout.js` from **clip** to **auto** to allow for scrolling.
+- Changed `StartQuestButton.jsx` by changing the capitalization of _Your_ in **Start Your TrashQuest Now!** dialogue.
+- Changed `StartQuestButton.test.jsx` by matching the button text in `StartQuestButton`.
+- Updated `PointsContext.jsx` to have more consistent names. `UserContext` became `PointsContext`.
 
 ### Fixed
 
@@ -541,6 +546,7 @@ This changelog documents key updates to the TrashQuest project. It follows seman
 - Fixed a bug where new entries were using **updatePoints** in `LogCleanupForm` for their points totals, but because it wasn't declared as anything, they were set as undefined and causing **Firestore** issues where the user's **totalEcoPoints** was being set to **NaN**.
 - Fixed a bug where `PointsDisplay` wasn't properly updating without a refresh for specifically new entries.
 - Fixed a small bug in for **layoutPageStyleWrapper** in `styles/layout.js` where **overflow** was set to **clip** instead of **auto**. Fixed that, and now scrollbars are working correctly.
+- Fixed 3 broken tests for `StartQuestButton` by matching the button text in the test and the file.
 
 ---
 
