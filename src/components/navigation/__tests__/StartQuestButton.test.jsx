@@ -30,9 +30,7 @@ describe('StartQuestButton', () => {
       </MemoryRouter>
     );
 
-    expect(
-      screen.getByText('Start Your TrashQuest Now! 🚀')
-    ).toBeInTheDocument();
+    expect(screen.getByText('Start Your TrashQuest Now!')).toBeInTheDocument();
   });
 
   // Test 2: Verifies that the button is actually a button element
@@ -43,7 +41,7 @@ describe('StartQuestButton', () => {
       </MemoryRouter>
     );
 
-    const button = screen.getByText('Start Your TrashQuest Now! 🚀');
+    const button = screen.getByText('Start Your TrashQuest Now!');
     expect(button.tagName).toBe('BUTTON');
   });
 
@@ -55,7 +53,7 @@ describe('StartQuestButton', () => {
       </MemoryRouter>
     );
 
-    const button = screen.getByText('Start Your TrashQuest Now! 🚀');
+    const button = screen.getByText('Start Your TrashQuest Now!');
     fireEvent.click(button);
 
     expect(mockNavigate).toHaveBeenCalledTimes(1);

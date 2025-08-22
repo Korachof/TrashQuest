@@ -5,7 +5,7 @@ import { getButtonStyle } from '../../styles/buttonStyles';
 
 export default function StartQuestButton({
   style = {},
-  text = 'Start your TrashQuest Now!',
+  text = 'Start Your TrashQuest Now!',
 }) {
   const navigate = useNavigate();
 
