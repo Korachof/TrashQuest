@@ -45,7 +45,7 @@ export function PointsProvider({ children }) {
 export function usePoints() {
   const context = useContext(UserContext);
   if (!context) {
-    throw new Error('useUser must be used within UserProvider');
+    throw new Error('usePoints must be used within UserProvider');
   }
   return context;
 }
