@@ -66,7 +66,7 @@ describe('ProtectedRoute', () => {
       </MemoryRouter>
     );
 
-    // Step 4: Verify protected content does NOT render
+    // Step 4: Verify protected content does NOT render if user is unauthenticated
     expect(screen.queryByTestId('protected-content')).not.toBeInTheDocument();
   });
 
@@ -90,5 +90,65 @@ describe('ProtectedRoute', () => {
     // Step 3: Verify loader appears and protected content does NOT
     expect(screen.getByTestId('loader')).toBeInTheDocument();
     expect(screen.queryByTestId('protected-content')).not.toBeInTheDocument();
+  });
+
+  // Test 4: Loading takes precedence over authentication state
+  test('shows loader even when user exists but auth is still loading', () => {
+    // Step 1: Mock loading state with user present
+    vi.mocked(useAuth).mockReturnValue({
+      currentUser: { uid: '123', email: 'test@example.com' },
+      authLoading: true, // Still loading even with user
+    });
+
+    // Step 2: Render component
+    render(
+      <MemoryRouter>
+        <ProtectedRoute>
+          <TestChild />
+        </ProtectedRoute>
+      </MemoryRouter>
+    );
+
+    // Step 3: Verify loader appears (loading takes precedence)
+    expect(screen.getByTestId('loader')).toBeInTheDocument();
+    expect(screen.queryByTestId('protected-content')).not.toBeInTheDocument();
+  });
+
+  // Test 5: Re-renders correctly when auth state changes
+  test('re-renders correctly when auth state changes', () => {
+    // Step 1: Mock initial loading state
+    const mockUseAuth = vi.mocked(useAuth);
+    mockUseAuth.mockReturnValue({
+      currentUser: null,
+      authLoading: true,
+    });
+
+    // Step 2: Render component
+    const { rerender } = render(
+      <MemoryRouter>
+        <ProtectedRoute>
+          <TestChild />
+        </ProtectedRoute>
+      </MemoryRouter>
+    );
+
+    // Step 4: Change to authenticated state
+    mockUseAuth.mockReturnValue({
+      currentUser: { uid: '789', email: 'user@test.com' },
+      authLoading: false,
+    });
+
+    // Step 5: Re-render component
+    rerender(
+      <MemoryRouter>
+        <ProtectedRoute>
+          <TestChild />
+        </ProtectedRoute>
+      </MemoryRouter>
+    );
+
+    // Step 6: Verify protected content now renders
+    expect(screen.getByTestId('protected-content')).toBeInTheDocument();
+    expect(screen.queryByTestId('loader')).not.toBeInTheDocument();
   });
 });
