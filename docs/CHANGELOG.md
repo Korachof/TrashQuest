@@ -550,6 +550,11 @@ This changelog documents key updates to the TrashQuest project. It follows seman
 - Fixed a small bug in for **layoutPageStyleWrapper** in `styles/layout.js` where **overflow** was set to **clip** instead of **auto**. Fixed that, and now scrollbars are working correctly.
 - Fixed 3 broken tests for `StartQuestButton` by matching the button text in the test and the file.
 
+## Added
+
+- Created the tester `TrashTypeSelect.test.jsx` and created 10 tests to test for `TrashTypeSelect.jsx` behavior.
+- Created the tester `LogCleanupForm.test.jsx` and created 17 tests to test for `LogCleanupForm.jsx` behavior.
+
 ---
 
 ### Planned (Upcoming)
