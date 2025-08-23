@@ -91,4 +91,92 @@ describe('TrashTypeSelect', () => {
     // Step 2: Verify asterisk is added to label
     expect(screen.getByText('Cleanup Type*')).toBeInTheDocument();
   });
+
+  // Test 6: Does not show hazardous warning by default
+  test('does not show hazardous warning by default', () => {
+    // Step 1: Render component with non-hazardous selection
+    render(<TrashTypeSelect value="General Trash" onChange={mockOnChange} />);
+
+    // Step 2: Verify warning is not present
+    expect(screen.queryByText(/Important:/)).not.toBeInTheDocument();
+    expect(
+      screen.queryByText(/check your local city\/state laws/i)
+    ).not.toBeInTheDocument();
+  });
+
+  // Test 7: Shows hazardous warning when Hazardous Waste Disposal is selected
+  test('shows hazardous warning when Hazardous Waste Disposal is selected', () => {
+    // Step 1: Render component with hazardous waste selected
+    render(
+      <TrashTypeSelect
+        value="Hazardous Waste Disposal"
+        onChange={mockOnChange}
+      />
+    );
+
+    // Step 2: Verify warning is displayed
+    expect(screen.getByText(/Important:/)).toBeInTheDocument();
+    expect(
+      screen.getByText(/check your local city\/state laws/i)
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText(/batteries, paint, chemicals, and motor oil/i)
+    ).toBeInTheDocument();
+  });
+
+  // Test 8: Proper warning/yield symbol renders with Hazardous Warning
+  test('warning symbol renders with hazardous warning', () => {
+    // Step 1: Render component with hazardous selection
+    render(
+      <TrashTypeSelect
+        value="Hazardous Waste Disposal"
+        onChange={mockOnChange}
+      />
+    );
+
+    // Step 2: Find the warning div
+    const warningText = screen.getByText(/Important:/).parentElement;
+
+    // Step 3: Verify warning contains all expected text elements
+    expect(warningText).toHaveTextContent('⚠️');
+  });
+
+  // Test 9: Hides hazardous warning when selection changes away from hazardous
+  test('hides hazardous warning when selection changes from hazardous to non-hazardous', () => {
+    // Step 1: Render component with hazardous waste initially selected
+    const { rerender } = render(
+      <TrashTypeSelect
+        value="Hazardous Waste Disposal"
+        onChange={mockOnChange}
+      />
+    );
+
+    // Step 2: Change selection to non-hazardous
+    rerender(<TrashTypeSelect value="General Trash" onChange={mockOnChange} />);
+
+    // Step 3: Verify warning is hidden
+    expect(screen.queryByText(/Important:/)).not.toBeInTheDocument();
+  });
+
+  // Test 10: Shows hazardous warning when selection changes to hazardous
+  test('shows hazardous warning when selection changes to hazardous', () => {
+    // Step 1: Render component with non-hazardous selection
+    const { rerender } = render(
+      <TrashTypeSelect value="General Trash" onChange={mockOnChange} />
+    );
+
+    // Step 2: Verify warning is not shown
+    expect(screen.queryByText(/Important:/)).not.toBeInTheDocument();
+
+    // Step 3: Change selection to hazardous
+    rerender(
+      <TrashTypeSelect
+        value="Hazardous Waste Disposal"
+        onChange={mockOnChange}
+      />
+    );
+
+    // Step 4: Verify warning is now shown
+    expect(screen.getByText(/Important:/)).toBeInTheDocument();
+  });
 });
