@@ -227,4 +227,246 @@ describe('LogCleanupForm', () => {
     // Step 3: Verify points preview appears
     expect(screen.getByText(/You'll earn 10 Eco Points!/)).toBeInTheDocument();
   });
+
+  // Test 9: Submit button disabled when form is invalid
+  test('submit button disabled when required fields are empty', () => {
+    // Step 1: Render component
+    render(
+      <MemoryRouter>
+        <LogCleanupForm />
+      </MemoryRouter>
+    );
+
+    // Step 2: Verify submit button is disabled
+    expect(screen.getByRole('button', { name: 'Log Cleanup' })).toBeDisabled();
+  });
+
+  // Test 10: Submit button enabled when all required fields filled
+  test('submit button enabled when all required fields are filled', () => {
+    // Step 1: Render component
+    render(
+      <MemoryRouter>
+        <LogCleanupForm />
+      </MemoryRouter>
+    );
+
+    // Step 2: Fill all required fields
+    fireEvent.change(screen.getByLabelText('Cleanup Size*'), {
+      target: { value: 'Single Small Item' },
+    });
+    fireEvent.change(screen.getByLabelText('Cleanup Type*'), {
+      target: { value: 'General Trash' },
+    });
+    fireEvent.change(screen.getByLabelText('General Area*'), {
+      target: { value: 'Park' },
+    });
+
+    // Step 3: Verify submit button is enabled
+    expect(
+      screen.getByRole('button', { name: 'Log Cleanup' })
+    ).not.toBeDisabled();
+  });
+
+  // Test 11: Successful form submission for new entry
+  test('successfully submits new cleanup entry', async () => {
+    // Step 1: Mock successful Firestore operations
+    vi.mocked(addDoc).mockResolvedValue({ id: 'new-doc-id' });
+    vi.mocked(getDoc).mockResolvedValue({
+      exists: () => true,
+      data: () => ({ totalEcoPoints: 100 }),
+    });
+    vi.mocked(updateDoc).mockResolvedValue();
+
+    // Step 2: Render component
+    render(
+      <MemoryRouter>
+        <LogCleanupForm />
+      </MemoryRouter>
+    );
+
+    // Step 3: Fill form with valid data
+    fireEvent.change(screen.getByLabelText('Cleanup Size*'), {
+      target: { value: 'Single Small Item' },
+    });
+    fireEvent.change(screen.getByLabelText('Cleanup Type*'), {
+      target: { value: 'General Trash' },
+    });
+    fireEvent.change(screen.getByLabelText('General Area*'), {
+      target: { value: 'Park' },
+    });
+
+    // Step 4: Submit form
+    fireEvent.click(screen.getByRole('button', { name: 'Log Cleanup' }));
+
+    // Step 5: Wait for async operations and verify
+    await waitFor(() => {
+      expect(addDoc).toHaveBeenCalled();
+      expect(updateDoc).toHaveBeenCalled();
+      expect(mockUpdateUserPoints).toHaveBeenCalledWith(3); // Single Small Item = 3 points
+      expect(mockNavigate).toHaveBeenCalledWith('/dashboard');
+      expect(global.alert).toHaveBeenCalledWith(
+        'Cleanup logged successfully! You earned 3 Eco Points!'
+      );
+    });
+  });
+
+  // Test 12: Handles form submission errors
+  test('handles form submission errors gracefully', async () => {
+    // Step 1: Mock Firestore error
+    vi.mocked(addDoc).mockRejectedValue(new Error('Firestore error'));
+
+    // Step 2: Render and fill form
+    render(
+      <MemoryRouter>
+        <LogCleanupForm />
+      </MemoryRouter>
+    );
+
+    fireEvent.change(screen.getByLabelText('Cleanup Size*'), {
+      target: { value: 'Single Small Item' },
+    });
+    fireEvent.change(screen.getByLabelText('Cleanup Type*'), {
+      target: { value: 'General Trash' },
+    });
+    fireEvent.change(screen.getByLabelText('General Area*'), {
+      target: { value: 'Park' },
+    });
+
+    // Step 3: Submit form
+    fireEvent.click(screen.getByRole('button', { name: 'Log Cleanup' }));
+
+    // Step 4: Wait for error handling
+    await waitFor(() => {
+      expect(global.console.error).toHaveBeenCalledWith(
+        'Error logging cleanup:',
+        expect.any(Error)
+      );
+      expect(global.alert).toHaveBeenCalledWith(
+        'Error logging cleanup. Please try again.'
+      );
+    });
+  });
+
+  // Test 13: Cancel button resets form
+  test('cancel button resets form to initial state', () => {
+    // Step 1: Render component
+    render(
+      <MemoryRouter>
+        <LogCleanupForm />
+      </MemoryRouter>
+    );
+
+    // Step 2: Fill some form fields
+    fireEvent.change(screen.getByLabelText('Cleanup Size*'), {
+      target: { value: 'Single Large Item' },
+    });
+    fireEvent.change(screen.getByLabelText('City (Optional)'), {
+      target: { value: 'Portland' },
+    });
+
+    // Step 3: Click cancel
+    fireEvent.click(screen.getByRole('button', { name: 'Cancel' }));
+
+    // Step 4: Verify form reset
+    expect(screen.getByLabelText('Cleanup Size*').value).toBe('');
+    expect(screen.getByLabelText('City (Optional)').value).toBe('');
+    expect(screen.getByLabelText('Date*').value).toBe('2024-01-15'); // Reset to today
+  });
+
+  // Test 14: Edit mode - initializes with existing entry data
+  test('edit mode initializes with existing entry data', () => {
+    // Step 1: Mock existing entry
+    const existingEntry = {
+      id: 'existing-123',
+      date: '2024-01-10',
+      size: 'Single Large Item',
+      type: 'General Recycling',
+      area: 'Beach',
+      city: 'San Francisco',
+      state: 'CA',
+      pointsEarned: 10,
+    };
+
+    // Step 2: Render in edit mode
+    render(
+      <MemoryRouter>
+        <LogCleanupForm editMode={true} existingEntry={existingEntry} />
+      </MemoryRouter>
+    );
+
+    // Step 3: Verify fields populated with existing data
+    expect(screen.getByLabelText('Date*').value).toBe('2024-01-10');
+    expect(screen.getByLabelText('Cleanup Size*').value).toBe(
+      'Single Large Item'
+    );
+    expect(screen.getByLabelText('City (Optional)').value).toBe(
+      'San Francisco'
+    );
+    expect(screen.getByLabelText('State (Optional)').value).toBe('CA');
+  });
+
+  // Test 15: Edit mode - calls onCancel when cancel clicked
+  test('edit mode calls onCancel when cancel button clicked', () => {
+    // Step 1: Mock onCancel function
+    const mockOnCancel = vi.fn();
+
+    // Step 2: Render in edit mode
+    render(
+      <MemoryRouter>
+        <LogCleanupForm
+          editMode={true}
+          existingEntry={{ id: '123' }}
+          onCancel={mockOnCancel}
+        />
+      </MemoryRouter>
+    );
+
+    // Step 3: Click cancel
+    fireEvent.click(screen.getByRole('button', { name: 'Cancel' }));
+
+    // Step 4: Verify onCancel called
+    expect(mockOnCancel).toHaveBeenCalled();
+  });
+
+  // Test 16: Shows all size options with correct points
+  test('displays all size options with correct point values', () => {
+    // Step 1: Render component
+    render(
+      <MemoryRouter>
+        <LogCleanupForm />
+      </MemoryRouter>
+    );
+
+    // Step 2: Verify all size options are present
+    const sizeSelect = screen.getByLabelText('Cleanup Size*');
+    expect(sizeSelect).toHaveTextContent('Single Small Item (3 points)');
+    expect(sizeSelect).toHaveTextContent('Single Large Item (10 points)');
+    expect(sizeSelect).toHaveTextContent(
+      'Grocery Bag (~4 gallons) (60 points)'
+    );
+    expect(sizeSelect).toHaveTextContent(
+      'Standard Garbage Bag (~13 gallons) (180 points)'
+    );
+    expect(sizeSelect).toHaveTextContent(
+      'Commercial Garbage Bag (~30 gallons) (450 points)'
+    );
+  });
+
+  // Test 17: Shows all area options
+  test('displays all area options', () => {
+    // Step 1: Render component
+    render(
+      <MemoryRouter>
+        <LogCleanupForm />
+      </MemoryRouter>
+    );
+
+    // Step 2: Verify all area options are present
+    const areaSelect = screen.getByLabelText('General Area*');
+    expect(areaSelect).toHaveTextContent('Downtown');
+    expect(areaSelect).toHaveTextContent('Residential');
+    expect(areaSelect).toHaveTextContent('Park');
+    expect(areaSelect).toHaveTextContent('Highway');
+    expect(areaSelect).toHaveTextContent('Beach');
+  });
 });
