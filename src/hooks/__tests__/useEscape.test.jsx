@@ -154,7 +154,7 @@ describe('useEscape', () => {
     expect(mockCallback).toHaveBeenCalledTimes(3);
   });
 
-  /* Test 9: Toggles enabled state correctly
+  // Test 9: Toggles enabled state correctly
   test('respects enabled state changes', () => {
     // Step 1: Start with enabled = true
     const { rerender } = renderHook(
@@ -183,5 +183,4 @@ describe('useEscape', () => {
     // Step 7: Verify callback was called only when enabled
     expect(mockCallback).toHaveBeenCalledTimes(2); // First and third press only
   });
-  */
 });

@@ -9,5 +9,5 @@ export default function useEscape(callback, enabled = true) {
     const handleKeyDown = (e) => e.key === 'Escape' && callback();
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [callback]);
+  }, [callback, enabled]);
 }
