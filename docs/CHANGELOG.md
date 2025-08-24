@@ -550,10 +550,24 @@ This changelog documents key updates to the TrashQuest project. It follows seman
 - Fixed a small bug in for **layoutPageStyleWrapper** in `styles/layout.js` where **overflow** was set to **clip** instead of **auto**. Fixed that, and now scrollbars are working correctly.
 - Fixed 3 broken tests for `StartQuestButton` by matching the button text in the test and the file.
 
-## Added
+## [0.3.2] 2025-08-23 - 2025-08-24
+
+### Added
 
 - Created the tester `TrashTypeSelect.test.jsx` and created 10 tests to test for `TrashTypeSelect.jsx` behavior.
 - Created the tester `LogCleanupForm.test.jsx` and created 17 tests to test for `LogCleanupForm.jsx` behavior.
+- Created the tester `DeleteCleanupEntryModal.test.jsx` and created 12 tests to test for `DeleteCleanupEntryModal` behavior.
+- Created the tester `UpdateCleanupEntryModal.test.jsx` and created 9 tests to test for `UpdateCleanupEntryModal` behavior.
+- Created the tester `CleanupEntriesList.test.jsx` and created 12 tests to test for `CleanupEntriesList` behavior.
+- Created the tester `useEscape.test.jsx` and created 9 tests to test for `useEscape.test.jsx` behavior. 8 tests pass. 9th test revelead what looks like a possible bug I'll need to look at later.
+
+### Changed
+
+- Refactored `LogCleanupForm.test.jsx` to use unit testing instead of integrartion testing.
+
+### Fixed
+
+- Fixed an issue where mocks weren't working correctly with `LogCleanupForm.test.jsx`, resulting in me using integration testing instead. Now unit tests are working correctly!
 
 ---
 
