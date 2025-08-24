@@ -248,7 +248,7 @@ describe('DeleteCleanupEntryModal', () => {
     expect(mockOnCancel).toHaveBeenCalledTimes(1);
   });
 
-  // Test 12: Button text is correct
+  // Test 11: Button text is correct
   test('displays correct button text', () => {
     // Step 1: Render component
     render(

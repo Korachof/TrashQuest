@@ -4,17 +4,12 @@ import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { vi, describe, test, expect, beforeEach } from 'vitest';
 import { MemoryRouter } from 'react-router-dom';
 import LogCleanupForm from '../LogCleanupForm';
-import {
-  collection,
-  addDoc,
-  doc,
-  updateDoc,
-  getDoc,
-  increment,
-  setDoc,
-} from 'firebase/firestore';
+import { addDoc, updateDoc, getDoc } from 'firebase/firestore';
 import { usePoints } from '../../../context/PointsContext';
 import { useAuth } from '../../../context/AuthContext';
+import FormGroup from '../../shared/FormGroup';
+import FormButton from '../../shared/FormButton';
+import TrashTypeSelect from '../TrashTypeSelect';
 
 // Mock React Router
 const mockNavigate = vi.fn();
@@ -41,6 +36,95 @@ vi.mock('firebase/firestore', () => ({
 // Mock Firebase config
 vi.mock('../../firebase', () => ({
   db: {},
+}));
+
+// Mock child components
+vi.mock('../../shared/FormGroup', () => ({
+  default: ({
+    id,
+    label,
+    type,
+    value,
+    onChange,
+    required,
+    placeholder,
+    children,
+  }) => (
+    <div data-testid={`form-group-${id}`}>
+      <label htmlFor={id}>{label}</label>
+      {type === 'select' ? (
+        <select
+          id={id}
+          data-testid={id}
+          value={value || ''}
+          onChange={onChange}
+          required={required}
+        >
+          {children}
+        </select>
+      ) : (
+        <input
+          id={id}
+          data-testid={id}
+          type={type}
+          value={value || ''}
+          onChange={onChange}
+          required={required}
+          placeholder={placeholder}
+        />
+      )}
+    </div>
+  ),
+}));
+
+vi.mock('../../shared/FormButton', () => ({
+  default: ({
+    children,
+    isLoading,
+    loadingText,
+    disabled,
+    type,
+    isCancel,
+    onClick,
+  }) => (
+    <button
+      data-testid={isCancel ? 'cancel-button' : 'submit-button'}
+      type={type}
+      disabled={disabled || isLoading}
+      onClick={onClick}
+    >
+      {isLoading ? loadingText : children}
+    </button>
+  ),
+}));
+
+vi.mock('../TrashTypeSelect', () => ({
+  default: ({
+    value,
+    onChange,
+    required,
+    id = 'trash-type-select',
+    label = 'Cleanup Type',
+  }) => (
+    <div data-testid="trash-type-select-wrapper">
+      <label htmlFor={id}>{required ? `${label}*` : label}</label>
+      <select
+        id={id}
+        data-testid="trash-type-select"
+        value={value || ''}
+        onChange={onChange}
+        required={required}
+      >
+        <option value="">Select type...</option>
+        <option value="General Trash">General Trash</option>
+        <option value="General Recycling">General Recycling</option>
+        <option value="Electronics Recycling">Electronics Recycling</option>
+        <option value="Hazardous Waste Disposal">
+          Hazardous Waste Disposal ⚠️
+        </option>
+      </select>
+    </div>
+  ),
 }));
 
 // Mock contexts
@@ -92,16 +176,14 @@ describe('LogCleanupForm', () => {
     );
 
     // Step 2: Verify all form fields are present
-    expect(screen.getByLabelText('Date*')).toBeInTheDocument();
-    expect(screen.getByLabelText('Cleanup Size*')).toBeInTheDocument();
-    expect(screen.getByLabelText('Cleanup Type*')).toBeInTheDocument();
-    expect(screen.getByLabelText('General Area*')).toBeInTheDocument();
-    expect(screen.getByLabelText('City (Optional)')).toBeInTheDocument();
-    expect(screen.getByLabelText('State (Optional)')).toBeInTheDocument();
-    expect(
-      screen.getByRole('button', { name: 'Log Cleanup' })
-    ).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: 'Cancel' })).toBeInTheDocument();
+    expect(screen.getByTestId('cleanup-date')).toBeInTheDocument();
+    expect(screen.getByTestId('cleanup-size')).toBeInTheDocument();
+    expect(screen.getByTestId('trash-type-select')).toBeInTheDocument();
+    expect(screen.getByTestId('cleanup-area')).toBeInTheDocument();
+    expect(screen.getByTestId('cleanup-city')).toBeInTheDocument();
+    expect(screen.getByTestId('cleanup-state')).toBeInTheDocument();
+    expect(screen.getByTestId('submit-button')).toBeInTheDocument();
+    expect(screen.getByTestId('cancel-button')).toBeInTheDocument();
   });
 
   // Test 2: Initializes with today's date
@@ -114,7 +196,7 @@ describe('LogCleanupForm', () => {
     );
 
     // Step 2: Verify date field shows today's date
-    const dateField = screen.getByLabelText('Date*');
+    const dateField = screen.getByTestId('cleanup-date');
     expect(dateField.value).toBe('2024-01-15');
   });
 
@@ -128,12 +210,12 @@ describe('LogCleanupForm', () => {
     );
 
     // Step 2: Change date
-    fireEvent.change(screen.getByLabelText('Date*'), {
+    fireEvent.change(screen.getByTestId('cleanup-date'), {
       target: { value: '2024-01-20' },
     });
 
     // Step 3: Verify value updated
-    expect(screen.getByLabelText('Date*').value).toBe('2024-01-20');
+    expect(screen.getByTestId('cleanup-date').value).toBe('2024-01-20');
   });
 
   // Test 4: Updates form data when cleanup size changes
@@ -146,12 +228,12 @@ describe('LogCleanupForm', () => {
     );
 
     // Step 2: Change cleanup size
-    fireEvent.change(screen.getByLabelText('Cleanup Size*'), {
+    fireEvent.change(screen.getByTestId('cleanup-size'), {
       target: { value: 'Grocery Bag (~4 gallons)' },
     });
 
     // Step 3: Verify value updated
-    expect(screen.getByLabelText('Cleanup Size*').value).toBe(
+    expect(screen.getByTestId('cleanup-size').value).toBe(
       'Grocery Bag (~4 gallons)'
     );
   });
@@ -166,12 +248,12 @@ describe('LogCleanupForm', () => {
     );
 
     // Step 2: Change cleanup size
-    fireEvent.change(screen.getByLabelText('General Area*'), {
+    fireEvent.change(screen.getByTestId('cleanup-area'), {
       target: { value: 'Park' },
     });
 
     // Step 3: Verify value updated
-    expect(screen.getByLabelText('General Area*').value).toBe('Park');
+    expect(screen.getByTestId('cleanup-area').value).toBe('Park');
   });
 
   // Test 6: Updates form data when city changes
@@ -184,12 +266,12 @@ describe('LogCleanupForm', () => {
     );
 
     // Step 2: Change city
-    fireEvent.change(screen.getByLabelText('City (Optional)'), {
+    fireEvent.change(screen.getByTestId('cleanup-city'), {
       target: { value: 'Portland' },
     });
 
     // Step 3: Verify values updated
-    expect(screen.getByLabelText('City (Optional)').value).toBe('Portland');
+    expect(screen.getByTestId('cleanup-city').value).toBe('Portland');
   });
 
   // Test 7: Updates form data when state changes
@@ -202,12 +284,12 @@ describe('LogCleanupForm', () => {
     );
 
     // Step 2: Change city
-    fireEvent.change(screen.getByLabelText('State (Optional)'), {
+    fireEvent.change(screen.getByTestId('cleanup-state'), {
       target: { value: 'Oregon' },
     });
 
     // Step 3: Verify values updated
-    expect(screen.getByLabelText('State (Optional)').value).toBe('Oregon');
+    expect(screen.getByTestId('cleanup-state').value).toBe('Oregon');
   });
 
   // Test 8: Shows points preview when size is selected
@@ -220,7 +302,7 @@ describe('LogCleanupForm', () => {
     );
 
     // Step 2: Select a size
-    fireEvent.change(screen.getByLabelText('Cleanup Size*'), {
+    fireEvent.change(screen.getByTestId('cleanup-size'), {
       target: { value: 'Single Large Item' },
     });
 
@@ -238,7 +320,7 @@ describe('LogCleanupForm', () => {
     );
 
     // Step 2: Verify submit button is disabled
-    expect(screen.getByRole('button', { name: 'Log Cleanup' })).toBeDisabled();
+    expect(screen.getByTestId('submit-button')).toBeDisabled();
   });
 
   // Test 10: Submit button enabled when all required fields filled
@@ -251,20 +333,18 @@ describe('LogCleanupForm', () => {
     );
 
     // Step 2: Fill all required fields
-    fireEvent.change(screen.getByLabelText('Cleanup Size*'), {
+    fireEvent.change(screen.getByTestId('cleanup-size'), {
       target: { value: 'Single Small Item' },
     });
-    fireEvent.change(screen.getByLabelText('Cleanup Type*'), {
+    fireEvent.change(screen.getByTestId('trash-type-select'), {
       target: { value: 'General Trash' },
     });
-    fireEvent.change(screen.getByLabelText('General Area*'), {
+    fireEvent.change(screen.getByTestId('cleanup-area'), {
       target: { value: 'Park' },
     });
 
     // Step 3: Verify submit button is enabled
-    expect(
-      screen.getByRole('button', { name: 'Log Cleanup' })
-    ).not.toBeDisabled();
+    expect(screen.getByTestId('submit-button')).not.toBeDisabled();
   });
 
   // Test 11: Successful form submission for new entry
@@ -285,18 +365,18 @@ describe('LogCleanupForm', () => {
     );
 
     // Step 3: Fill form with valid data
-    fireEvent.change(screen.getByLabelText('Cleanup Size*'), {
+    fireEvent.change(screen.getByTestId('cleanup-size'), {
       target: { value: 'Single Small Item' },
     });
-    fireEvent.change(screen.getByLabelText('Cleanup Type*'), {
+    fireEvent.change(screen.getByTestId('trash-type-select'), {
       target: { value: 'General Trash' },
     });
-    fireEvent.change(screen.getByLabelText('General Area*'), {
+    fireEvent.change(screen.getByTestId('cleanup-area'), {
       target: { value: 'Park' },
     });
 
     // Step 4: Submit form
-    fireEvent.click(screen.getByRole('button', { name: 'Log Cleanup' }));
+    fireEvent.click(screen.getByTestId('submit-button'));
 
     // Step 5: Wait for async operations and verify
     await waitFor(() => {
@@ -322,18 +402,18 @@ describe('LogCleanupForm', () => {
       </MemoryRouter>
     );
 
-    fireEvent.change(screen.getByLabelText('Cleanup Size*'), {
+    fireEvent.change(screen.getByTestId('cleanup-size'), {
       target: { value: 'Single Small Item' },
     });
-    fireEvent.change(screen.getByLabelText('Cleanup Type*'), {
+    fireEvent.change(screen.getByTestId('trash-type-select'), {
       target: { value: 'General Trash' },
     });
-    fireEvent.change(screen.getByLabelText('General Area*'), {
+    fireEvent.change(screen.getByTestId('cleanup-area'), {
       target: { value: 'Park' },
     });
 
     // Step 3: Submit form
-    fireEvent.click(screen.getByRole('button', { name: 'Log Cleanup' }));
+    fireEvent.click(screen.getByTestId('submit-button'));
 
     // Step 4: Wait for error handling
     await waitFor(() => {
@@ -357,20 +437,20 @@ describe('LogCleanupForm', () => {
     );
 
     // Step 2: Fill some form fields
-    fireEvent.change(screen.getByLabelText('Cleanup Size*'), {
+    fireEvent.change(screen.getByTestId('cleanup-size'), {
       target: { value: 'Single Large Item' },
     });
-    fireEvent.change(screen.getByLabelText('City (Optional)'), {
+    fireEvent.change(screen.getByTestId('cleanup-city'), {
       target: { value: 'Portland' },
     });
 
     // Step 3: Click cancel
-    fireEvent.click(screen.getByRole('button', { name: 'Cancel' }));
+    fireEvent.click(screen.getByTestId('cancel-button'));
 
     // Step 4: Verify form reset
-    expect(screen.getByLabelText('Cleanup Size*').value).toBe('');
-    expect(screen.getByLabelText('City (Optional)').value).toBe('');
-    expect(screen.getByLabelText('Date*').value).toBe('2024-01-15'); // Reset to today
+    expect(screen.getByTestId('cleanup-size').value).toBe('');
+    expect(screen.getByTestId('cleanup-city').value).toBe('');
+    expect(screen.getByTestId('cleanup-date').value).toBe('2024-01-15'); // Reset to today
   });
 
   // Test 14: Edit mode - initializes with existing entry data
@@ -395,14 +475,10 @@ describe('LogCleanupForm', () => {
     );
 
     // Step 3: Verify fields populated with existing data
-    expect(screen.getByLabelText('Date*').value).toBe('2024-01-10');
-    expect(screen.getByLabelText('Cleanup Size*').value).toBe(
-      'Single Large Item'
-    );
-    expect(screen.getByLabelText('City (Optional)').value).toBe(
-      'San Francisco'
-    );
-    expect(screen.getByLabelText('State (Optional)').value).toBe('CA');
+    expect(screen.getByTestId('cleanup-date').value).toBe('2024-01-10');
+    expect(screen.getByTestId('cleanup-size').value).toBe('Single Large Item');
+    expect(screen.getByTestId('cleanup-city').value).toBe('San Francisco');
+    expect(screen.getByTestId('cleanup-state').value).toBe('CA');
   });
 
   // Test 15: Edit mode - calls onCancel when cancel clicked
@@ -422,7 +498,7 @@ describe('LogCleanupForm', () => {
     );
 
     // Step 3: Click cancel
-    fireEvent.click(screen.getByRole('button', { name: 'Cancel' }));
+    fireEvent.click(screen.getByTestId('cancel-button'));
 
     // Step 4: Verify onCancel called
     expect(mockOnCancel).toHaveBeenCalled();
@@ -438,7 +514,7 @@ describe('LogCleanupForm', () => {
     );
 
     // Step 2: Verify all size options are present
-    const sizeSelect = screen.getByLabelText('Cleanup Size*');
+    const sizeSelect = screen.getByTestId('cleanup-size');
     expect(sizeSelect).toHaveTextContent('Single Small Item (3 points)');
     expect(sizeSelect).toHaveTextContent('Single Large Item (10 points)');
     expect(sizeSelect).toHaveTextContent(
@@ -462,7 +538,7 @@ describe('LogCleanupForm', () => {
     );
 
     // Step 2: Verify all area options are present
-    const areaSelect = screen.getByLabelText('General Area*');
+    const areaSelect = screen.getByTestId('cleanup-area');
     expect(areaSelect).toHaveTextContent('Downtown');
     expect(areaSelect).toHaveTextContent('Residential');
     expect(areaSelect).toHaveTextContent('Park');
