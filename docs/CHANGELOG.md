@@ -560,14 +560,19 @@ This changelog documents key updates to the TrashQuest project. It follows seman
 - Created the tester `UpdateCleanupEntryModal.test.jsx` and created 9 tests to test for `UpdateCleanupEntryModal` behavior.
 - Created the tester `CleanupEntriesList.test.jsx` and created 12 tests to test for `CleanupEntriesList` behavior.
 - Created the tester `useEscape.test.jsx` and created 9 tests to test for `useEscape.test.jsx` behavior. 8 tests pass. 9th test revelead what looks like a possible bug I'll need to look at later.
+- Created the tester `useCleanupEntries.test.jsx` and created 16 unit tests to test for `useCleanupEntries` behavior.
 
 ### Changed
 
 - Refactored `LogCleanupForm.test.jsx` to use unit testing instead of integrartion testing.
+- Added **enabled** to **useEscape** so it will be re-called when enabled state changes.
+- Uncommented out test in `useEscape.test.jsx` once that bug was fixed.
+- Removed a redundant **afterEach** from `useEscape.test.jsx`
 
 ### Fixed
 
 - Fixed an issue where mocks weren't working correctly with `LogCleanupForm.test.jsx`, resulting in me using integration testing instead. Now unit tests are working correctly!
+- Fixed bug in `useEscape.js` that makes sure **useEffect** will run when both **callback** and **enabled state** changes.
 
 ---
 
