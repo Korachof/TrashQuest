@@ -7,11 +7,8 @@ describe('useEscape', () => {
   let mockCallback;
 
   beforeEach(() => {
-    mockCallback = vi.fn();
-  });
-
-  afterEach(() => {
     vi.clearAllMocks();
+    mockCallback = vi.fn();
   });
 
   // Test 1: Calls callback when Escape key is pressed
