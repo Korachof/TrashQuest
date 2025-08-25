@@ -15,7 +15,7 @@ export const modalOverlayStyle = {
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-  zIndex: 1000,
+  zIndex: overlayZIndex,
 };
 
 export const modalContentStyle = {
@@ -34,7 +34,7 @@ export const modalHeadingStyle = {
   fontWeight: 'bold',
   marginBottom: '16px',
   marginTop: 0,
-  zIndex: 1001,
+  zIndex: contentZIndex,
   position: 'relative',
 };
 
