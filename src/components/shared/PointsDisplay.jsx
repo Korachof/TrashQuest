@@ -24,7 +24,7 @@ export default function PointsDisplay({
   };
 
   const baseStyle = {
-    background: '#d4edda',
+    background: colors.PointsDisplayBGColor,
     borderRadius: '8px',
     textAlign: 'center',
     color: colors.EcoDisplayTextColor,
