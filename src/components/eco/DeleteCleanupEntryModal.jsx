@@ -3,8 +3,10 @@ import React from 'react';
 import Modal from '../shared/Modal';
 import FormButton from '../shared/FormButton';
 import { modalHeadingTextStyle, modalTextStyle } from '../../styles/typography';
-import { modalButtonContainer } from '../../styles/layout';
-import { modalContentStyle } from '../../styles/modalStyles';
+import {
+  modalButtonContainer,
+  modalContentStyleWrapper,
+} from '../../styles/layout';
 
 export default function DeleteCleanupEntryModal({
   isOpen,
@@ -34,7 +36,7 @@ export default function DeleteCleanupEntryModal({
         Location: {entry.area} • Date: {entry.date}
       </p>
 
-      <div style={modalContentStyle}>
+      <div style={modalContentStyleWrapper}>
         <p style={modalTextStyle}>
           This will subtract <strong>{entry.pointsEarned} points</strong> from
           your total.

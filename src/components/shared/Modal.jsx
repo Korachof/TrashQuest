@@ -1,7 +1,10 @@
 // Reusable modal component for overlays and dialogs
 import React from 'react';
 import useEscape from '../../hooks/useEscape';
-import { modalOverlayStyle, modalContentStyle } from '../../styles/modalStyles';
+import {
+  modalOverlayStyle,
+  modalContentStyleWrapper,
+} from '../../styles/layout';
 
 export default function Modal({ isOpen, onClose, children }) {
   useEscape(onClose, isOpen);
@@ -18,7 +21,10 @@ export default function Modal({ isOpen, onClose, children }) {
     >
       {/* stopPropation: Prevent clicks inside modal content from bubbling up to the overlay,
       which would trigger onClose and close the modal unexpectedly */}
-      <div onClick={(e) => e.stopPropagation()} style={modalContentStyle}>
+      <div
+        onClick={(e) => e.stopPropagation()}
+        style={modalContentStyleWrapper}
+      >
         <button onClick={onClose} aria-label="Close modal">
           ×
         </button>
