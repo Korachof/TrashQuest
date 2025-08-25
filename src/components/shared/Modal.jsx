@@ -1,5 +1,5 @@
 // Reusable modal component for overlays and dialogs
-import React, { useEffect } from 'react';
+import React from 'react';
 import useEscape from '../../hooks/useEscape';
 import { modalOverlayStyle, modalContentStyle } from '../../styles/modalStyles';
 

@@ -7,6 +7,7 @@ import FormGroup from './FormGroup';
 import FormButton from './FormButton';
 import { formContainer } from '../../styles/forms';
 import { modalHeadingStyle, modalTextStyle } from '../../styles/modalStyles';
+import { colors } from '../../styles/colors';
 
 export default function ForgotPasswordModal({ isOpen, onClose }) {
   const [email, setEmail] = useState('');
@@ -66,12 +67,20 @@ export default function ForgotPasswordModal({ isOpen, onClose }) {
       </form>
 
       {successMsg && (
-        <p style={{ color: 'green' }} role="status" aria-live="polite">
+        <p
+          style={{ color: colors.successMesageTextColor }}
+          role="status"
+          aria-live="polite"
+        >
           {successMsg}
         </p>
       )}
       {errorMsg && (
-        <p style={{ color: 'red' }} role="alert" aria-live="assertive">
+        <p
+          style={{ color: colors.errorMessageTextColor }}
+          role="alert"
+          aria-live="assertive"
+        >
           {errorMsg}
         </p>
       )}
