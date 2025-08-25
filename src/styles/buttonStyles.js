@@ -29,17 +29,17 @@ export const getColorStyles = (color) => {
   switch (color) {
     case 'primary':
       return {
-        background: colors.primaryButton,
+        background: colors.primaryAppColor,
         color: colors.buttonTextColor,
       };
     case 'secondary':
       return {
-        background: colors.secondaryButton,
+        background: colors.secondaryAppColor,
         color: colors.buttonTextColor,
       };
     default:
       return {
-        background: colors.primaryButton,
+        background: colors.primaryAppColor,
         color: colors.buttonTextColor,
       };
   }

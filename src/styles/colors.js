@@ -2,10 +2,10 @@
 
 export const colors = {
   // App Primary Colors
-  primaryButton: '#28a745',
+  primaryAppColor: '#28a745',
 
   // App Secondary Colors
-  secondaryButton: '#6c757d',
+  secondaryAppColor: '#6c757d',
 
   // Text Colors
   headingTextColor: '#333',
@@ -18,4 +18,5 @@ export const colors = {
 
   //BG Colors
   PointsDisplayBGColor: '#d4edda',
+  modalBGColor: '#f8f9fa',
 };

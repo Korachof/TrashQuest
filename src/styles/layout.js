@@ -1,4 +1,5 @@
 // Handles layout/structural styling patterns throughout the app
+import { colors } from './colors';
 
 export const layoutPageStyleWrapper = {
   display: 'flex',
@@ -36,7 +37,7 @@ export const footerStyleContainer = {
   fontSize: '0.95rem',
   textAlign: 'center',
   fontSize: '0.95rem',
-  color: '#28a745',
+  color: colors.primaryAppColor,
   backgroundColor: '#f8f8f8',
   borderTop: '1px solid #ccc',
 };
@@ -54,7 +55,7 @@ export const popupStyles = {
   position: 'absolute',
   top: '60px',
   right: '20px',
-  backgroundColor: '#fff',
+  backgroundColor: colors.modalBGColor,
   border: '1px solid #ccc',
   padding: '1rem',
   zIndex: 1000,
@@ -80,7 +81,7 @@ export const modalOverlayStyle = {
 };
 
 export const modalContentStyleWrapper = {
-  backgroundColor: '#f8f9fa',
+  backgroundColor: colors.modalBGColor,
   padding: '20px',
   borderRadius: '8px',
   position: 'relative',
