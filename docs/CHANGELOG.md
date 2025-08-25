@@ -574,6 +574,21 @@ This changelog documents key updates to the TrashQuest project. It follows seman
 - Fixed an issue where mocks weren't working correctly with `LogCleanupForm.test.jsx`, resulting in me using integration testing instead. Now unit tests are working correctly!
 - Fixed bug in `useEscape.js` that makes sure **useEffect** will run when both **callback** and **enabled state** changes.
 
+## [0.3.2] 2025-08-25
+
+### Added
+
+- Created a `componentStyles` file that houses styles for components like **PointsDisplay**
+
+### Changed
+
+- Refactored a variety of files to simply abstract and reference styles in the proper areas. Moved all **text** styles so far to `typography`. Moved all **layout** styles to `layout`, etc. No functional changes were made.
+- Cleaned up `PageLayout` by removing an unused **useAuth**
+- Cleaned up `logCleanupForm` by removing the unused **CLEANUP_TYPES** const, since it's now using `TrashTypeSelect`.
+- Properly referenced the **overlayZIndex** and **contentZIndex** for modal styles.
+- Moved all references from `modalStyles` to `layout` and `typography`
+- Deleted `modalStyles` because I moved all references to `layout` and `typography`
+
 ---
 
 ### Planned (Upcoming)
