@@ -1,39 +1,14 @@
 // src/components/shared/PointsDisplay.jsx
 import React from 'react';
 import { usePoints } from '../../context/PointsContext';
-import { colors } from '../../styles/colors';
+import { pointsDisplayStyle } from '../../styles/componentStyles';
 
-export default function PointsDisplay({
-  size = 'large', // 'large', 'medium', 'small'
-  showIcon = true,
-  style = {},
-}) {
+export default function PointsDisplay({ showIcon = true, style = {} }) {
   const { userPoints, loading } = usePoints();
 
-  // Size-based styling
-  const getSizeStyles = () => {
-    switch (size) {
-      case 'small':
-        return { fontSize: '0.9rem', padding: '0.5rem' };
-      case 'medium':
-        return { fontSize: '1.1rem', padding: '0.75rem' };
-      case 'large':
-      default:
-        return { fontSize: '1.5rem', padding: '1rem' };
-    }
-  };
-
-  const baseStyle = {
-    background: colors.PointsDisplayBGColor,
-    borderRadius: '8px',
-    textAlign: 'center',
-    color: colors.EcoDisplayTextColor,
-    ...getSizeStyles(),
-    ...style,
-  };
-
   return (
-    <div style={baseStyle}>
+    // style = custom style props
+    <div style={{ ...pointsDisplayStyle, ...style }}>
       {loading ? (
         'Loading...'
       ) : (
