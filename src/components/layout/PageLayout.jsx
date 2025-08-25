@@ -3,10 +3,8 @@ import Footer from './Footer';
 import React from 'react';
 import MainContainer from './MainContainer';
 import { layoutPageStyleWrapper } from '../../styles/layout';
-import { useAuth } from '../../context/AuthContext';
 
 export default function PageLayout({ children }) {
-  const { currentUser } = useAuth();
   return (
     <div style={layoutPageStyleWrapper}>
       <Header />
