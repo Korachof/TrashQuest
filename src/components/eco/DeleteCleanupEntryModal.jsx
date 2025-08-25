@@ -2,6 +2,9 @@
 import React from 'react';
 import Modal from '../shared/Modal';
 import FormButton from '../shared/FormButton';
+import { modalHeadingTextStyle, modalTextStyle } from '../../styles/typography';
+import { modalButtonContainer } from '../../styles/layout';
+import { modalContentStyle } from '../../styles/modalStyles';
 
 export default function DeleteCleanupEntryModal({
   isOpen,
@@ -20,8 +23,8 @@ export default function DeleteCleanupEntryModal({
 
   return (
     <Modal isOpen={isOpen} onClose={onCancel}>
-      <h3>Delete Cleanup Entry</h3>
-      <p>Are you sure you want to delete this entry?</p>
+      <h2 style={modalHeadingTextStyle}>Delete Cleanup Entry</h2>
+      <p style={modalTextStyle}>Are you sure you want to delete this entry?</p>
       <p>
         <strong>
           {entry.size} • {entry.type}
@@ -31,25 +34,18 @@ export default function DeleteCleanupEntryModal({
         Location: {entry.area} • Date: {entry.date}
       </p>
 
-      <div
-        style={{
-          margin: '1rem 0',
-          padding: '1rem',
-          background: '#f8f9fa',
-          borderRadius: '4px',
-        }}
-      >
-        <p>
+      <div style={modalContentStyle}>
+        <p style={modalTextStyle}>
           This will subtract <strong>{entry.pointsEarned} points</strong> from
           your total.
         </p>
-        <p>
+        <p style={modalTextStyle}>
           Current: <strong>{currentPoints} points</strong> → New:{' '}
           <strong>{newPointsTotal} points</strong>
         </p>
       </div>
 
-      <div style={{ display: 'flex', gap: '1rem', marginTop: '1rem' }}>
+      <div style={modalButtonContainer}>
         <FormButton onClick={handleConfirmDelete}>Delete Entry</FormButton>
         <FormButton isCancel={true} onClick={onCancel}>
           Cancel

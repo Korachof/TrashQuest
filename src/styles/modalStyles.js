@@ -2,7 +2,6 @@
 
 //z-index constants to keep overlay clean
 const overlayZIndex = 1000;
-const contentZIndex = 1001; // larger so it will appear above the overlay layer
 
 // Modal-specific styling
 export const modalOverlayStyle = {
@@ -19,29 +18,10 @@ export const modalOverlayStyle = {
 };
 
 export const modalContentStyle = {
-  backgroundColor: 'white',
+  backgroundColor: '#f8f9fa',
   padding: '20px',
   borderRadius: '8px',
   position: 'relative',
   maxWidth: '500px',
   width: '90%',
-};
-
-// Modal-specific text styles
-export const modalHeadingStyle = {
-  color: '#000',
-  fontSize: '24px',
-  fontWeight: 'bold',
-  marginBottom: '16px',
-  marginTop: 0,
-  zIndex: contentZIndex,
-  position: 'relative',
-};
-
-export const modalTextStyle = {
-  color: '#000',
-  fontSize: '16px',
-  lineHeight: '1.5',
-  marginBottom: '16px',
-  position: 'relative',
 };

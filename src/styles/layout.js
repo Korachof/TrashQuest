@@ -1,6 +1,6 @@
 // Handles layout/structural styling patterns throughout the app
 
-const layoutPageStyleWrapper = {
+export const layoutPageStyleWrapper = {
   display: 'flex',
   flexDirection: 'column',
   minHeight: '100vh',
@@ -10,7 +10,7 @@ const layoutPageStyleWrapper = {
   overflow: 'auto',
 };
 
-const mainContainerStyleWrapper = {
+export const mainContainerStyleWrapper = {
   boxSizing: 'border-box',
   flexGrow: 1,
   maxWidth: '700px',
@@ -19,7 +19,7 @@ const mainContainerStyleWrapper = {
   textAlign: 'center',
 };
 
-const headerStyleContainer = {
+export const headerStyleContainer = {
   boxSizing: 'border-box',
   display: 'flex',
   justifyContent: 'space-between',
@@ -29,7 +29,7 @@ const headerStyleContainer = {
   borderBottom: '1px solid #ccc',
 };
 
-const footerStyleContainer = {
+export const footerStyleContainer = {
   boxSizing: 'border-box',
   padding: '1rem',
   textAlign: 'center',
@@ -41,7 +41,7 @@ const footerStyleContainer = {
   borderTop: '1px solid #ccc',
 };
 
-const navContainer = {
+export const navContainer = {
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
@@ -50,7 +50,7 @@ const navContainer = {
   marginBottom: '0.5rem',
 };
 
-const popupStyles = {
+export const popupStyles = {
   position: 'absolute',
   top: '60px',
   right: '20px',
@@ -60,11 +60,8 @@ const popupStyles = {
   zIndex: 1000,
 };
 
-export {
-  layoutPageStyleWrapper,
-  mainContainerStyleWrapper,
-  headerStyleContainer,
-  footerStyleContainer,
-  navContainer,
-  popupStyles,
+export const modalButtonContainer = {
+  display: 'flex',
+  gap: '1rem',
+  marginTop: '1rem',
 };

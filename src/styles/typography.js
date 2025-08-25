@@ -27,6 +27,31 @@ export const bodyTextStyle = {
   color: '#444',
 };
 
+// ------------------------------------------
+// Modal Text Styling
+//-------------------------------------------
+const contentZIndex = 1001;
+
+// Modal Heading text
+export const modalHeadingTextStyle = {
+  color: '#000',
+  fontSize: '24px',
+  fontWeight: 'bold',
+  marginBottom: '16px',
+  marginTop: 0,
+  zIndex: contentZIndex,
+  position: 'relative',
+};
+
+// Modal Body text
+export const modalTextStyle = {
+  color: '#000',
+  fontSize: '16px',
+  lineHeight: '1.5',
+  marginBottom: '16px',
+  position: 'relative',
+};
+
 export function pointsDisplayTextStyle(size) {
   switch (size) {
     case 'small':
