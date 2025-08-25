@@ -61,3 +61,15 @@ export const getButtonStyle = (
     ...customStyle,
   };
 };
+
+// Delete button style function
+export const getDeleteButtonStyle = () => {
+  return {
+    background: 'none',
+    border: 'none',
+    fontSize: '1.2rem',
+    cursor: 'pointer',
+    color: '#666',
+    padding: '0.25rem',
+  };
+};

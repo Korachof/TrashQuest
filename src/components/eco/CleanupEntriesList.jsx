@@ -1,7 +1,10 @@
 // Component to display a list of user's cleanup entries
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { getButtonStyle } from '../../styles/buttonStyles';
+import {
+  getButtonStyle,
+  getDeleteButtonStyle,
+} from '../../styles/buttonStyles';
 import { colors } from '../../styles/colors';
 import DeleteCleanupEntryModal from './DeleteCleanupEntryModal';
 import UpdateCleanupEntryModal from './UpdateCleanupEntryModal';
@@ -90,14 +93,7 @@ export default function CleanupEntriesList({
                 </div>
                 <button
                   onClick={() => handleDelete(entry.id)}
-                  style={{
-                    background: 'none',
-                    border: 'none',
-                    fontSize: '1.2rem',
-                    cursor: 'pointer',
-                    color: '#666',
-                    padding: '0.25rem',
-                  }}
+                  style={getDeleteButtonStyle()}
                 >
                   ×
                 </button>
