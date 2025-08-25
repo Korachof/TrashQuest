@@ -1,5 +1,12 @@
 // Handles text appearance throughout the app.
 
+// Logo text
+export const logoTextStyle = {
+  textDecoration: 'none',
+  color: '#28a745',
+  fontWeight: 'bold',
+};
+
 // Link Navigation text
 export const linkNavigationText = {
   marginTop: '2rem',

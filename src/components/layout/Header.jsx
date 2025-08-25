@@ -6,13 +6,8 @@ import { auth } from '../../firebase';
 import { navContainer, headerStyleContainer } from '../../styles/layout';
 import ConfirmLogout from '../shared/ConfirmLogout';
 import { FaUser } from 'react-icons/fa';
+import { logoTextStyle } from '../../styles/typography';
 import { useAuth } from '../../context/AuthContext';
-
-const logoStyles = {
-  textDecoration: 'none',
-  color: '#28a745',
-  fontWeight: 'bold',
-};
 
 export default function Header() {
   // Grab the current user
@@ -36,7 +31,7 @@ export default function Header() {
       Logo link redirects to Dashboard if user is logged in,
       otherwise to Welcome Page
       */}
-      <Link to={currentUser ? '/dashboard' : '/'} style={logoStyles}>
+      <Link to={currentUser ? '/dashboard' : '/'} style={logoTextStyle}>
         <h1>TrashQuest ♻️</h1>
       </Link>
       <nav style={navContainer}>
