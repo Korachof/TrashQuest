@@ -28,18 +28,6 @@ const POINTS_VALUES = {
   'Commercial Garbage Bag (~30 gallons)': 450,
 };
 
-// Cleanup types with educational info
-const CLEANUP_TYPES = [
-  { value: 'General Trash', label: 'General Trash' },
-  { value: 'General Recycling', label: 'General Recycling' },
-  { value: 'Electronics Recycling', label: 'Electronics Recycling' },
-  {
-    value: 'Hazardous Waste Disposal',
-    label: 'Hazardous Waste Disposal ⚠️',
-    warning: true,
-  },
-];
-
 // Area options
 const AREA_OPTIONS = ['Downtown', 'Residential', 'Park', 'Highway', 'Beach'];
 
