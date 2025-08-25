@@ -81,9 +81,10 @@ export default function CleanupEntriesList({
               <div
                 style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}
               >
+                {/* Entry Points Value */}
                 <div
                   style={{
-                    background: '#d4edda',
+                    background: colors.PointsDisplayBGColor,
                     padding: '0.25rem 0.5rem',
                     borderRadius: '4px',
                     color: colors.EcoDisplayTextColor,
@@ -92,12 +93,16 @@ export default function CleanupEntriesList({
                 >
                   +{entry.pointsEarned} pts
                 </div>
+
+                {/* Delete button */}
                 <button
                   onClick={() => handleDelete(entry.id)}
                   style={getDeleteButtonStyle()}
                 >
                   ×
                 </button>
+
+                {/* Edit button */}
                 <button
                   onClick={() => handleEdit(entry.id)}
                   style={getEditButtonStyle()}

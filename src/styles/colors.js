@@ -13,4 +13,7 @@ export const colors = {
   EcoDisplayTextColor: '#155724',
   buttonTextColor: '#ffffff',
   navButtonTextColor: '#0000EE',
+
+  //BG Colors
+  PointsDisplayBGColor: '#d4edda',
 };
