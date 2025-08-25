@@ -69,7 +69,7 @@ export const getDeleteButtonStyle = () => {
     border: 'none',
     fontSize: '1.2rem',
     cursor: 'pointer',
-    color: '#666',
+    color: colors.deleteButtonColor, // x button
     padding: '0.25rem',
   };
 };

@@ -26,8 +26,8 @@ export const headerStyleContainer = {
   justifyContent: 'space-between',
   alignItems: 'center',
   padding: '1rem 2rem',
-  backgroundColor: '#f0f0f0',
-  borderBottom: '1px solid #ccc',
+  backgroundColor: colors.HeaderBGColor,
+  borderBottom: `1px solid ${colors.headerFooterBorderColor}`,
 };
 
 export const footerStyleContainer = {
@@ -38,8 +38,8 @@ export const footerStyleContainer = {
   textAlign: 'center',
   fontSize: '0.95rem',
   color: colors.primaryAppColor,
-  backgroundColor: '#f8f8f8',
-  borderTop: '1px solid #ccc',
+  backgroundColor: colors.FooterBGColor,
+  borderTop: `1px solid ${colors.headerFooterBorderColor}`,
 };
 
 export const navContainer = {
@@ -51,6 +51,13 @@ export const navContainer = {
   marginBottom: '0.5rem',
 };
 
+// ------------------------------------
+// Modal-specific layout styling
+// ------------------------------------
+
+//z-index constants to keep overlay clean
+const overlayZIndex = 1000;
+
 export const popupStyles = {
   position: 'absolute',
   top: '60px',
@@ -58,14 +65,8 @@ export const popupStyles = {
   backgroundColor: colors.modalBGColor,
   border: '1px solid #ccc',
   padding: '1rem',
-  zIndex: 1000,
+  zIndex: overlayZIndex,
 };
-// ------------------------------------
-// Modal-specific layout styling
-// ------------------------------------
-
-//z-index constants to keep overlay clean
-const overlayZIndex = 1000;
 
 export const modalOverlayStyle = {
   position: 'fixed',
