@@ -73,3 +73,15 @@ export const getDeleteButtonStyle = () => {
     padding: '0.25rem',
   };
 };
+
+// Edit button style function
+export const getEditButtonStyle = () => {
+  return {
+    background: 'none',
+    border: 'none',
+    fontSize: '0.9rem',
+    cursor: 'pointer',
+    color: colors.navButtonTextColor,
+    padding: '0.25rem',
+  };
+};

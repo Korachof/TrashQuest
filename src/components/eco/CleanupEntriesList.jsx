@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import {
   getButtonStyle,
   getDeleteButtonStyle,
+  getEditButtonStyle,
 } from '../../styles/buttonStyles';
 import { colors } from '../../styles/colors';
 import DeleteCleanupEntryModal from './DeleteCleanupEntryModal';
@@ -99,14 +100,7 @@ export default function CleanupEntriesList({
                 </button>
                 <button
                   onClick={() => handleEdit(entry.id)}
-                  style={{
-                    background: 'none',
-                    border: 'none',
-                    fontSize: '0.9rem',
-                    cursor: 'pointer',
-                    color: colors.navButtonTextColor,
-                    padding: '0.25rem',
-                  }}
+                  style={getEditButtonStyle()}
                 >
                   Edit
                 </button>
