@@ -15,7 +15,14 @@ export const linkNavigationText = {
 
 // Page Heading text
 export const headingTextStyle = {
-  fontSize: '2rem',
+  fontSize: '1.3rem',
+  fontWeight: '600',
+  marginBottom: '1rem',
+  color: colors.headingTextColor,
+};
+
+export const subHeadingTextStyle = {
+  fontSize: '1.3rem',
   fontWeight: '600',
   marginBottom: '1rem',
   color: colors.headingTextColor,
@@ -25,6 +32,12 @@ export const headingTextStyle = {
 export const bodyTextStyle = {
   fontSize: '1rem',
   lineHeight: '1.5',
+  color: colors.bodyTextColor,
+};
+
+export const centerBodyTextStyle = {
+  textAlign: 'center',
+  padding: '2rem',
   color: colors.bodyTextColor,
 };
 

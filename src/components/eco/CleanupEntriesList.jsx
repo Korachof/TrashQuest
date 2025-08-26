@@ -1,21 +1,26 @@
 // Component to display a list of user's cleanup entries
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import DeleteCleanupEntryModal from './DeleteCleanupEntryModal';
+import UpdateCleanupEntryModal from './UpdateCleanupEntryModal';
+import useCleanupEntries from '../../hooks/useCleanupEntries';
 import {
   getButtonStyle,
   getDeleteButtonStyle,
   getEditButtonStyle,
 } from '../../styles/buttonStyles';
 import { colors } from '../../styles/colors';
-import DeleteCleanupEntryModal from './DeleteCleanupEntryModal';
-import UpdateCleanupEntryModal from './UpdateCleanupEntryModal';
-import useCleanupEntries from '../../hooks/useCleanupEntries';
 import {
   entriesListLayoutWrapper,
   centerButtonLayout,
   containerElementSpacing,
   entryContainerWrapper,
 } from '../../styles/layout';
+import { cleanupEntriesPointsStyle } from '../../styles/componentStyles';
+import {
+  centerBodyTextStyle,
+  subHeadingTextStyle,
+} from '../../styles/typography';
 
 export default function CleanupEntriesList({
   limitEntries = null, // null = show all, number = limit results
@@ -37,13 +42,7 @@ export default function CleanupEntriesList({
 
   if (entries.length === 0) {
     return (
-      <div
-        style={{
-          textAlign: 'center',
-          padding: '2rem',
-          color: colors.bodyTextColor,
-        }}
-      >
+      <div style={centerBodyTextStyle}>
         <p>No cleanup entries yet. Start logging your eco activities!</p>
       </div>
     );
@@ -62,7 +61,7 @@ export default function CleanupEntriesList({
 
   return (
     <div>
-      <h3>Recent Cleanup Activities</h3>
+      <h3 style={subHeadingTextStyle}>Recent Cleanup Activities</h3>
 
       {/* Entries List */}
       <div style={entriesListLayoutWrapper}>
@@ -77,15 +76,7 @@ export default function CleanupEntriesList({
             </div>
             <div style={containerElementSpacing}>
               {/* Entry Points Value */}
-              <div
-                style={{
-                  background: colors.pointsDisplayBGColor,
-                  padding: '0.25rem 0.5rem',
-                  borderRadius: '4px',
-                  color: colors.EcoDisplayTextColor,
-                  fontWeight: 'bold',
-                }}
-              >
+              <div style={cleanupEntriesPointsStyle}>
                 +{entry.pointsEarned} pts
               </div>
 
