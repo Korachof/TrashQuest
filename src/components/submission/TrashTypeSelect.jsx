@@ -1,6 +1,7 @@
 // Dropdown component for selecting cleanup/trash type
 import React, { useState, useEffect } from 'react';
 import FormGroup from '../shared/FormGroup';
+import { colors } from '../../styles/colors';
 
 // Cleanup types with educational info
 const CLEANUP_TYPES = [
@@ -50,14 +51,14 @@ export default function TrashTypeSelect({
       {showHazardousWarning && (
         <div
           style={{
-            background: '#fff3cd',
-            border: '1px solid #ffeaa7',
+            background: colors.hazardWarningBGColor,
+            border: `1px solid ${colors.hazardWarningBorderColor}`,
             padding: '1rem',
             borderRadius: '4px',
             marginBottom: '1rem',
           }}
         >
-          <p style={{ margin: 0, color: '#856404' }}>
+          <p style={{ margin: 0, color: colors.hazardTextColor }}>
             ⚠️ <strong>Important:</strong> Please check your local city/state
             laws for proper hazardous waste disposal. When in doubt, seek
             professional help. This includes items like batteries, paint,

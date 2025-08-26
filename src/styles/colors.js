@@ -16,13 +16,16 @@ export const colors = {
   errorMessageTextColor: '#008000',
   successMesageTextColor: '#FF0000',
   deleteButtonColor: '#666',
+  hazardTextColor: '#856404',
 
   //BG Colors
   HeaderBGColor: '#f0f0f0',
   FooterBGColor: '#f8f8f8',
   PointsDisplayBGColor: '#d4edda',
   modalBGColor: '#f8f9fa',
+  hazardWarningBGColor: '#fff3cd',
 
   //Border Colors
   headerFooterBorderColor: '#ccc',
+  hazardWarningBorderColor: '#ffeaa7',
 };
