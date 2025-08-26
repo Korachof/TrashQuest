@@ -24,6 +24,7 @@ export const colors = {
   pointsDisplayBGColor: '#d4edda',
   modalBGColor: '#f8f9fa',
   hazardWarningBGColor: '#fff3cd',
+  modalOverlayBGColor: 'rgba(0, 0, 0, 0.5)', // Transparent bg when overlay is open
 
   //Border Colors
   headerFooterBorderColor: '#ccc',
