@@ -21,11 +21,12 @@ export const colors = {
   //BG Colors
   HeaderBGColor: '#f0f0f0',
   FooterBGColor: '#f8f8f8',
-  PointsDisplayBGColor: '#d4edda',
+  pointsDisplayBGColor: '#d4edda',
   modalBGColor: '#f8f9fa',
   hazardWarningBGColor: '#fff3cd',
 
   //Border Colors
   headerFooterBorderColor: '#ccc',
   hazardWarningBorderColor: '#ffeaa7',
+  pointsDisplayBorderColor: '#c3e6cb',
 };

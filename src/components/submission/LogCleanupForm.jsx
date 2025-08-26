@@ -18,6 +18,7 @@ import TrashTypeSelect from './TrashTypeSelect';
 import { formContainer } from '../../styles/forms';
 import { usePoints } from '../../context/PointsContext';
 import { useAuth } from '../../context/AuthContext';
+import { colors } from '../../styles/colors';
 
 // Points values for each size
 const POINTS_VALUES = {
@@ -255,15 +256,15 @@ export default function LogCleanupForm({
         {formData.size && (
           <div
             style={{
-              background: '#d4edda',
-              border: '1px solid #c3e6cb',
+              background: colors.pointsDisplayBGColor,
+              border: `1px solid ${colors.pointsDisplayBorderColor}`,
               padding: '1rem',
               borderRadius: '4px',
               marginBottom: '1rem',
               textAlign: 'center',
             }}
           >
-            <h3 style={{ margin: 0, color: '#155724' }}>
+            <h3 style={{ margin: 0, color: colors.EcoDisplayTextColor }}>
               🎉 You'll earn {calculatePoints()} Eco Points!
             </h3>
           </div>
