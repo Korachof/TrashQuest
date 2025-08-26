@@ -95,3 +95,33 @@ export const modalButtonContainer = {
   gap: '1rem',
   marginTop: '1rem',
 };
+
+// ------------------------------------
+// Cleanup Entry List layout styling
+// ------------------------------------
+export const entriesListLayoutWrapper = {
+  display: 'flex',
+  flexDirection: 'column',
+  gap: '1rem',
+};
+
+export const entryContainerWrapper = {
+  background: colors.cleanupEntryBGColor,
+  padding: '1rem',
+  borderRadius: '8px',
+  border: `1px solid ${colors.cleanupEntryBorderColor}`,
+  display: 'flex',
+  justifyContent: 'space-between',
+  alignItems: 'center',
+};
+
+// ------------------------------------
+// Utility-Style layout styling
+// ------------------------------------
+export const centerButtonLayout = { textAlign: 'center', marginTop: '1rem' };
+
+export const containerElementSpacing = {
+  display: 'flex',
+  alignItems: 'center',
+  gap: '0.5rem',
+};

@@ -10,6 +10,12 @@ import { colors } from '../../styles/colors';
 import DeleteCleanupEntryModal from './DeleteCleanupEntryModal';
 import UpdateCleanupEntryModal from './UpdateCleanupEntryModal';
 import useCleanupEntries from '../../hooks/useCleanupEntries';
+import {
+  entriesListLayoutWrapper,
+  centerButtonLayout,
+  containerElementSpacing,
+  entryContainerWrapper,
+} from '../../styles/layout';
 
 export default function CleanupEntriesList({
   limitEntries = null, // null = show all, number = limit results
@@ -59,63 +65,45 @@ export default function CleanupEntriesList({
       <h3>Recent Cleanup Activities</h3>
 
       {/* Entries List */}
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+      <div style={entriesListLayoutWrapper}>
         {entries.map((entry) => (
-          <div
-            key={entry.id}
-            style={{
-              background: colors.cleanupEntryBGColor,
-              padding: '1rem',
-              borderRadius: '8px',
-              border: `1px solid ${colors.cleanupEntryBorderColor}`,
-            }}
-          >
-            <div
-              style={{
-                display: 'flex',
-                justifyContent: 'space-between',
-                alignItems: 'center',
-              }}
-            >
-              <div>
-                <strong>{entry.size}</strong> • {entry.type}
-                <br />
-                <small style={{ color: colors.bodyTextColor }}>
-                  {entry.area} • {entry.date}
-                </small>
-              </div>
+          <div key={entry.id} style={entryContainerWrapper}>
+            <div>
+              <strong>{entry.size}</strong> • {entry.type}
+              <br />
+              <small style={{ color: colors.bodyTextColor }}>
+                {entry.area} • {entry.date}
+              </small>
+            </div>
+            <div style={containerElementSpacing}>
+              {/* Entry Points Value */}
               <div
-                style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}
+                style={{
+                  background: colors.pointsDisplayBGColor,
+                  padding: '0.25rem 0.5rem',
+                  borderRadius: '4px',
+                  color: colors.EcoDisplayTextColor,
+                  fontWeight: 'bold',
+                }}
               >
-                {/* Entry Points Value */}
-                <div
-                  style={{
-                    background: colors.pointsDisplayBGColor,
-                    padding: '0.25rem 0.5rem',
-                    borderRadius: '4px',
-                    color: colors.EcoDisplayTextColor,
-                    fontWeight: 'bold',
-                  }}
-                >
-                  +{entry.pointsEarned} pts
-                </div>
-
-                {/* Delete button */}
-                <button
-                  onClick={() => handleDelete(entry.id)}
-                  style={getDeleteButtonStyle()}
-                >
-                  ×
-                </button>
-
-                {/* Edit button */}
-                <button
-                  onClick={() => handleEdit(entry.id)}
-                  style={getEditButtonStyle()}
-                >
-                  Edit
-                </button>
+                +{entry.pointsEarned} pts
               </div>
+
+              {/* Delete button */}
+              <button
+                onClick={() => handleDelete(entry.id)}
+                style={getDeleteButtonStyle()}
+              >
+                ×
+              </button>
+
+              {/* Edit button */}
+              <button
+                onClick={() => handleEdit(entry.id)}
+                style={getEditButtonStyle()}
+              >
+                Edit
+              </button>
             </div>
           </div>
         ))}
@@ -144,7 +132,7 @@ export default function CleanupEntriesList({
 
       {/* View All Button */}
       {showViewAll && (
-        <div style={{ textAlign: 'center', marginTop: '1rem' }}>
+        <div style={centerButtonLayout}>
           <button
             onClick={() => navigate('/cleanup-entries')}
             style={getButtonStyle('medium', 'secondary')}
