@@ -1,79 +1,134 @@
 // Handles text appearance throughout the app.
 import { colors } from './colors';
 
+// ------------------------------------------
+// Reused styling constants
+//-------------------------------------------
+
+// Font Weight
+const FONT_WEIGHT_SEMIBOLD = '600';
+
+// Font Size
+const MAIN_HEADING_FONT_SIZE = '2rem';
+const MODAL_HEADING_FONT_SIZE = '1.5rem';
+const SUB_HEADING_FONT_SIZE = '1.3rem';
+const MAIN_BODY_FONT_SIZE = '1rem';
+const SMALL_POINTS_FONT_SIZE = '0.9rem';
+const MEDIUM_POINTS_FONT_SIZE = '1.1rem';
+const LARGE_POINTS_FONT_SIZE = '1.5rem';
+
+// Margins
+const MARGIN_BOTTOM = '1rem';
+const LINK_MARGIN_TOP = '1.5rem';
+const MODAL_MARGIN_TOP = '1.5rem';
+
+// padding
+const CENTER_TEXT_PADDING = '2rem';
+const SMALL_POINTS_DISPLAY_PADDING = '0.5rem';
+const MEDIUM_POINTS_DISPLAY_PADDING = '0.75rem';
+const LARGE_POINTS_DISPLAY_PADDING = '1rem';
+
+// Line Height
+const BODY_LINE_HEIGHT = '1.5rem';
+
+// Position
+const MODAL_POSITION = 'relative';
+
+// Text Align
+const CENTER_TEXT = 'center';
+
+// Text Decoration
+const TEXT_DECORATION = 'none';
+
+// ------------------------------------------
+// Main Layout Styling
+//-------------------------------------------
+
 // Logo text
 export const logoTextStyle = {
-  textDecoration: 'none',
+  textDecoration: TEXT_DECORATION,
   color: colors.primaryAppColor,
-  fontWeight: 'bold',
 };
 
 // Link Navigation text
 export const linkNavigationText = {
-  marginTop: '2rem',
+  marginTop: LINK_MARGIN_TOP,
 };
 
 // Page Heading text
 export const headingTextStyle = {
-  fontSize: '2rem',
-  fontWeight: '600',
-  marginBottom: '1rem',
+  fontSize: MAIN_HEADING_FONT_SIZE,
+  fontWeight: FONT_WEIGHT_SEMIBOLD,
+  marginBottom: MARGIN_BOTTOM,
   color: colors.headingTextColor,
 };
 
 export const subHeadingTextStyle = {
-  fontSize: '1.3rem',
-  fontWeight: '600',
-  marginBottom: '1rem',
+  fontSize: SUB_HEADING_FONT_SIZE,
+  fontWeight: FONT_WEIGHT_SEMIBOLD,
+  marginBottom: MARGIN_BOTTOM,
   color: colors.headingTextColor,
 };
 
 // Page Body text
 export const bodyTextStyle = {
-  fontSize: '1rem',
-  lineHeight: '1.5',
+  fontSize: MAIN_BODY_FONT_SIZE,
+  lineHeight: BODY_LINE_HEIGHT,
   color: colors.bodyTextColor,
 };
 
 export const centerBodyTextStyle = {
-  textAlign: 'center',
-  padding: '2rem',
+  textAlign: CENTER_TEXT,
+  padding: CENTER_TEXT_PADDING,
   color: colors.bodyTextColor,
 };
 
 // ------------------------------------------
 // Modal Text Styling
 //-------------------------------------------
-const contentZIndex = 1001;
+const CONTENT_Z_INDEX = 1001;
 
 // Modal Heading text
 export const modalHeadingTextStyle = {
   color: colors.headingTextColor,
-  fontSize: '1.5rem',
-  fontWeight: 'bold',
-  marginBottom: '1rem',
-  marginTop: 0,
-  zIndex: contentZIndex,
-  position: 'relative',
+  fontSize: MODAL_HEADING_FONT_SIZE,
+  fontWeight: FONT_WEIGHT_SEMIBOLD,
+  marginBottom: MARGIN_BOTTOM,
+  marginTop: MODAL_MARGIN_TOP,
+  zIndex: CONTENT_Z_INDEX,
+  position: MODAL_POSITION,
 };
 
 // Modal Body text
 export const modalTextStyle = {
   color: colors.bodyTextColor,
-  fontSize: '1rem',
-  lineHeight: '1.5',
-  marginBottom: '1rem',
-  position: 'relative',
+  fontSize: MAIN_BODY_FONT_SIZE,
+  lineHeight: BODY_LINE_HEIGHT,
+  marginBottom: MARGIN_BOTTOM,
+  position: MODAL_POSITION,
 };
+
+// ------------------------------------------
+// Points Display Styling
+//-------------------------------------------
 
 export function pointsDisplayTextStyle(size) {
   switch (size) {
     case 'small':
-      return { fontSize: '0.9rem', padding: '0.5rem' };
+      return {
+        fontSize: SMALL_POINTS_FONT_SIZE,
+        padding: SMALL_POINTS_DISPLAY_PADDING,
+      };
     case 'medium':
-      return { fontSize: '1.1rem', padding: '0.75rem' };
+      return {
+        fontSize: MEDIUM_POINTS_FONT_SIZE,
+        padding: MEDIUM_POINTS_DISPLAY_PADDING,
+      };
     case 'large':
     default:
-      return { fontSize: '1.5rem', padding: '1rem' };
+      return {
+        fontSize: LARGE_POINTS_FONT_SIZE,
+        padding: LARGE_POINTS_DISPLAY_PADDING,
+      };
   }
 }
