@@ -1,18 +1,28 @@
 // Handles layout/structural styling patterns throughout the app
 import { colors } from './colors';
 
+// ------------------------------------------
+// Reused layout constants
+//-------------------------------------------
+
+// Box Sizing
+const CONTAINER_BOX_SIZING = 'border-box';
+
+// Display
+const CONTAINER_DISPLAY = 'flex';
+
 export const layoutPageStyleWrapper = {
-  display: 'flex',
+  boxSizing: CONTAINER_BOX_SIZING,
+  display: CONTAINER_DISPLAY,
   flexDirection: 'column',
   minHeight: '100vh',
-  boxSizing: 'border-box',
   margin: 0,
   padding: 0,
   overflow: 'auto',
 };
 
 export const mainContainerStyleWrapper = {
-  boxSizing: 'border-box',
+  boxSizing: CONTAINER_BOX_SIZING,
   flexGrow: 1,
   maxWidth: '700px',
   margin: '0 auto',
@@ -21,8 +31,8 @@ export const mainContainerStyleWrapper = {
 };
 
 export const headerStyleContainer = {
-  boxSizing: 'border-box',
-  display: 'flex',
+  boxSizing: CONTAINER_BOX_SIZING,
+  display: CONTAINER_DISPLAY,
   justifyContent: 'space-between',
   alignItems: 'center',
   padding: '1rem 2rem',
@@ -31,10 +41,8 @@ export const headerStyleContainer = {
 };
 
 export const footerStyleContainer = {
-  boxSizing: 'border-box',
+  boxSizing: CONTAINER_BOX_SIZING,
   padding: '1rem',
-  textAlign: 'center',
-  fontSize: '0.95rem',
   textAlign: 'center',
   fontSize: '0.95rem',
   color: colors.primaryAppColor,
@@ -43,7 +51,7 @@ export const footerStyleContainer = {
 };
 
 export const navContainer = {
-  display: 'flex',
+  display: CONTAINER_DISPLAY,
   justifyContent: 'center',
   alignItems: 'center',
   gap: '0.7rem',
@@ -56,7 +64,7 @@ export const navContainer = {
 // ------------------------------------
 
 //z-index constants to keep overlay clean
-const overlayZIndex = 1000;
+const OVERLAY_Z_INDEX = 1000;
 
 export const popupStyles = {
   position: 'absolute',
@@ -65,7 +73,7 @@ export const popupStyles = {
   backgroundColor: colors.modalBGColor,
   border: `1px solid ${colors.popUpBorderColor}`,
   padding: '1rem',
-  zIndex: overlayZIndex,
+  zIndex: OVERLAY_Z_INDEX,
 };
 
 export const modalOverlayStyle = {
@@ -78,7 +86,7 @@ export const modalOverlayStyle = {
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-  zIndex: overlayZIndex,
+  zIndex: OVERLAY_Z_INDEX,
 };
 
 export const modalContentStyleWrapper = {
@@ -91,7 +99,7 @@ export const modalContentStyleWrapper = {
 };
 
 export const modalButtonContainer = {
-  display: 'flex',
+  display: CONTAINER_DISPLAY,
   gap: '1rem',
   marginTop: '1rem',
 };
@@ -100,7 +108,7 @@ export const modalButtonContainer = {
 // Cleanup Entry List layout styling
 // ------------------------------------
 export const entriesListLayoutWrapper = {
-  display: 'flex',
+  display: CONTAINER_DISPLAY,
   flexDirection: 'column',
   gap: '1rem',
 };
@@ -110,7 +118,7 @@ export const entryContainerWrapper = {
   padding: '1rem',
   borderRadius: '8px',
   border: `1px solid ${colors.cleanupEntryBorderColor}`,
-  display: 'flex',
+  display: CONTAINER_DISPLAY,
   justifyContent: 'space-between',
   alignItems: 'center',
 };
@@ -121,7 +129,7 @@ export const entryContainerWrapper = {
 export const centerButtonLayout = { textAlign: 'center', marginTop: '1rem' };
 
 export const containerElementSpacing = {
-  display: 'flex',
+  display: CONTAINER_DISPLAY,
   alignItems: 'center',
   gap: '0.5rem',
 };
