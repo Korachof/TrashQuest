@@ -58,10 +58,10 @@ export default function CleanupEntriesList({
           <div
             key={entry.id}
             style={{
-              background: '#f8f9fa',
+              background: colors.cleanupEntryBGColor,
               padding: '1rem',
               borderRadius: '8px',
-              border: '1px solid #dee2e6',
+              border: `1px solid ${colors.cleanupEntryBorderColor}`,
             }}
           >
             <div

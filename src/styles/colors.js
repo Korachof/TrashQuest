@@ -23,6 +23,7 @@ export const colors = {
   footerBGColor: '#f8f8f8',
   pointsDisplayBGColor: '#d4edda',
   modalBGColor: '#f8f9fa',
+  cleanupEntryBGColor: '#f8f9fa',
   hazardWarningBGColor: '#fff3cd',
   modalOverlayBGColor: 'rgba(0, 0, 0, 0.5)', // Transparent bg when overlay is open
 
@@ -31,4 +32,5 @@ export const colors = {
   popUpBorderColor: '#ccc',
   hazardWarningBorderColor: '#ffeaa7',
   pointsDisplayBorderColor: '#c3e6cb',
+  cleanupEntryBorderColor: '#dee2e6',
 };
