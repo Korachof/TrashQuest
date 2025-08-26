@@ -588,6 +588,16 @@ This changelog documents key updates to the TrashQuest project. It follows seman
 - Properly referenced the **overlayZIndex** and **contentZIndex** for modal styles.
 - Moved all references from `modalStyles` to `layout` and `typography`
 - Deleted `modalStyles` because I moved all references to `layout` and `typography`
+- Made **PointsDisplayBGColor**, **HeaderBGColor**, and **FooterBGColor** into camalCase instead of PascalCase to match the rest. Changed all references to match.
+- Referenced **successMessageTextColor** and **errorMessageTextColor** in `SignupPage` instead of using hardcoded color values.
+- Combined 2 div styles into one in `CleanupEntriesList` for the overall style wrapper for the cleanup entries.
+- Created a variety of constants in `typography` and `layout` for modularity.
+- Abstracted out and referenced a variety of hardcoded styles in `typography` (completed) and `layout` (still more work to do).
+- Standardized `typography` by changing any usage of **pixels** in the styles and replaced them with **rem**
+
+## Fixed
+
+- Fixed `headingTextStyle` value after it got changed during testing.
 
 ---
 
