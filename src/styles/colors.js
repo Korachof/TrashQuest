@@ -19,8 +19,8 @@ export const colors = {
   hazardTextColor: '#856404',
 
   //BG Colors
-  HeaderBGColor: '#f0f0f0',
-  FooterBGColor: '#f8f8f8',
+  headerBGColor: '#f0f0f0',
+  footerBGColor: '#f8f8f8',
   pointsDisplayBGColor: '#d4edda',
   modalBGColor: '#f8f9fa',
   hazardWarningBGColor: '#fff3cd',

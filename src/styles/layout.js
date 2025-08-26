@@ -26,7 +26,7 @@ export const headerStyleContainer = {
   justifyContent: 'space-between',
   alignItems: 'center',
   padding: '1rem 2rem',
-  backgroundColor: colors.HeaderBGColor,
+  backgroundColor: colors.headerBGColor,
   borderBottom: `1px solid ${colors.headerFooterBorderColor}`,
 };
 
@@ -38,7 +38,7 @@ export const footerStyleContainer = {
   textAlign: 'center',
   fontSize: '0.95rem',
   color: colors.primaryAppColor,
-  backgroundColor: colors.FooterBGColor,
+  backgroundColor: colors.footerBGColor,
   borderTop: `1px solid ${colors.headerFooterBorderColor}`,
 };
 
