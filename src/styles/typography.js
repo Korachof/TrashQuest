@@ -15,7 +15,7 @@ export const linkNavigationText = {
 
 // Page Heading text
 export const headingTextStyle = {
-  fontSize: '1.3rem',
+  fontSize: '2rem',
   fontWeight: '600',
   marginBottom: '1rem',
   color: colors.headingTextColor,
