@@ -1,9 +1,10 @@
 // Handles text appearance throughout the app.
+import { colors } from './colors';
 
 // Logo text
 export const logoTextStyle = {
   textDecoration: 'none',
-  color: '#28a745',
+  color: colors.primaryAppColor,
   fontWeight: 'bold',
 };
 
@@ -17,14 +18,14 @@ export const headingTextStyle = {
   fontSize: '2rem',
   fontWeight: '600',
   marginBottom: '1rem',
-  color: '#333',
+  color: colors.headingTextColor,
 };
 
 // Page Body text
 export const bodyTextStyle = {
   fontSize: '1rem',
   lineHeight: '1.5',
-  color: '#444',
+  color: colors.bodyTextColor,
 };
 
 // ------------------------------------------
@@ -34,7 +35,7 @@ const contentZIndex = 1001;
 
 // Modal Heading text
 export const modalHeadingTextStyle = {
-  color: '#000',
+  color: colors.headingTextColor,
   fontSize: '24px',
   fontWeight: 'bold',
   marginBottom: '16px',
@@ -45,7 +46,7 @@ export const modalHeadingTextStyle = {
 
 // Modal Body text
 export const modalTextStyle = {
-  color: '#000',
+  color: colors.bodyTextColor,
   fontSize: '16px',
   lineHeight: '1.5',
   marginBottom: '16px',
