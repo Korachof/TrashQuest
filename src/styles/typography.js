@@ -49,9 +49,9 @@ const contentZIndex = 1001;
 // Modal Heading text
 export const modalHeadingTextStyle = {
   color: colors.headingTextColor,
-  fontSize: '24px',
+  fontSize: '1.5rem',
   fontWeight: 'bold',
-  marginBottom: '16px',
+  marginBottom: '1rem',
   marginTop: 0,
   zIndex: contentZIndex,
   position: 'relative',
@@ -60,9 +60,9 @@ export const modalHeadingTextStyle = {
 // Modal Body text
 export const modalTextStyle = {
   color: colors.bodyTextColor,
-  fontSize: '16px',
+  fontSize: '1rem',
   lineHeight: '1.5',
-  marginBottom: '16px',
+  marginBottom: '1rem',
   position: 'relative',
 };
 
