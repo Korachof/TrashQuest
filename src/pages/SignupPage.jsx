@@ -9,6 +9,7 @@ import { formContainer } from '../styles/forms';
 import { linkNavigationText, headingTextStyle } from '../styles/typography';
 import { isStrongPassword, clearMessages } from '../utils/validation';
 import { redirectAfterSuccess } from '../utils/navigation';
+import { colors } from '../styles/colors';
 
 export default function SignupPage() {
   const [displayName, setDisplayName] = useState('');
@@ -108,8 +109,12 @@ export default function SignupPage() {
           🌿 Create Account
         </FormButton>
       </form>
-      {successMsg && <p style={{ color: 'green' }}>{successMsg}</p>}
-      {errorMsg && <p style={{ color: 'red' }}>{errorMsg}</p>}
+      {successMsg && (
+        <p style={{ color: colors.successMesageTextColor }}>{successMsg}</p>
+      )}
+      {errorMsg && (
+        <p style={{ color: colors.errorMessageTextColor }}>{errorMsg}</p>
+      )}
 
       <p style={linkNavigationText}>
         Already have an account? <Link to="/login">Log in here</Link>

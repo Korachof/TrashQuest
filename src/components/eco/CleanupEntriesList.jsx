@@ -31,7 +31,13 @@ export default function CleanupEntriesList({
 
   if (entries.length === 0) {
     return (
-      <div style={{ textAlign: 'center', padding: '2rem', color: '#666' }}>
+      <div
+        style={{
+          textAlign: 'center',
+          padding: '2rem',
+          color: colors.bodyTextColor,
+        }}
+      >
         <p>No cleanup entries yet. Start logging your eco activities!</p>
       </div>
     );
@@ -74,7 +80,7 @@ export default function CleanupEntriesList({
               <div>
                 <strong>{entry.size}</strong> • {entry.type}
                 <br />
-                <small style={{ color: '#666' }}>
+                <small style={{ color: colors.bodyTextColor }}>
                   {entry.area} • {entry.date}
                 </small>
               </div>
