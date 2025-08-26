@@ -2,6 +2,7 @@
 import React from 'react';
 import LogCleanupForm from '../submission/LogCleanupForm';
 import Modal from '../shared/Modal';
+import { modalHeadingTextStyle } from '../../styles/typography';
 
 export default function UpdateCleanupEntryModal({
   isOpen,
@@ -13,7 +14,7 @@ export default function UpdateCleanupEntryModal({
 
   return (
     <Modal isOpen={isOpen} onClose={onCancel}>
-      <h3>Edit Cleanup Entry</h3>
+      <h2 style={modalHeadingTextStyle}>Edit Cleanup Entry</h2>
       <LogCleanupForm
         editMode={true}
         existingEntry={entry}
