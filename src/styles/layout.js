@@ -11,6 +11,12 @@ const CONTAINER_BOX_SIZING = 'border-box';
 // Display
 const CONTAINER_DISPLAY = 'flex';
 
+// Borders
+const BORDER_SIZE = '1px solid';
+
+// Margins
+const BUTTON_TOP_MARGIN = '1rem';
+
 export const layoutPageStyleWrapper = {
   boxSizing: CONTAINER_BOX_SIZING,
   display: CONTAINER_DISPLAY,
@@ -37,7 +43,7 @@ export const headerStyleContainer = {
   alignItems: 'center',
   padding: '1rem 2rem',
   backgroundColor: colors.headerBGColor,
-  borderBottom: `1px solid ${colors.headerFooterBorderColor}`,
+  borderBottom: `${BORDER_SIZE} ${colors.headerFooterBorderColor}`,
 };
 
 export const footerStyleContainer = {
@@ -47,7 +53,7 @@ export const footerStyleContainer = {
   fontSize: '0.95rem',
   color: colors.primaryAppColor,
   backgroundColor: colors.footerBGColor,
-  borderTop: `1px solid ${colors.headerFooterBorderColor}`,
+  borderTop: `${BORDER_SIZE} ${colors.headerFooterBorderColor}`,
 };
 
 export const navContainer = {
@@ -71,7 +77,7 @@ export const popupStyles = {
   top: '60px',
   right: '20px',
   backgroundColor: colors.modalBGColor,
-  border: `1px solid ${colors.popUpBorderColor}`,
+  border: `${BORDER_SIZE} ${colors.popUpBorderColor}`,
   padding: '1rem',
   zIndex: OVERLAY_Z_INDEX,
 };
@@ -101,7 +107,7 @@ export const modalContentStyleWrapper = {
 export const modalButtonContainer = {
   display: CONTAINER_DISPLAY,
   gap: '1rem',
-  marginTop: '1rem',
+  marginTop: BUTTON_TOP_MARGIN,
 };
 
 // ------------------------------------
@@ -117,7 +123,7 @@ export const entryContainerWrapper = {
   background: colors.cleanupEntryBGColor,
   padding: '1rem',
   borderRadius: '8px',
-  border: `1px solid ${colors.cleanupEntryBorderColor}`,
+  border: `${BORDER_SIZE} ${colors.cleanupEntryBorderColor}`,
   display: CONTAINER_DISPLAY,
   justifyContent: 'space-between',
   alignItems: 'center',
@@ -126,7 +132,10 @@ export const entryContainerWrapper = {
 // ------------------------------------
 // Utility-Style layout styling
 // ------------------------------------
-export const centerButtonLayout = { textAlign: 'center', marginTop: '1rem' };
+export const centerButtonLayout = {
+  textAlign: 'center',
+  marginTop: BUTTON_TOP_MARGIN,
+};
 
 export const containerElementSpacing = {
   display: CONTAINER_DISPLAY,
