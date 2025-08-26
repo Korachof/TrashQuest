@@ -27,6 +27,7 @@ export const colors = {
 
   //Border Colors
   headerFooterBorderColor: '#ccc',
+  popUpBorderColor: '#ccc',
   hazardWarningBorderColor: '#ffeaa7',
   pointsDisplayBorderColor: '#c3e6cb',
 };

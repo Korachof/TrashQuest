@@ -63,7 +63,7 @@ export const popupStyles = {
   top: '60px',
   right: '20px',
   backgroundColor: colors.modalBGColor,
-  border: '1px solid #ccc',
+  border: `1px solid ${colors.popUpBorderColor}`,
   padding: '1rem',
   zIndex: overlayZIndex,
 };
