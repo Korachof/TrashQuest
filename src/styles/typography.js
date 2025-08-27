@@ -18,6 +18,14 @@ const MEDIUM_POINTS_FONT_SIZE = '1.1rem';
 const LARGE_POINTS_FONT_SIZE = '1.5rem';
 export const FOOTER_FONT_SIZE = '0.95rem';
 
+// Button Font Size
+export const getButtonFontSize = {
+  smallButtonFontSize: '0.9rem',
+  medButtonFontSize: '1rem',
+  largeButtonFontSize: '1.1rem',
+  deleteButtonFontSize: '1.2rem',
+};
+
 // Margins
 const MARGIN_BOTTOM = '1rem';
 const LINK_MARGIN_TOP = '1.5rem';

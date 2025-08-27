@@ -1,4 +1,5 @@
 import { colors } from './colors';
+import { getButtonFontSize } from './typography';
 
 // Reusable button styling functions and base styles
 
@@ -8,18 +9,18 @@ export const getSizeStyles = (size) => {
     case 'small':
       return {
         padding: '0.5rem 1rem',
-        fontSize: '0.9rem',
+        fontSize: getButtonFontSize.smallButtonFontSize,
       };
     case 'medium':
       return {
         padding: '0.75rem 1.5rem',
-        fontSize: '1rem',
+        fontSize: getButtonFontSize.medButtonFontSize,
       };
     case 'large':
     default:
       return {
         padding: '1rem 2rem',
-        fontSize: '1.1rem',
+        fontSize: getButtonFontSize.largeButtonFontSize,
       };
   }
 };
@@ -53,7 +54,7 @@ export const getButtonStyle = (
 ) => {
   return {
     border: 'none',
-    borderRadius: '8px',
+    borderRadius: '0.5rem',
     cursor: 'pointer',
     fontWeight: 'normal',
     ...getSizeStyles(size),
@@ -62,12 +63,12 @@ export const getButtonStyle = (
   };
 };
 
-// Delete button style function
+// Delete button style function (x button)
 export const getDeleteButtonStyle = () => {
   return {
     background: 'none',
     border: 'none',
-    fontSize: '1.2rem',
+    fontSize: getButtonFontSize.deleteButtonFontSize,
     cursor: 'pointer',
     color: colors.deleteButtonColor, // x button
     padding: '0.25rem',
@@ -79,7 +80,7 @@ export const getEditButtonStyle = () => {
   return {
     background: 'none',
     border: 'none',
-    fontSize: '0.9rem',
+    fontSize: getButtonFontSize.smallButtonFontSize,
     cursor: 'pointer',
     color: colors.navButtonTextColor,
     padding: '0.25rem',
