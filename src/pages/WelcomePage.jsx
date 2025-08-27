@@ -1,7 +1,8 @@
 // Landing page for pre-logged in users.
 import React, { useEffect } from 'react';
 import StartQuestButton from '../components/navigation/StartQuestButton';
-import { headingTextStyle } from '../styles/typography';
+import { headingTextStyle, subHeadingTextStyle } from '../styles/typography';
+import { centerButtonLayout } from '../styles/layout';
 
 export default function WelcomePage() {
   useEffect(() => {
@@ -11,10 +12,14 @@ export default function WelcomePage() {
     // PageLayout: Page scaffold including header, MainContainer, and footer
     <>
       <h1 id="welcome-heading" style={headingTextStyle}>
-        Welcome to TrashQuest ♻️
+        Welcome to TrashQuest
       </h1>
-      <p>Clean the planet, one collectible at a time.</p>
-      <StartQuestButton />
+      <p style={subHeadingTextStyle}>
+        Clean the planet, one collectible at a time.
+      </p>
+      <div style={centerButtonLayout}>
+        <StartQuestButton />
+      </div>
     </>
   );
 }
