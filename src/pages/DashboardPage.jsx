@@ -6,12 +6,14 @@ import PointsDisplay from '../components/shared/PointsDisplay';
 import LogCleanupButton from '../components/navigation/LogCleanupButton';
 import CleanupEntriesList from '../components/eco/CleanupEntriesList';
 import { centerButtonLayout } from '../styles/layout';
+import { getDashboardContent } from '../content/dashboard';
 
 export default function DashboardPage() {
   // Grab the current user
   const { currentUser } = useAuth();
   const displayName =
     currentUser?.displayName || currentUser?.email || 'Explorer';
+  const dashboardContent = getDashboardContent(displayName);
 
   // Set page tab title
   useEffect(() => {
@@ -21,7 +23,7 @@ export default function DashboardPage() {
   return (
     <>
       <h1 id="dashboard-heading" style={headingTextStyle}>
-        🚀 Welcome to your Dashboard, {displayName}
+        {dashboardContent.title}
       </h1>
 
       {/* Points Display */}
