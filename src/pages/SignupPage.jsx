@@ -6,7 +6,11 @@ import { auth } from '../firebase';
 import FormGroup from '../components/shared/FormGroup';
 import FormButton from '../components/shared/FormButton';
 import { formContainer } from '../styles/forms';
-import { linkNavigationText, headingTextStyle } from '../styles/typography';
+import {
+  linkNavigationText,
+  headingTextStyle,
+  subHeadingTextStyle,
+} from '../styles/typography';
 import { isStrongPassword, clearMessages } from '../utils/validation';
 import { redirectAfterSuccess } from '../utils/navigation';
 import { colors } from '../styles/colors';
@@ -72,10 +76,10 @@ export default function SignupPage() {
       <h1 id="signup-heading" style={headingTextStyle}>
         Sign Up for TrashQuest 🌱
       </h1>
-      <p>
+      <h3 style={subHeadingTextStyle}>
         Create your eco profile and start cleaning the planet one quest at a
         time.
-      </p>
+      </h3>
       <form
         onSubmit={handleSubmit}
         style={{ formContainer }}

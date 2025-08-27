@@ -16,9 +16,9 @@ export default function LogCleanupPage() {
       <h1 id="log-cleanup-heading" style={headingTextStyle}>
         Log Your Cleanup 🌱
       </h1>
-      <p style={subHeadingTextStyle}>
+      <h3 style={subHeadingTextStyle}>
         This is where you'll log your cleanup activities and earn Eco Points!
-      </p>
+      </h3>
       <LogCleanupForm />
     </>
   );
