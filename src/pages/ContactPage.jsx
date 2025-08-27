@@ -1,6 +1,7 @@
 // Contact Page -> Lives on Footer
 import React, { useEffect } from 'react';
 import { headingTextStyle, subHeadingTextStyle } from '../styles/typography';
+import { contactContent } from '../content/contactPage';
 
 export default function ContactPage() {
   // Set page tab title
@@ -10,12 +11,9 @@ export default function ContactPage() {
   return (
     <>
       <h1 id="contact-us-heading" style={headingTextStyle}>
-        Contact Us
+        {contactContent.title}
       </h1>
-      <h3 style={subHeadingTextStyle}>
-        Use the form below (coming soon!) to contact us. We'd love to hear from
-        you!
-      </h3>
+      <h3 style={subHeadingTextStyle}>{contactContent.subTitle}</h3>
     </>
   );
 }
