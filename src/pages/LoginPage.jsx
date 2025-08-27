@@ -59,9 +59,9 @@ export default function LoginPage() {
       <h1 id="login_heading" style={headingTextStyle}>
         Login to Your Quest 🔐
       </h1>
-      <p style={subHeadingTextStyle}>
+      <h3 style={subHeadingTextStyle}>
         Access your dashboard, earn ecoPoints, and track your progress.
-      </p>
+      </h3>
       <form
         onSubmit={handleSubmit}
         style={{ formContainer }}

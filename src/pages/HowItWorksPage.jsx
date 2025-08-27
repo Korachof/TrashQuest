@@ -1,6 +1,6 @@
 // How it Works page
 import React, { useEffect } from 'react';
-import { headingTextStyle } from '../styles/typography';
+import { headingTextStyle, subHeadingTextStyle } from '../styles/typography';
 
 export default function HowItWorksPage() {
   // Set page tab title
@@ -13,7 +13,7 @@ export default function HowItWorksPage() {
       <h1 id="how-it-works-heading" style={headingTextStyle}>
         How It Works
       </h1>
-      <p>Learn how Trash Quest Works here!</p>
+      <h3 style={subHeadingTextStyle}>Learn how Trash Quest Works here!</h3>
     </>
   );
 }

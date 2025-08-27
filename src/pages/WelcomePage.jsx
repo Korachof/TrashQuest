@@ -14,9 +14,9 @@ export default function WelcomePage() {
       <h1 id="welcome-heading" style={headingTextStyle}>
         Welcome to TrashQuest
       </h1>
-      <p style={subHeadingTextStyle}>
+      <h3 style={subHeadingTextStyle}>
         Clean the planet, one collectible at a time.
-      </p>
+      </h3>
       <div style={centerButtonLayout}>
         <StartQuestButton />
       </div>
