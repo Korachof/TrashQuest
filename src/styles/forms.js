@@ -13,8 +13,7 @@ const formContainer = {
 
 // Styling for input fields within form groups (text, email, password, etc.)
 const inputField = {
-  width: '100%',
-  maxWidth: '340px', // field size
+  width: '18.75rem',
   marginLeft: 'auto',
   marginRight: 'auto',
   padding: '0.5rem',
