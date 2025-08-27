@@ -601,6 +601,14 @@ This changelog documents key updates to the TrashQuest project. It follows seman
 
 ## [0.3.3] 2025-08-27
 
+### Added
+
+- Created a `content` folder.
+- Created a `aboutPage` content file and used **string literals** to reference them in `AboutPage.jsx`.
+- Created a `cleanupEntriesListPage.js` content file and used **string literals** to reference them in `CleanupEntriesListPage.jsx`.
+- Created `contactPage.js` content file and used **string literals** to reference them in `ContactPage.jsx`
+- Created a `dashboard.js` content file and used **string literals** and a **factory function** with a **displayName** parameter so the **currentUser** react hook could be properly used.
+
 ### Changed
 
 - Removed **textAlign** from **mainContainerStyleWrapper** to avoid any auto-centering throughout the entire app.
@@ -609,6 +617,7 @@ This changelog documents key updates to the TrashQuest project. It follows seman
 - Created a **getButtonFontSize** with button sizes for small, med, and large, as well as a delete button size.
 - Standardized by replacing a reference to **'px'** from `buttonStyles` and replacing it with **'rem'**.
 - Refactored `buttonStyles` to take on **Font Sizes** from `typography`.
+- Changed `forms.js` so the **Select** fields all have the same, fixed width.
 
 ---
 
