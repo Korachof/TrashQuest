@@ -16,6 +16,7 @@ const MAIN_BODY_FONT_SIZE = '1rem';
 const SMALL_POINTS_FONT_SIZE = '0.9rem';
 const MEDIUM_POINTS_FONT_SIZE = '1.1rem';
 const LARGE_POINTS_FONT_SIZE = '1.5rem';
+export const FOOTER_FONT_SIZE = '0.95rem';
 
 // Margins
 const MARGIN_BOTTOM = '1rem';
@@ -23,7 +24,6 @@ const LINK_MARGIN_TOP = '1.5rem';
 const MODAL_MARGIN_TOP = '1.5rem';
 
 // padding
-const CENTER_TEXT_PADDING = '2rem';
 const SMALL_POINTS_DISPLAY_PADDING = '0.5rem';
 const MEDIUM_POINTS_DISPLAY_PADDING = '0.75rem';
 const LARGE_POINTS_DISPLAY_PADDING = '1rem';
@@ -53,6 +53,7 @@ export const logoTextStyle = {
 // Link Navigation text
 export const linkNavigationText = {
   marginTop: LINK_MARGIN_TOP,
+  textAlign: CENTER_TEXT,
 };
 
 // Page Heading text
@@ -61,6 +62,7 @@ export const headingTextStyle = {
   fontWeight: FONT_WEIGHT_SEMIBOLD,
   marginBottom: MARGIN_BOTTOM,
   color: colors.headingTextColor,
+  textAlign: CENTER_TEXT,
 };
 
 export const subHeadingTextStyle = {
@@ -68,6 +70,7 @@ export const subHeadingTextStyle = {
   fontWeight: FONT_WEIGHT_SEMIBOLD,
   marginBottom: MARGIN_BOTTOM,
   color: colors.headingTextColor,
+  textAlign: CENTER_TEXT,
 };
 
 // Page Body text
@@ -79,7 +82,7 @@ export const bodyTextStyle = {
 
 export const centerBodyTextStyle = {
   textAlign: CENTER_TEXT,
-  padding: CENTER_TEXT_PADDING,
+  lineHeight: BODY_LINE_HEIGHT,
   color: colors.bodyTextColor,
 };
 

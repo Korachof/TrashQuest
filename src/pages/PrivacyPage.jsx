@@ -1,6 +1,6 @@
 // Page for Privacy Policy
 import React, { useEffect } from 'react';
-import { headingTextStyle } from '../styles/typography';
+import { headingTextStyle, centerBodyTextStyle } from '../styles/typography';
 
 export default function PrivacyPage() {
   const lastModifiedDate = new Date('07/10/2025');
@@ -15,7 +15,9 @@ export default function PrivacyPage() {
       <h1 id="privacy-heading" style={headingTextStyle}>
         Privacy Policy
       </h1>
-      <p>Last Modified: {lastModifiedDate.toLocaleDateString()}</p>
+      <p style={centerBodyTextStyle}>
+        Last Modified: {lastModifiedDate.toLocaleDateString()}
+      </p>
     </>
   );
 }

@@ -1,7 +1,11 @@
 // User Profile
 import React, { useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
-import { headingTextStyle } from '../styles/typography';
+import {
+  headingTextStyle,
+  bodyTextStyle,
+  centerBodyTextStyle,
+} from '../styles/typography';
 
 export default function ProfilePage() {
   // Get current user
@@ -19,13 +23,13 @@ export default function ProfilePage() {
       </h1>
 
       {!currentUser ? (
-        <p>You must be logged in to view your profile.</p>
+        <p style={bodyTextStyle}>You must be logged in to view your profile.</p>
       ) : (
         <div>
-          <p>
+          <p style={centerBodyTextStyle}>
             <strong>Name:</strong> {currentUser.displayName || 'Not set'}
           </p>
-          <p>
+          <p style={centerBodyTextStyle}>
             <strong>Email:</strong> {currentUser.email}
           </p>
         </div>

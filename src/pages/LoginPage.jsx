@@ -6,10 +6,14 @@ import { signInWithEmailAndPassword } from 'firebase/auth';
 import FormGroup from '../components/shared/FormGroup';
 import FormButton from '../components/shared/FormButton';
 import { formContainer } from '../styles/forms';
-import { linkNavigationText, headingTextStyle } from '../styles/typography';
 import { redirectAfterSuccess } from '../utils/navigation';
 import ForgotPasswordModal from '../components/shared/ForgotPasswordModal';
 import { colors } from '../styles/colors';
+import {
+  linkNavigationText,
+  headingTextStyle,
+  subHeadingTextStyle,
+} from '../styles/typography';
 
 export default function LoginPage() {
   const [displayName, setDisplayName] = useState('');
@@ -55,7 +59,9 @@ export default function LoginPage() {
       <h1 id="login_heading" style={headingTextStyle}>
         Login to Your Quest 🔐
       </h1>
-      <p>Access your dashboard, earn ecoPoints, and track your progress.</p>
+      <p style={subHeadingTextStyle}>
+        Access your dashboard, earn ecoPoints, and track your progress.
+      </p>
       <form
         onSubmit={handleSubmit}
         style={{ formContainer }}
@@ -89,7 +95,7 @@ export default function LoginPage() {
           {errorMsg}
         </p>
       )}
-      <p>
+      <p style={linkNavigationText}>
         <button
           type="button"
           onClick={() => setShowForgotPassword(true)}

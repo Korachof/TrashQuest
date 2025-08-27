@@ -1,5 +1,6 @@
 // Handles layout/structural styling patterns throughout the app
 import { colors } from './colors';
+import { FOOTER_FONT_SIZE } from './typography';
 
 // ------------------------------------------
 // Reused layout constants
@@ -17,6 +18,11 @@ const BORDER_SIZE = '1px solid';
 // Margins
 const BUTTON_TOP_MARGIN = '1rem';
 
+// Gaps
+const MAIN_CONTAINER_GAP = '1rem';
+const NAV_CONTAINER_GAP = '0.7rem';
+export const CONTAINER_ELEMENT_GAP = '0.5rem';
+
 export const layoutPageStyleWrapper = {
   boxSizing: CONTAINER_BOX_SIZING,
   display: CONTAINER_DISPLAY,
@@ -33,7 +39,6 @@ export const mainContainerStyleWrapper = {
   maxWidth: '700px',
   margin: '0 auto',
   padding: '4rem 1rem 0',
-  textAlign: 'center',
 };
 
 export const headerStyleContainer = {
@@ -50,7 +55,7 @@ export const footerStyleContainer = {
   boxSizing: CONTAINER_BOX_SIZING,
   padding: '1rem',
   textAlign: 'center',
-  fontSize: '0.95rem',
+  fontSize: FOOTER_FONT_SIZE,
   color: colors.primaryAppColor,
   backgroundColor: colors.footerBGColor,
   borderTop: `${BORDER_SIZE} ${colors.headerFooterBorderColor}`,
@@ -60,7 +65,7 @@ export const navContainer = {
   display: CONTAINER_DISPLAY,
   justifyContent: 'center',
   alignItems: 'center',
-  gap: '0.7rem',
+  gap: NAV_CONTAINER_GAP,
   flexWrap: 'wrap', // for smaller screens
   marginBottom: '0.5rem',
 };
@@ -106,7 +111,7 @@ export const modalContentStyleWrapper = {
 
 export const modalButtonContainer = {
   display: CONTAINER_DISPLAY,
-  gap: '1rem',
+  gap: MAIN_CONTAINER_GAP,
   marginTop: BUTTON_TOP_MARGIN,
 };
 
@@ -116,7 +121,7 @@ export const modalButtonContainer = {
 export const entriesListLayoutWrapper = {
   display: CONTAINER_DISPLAY,
   flexDirection: 'column',
-  gap: '1rem',
+  gap: MAIN_CONTAINER_GAP,
 };
 
 export const entryContainerWrapper = {
@@ -140,5 +145,5 @@ export const centerButtonLayout = {
 export const containerElementSpacing = {
   display: CONTAINER_DISPLAY,
   alignItems: 'center',
-  gap: '0.5rem',
+  gap: CONTAINER_ELEMENT_GAP,
 };

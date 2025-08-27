@@ -1,6 +1,6 @@
 // Terms of Use page
 import React, { useEffect } from 'react';
-import { headingTextStyle } from '../styles/typography';
+import { headingTextStyle, centerBodyTextStyle } from '../styles/typography';
 
 export default function TermsPage() {
   const effectiveDate = new Date('07/10/2025');
@@ -15,7 +15,9 @@ export default function TermsPage() {
       <h1 id="terms-heading" style={headingTextStyle}>
         Terms of Use
       </h1>
-      <p>Effective {effectiveDate.toLocaleDateString()} </p>
+      <p style={centerBodyTextStyle}>
+        Effective {effectiveDate.toLocaleDateString()}{' '}
+      </p>
     </>
   );
 }
