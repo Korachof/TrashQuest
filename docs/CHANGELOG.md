@@ -574,7 +574,7 @@ This changelog documents key updates to the TrashQuest project. It follows seman
 - Fixed an issue where mocks weren't working correctly with `LogCleanupForm.test.jsx`, resulting in me using integration testing instead. Now unit tests are working correctly!
 - Fixed bug in `useEscape.js` that makes sure **useEffect** will run when both **callback** and **enabled state** changes.
 
-## [0.3.2] 2025-08-25
+## [0.3.2] 2025-08-25 - 2025-08-26
 
 ### Added
 
@@ -598,6 +598,17 @@ This changelog documents key updates to the TrashQuest project. It follows seman
 ## Fixed
 
 - Fixed `headingTextStyle` value after it got changed during testing.
+
+## [0.3.3] 2025-08-27
+
+### Changed
+
+- Removed **textAlign** from **mainContainerStyleWrapper** to avoid any auto-centering throughout the entire app.
+- Abstracted and referenced **subHeadingTextStyle** and **centerBodyTextStyle** throughout the app.
+- Changed sub headings from **'p'** to **'h3'** for screen reader accessibility.
+- Created a **getButtonFontSize** with button sizes for small, med, and large, as well as a delete button size.
+- Standardized by replacing a reference to **'px'** from `buttonStyles` and replacing it with **'rem'**.
+- Refactored `buttonStyles` to take on **Font Sizes** from `typography`.
 
 ---
 
