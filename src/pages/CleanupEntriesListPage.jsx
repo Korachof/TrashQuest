@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { headingTextStyle } from '../styles/typography';
 import CleanupEntriesList from '../components/eco/CleanupEntriesList';
 import { getButtonStyle } from '../styles/buttonStyles';
+import { cleanupListContent } from '../content/cleanupEntriesListPage';
 
 export default function CleanupEntriesListPage() {
   // set default entries quantity
@@ -16,7 +17,7 @@ export default function CleanupEntriesListPage() {
   return (
     <>
       <h1 id="cleanup-entries-list-heading" style={headingTextStyle}>
-        Cleanup Activities List
+        {cleanupListContent.title}
       </h1>
       <CleanupEntriesList limitEntries={limitEntries} />
 
@@ -27,7 +28,7 @@ export default function CleanupEntriesListPage() {
             onClick={() => setLimitEntries(null)}
             style={getButtonStyle('medium', 'primary')}
           >
-            Show All Entries
+            {cleanupListContent.viewAllButton}
           </button>
         </div>
       )}
