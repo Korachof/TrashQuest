@@ -1,6 +1,7 @@
 // About Us Page
 import React, { useEffect } from 'react';
 import { headingTextStyle, subHeadingTextStyle } from '../styles/typography';
+import { aboutContent } from '../content/aboutPage';
 
 export default function AboutPage() {
   // Set page tab title
@@ -11,9 +12,9 @@ export default function AboutPage() {
   return (
     <>
       <h1 id="about-us-heading" style={headingTextStyle}>
-        About Us
+        {aboutContent.title}
       </h1>
-      <h3 style={subHeadingTextStyle}>Learn more about us at Trash Quest!</h3>
+      <h3 style={subHeadingTextStyle}>{aboutContent.subTitle}</h3>
     </>
   );
 }
