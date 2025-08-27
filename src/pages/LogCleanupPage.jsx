@@ -1,7 +1,7 @@
 // Navigation page for user to log their cleanup info and gain points
 import React, { useEffect } from 'react';
-import { headingTextStyle } from '../styles/typography';
 import LogCleanupForm from '../components/submission/LogCleanupForm';
+import { headingTextStyle, subHeadingTextStyle } from '../styles/typography';
 
 export default function LogCleanupPage() {
   const lastModifiedDate = new Date('07/10/2025');
@@ -16,7 +16,7 @@ export default function LogCleanupPage() {
       <h1 id="log-cleanup-heading" style={headingTextStyle}>
         Log Your Cleanup 🌱
       </h1>
-      <p>
+      <p style={subHeadingTextStyle}>
         This is where you'll log your cleanup activities and earn Eco Points!
       </p>
       <LogCleanupForm />
