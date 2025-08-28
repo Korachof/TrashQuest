@@ -3,20 +3,19 @@ import React, { useEffect } from 'react';
 import StartQuestButton from '../components/navigation/StartQuestButton';
 import { headingTextStyle, subHeadingTextStyle } from '../styles/typography';
 import { centerButtonLayout } from '../styles/layout';
+import { welcomeContent } from '../content/welcome';
 
 export default function WelcomePage() {
   useEffect(() => {
-    document.title = 'Welcome | TrashQuest';
+    document.title = welcomeContent.docTitle;
   }, []);
   return (
     // PageLayout: Page scaffold including header, MainContainer, and footer
     <>
       <h1 id="welcome-heading" style={headingTextStyle}>
-        Welcome to TrashQuest
+        {welcomeContent.title}
       </h1>
-      <h3 style={subHeadingTextStyle}>
-        Clean the planet, one collectible at a time.
-      </h3>
+      <h3 style={subHeadingTextStyle}>{welcomeContent.subTitle}</h3>
       <div style={centerButtonLayout}>
         <StartQuestButton />
       </div>
