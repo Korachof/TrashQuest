@@ -6,7 +6,7 @@ import { contactContent } from '../content/contact';
 export default function ContactPage() {
   // Set page tab title
   useEffect(() => {
-    document.title = 'Contact Us | TrashQuest';
+    document.title = contactContent.docTitle;
   }, []);
   return (
     <>

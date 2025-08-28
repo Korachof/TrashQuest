@@ -6,7 +6,7 @@ import { resourcesContent } from '../content/resources';
 export default function ResourcesPage() {
   // Set page tab title
   useEffect(() => {
-    document.title = 'Resources | TrashQuest';
+    document.title = resourcesContent.docTitle;
   }, []);
 
   return (

@@ -6,7 +6,7 @@ import { aboutContent } from '../content/about';
 export default function AboutPage() {
   // Set page tab title
   useEffect(() => {
-    document.title = 'About | TrashQuest';
+    document.title = aboutContent.docTitle;
   }, []);
 
   return (

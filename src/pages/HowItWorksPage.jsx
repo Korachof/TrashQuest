@@ -6,7 +6,7 @@ import { howItWorksContent } from '../content/howItWorks';
 export default function HowItWorksPage() {
   // Set page tab title
   useEffect(() => {
-    document.title = 'How It Works | TrashQuest';
+    document.title = howItWorksContent.docTitle;
   }, []);
 
   return (

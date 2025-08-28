@@ -8,7 +8,7 @@ export default function TermsPage() {
 
   // Set page tab title
   useEffect(() => {
-    document.title = 'Terms | TrashQuest';
+    document.title = termsContent.docTitle;
   }, []);
 
   return (

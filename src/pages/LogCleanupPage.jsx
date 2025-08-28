@@ -9,7 +9,7 @@ export default function LogCleanupPage() {
 
   // Set page tab title
   useEffect(() => {
-    document.title = 'Log Cleanup | TrashQuest';
+    document.title = logCleanupContent.docTitle;
   }, []);
 
   return (

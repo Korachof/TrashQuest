@@ -8,7 +8,7 @@ export default function PrivacyPage() {
 
   // Set page tab title
   useEffect(() => {
-    document.title = 'Privacy | TrashQuest';
+    document.title = privacyContent.docTitle;
   }, []);
 
   return (

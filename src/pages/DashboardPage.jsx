@@ -17,7 +17,7 @@ export default function DashboardPage() {
 
   // Set page tab title
   useEffect(() => {
-    document.title = 'Dashboard | TrashQuest';
+    document.title = dashboardContent.docTitle;
   }, []);
 
   return (

@@ -10,7 +10,7 @@ export default function ProfilePage() {
 
   // Set page tab title
   useEffect(() => {
-    document.title = 'Profile | TrashQuest';
+    document.title = profileContent.docTitle;
   }, []);
 
   return (

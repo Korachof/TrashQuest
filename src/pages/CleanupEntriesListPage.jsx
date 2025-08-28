@@ -11,7 +11,7 @@ export default function CleanupEntriesListPage() {
 
   // Set page tab title
   useEffect(() => {
-    document.title = 'Cleanup List | TrashQuest';
+    document.title = cleanupListContent.doctitle;
   }, []);
 
   return (

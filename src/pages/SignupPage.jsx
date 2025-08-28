@@ -69,7 +69,7 @@ export default function SignupPage() {
 
   // Set page tab title
   useEffect(() => {
-    document.title = 'Signup | TrashQuest';
+    document.title = signupContent.docTitle;
   }, []);
 
   return (
@@ -107,7 +107,10 @@ export default function SignupPage() {
         />
         {/* Submission button; lives in src/components/shared, but the styling may be reused
         later. If so, I'll globalize that.*/}
-        <FormButton isLoading={isLoading} loadingText="🔄 Signing up...">
+        <FormButton
+          isLoading={isLoading}
+          loadingText={signupContent.loadingText}
+        >
           {signupContent.createAccount}
         </FormButton>
       </form>

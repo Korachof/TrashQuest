@@ -51,7 +51,7 @@ export default function LoginPage() {
 
   // Set page tab title
   useEffect(() => {
-    document.title = 'Login | TrashQuest';
+    document.title = loginContent.docTitle;
   }, []);
 
   return (
