@@ -14,6 +14,7 @@ const CONTAINER_DISPLAY = 'flex';
 
 // Borders
 const BORDER_SIZE = '1px solid';
+const BORDER_RADIUS = '0.5rem';
 
 // Margins
 const BUTTON_TOP_MARGIN = '1rem';
@@ -106,7 +107,7 @@ export const modalOverlayStyle = {
 export const modalContentStyleWrapper = {
   backgroundColor: colors.modalBGColor,
   padding: '20px',
-  borderRadius: '8px',
+  borderRadius: BORDER_RADIUS,
   position: 'relative',
   maxWidth: '500px',
   width: '90%',
@@ -130,7 +131,7 @@ export const entriesListLayoutWrapper = {
 export const entryContainerWrapper = {
   background: colors.cleanupEntryBGColor,
   padding: MED_PADDING,
-  borderRadius: '8px',
+  borderRadius: BORDER_RADIUS,
   border: `${BORDER_SIZE} ${colors.cleanupEntryBorderColor}`,
   display: CONTAINER_DISPLAY,
   justifyContent: 'space-between',
