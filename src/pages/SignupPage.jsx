@@ -14,6 +14,7 @@ import {
 import { isStrongPassword, clearMessages } from '../utils/validation';
 import { redirectAfterSuccess } from '../utils/navigation';
 import { colors } from '../styles/colors';
+import { signupContent } from '../content/signup';
 
 export default function SignupPage() {
   const [displayName, setDisplayName] = useState('');
@@ -74,12 +75,9 @@ export default function SignupPage() {
   return (
     <>
       <h1 id="signup-heading" style={headingTextStyle}>
-        Sign Up for TrashQuest 🌱
+        {signupContent.title}
       </h1>
-      <h3 style={subHeadingTextStyle}>
-        Create your eco profile and start cleaning the planet one quest at a
-        time.
-      </h3>
+      <h3 style={subHeadingTextStyle}>{signupContent.subTitle}</h3>
       <form
         onSubmit={handleSubmit}
         style={{ formContainer }}
@@ -110,7 +108,7 @@ export default function SignupPage() {
         {/* Submission button; lives in src/components/shared, but the styling may be reused
         later. If so, I'll globalize that.*/}
         <FormButton isLoading={isLoading} loadingText="🔄 Signing up...">
-          🌿 Create Account
+          {signupContent.createAccount}
         </FormButton>
       </form>
       {successMsg && (
@@ -121,7 +119,8 @@ export default function SignupPage() {
       )}
 
       <p style={linkNavigationText}>
-        Already have an account? <Link to="/login">Log in here</Link>
+        {signupContent.accountChk}
+        <Link to="/login">{signupContent.login}</Link>
       </p>
     </>
   );
