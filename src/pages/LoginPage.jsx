@@ -14,6 +14,7 @@ import {
   headingTextStyle,
   subHeadingTextStyle,
 } from '../styles/typography';
+import { loginContent } from '../content/login';
 
 export default function LoginPage() {
   const [displayName, setDisplayName] = useState('');
@@ -57,11 +58,9 @@ export default function LoginPage() {
     // PageLayout: Page scaffold including header, MainContainer, and footer
     <>
       <h1 id="login_heading" style={headingTextStyle}>
-        Login to Your Quest 🔐
+        {loginContent.title}
       </h1>
-      <h3 style={subHeadingTextStyle}>
-        Access your dashboard, earn ecoPoints, and track your progress.
-      </h3>
+      <h3 style={subHeadingTextStyle}>{loginContent.subTitle}</h3>
       <form
         onSubmit={handleSubmit}
         style={{ formContainer }}
@@ -83,7 +82,7 @@ export default function LoginPage() {
           onChange={(e) => setPassword(e.target.value)}
         />
         {/* Log in button; lives in src/components/shared, but the styling may be reused later. If so, I'll globalize that.*/}
-        <FormButton isLoading={isLoading}>🌿 Log in</FormButton>
+        <FormButton isLoading={isLoading}>{loginContent.login}</FormButton>
       </form>
       {successMsg && (
         <p style={{ color: 'green' }} role="status" aria-live="polite">
@@ -107,11 +106,13 @@ export default function LoginPage() {
             cursor: 'pointer',
           }}
         >
-          Forgot password?
+          {loginContent.forgotPass}
         </button>
       </p>
       <p style={linkNavigationText}>
-        Don't have an account? <Link to="/signup">Sign up here</Link>
+        {loginContent.accountCheck}
+        {` `}
+        <Link to="/signup">{loginContent.signup}</Link>
       </p>
 
       {/* Modal logic for forgot Password */}
