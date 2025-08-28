@@ -1,7 +1,7 @@
 // About Us Page
 import React, { useEffect } from 'react';
 import { headingTextStyle, subHeadingTextStyle } from '../styles/typography';
-import { aboutContent } from '../content/aboutPage';
+import { aboutContent } from '../content/about';
 
 export default function AboutPage() {
   // Set page tab title

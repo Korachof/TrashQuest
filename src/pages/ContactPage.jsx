@@ -1,7 +1,7 @@
 // Contact Page -> Lives on Footer
 import React, { useEffect } from 'react';
 import { headingTextStyle, subHeadingTextStyle } from '../styles/typography';
-import { contactContent } from '../content/contactPage';
+import { contactContent } from '../content/contact';
 
 export default function ContactPage() {
   // Set page tab title

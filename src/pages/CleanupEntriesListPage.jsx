@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { headingTextStyle } from '../styles/typography';
 import CleanupEntriesList from '../components/eco/CleanupEntriesList';
 import { getButtonStyle } from '../styles/buttonStyles';
-import { cleanupListContent } from '../content/cleanupEntriesListPage';
+import { cleanupListContent } from '../content/cleanupEntriesList';
 
 export default function CleanupEntriesListPage() {
   // set default entries quantity
