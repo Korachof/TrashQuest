@@ -119,7 +119,6 @@ export default function LoginPage() {
       </p>
       <p style={linkNavigationText}>
         {loginContent.accountCheck}
-        {` `}
         <Link to="/signup">{loginContent.signup}</Link>
       </p>
 
