@@ -1,6 +1,7 @@
 // Resources page to house external resources for user education
 import React, { useEffect } from 'react';
 import { headingTextStyle, subHeadingTextStyle } from '../styles/typography';
+import { resourcesContent } from '../content/resources';
 
 export default function ResourcesPage() {
   // Set page tab title
@@ -11,12 +12,9 @@ export default function ResourcesPage() {
   return (
     <>
       <h1 id="resources-heading" style={headingTextStyle}>
-        Resources
+        {resourcesContent.title}
       </h1>
-      <h3 style={subHeadingTextStyle}>
-        Want to learn more about the planet and what else you can do to help?
-        Check out the links below!
-      </h3>
+      <h3 style={subHeadingTextStyle}>{resourcesContent.subTitle}</h3>
     </>
   );
 }
