@@ -2,6 +2,7 @@
 import React, { useEffect } from 'react';
 import LogCleanupForm from '../components/submission/LogCleanupForm';
 import { headingTextStyle, subHeadingTextStyle } from '../styles/typography';
+import { logCleanupContent } from '../content/logCleanup';
 
 export default function LogCleanupPage() {
   const lastModifiedDate = new Date('07/10/2025');
@@ -14,11 +15,9 @@ export default function LogCleanupPage() {
   return (
     <>
       <h1 id="log-cleanup-heading" style={headingTextStyle}>
-        Log Your Cleanup 🌱
+        {logCleanupContent.title}
       </h1>
-      <h3 style={subHeadingTextStyle}>
-        This is where you'll log your cleanup activities and earn Eco Points!
-      </h3>
+      <h3 style={subHeadingTextStyle}>{logCleanupContent.subTitle}</h3>
       <LogCleanupForm />
     </>
   );
