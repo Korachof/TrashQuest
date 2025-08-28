@@ -23,6 +23,9 @@ const MAIN_CONTAINER_GAP = '1rem';
 const NAV_CONTAINER_GAP = '0.7rem';
 export const CONTAINER_ELEMENT_GAP = '0.5rem';
 
+// Padding
+const MED_PADDING = '1rem';
+
 export const layoutPageStyleWrapper = {
   boxSizing: CONTAINER_BOX_SIZING,
   display: CONTAINER_DISPLAY,
@@ -53,7 +56,7 @@ export const headerStyleContainer = {
 
 export const footerStyleContainer = {
   boxSizing: CONTAINER_BOX_SIZING,
-  padding: '1rem',
+  padding: MED_PADDING,
   textAlign: 'center',
   fontSize: FOOTER_FONT_SIZE,
   color: colors.primaryAppColor,
@@ -83,7 +86,7 @@ export const popupStyles = {
   right: '20px',
   backgroundColor: colors.modalBGColor,
   border: `${BORDER_SIZE} ${colors.popUpBorderColor}`,
-  padding: '1rem',
+  padding: MED_PADDING,
   zIndex: OVERLAY_Z_INDEX,
 };
 
@@ -126,7 +129,7 @@ export const entriesListLayoutWrapper = {
 
 export const entryContainerWrapper = {
   background: colors.cleanupEntryBGColor,
-  padding: '1rem',
+  padding: MED_PADDING,
   borderRadius: '8px',
   border: `${BORDER_SIZE} ${colors.cleanupEntryBorderColor}`,
   display: CONTAINER_DISPLAY,
