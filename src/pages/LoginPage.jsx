@@ -85,12 +85,20 @@ export default function LoginPage() {
         <FormButton isLoading={isLoading}>{loginContent.login}</FormButton>
       </form>
       {successMsg && (
-        <p style={{ color: 'green' }} role="status" aria-live="polite">
+        <p
+          style={{ color: colors.successMesageTextColor }}
+          role="status"
+          aria-live="polite"
+        >
           {successMsg}
         </p>
       )}
       {errorMsg && (
-        <p style={{ color: 'red' }} role="alert" aria-live="assertive">
+        <p
+          style={{ color: colors.errorMessageTextColor }}
+          role="alert"
+          aria-live="assertive"
+        >
           {errorMsg}
         </p>
       )}
