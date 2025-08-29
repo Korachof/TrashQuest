@@ -108,6 +108,7 @@ export const modalHeadingTextStyle = {
   marginTop: MODAL_MARGIN_TOP,
   zIndex: CONTENT_Z_INDEX,
   position: MODAL_POSITION,
+  textAlign: CENTER_TEXT,
 };
 
 // Modal Body text
@@ -117,6 +118,7 @@ export const modalTextStyle = {
   lineHeight: BODY_LINE_HEIGHT,
   marginBottom: MARGIN_BOTTOM,
   position: MODAL_POSITION,
+  textAlign: CENTER_TEXT,
 };
 
 // ------------------------------------------

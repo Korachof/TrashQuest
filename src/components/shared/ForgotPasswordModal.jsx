@@ -9,6 +9,7 @@ import ErrorMessage from './ErrorMessage';
 import SuccessMessage from './SuccessMessage';
 import { formContainer } from '../../styles/forms';
 import { modalHeadingTextStyle, modalTextStyle } from '../../styles/typography';
+import { forgotPasswordContent } from '../../content/forgotPassword';
 
 export default function ForgotPasswordModal({ isOpen, onClose }) {
   const [email, setEmail] = useState('');
@@ -24,12 +25,10 @@ export default function ForgotPasswordModal({ isOpen, onClose }) {
 
     try {
       await sendPasswordResetEmail(auth, email);
-      setSuccessMsg(
-        'Password reset request sent! Check your email inbox or spam folder'
-      );
+      setSuccessMsg(forgotPasswordContent.successMsg);
       setEmail(''); // Clear the form
     } catch (error) {
-      console.error('Password reset error:', error.code, error.message);
+      console.error(forgotPasswordContent.errorMsg, error.code, error.message);
       setErrorMsg(error.message);
     } finally {
       setIsLoading(false);
@@ -47,11 +46,8 @@ export default function ForgotPasswordModal({ isOpen, onClose }) {
 
   return (
     <Modal isOpen={isOpen} onClose={handleClose}>
-      <h2 style={modalHeadingTextStyle}>Reset Your Password 🔑</h2>
-      <p style={modalTextStyle}>
-        Enter your email address and we'll send you a link to reset your
-        password.
-      </p>
+      <h2 style={modalHeadingTextStyle}>{forgotPasswordContent.title} 🔑</h2>
+      <p style={modalTextStyle}>{forgotPasswordContent.subTitle}</p>
 
       <form onSubmit={handleSubmit} style={formContainer}>
         <FormGroup
@@ -62,8 +58,11 @@ export default function ForgotPasswordModal({ isOpen, onClose }) {
           onChange={(e) => setEmail(e.target.value)}
         />
 
-        <FormButton isLoading={isLoading} loadingText="🔄 Sending email...">
-          Send Reset Email
+        <FormButton
+          isLoading={isLoading}
+          loadingText={forgotPasswordContent.loadingText}
+        >
+          {forgotPasswordContent.resetButton}
         </FormButton>
       </form>
 
@@ -73,7 +72,7 @@ export default function ForgotPasswordModal({ isOpen, onClose }) {
       {/* Display Error Message */}
       <ErrorMessage message={errorMsg} />
 
-      <button onClick={handleClose}>Close</button>
+      <button onClick={handleClose}>{forgotPasswordContent.closebutton}</button>
     </Modal>
   );
 }
