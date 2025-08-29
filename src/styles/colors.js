@@ -14,7 +14,7 @@ export const colors = {
   buttonTextColor: '#ffffff',
   navButtonTextColor: '#0000EE',
   errorMessageTextColor: '#FF0000',
-  successMesageTextColor: '#008000',
+  successMessageTextColor: '#008000',
   deleteButtonColor: '#666',
   hazardTextColor: '#856404',
 
