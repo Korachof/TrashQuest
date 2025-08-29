@@ -619,6 +619,43 @@ This changelog documents key updates to the TrashQuest project. It follows seman
 - Refactored `buttonStyles` to take on **Font Sizes** from `typography`.
 - Changed `forms.js` so the **Select** fields all have the same, fixed width.
 
+## [0.3.4] 2025-08-28 - 2025-08-29
+
+### Added
+
+- Created `howitWorks` content file and used **string literals** to reference them in `HowItWorksPage`.
+- Created `logCleanup` content file and used **string literals** to reference them in `LogCleanupPage`.
+- - Created `login` content file and used **string literals** to reference them in `LoginPage`.
+- Created `privacy` content file and used **string literals** to reference them in `PrivacyPage`.
+- Created `profile` content file and used **string literals** to reference them in `ProfilePage`.
+- Created `resources` content file and used **string literals** to reference them in `ResourcesPage`.
+- Created `signup` content file and used **string literals** to reference them in `SignupPage`.
+- Created `terms` content file and used **string literals** to reference them in `TermsPage`.
+- Created `welcome` content file and used **string literals** to reference them in `WelcomePage`.
+- Created `forgotPassword` content file and used **string literals** to reference them in `ForgotPasswordModal`.
+
+### Changed
+
+- Renamed **content files** by removing the **Page** suffix to keep the file names more separate from the actual Page files.
+- Removed hardcoded colors for **successMsg** and **errorMsg** in `LoginPage` and references the colors from `colors.js`
+- Removed some empty space literals and just added the spaces directly in the main string literals.
+- Added string literals to various content pages for **document.title**
+- Created **MED_PADDING** in `layout` and referenced it in the various styles that are using **1rem** padding.
+- Abstracted out **BORDER_RADIUS**, changed it from px to rem, and referenced where it's used in styles.
+- Replaced all uses of **pixels** with **rem** in `layout` for standardization.
+- Replaced maxWidth **pixels** with **rem** in `forms`.
+- Abstracted out **error display** from `LoginPage`, `SignupPage`, and `forgotPasswordModal` into `ErrorMessage.jsx` component and referenced the component in those files.
+- Centered the `errorMsg` and `successMsg` text across the app.
+- Abstracted out **success display** from `LoginPage`, `SignupPage`, and `forgotPasswordModal` into `ErrorMessage.jsx` component and referenced the component in those files.
+- Removed unused `colors` import from `SignupPage` and `ForgotPasswordModal`.
+- Changed **modal heading** and **modal body** text styling in `typography` so the text aligns 'center.'
+- Removed **lastModified** variable from `LogCleanupPage` since it wasn't being used or referenced anywhere.
+
+### Fixed
+
+- The **successMsg** and **errorMsg** colors were swapped in `colors`, so swapped them back.
+- Fixed a typo in `colors` where **successMessageTextColor** was missing an 's'. Fixed all the references to it.
+
 ---
 
 ### Planned (Upcoming)
