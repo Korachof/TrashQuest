@@ -13,6 +13,7 @@ import {
 } from '../styles/typography';
 import { isStrongPassword, clearMessages } from '../utils/validation';
 import { redirectAfterSuccess } from '../utils/navigation';
+import ErrorMessage from '../components/shared/ErrorMessage';
 import { colors } from '../styles/colors';
 import { signupContent } from '../content/signup';
 
@@ -117,9 +118,9 @@ export default function SignupPage() {
       {successMsg && (
         <p style={{ color: colors.successMesageTextColor }}>{successMsg}</p>
       )}
-      {errorMsg && (
-        <p style={{ color: colors.errorMessageTextColor }}>{errorMsg}</p>
-      )}
+
+      {/* Display Error Message */}
+      <ErrorMessage message={errorMsg} />
 
       <p style={linkNavigationText}>
         {signupContent.accountChk}
