@@ -5,6 +5,7 @@ import { auth } from '../../firebase';
 import Modal from './Modal';
 import FormGroup from './FormGroup';
 import FormButton from './FormButton';
+import ErrorMessage from './ErrorMessage';
 import { formContainer } from '../../styles/forms';
 import { modalHeadingTextStyle, modalTextStyle } from '../../styles/typography';
 import { colors } from '../../styles/colors';
@@ -75,15 +76,10 @@ export default function ForgotPasswordModal({ isOpen, onClose }) {
           {successMsg}
         </p>
       )}
-      {errorMsg && (
-        <p
-          style={{ color: colors.errorMessageTextColor }}
-          role="alert"
-          aria-live="assertive"
-        >
-          {errorMsg}
-        </p>
-      )}
+
+      {/* Display Error Message */}
+      <ErrorMessage message={errorMsg} />
+
       <button onClick={handleClose}>Close</button>
     </Modal>
   );
