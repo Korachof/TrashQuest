@@ -5,8 +5,6 @@ import { headingTextStyle, subHeadingTextStyle } from '../styles/typography';
 import { logCleanupContent } from '../content/logCleanup';
 
 export default function LogCleanupPage() {
-  const lastModifiedDate = new Date('07/10/2025');
-
   // Set page tab title
   useEffect(() => {
     document.title = logCleanupContent.docTitle;
