@@ -8,6 +8,7 @@ import FormButton from '../components/shared/FormButton';
 import { formContainer } from '../styles/forms';
 import { redirectAfterSuccess } from '../utils/navigation';
 import ForgotPasswordModal from '../components/shared/ForgotPasswordModal';
+import ErrorMessage from '../components/shared/ErrorMessage';
 import { colors } from '../styles/colors';
 import {
   linkNavigationText,
@@ -93,15 +94,10 @@ export default function LoginPage() {
           {successMsg}
         </p>
       )}
-      {errorMsg && (
-        <p
-          style={{ color: colors.errorMessageTextColor }}
-          role="alert"
-          aria-live="assertive"
-        >
-          {errorMsg}
-        </p>
-      )}
+
+      {/* Display Error Message */}
+      <ErrorMessage message={errorMsg} />
+
       <p style={linkNavigationText}>
         <button
           type="button"
