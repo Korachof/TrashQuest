@@ -4,7 +4,7 @@
 const formContainer = {
   margin: '2rem auto',
   width: '100%',
-  maxWidth: '400px',
+  maxWidth: '25rem',
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
