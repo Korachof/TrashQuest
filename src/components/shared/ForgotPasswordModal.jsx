@@ -9,7 +9,6 @@ import ErrorMessage from './ErrorMessage';
 import SuccessMessage from './SuccessMessage';
 import { formContainer } from '../../styles/forms';
 import { modalHeadingTextStyle, modalTextStyle } from '../../styles/typography';
-import { colors } from '../../styles/colors';
 
 export default function ForgotPasswordModal({ isOpen, onClose }) {
   const [email, setEmail] = useState('');
