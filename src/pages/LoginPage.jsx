@@ -9,6 +9,7 @@ import { formContainer } from '../styles/forms';
 import { redirectAfterSuccess } from '../utils/navigation';
 import ForgotPasswordModal from '../components/shared/ForgotPasswordModal';
 import ErrorMessage from '../components/shared/ErrorMessage';
+import SuccessMessage from '../components/shared/SuccessMessage';
 import { colors } from '../styles/colors';
 import {
   linkNavigationText,
@@ -85,15 +86,9 @@ export default function LoginPage() {
         {/* Log in button; lives in src/components/shared, but the styling may be reused later. If so, I'll globalize that.*/}
         <FormButton isLoading={isLoading}>{loginContent.login}</FormButton>
       </form>
-      {successMsg && (
-        <p
-          style={{ color: colors.successMesageTextColor }}
-          role="status"
-          aria-live="polite"
-        >
-          {successMsg}
-        </p>
-      )}
+
+      {/* Display Success Message */}
+      <SuccessMessage message={successMsg} />
 
       {/* Display Error Message */}
       <ErrorMessage message={errorMsg} />
