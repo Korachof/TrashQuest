@@ -15,7 +15,6 @@ import { isStrongPassword, clearMessages } from '../utils/validation';
 import { redirectAfterSuccess } from '../utils/navigation';
 import ErrorMessage from '../components/shared/ErrorMessage';
 import SuccessMessage from '../components/shared/SuccessMessage';
-import { colors } from '../styles/colors';
 import { signupContent } from '../content/signup';
 
 export default function SignupPage() {
