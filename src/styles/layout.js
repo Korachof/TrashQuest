@@ -40,9 +40,9 @@ export const layoutPageStyleWrapper = {
 export const mainContainerStyleWrapper = {
   boxSizing: CONTAINER_BOX_SIZING,
   flexGrow: 1,
-  maxWidth: '700px',
+  maxWidth: '43.75rem',
   margin: '0 auto',
-  padding: '4rem 1rem 0',
+  padding: `4rem ${MED_PADDING} 0`,
 };
 
 export const headerStyleContainer = {
@@ -50,7 +50,7 @@ export const headerStyleContainer = {
   display: CONTAINER_DISPLAY,
   justifyContent: 'space-between',
   alignItems: 'center',
-  padding: '1rem 2rem',
+  padding: `${MED_PADDING} 2rem`,
   backgroundColor: colors.headerBGColor,
   borderBottom: `${BORDER_SIZE} ${colors.headerFooterBorderColor}`,
 };
@@ -83,8 +83,8 @@ const OVERLAY_Z_INDEX = 1000;
 
 export const popupStyles = {
   position: 'absolute',
-  top: '60px',
-  right: '20px',
+  top: '3.75rem',
+  right: '1.25rem',
   backgroundColor: colors.modalBGColor,
   border: `${BORDER_SIZE} ${colors.popUpBorderColor}`,
   padding: MED_PADDING,
@@ -106,10 +106,10 @@ export const modalOverlayStyle = {
 
 export const modalContentStyleWrapper = {
   backgroundColor: colors.modalBGColor,
-  padding: '20px',
+  padding: '1.25rem',
   borderRadius: BORDER_RADIUS,
   position: 'relative',
-  maxWidth: '500px',
+  maxWidth: '31.25rem',
   width: '90%',
 };
 
