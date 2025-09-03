@@ -2,14 +2,15 @@
 import React, { useState, useEffect } from 'react';
 import FormGroup from '../shared/FormGroup';
 import { colors } from '../../styles/colors';
+import { trashTypeSelectContent as content } from '../../content/trashTypeSelectText';
 
 // Cleanup types with educational info
 const CLEANUP_TYPES = [
-  { value: 'General Trash', label: 'General Trash' },
-  { value: 'General Recycling', label: 'General Recycling' },
-  { value: 'Electronics Recycling', label: 'Electronics Recycling' },
+  { value: content.trash, label: 'General Trash' },
+  { value: content.recycle, label: 'General Recycling' },
+  { value: content.electronic, label: 'Electronics Recycling' },
   {
-    value: 'Hazardous Waste Disposal',
+    value: content.hazardous,
     label: 'Hazardous Waste Disposal ⚠️',
     warning: true,
   },
@@ -39,7 +40,7 @@ export default function TrashTypeSelect({
         onChange={onChange}
         required={required}
       >
-        <option value="">Select type...</option>
+        <option value="">{content.fieldText}</option>
         {CLEANUP_TYPES.map((type) => (
           <option key={type.value} value={type.value}>
             {type.label}
@@ -59,10 +60,8 @@ export default function TrashTypeSelect({
           }}
         >
           <p style={{ margin: 0, color: colors.hazardTextColor }}>
-            ⚠️ <strong>Important:</strong> Please check your local city/state
-            laws for proper hazardous waste disposal. When in doubt, seek
-            professional help. This includes items like batteries, paint,
-            chemicals, and motor oil.
+            {content.hazardousIcon}
+            <strong>{content.hazardousTitle}</strong> {content.hazardousWarning}
           </p>
         </div>
       )}
