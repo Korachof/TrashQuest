@@ -656,6 +656,22 @@ This changelog documents key updates to the TrashQuest project. It follows seman
 - The **successMsg** and **errorMsg** colors were swapped in `colors`, so swapped them back.
 - Fixed a typo in `colors` where **successMessageTextColor** was missing an 's'. Fixed all the references to it.
 
+## [0.3.5] 2025-09-03
+
+### Added
+
+- Created a `trashTypeSelectText.js` style component and referenced it in `TrashTypeSelect.jsx` and housed the page's text content inside of it.
+
+### Changed
+
+- Added a **re-enter password** field to `SignupPage` and logic to check that both passwords are equal before calling **fireBase**
+- Extracted and created a reusable style component for `TrashTypeSelect` called `trashTypeSelectText.js` and referenced the reusable styling content instead of using hardcoded values.
+- Added a **bottom margin** to `mainContainerStyleWrapper` so there is a gap between main page content and the footer.
+
+### Fixed
+
+- Fixed the lack of gaps between page content and the footer.
+
 ---
 
 ### Planned (Upcoming)
