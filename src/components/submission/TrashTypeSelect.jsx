@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import FormGroup from '../shared/FormGroup';
 import { colors } from '../../styles/colors';
 import { trashTypeSelectContent as content } from '../../content/trashTypeSelectText';
+import { hazardousWarningLayout as hazardLayout } from '../../styles/layout';
 
 // Cleanup types with educational info
 const CLEANUP_TYPES = [

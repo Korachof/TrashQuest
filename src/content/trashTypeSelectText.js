@@ -2,6 +2,7 @@
 
 export const trashTypeSelectContent = {
   fieldText: `Select type...`,
+  // content for both label and value
   trash: `General Trash`,
   recycle: `General Recycling`,
   electronic: `Electronics Recycling`,

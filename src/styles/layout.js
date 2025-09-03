@@ -18,6 +18,7 @@ const BORDER_RADIUS = '0.5rem';
 
 // Margins
 const BUTTON_TOP_MARGIN = '1rem';
+const BOTTOM_MARGIN = '1rem';
 
 // Gaps
 const MAIN_CONTAINER_GAP = '1rem';
@@ -150,4 +151,16 @@ export const containerElementSpacing = {
   display: CONTAINER_DISPLAY,
   alignItems: 'center',
   gap: CONTAINER_ELEMENT_GAP,
+};
+
+// ------------------------------------
+// Hazardous Warning layout styling
+// ------------------------------------
+
+export const hazardousWarningLayout = {
+  background: colors.hazardWarningBGColor,
+  border: `${BORDER_SIZE} ${colors.hazardWarningBorderColor}`,
+  padding: MED_PADDING,
+  borderRadius: BORDER_RADIUS,
+  bottomMargin: BOTTOM_MARGIN,
 };
