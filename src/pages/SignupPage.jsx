@@ -23,14 +23,24 @@ export default function SignupPage() {
   const [password, setPassword] = useState('');
   const [errorMsg, setErrorMsg] = useState('');
   const [successMsg, setSuccessMsg] = useState('');
-  const { setCurrentUser } = useAuth();
+  const [passwordConfirm, setPasswordConfirm] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const { setCurrentUser } = useAuth();
+
   const navigate = useNavigate();
 
   // prevent reloading of page, and instead handle submission manually with firebase.
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true); // start loading
+
+    // Check if passwords match
+    if (password !== passwordConfirm) {
+      clearMessages(setErrorMsg, setSuccessMsg);
+      setErrorMsg('Passwords do not match.');
+      setIsLoading(false); // Stop loading
+      return; // Stop the function from proceeding
+    }
 
     // Password Strength Check
     if (!isStrongPassword(password)) {
@@ -106,8 +116,17 @@ export default function SignupPage() {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        {/* Submission button; lives in src/components/shared, but the styling may be reused
-        later. If so, I'll globalize that.*/}
+
+        {/* Password confirmation */}
+        <FormGroup
+          id="password-confirm"
+          label="Confirm Password:"
+          type="password"
+          value={passwordConfirm}
+          onChange={(e) => setPasswordConfirm(e.target.value)}
+        />
+
+        {/* Submission button*/}
         <FormButton
           isLoading={isLoading}
           loadingText={signupContent.loadingText}
