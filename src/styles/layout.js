@@ -44,6 +44,7 @@ export const mainContainerStyleWrapper = {
   maxWidth: '43.75rem',
   margin: '0 auto',
   padding: `4rem ${MED_PADDING} 0`,
+  marginBottom: BOTTOM_MARGIN,
 };
 
 export const headerStyleContainer = {
