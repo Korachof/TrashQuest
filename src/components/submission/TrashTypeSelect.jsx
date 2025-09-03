@@ -6,12 +6,12 @@ import { trashTypeSelectContent as content } from '../../content/trashTypeSelect
 
 // Cleanup types with educational info
 const CLEANUP_TYPES = [
-  { value: content.trash, label: 'General Trash' },
-  { value: content.recycle, label: 'General Recycling' },
-  { value: content.electronic, label: 'Electronics Recycling' },
+  { value: content.trash, label: content.trash },
+  { value: content.recycle, label: content.recycle },
+  { value: content.electronic, label: content.electronic },
   {
     value: content.hazardous,
-    label: 'Hazardous Waste Disposal ⚠️',
+    label: content.hazardous,
     warning: true,
   },
 ];

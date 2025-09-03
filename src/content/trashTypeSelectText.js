@@ -6,7 +6,7 @@ export const trashTypeSelectContent = {
   recycle: `General Recycling`,
   electronic: `Electronics Recycling`,
   hazardous: `Hazardous Waste Disposal`,
-  hazardousIcon: `⚠️ `, // leave trailing space
+  hazardousIcon: `⚠️`, // leave trailing space
   hazardousTitle: `Important: `, // leave trailing space
   hazardousWarning: `Please check your local city/state laws for
       proper hazardous waste disposal. When in doubt, seek professional help.
