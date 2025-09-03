@@ -53,11 +53,11 @@ export default function TrashTypeSelect({
       {showHazardousWarning && (
         <div
           style={{
-            background: colors.hazardWarningBGColor,
-            border: `1px solid ${colors.hazardWarningBorderColor}`,
-            padding: '1rem',
-            borderRadius: '4px',
-            marginBottom: '1rem',
+            background: hazardLayout.background,
+            border: hazardLayout.border,
+            padding: hazardLayout.padding,
+            borderRadius: hazardLayout.borderRadius,
+            marginBottom: hazardLayout.bottomMargin,
           }}
         >
           <p style={{ margin: 0, color: colors.hazardTextColor }}>
