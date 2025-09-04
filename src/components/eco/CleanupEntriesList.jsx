@@ -21,7 +21,7 @@ import {
   centerBodyTextStyle,
   subHeadingTextStyle,
 } from '../../styles/typography';
-import { deleteCleanupContent as content } from '../../content/deleteCleanup';
+import { cleanupDisplayContent as content } from '../../content/cleanupEntriesList';
 
 export default function CleanupEntriesList({
   limitEntries = null, // null = show all, number = limit results
