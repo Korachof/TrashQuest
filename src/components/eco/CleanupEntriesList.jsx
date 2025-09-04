@@ -21,6 +21,7 @@ import {
   centerBodyTextStyle,
   subHeadingTextStyle,
 } from '../../styles/typography';
+import { deleteCleanupContent as content } from '../../content/deleteCleanup';
 
 export default function CleanupEntriesList({
   limitEntries = null, // null = show all, number = limit results
@@ -37,13 +38,13 @@ export default function CleanupEntriesList({
   const [entryToEdit, setEntryToEdit] = useState(null);
 
   if (loading) {
-    return <div>Loading cleanup entries...</div>;
+    return <div>{content.loadingMsg}</div>;
   }
 
   if (entries.length === 0) {
     return (
       <div style={centerBodyTextStyle}>
-        <p>No cleanup entries yet. Start logging your eco activities!</p>
+        <p>{content.noEntriesMsg}</p>
       </div>
     );
   }
@@ -61,7 +62,7 @@ export default function CleanupEntriesList({
 
   return (
     <div>
-      <h3 style={subHeadingTextStyle}>Recent Cleanup Activities</h3>
+      <h3 style={subHeadingTextStyle}>{content.title}</h3>
 
       {/* Entries List */}
       <div style={entriesListLayoutWrapper}>
@@ -77,7 +78,9 @@ export default function CleanupEntriesList({
             <div style={containerElementSpacing}>
               {/* Entry Points Value */}
               <div style={cleanupEntriesPointsStyle}>
-                +{entry.pointsEarned} pts
+                {content.plusPts}
+                {entry.pointsEarned}
+                {content.pts}
               </div>
 
               {/* Delete button */}
@@ -85,7 +88,7 @@ export default function CleanupEntriesList({
                 onClick={() => handleDelete(entry.id)}
                 style={getDeleteButtonStyle()}
               >
-                ×
+                {content.deleteButton}
               </button>
 
               {/* Edit button */}
@@ -93,7 +96,7 @@ export default function CleanupEntriesList({
                 onClick={() => handleEdit(entry.id)}
                 style={getEditButtonStyle()}
               >
-                Edit
+                {content.editButton}
               </button>
             </div>
           </div>
@@ -128,7 +131,7 @@ export default function CleanupEntriesList({
             onClick={() => navigate('/cleanup-entries')}
             style={getButtonStyle('medium', 'secondary')}
           >
-            View All Entries
+            {content.viewAllButton}
           </button>
         </div>
       )}
