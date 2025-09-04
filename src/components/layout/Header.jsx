@@ -8,6 +8,7 @@ import ConfirmLogout from '../shared/ConfirmLogout';
 import { FaUser } from 'react-icons/fa';
 import { logoTextStyle } from '../../styles/typography';
 import { useAuth } from '../../context/AuthContext';
+import { headerContent as content } from '../../content/headerContent';
 
 export default function Header() {
   // Grab the current user
@@ -32,14 +33,14 @@ export default function Header() {
       otherwise to Welcome Page
       */}
       <Link to={currentUser ? '/dashboard' : '/'} style={logoTextStyle}>
-        <h1>TrashQuest ♻️</h1>
+        <h1>{content.logo}</h1>
       </Link>
       <nav style={navContainer}>
-        <Link to="/how-it-works">How It Works</Link>
-        <Link to="/resources">Resources</Link>
+        <Link to="/how-it-works">{content.howItWorks}</Link>
+        <Link to="/resources">{content.resources}</Link>
 
         {/* Add Log Cleanup link only when authenticated */}
-        {currentUser && <Link to="/log-cleanup">Log Cleanup</Link>}
+        {currentUser && <Link to="/log-cleanup">{content.logCleanup}</Link>}
 
         {currentUser ? (
           <>
@@ -52,7 +53,9 @@ export default function Header() {
               {currentUser.displayName}
             </Link>
             {/* If user is logged in, change Sign in to Log Out button */}
-            <button onClick={() => setShowConfirm(true)}>Log Out</button>
+            <button onClick={() => setShowConfirm(true)}>
+              {content.logOut}
+            </button>
             {showConfirm && (
               <ConfirmLogout
                 onConfirm={handleLogout}
@@ -61,7 +64,7 @@ export default function Header() {
             )}
           </>
         ) : (
-          <Link to="/login">Sign In</Link>
+          <Link to="/login">{content.logIn}</Link>
         )}
       </nav>
     </header>
