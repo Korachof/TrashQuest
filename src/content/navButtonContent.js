@@ -1,6 +1,6 @@
 // Navigate Button Content
 
-export const NavButtonContent = {
+export const navButtonContent = {
   logCleanup: `Log New Cleanup`,
   startQuestButton: `Start Your TrashQuest Now!`,
 };
