@@ -2,10 +2,11 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getButtonStyle } from '../../styles/buttonStyles';
+import { NavButtonContent as content } from '../../content/navButtonContent';
 
 export default function StartQuestButton({
   style = {},
-  text = 'Start Your TrashQuest Now!',
+  text = content.startQuestButton,
 }) {
   const navigate = useNavigate();
 
