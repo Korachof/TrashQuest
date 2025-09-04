@@ -7,6 +7,7 @@ import {
   modalButtonContainer,
   modalContentStyleWrapper,
 } from '../../styles/layout';
+import { deleteCleanupContent as content } from '../../content/deleteCleanup';
 
 export default function DeleteCleanupEntryModal({
   isOpen,
@@ -25,32 +26,49 @@ export default function DeleteCleanupEntryModal({
 
   return (
     <Modal isOpen={isOpen} onClose={onCancel}>
-      <h2 style={modalHeadingTextStyle}>Delete Cleanup Entry</h2>
-      <p style={modalTextStyle}>Are you sure you want to delete this entry?</p>
+      <h2 style={modalHeadingTextStyle}>{content.title}</h2>
+      <p style={modalTextStyle}>{content.subTitle}</p>
       <p>
         <strong>
           {entry.size} • {entry.type}
         </strong>
       </p>
       <p>
-        Location: {entry.area} • Date: {entry.date}
+        {content.location}
+        {entry.area}
+        {content.date}
+        {entry.date}
       </p>
 
       <div style={modalContentStyleWrapper}>
         <p style={modalTextStyle}>
-          This will subtract <strong>{entry.pointsEarned} points</strong> from
-          your total.
+          {content.subtractMsg}
+          <strong>
+            {entry.pointsEarned}
+            {content.points}
+          </strong>
+          {content.fromTotal}
         </p>
         <p style={modalTextStyle}>
-          Current: <strong>{currentPoints} points</strong> → New:{' '}
-          <strong>{newPointsTotal} points</strong>
+          {content.current}
+          <strong>
+            {currentPoints}
+            {content.points}
+          </strong>
+          {content.newPoints}
+          <strong>
+            {newPointsTotal}
+            {content.points}
+          </strong>
         </p>
       </div>
 
       <div style={modalButtonContainer}>
-        <FormButton onClick={handleConfirmDelete}>Delete Entry</FormButton>
+        <FormButton onClick={handleConfirmDelete}>
+          {content.deleteButton}
+        </FormButton>
         <FormButton isCancel={true} onClick={onCancel}>
-          Cancel
+          {content.cancelButton}
         </FormButton>
       </div>
     </Modal>
