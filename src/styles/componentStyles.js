@@ -15,4 +15,5 @@ export const cleanupEntriesPointsStyle = {
   borderRadius: '4px',
   color: colors.EcoDisplayTextColor,
   fontWeight: 'bold',
+  marginLeft: '1rem',
 };
