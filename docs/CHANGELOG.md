@@ -660,17 +660,27 @@ This changelog documents key updates to the TrashQuest project. It follows seman
 
 ### Added
 
-- Created a `trashTypeSelectText.js` style component and referenced it in `TrashTypeSelect.jsx` and housed the page's text content inside of it.
+- Created a `trashTypeSelectText.js` content file and referenced it in `TrashTypeSelect.jsx` and housed the page's text content inside of it.
+- Created
+- Created `deleteCleanup.js` content file and abstracted content from `DeleteCleanupEntryModal` and referenced it there.
+- Added `cleanupDisplayContent` to `cleanupEntriesList.js` to abstract text content from `CleanupEntriesList.jsx` and referenced it there.
+- Created `updateCleanup.js` to abstract content from `UpdateCleanupEntryModal` and referenced it there.
+- Created `footerContent.js` to house content from `Footer.jsx` and referenced it there.
+- Created `headerContent.js` to house content from `Header.jsx` and referenced it there.
+- Created `navButtonContent.js` to house content from `StartQuestButton.jsx` and `LogCleanupButton.jsx` and referenced the content in those places.
 
 ### Changed
 
 - Added a **re-enter password** field to `SignupPage` and logic to check that both passwords are equal before calling **fireBase**
 - Extracted and created a reusable style component for `TrashTypeSelect` called `trashTypeSelectText.js` and referenced the reusable styling content instead of using hardcoded values.
 - Added a **bottom margin** to `mainContainerStyleWrapper` so there is a gap between main page content and the footer.
+- Added a **marginLeft** to `cleanupEntriesPointsStyle` to add a gap between the added points in the entry and the entry title.
 
 ### Fixed
 
 - Fixed the lack of gaps between page content and the footer.
+- Fixed a misnamed content file for `cleanupEntriesList`
+- Fixed **navButtonContent** by making it camalCase instead of PascalCase.
 
 ---
 
