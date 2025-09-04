@@ -2,12 +2,13 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getButtonStyle } from '../../styles/buttonStyles';
+import { navButtonContent as content } from '../../content/navButtonContent';
 
 export default function LogCleanupButton({
   size = 'large',
   color = 'primary',
   style = {},
-  text = 'Log New Cleanup',
+  text = content.logCleanup,
 }) {
   const navigate = useNavigate();
 
@@ -19,7 +20,7 @@ export default function LogCleanupButton({
 
   return (
     <button onClick={handleClick} style={buttonStyle}>
-      🌱 {text}
+      {text}
     </button>
   );
 }
