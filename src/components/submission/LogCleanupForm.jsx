@@ -19,6 +19,7 @@ import { formContainer } from '../../styles/forms';
 import { usePoints } from '../../context/PointsContext';
 import { useAuth } from '../../context/AuthContext';
 import { colors } from '../../styles/colors';
+import { pointsPreview } from '../../styles/layout';
 
 // Points values for each size
 const POINTS_VALUES = {
@@ -256,12 +257,12 @@ export default function LogCleanupForm({
         {formData.size && (
           <div
             style={{
-              background: colors.pointsDisplayBGColor,
-              border: `1px solid ${colors.pointsDisplayBorderColor}`,
-              padding: '1rem',
-              borderRadius: '4px',
-              marginBottom: '1rem',
-              textAlign: 'center',
+              background: pointsPreview.background,
+              border: pointsPreview.border,
+              padding: pointsPreview.padding,
+              borderRadius: pointsPreview.borderRadius,
+              marginBottom: pointsPreview.marginBottom,
+              textAlign: pointsPreview.textAlign,
             }}
           >
             <h3 style={{ margin: 0, color: colors.EcoDisplayTextColor }}>

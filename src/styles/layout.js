@@ -154,6 +154,15 @@ export const containerElementSpacing = {
   gap: CONTAINER_ELEMENT_GAP,
 };
 
+export const pointsPreview = {
+  background: colors.pointsDisplayBGColor,
+  border: `1px solid ${colors.pointsDisplayBorderColor}`,
+  padding: '1rem',
+  borderRadius: '4px',
+  marginBottom: '1rem',
+  textAlign: 'center',
+};
+
 // ------------------------------------
 // Hazardous Warning layout styling
 // ------------------------------------
