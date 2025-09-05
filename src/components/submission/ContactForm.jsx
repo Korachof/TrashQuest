@@ -18,10 +18,10 @@ const ContactForm = () => {
   const [errorMessage, setErrorMessage] = useState('');
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
+    const { id, value } = e.target;
     setFormData((prev) => ({
       ...prev,
-      [name]: value,
+      [id]: value,
     }));
     // Clear messages when user starts typing
     if (successMessage) setSuccessMessage('');
@@ -106,7 +106,7 @@ const ContactForm = () => {
 
       <FormGroup
         label="Name"
-        name="name"
+        id="name"
         type="text"
         value={formData.name}
         onChange={handleChange}
@@ -117,7 +117,7 @@ const ContactForm = () => {
 
       <FormGroup
         label="Email"
-        name="email"
+        id="email"
         type="email"
         value={formData.email}
         onChange={handleChange}
@@ -128,7 +128,7 @@ const ContactForm = () => {
 
       <FormGroup
         label="Message"
-        name="message"
+        id="message"
         type="textarea"
         value={formData.message}
         onChange={handleChange}

@@ -57,6 +57,8 @@ export default function FormGroup({
           onChange={onChange}
           required={required}
           style={inputField}
+          placeholder={placeholder}
+          disabled={disabled}
         />
       )}
     </div>
