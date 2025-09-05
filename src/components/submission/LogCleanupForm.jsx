@@ -20,14 +20,15 @@ import { usePoints } from '../../context/PointsContext';
 import { useAuth } from '../../context/AuthContext';
 import { colors } from '../../styles/colors';
 import { pointsPreview, formButtonLayout } from '../../styles/layout';
+import { cleanupPointsValues as ptsVal } from '../../content/logCleanup';
 
 // Points values for each size
 const POINTS_VALUES = {
-  'Single Small Item': 3,
-  'Single Large Item': 10,
-  'Grocery Bag (~4 gallons)': 60,
-  'Standard Garbage Bag (~13 gallons)': 180,
-  'Commercial Garbage Bag (~30 gallons)': 450,
+  'Single Small Item': ptsVal.smallItem,
+  'Single Large Item': ptsVal.largeItem,
+  'Grocery Bag (~4 gallons)': ptsVal.groceryBag,
+  'Standard Garbage Bag (~13 gallons)': ptsVal.garbageBag,
+  'Commercial Garbage Bag (~30 gallons)': ptsVal.commercialBag,
 };
 
 // Area options
