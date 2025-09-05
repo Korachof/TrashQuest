@@ -3,6 +3,6 @@
 export const contactContent = {
   docTitle: `Contact Us | TrashQuest`,
   title: `Contact Us`,
-  subTitle: `Use the form below (coming soon!) to contact us. We'd love to hear from
-        you!`,
+  subTitle: `Use the form below to contact us. We'd love to hear from
+        you! (Currently the form is IN PROGRESS.)`,
 };

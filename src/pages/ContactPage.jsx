@@ -7,6 +7,8 @@ import {
   bodyTextStyle,
 } from '../styles/typography';
 import { contactContent } from '../content/contact';
+import ContactForm from '../components/submission/ContactForm';
+
 export default function ContactPage() {
   // Set page tab title
   useEffect(() => {
@@ -19,7 +21,7 @@ export default function ContactPage() {
       </h1>
       <h3 style={subHeadingTextStyle}>{contactContent.subTitle}</h3>
 
-      {/* TODO: create ContactForm and remove this comment except: <ContactForm /> */}
+      <ContactForm />
 
       <div style={centerBodyTextStyle}>
         <h3 style={subHeadingTextStyle}>Other Ways to Reach Us</h3>
