@@ -27,19 +27,20 @@ export default function DeleteCleanupEntryModal({
   return (
     <Modal isOpen={isOpen} onClose={onCancel}>
       <h2 style={modalHeadingTextStyle}>{content.title}</h2>
-      <p style={modalTextStyle}>{content.subTitle}</p>
-      <p>
-        <strong>
-          {entry.size} • {entry.type}
-        </strong>
-      </p>
-      <p>
-        {content.location}
-        {entry.area}
-        {content.date}
-        {entry.date}
-      </p>
-
+      <div style={modalTextStyle}>
+        <p>{content.subTitle}</p>
+        <p>
+          <strong>
+            {entry.size} • {entry.type}
+          </strong>
+        </p>
+        <p>
+          {content.location}
+          {entry.area}
+          {content.date}
+          {entry.date}
+        </p>
+      </div>
       <div style={modalContentStyleWrapper}>
         <p style={modalTextStyle}>
           {content.subtractMsg}
