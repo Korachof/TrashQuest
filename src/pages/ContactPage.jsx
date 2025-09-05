@@ -4,7 +4,6 @@ import {
   headingTextStyle,
   subHeadingTextStyle,
   centerBodyTextStyle,
-  bodyTextStyle,
 } from '../styles/typography';
 import { contactContent } from '../content/contact';
 import ContactForm from '../components/submission/ContactForm';
@@ -24,10 +23,12 @@ export default function ContactPage() {
       <ContactForm />
 
       <div style={centerBodyTextStyle}>
-        <h3 style={subHeadingTextStyle}>Other Ways to Reach Us</h3>
-        <p>You can also reach us through:</p>
-        <p>Email: support@ecoquest.com</p>
-        <p>Follow us on social media: </p>
+        <h3 style={subHeadingTextStyle}>
+          {contactContent.otherContactSubTitle}
+        </h3>
+        <p>{contactContent.otherContactText}</p>
+        <p>{contactContent.emailTxt}</p>
+        <p>{contactContent.socialMediaTxt}</p>
       </div>
     </>
   );
