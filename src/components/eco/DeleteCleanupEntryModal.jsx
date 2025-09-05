@@ -40,28 +40,29 @@ export default function DeleteCleanupEntryModal({
           {content.date}
           {entry.date}
         </p>
-      </div>
-      <div style={modalContentStyleWrapper}>
-        <p style={modalTextStyle}>
-          {content.subtractMsg}
-          <strong>
-            {entry.pointsEarned}
-            {content.points}
-          </strong>
-          {content.fromTotal}
-        </p>
-        <p style={modalTextStyle}>
-          {content.current}
-          <strong>
-            {currentPoints}
-            {content.points}
-          </strong>
-          {content.newPoints}
-          <strong>
-            {newPointsTotal}
-            {content.points}
-          </strong>
-        </p>
+
+        <div style={modalContentStyleWrapper}>
+          <p>
+            {content.subtractMsg}
+            <strong>
+              {entry.pointsEarned}
+              {content.points}
+            </strong>
+            {content.fromTotal}
+          </p>
+          <p>
+            {content.current}
+            <strong>
+              {currentPoints}
+              {content.points}
+            </strong>
+            {content.newPoints}
+            <strong>
+              {newPointsTotal}
+              {content.points}
+            </strong>
+          </p>
+        </div>
       </div>
 
       <div style={modalButtonContainer}>
