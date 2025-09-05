@@ -20,19 +20,29 @@ import { usePoints } from '../../context/PointsContext';
 import { useAuth } from '../../context/AuthContext';
 import { colors } from '../../styles/colors';
 import { pointsPreview, formButtonLayout } from '../../styles/layout';
-import { cleanupPointsValues as ptsVal } from '../../content/logCleanup';
+import {
+  cleanupPointsValues as ptsVal,
+  logCleanupFormContent as content,
+} from '../../content/logCleanup';
+import SuccessMessage from '../shared/SuccessMessage';
 
 // Points values for each size
 const POINTS_VALUES = {
-  'Single Small Item': ptsVal.smallItem,
-  'Single Large Item': ptsVal.largeItem,
-  'Grocery Bag (~4 gallons)': ptsVal.groceryBag,
-  'Standard Garbage Bag (~13 gallons)': ptsVal.garbageBag,
-  'Commercial Garbage Bag (~30 gallons)': ptsVal.commercialBag,
+  [content.smallItemTxt]: ptsVal.smallItem,
+  [content.largeItemTxt]: ptsVal.largeItem,
+  [content.groceryBagTxt]: ptsVal.groceryBag,
+  [content.garbageBagtxt]: ptsVal.garbageBag,
+  [content.commercialBagTxt]: ptsVal.commercialBag,
 };
 
 // Area options
-const AREA_OPTIONS = ['Downtown', 'Residential', 'Park', 'Highway', 'Beach'];
+const AREA_OPTIONS = [
+  content.area1,
+  content.area2,
+  content.area3,
+  content.area4,
+  content.area5,
+];
 
 export default function LogCleanupForm({
   // Set component parameters for updating logged entries
@@ -79,7 +89,7 @@ export default function LogCleanupForm({
     e.preventDefault();
 
     if (!isFormValid()) {
-      alert('Please fill in all required fields.');
+      alert(content.fieldsUnfilledError);
       return;
     }
 
@@ -101,7 +111,7 @@ export default function LogCleanupForm({
         ...(editMode && existingEntry && { id: existingEntry.id }), // Add ID when editing
       };
 
-      console.log('Cleanup entry to save:', cleanupEntry);
+      console.log(content.saveCleanup, cleanupEntry);
 
       if (editMode && existingEntry) {
         // Update existing entry
@@ -142,21 +152,19 @@ export default function LogCleanupForm({
       }
 
       if (editMode) {
-        alert('Entry updated successfully!');
+        alert(content.updateCleanup);
         if (onCancel) onCancel(); // Close the modal
         if (onUpdate) {
           onUpdate(cleanupEntry);
         }
       } else {
-        alert(
-          `Cleanup logged successfully! You earned ${pointsEarned} Eco Points!`
-        );
+        alert(`${content.cleanupSuccess} ${pointsEarned} ${content.ecoPtsMsg}`);
         updateUserPoints(pointsEarned); // Update PointsContext
         navigate('/dashboard');
       }
     } catch (error) {
-      console.error('Error logging cleanup:', error);
-      alert('Error logging cleanup. Please try again.');
+      console.error(content.consoleErrMsg, error);
+      alert(content.cleanupErrAlert);
     } finally {
       setIsLoading(false);
     }
@@ -172,7 +180,7 @@ export default function LogCleanupForm({
       city: '',
       state: '',
     });
-    console.log('Cancel clicked');
+    console.log(content.consoleCancel);
 
     // Reset loading states just in case
     setIsLoading(false);
@@ -200,10 +208,10 @@ export default function LogCleanupForm({
           onChange={(e) => handleInputChange('size', e.target.value)}
           required
         >
-          <option value="">Select size...</option>
+          <option value="">{content.sizeSelect}</option>
           {Object.keys(POINTS_VALUES).map((size) => (
             <option key={size} value={size}>
-              {size} ({POINTS_VALUES[size]} points)
+              {size} ({POINTS_VALUES[size]} {content.pts})
             </option>
           ))}
         </FormGroup>
@@ -224,7 +232,7 @@ export default function LogCleanupForm({
           onChange={(e) => handleInputChange('area', e.target.value)}
           required
         >
-          <option value="">Select area...</option>
+          <option value="">{content.areaSelect}</option>
           {AREA_OPTIONS.map((area) => (
             <option key={area} value={area}>
               {area}
@@ -267,7 +275,9 @@ export default function LogCleanupForm({
             }}
           >
             <h3 style={{ margin: 0, color: colors.EcoDisplayTextColor }}>
-              🎉 You'll earn {calculatePoints()} Eco Points!
+              {content.ptsEarnedMsg}
+              {calculatePoints()}
+              {content.ecoPts}
             </h3>
           </div>
         )}
@@ -280,7 +290,7 @@ export default function LogCleanupForm({
             disabled={!isFormValid()}
             type="submit"
           >
-            Log Cleanup
+            {content.logButton}
           </FormButton>
 
           <FormButton
@@ -288,7 +298,7 @@ export default function LogCleanupForm({
             isCancel={true}
             onClick={editMode ? onCancel : handleCancel}
           >
-            Cancel
+            {content.cancelButton}
           </FormButton>
         </div>
       </form>
