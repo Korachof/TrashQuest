@@ -13,6 +13,9 @@ export default function FormGroup({
   onChange,
   required = true,
   id,
+  placeholder,
+  disabled,
+  rows,
   children,
 }) {
   return (
@@ -30,9 +33,21 @@ export default function FormGroup({
           onChange={onChange}
           required={required}
           style={inputField}
+          disabled={disabled}
         >
           {children}
         </select>
+      ) : type === 'textarea' ? ( // ← ADDED: New condition for textarea
+        <textarea
+          id={id}
+          value={value}
+          onChange={onChange}
+          required={required}
+          style={inputField}
+          placeholder={placeholder} // ← ADDED
+          disabled={disabled} // ← ADDED
+          rows={rows || 4} // ← ADDED with default of 4 rows
+        />
       ) : (
         //Render inputs
         <input
