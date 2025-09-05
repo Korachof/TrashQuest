@@ -19,7 +19,7 @@ import { formContainer } from '../../styles/forms';
 import { usePoints } from '../../context/PointsContext';
 import { useAuth } from '../../context/AuthContext';
 import { colors } from '../../styles/colors';
-import { pointsPreview } from '../../styles/layout';
+import { pointsPreview, formButtonLayout } from '../../styles/layout';
 
 // Points values for each size
 const POINTS_VALUES = {
@@ -272,7 +272,7 @@ export default function LogCleanupForm({
         )}
 
         {/* Form Buttons */}
-        <div style={{ display: 'flex', gap: '1rem', marginTop: '2rem' }}>
+        <div style={formButtonLayout}>
           <FormButton
             isLoading={isLoading}
             loadingText="Logging Cleanup..."

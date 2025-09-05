@@ -143,6 +143,12 @@ export const entryContainerWrapper = {
 // ------------------------------------
 // Utility-Style layout styling
 // ------------------------------------
+
+export const formButtonLayout = {
+  display: 'flex',
+  gap: '1rem',
+  marginTop: '2rem',
+};
 export const centerButtonLayout = {
   textAlign: 'center',
   marginTop: BUTTON_TOP_MARGIN,
