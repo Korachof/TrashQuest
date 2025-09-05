@@ -656,7 +656,7 @@ This changelog documents key updates to the TrashQuest project. It follows seman
 - The **successMsg** and **errorMsg** colors were swapped in `colors`, so swapped them back.
 - Fixed a typo in `colors` where **successMessageTextColor** was missing an 's'. Fixed all the references to it.
 
-## [0.3.5] 2025-09-03
+## [0.3.5] 2025-09-03 - 2025-09-04
 
 ### Added
 
@@ -681,6 +681,32 @@ This changelog documents key updates to the TrashQuest project. It follows seman
 - Fixed the lack of gaps between page content and the footer.
 - Fixed a misnamed content file for `cleanupEntriesList`
 - Fixed **navButtonContent** by making it camalCase instead of PascalCase.
+
+## [0.3.6] 2025-09-05
+
+### Added
+
+- Re-generated the `src_structure.txt` file and replaced the old one to update based on current structure.
+- Created the `ContactForm.jsx` file to house the form for contacting me through the website.
+
+### Changed
+
+- Added a div to `DeleteCleanupEntryModal` so the points added text is centered and follows the same styling as all typography.
+- Removed the multiple references to **modalTextStyle** in `DeleteCleanupEntryModal` and replaced them with a single div with the styling referenced once.
+- Abstracted the **pointsPreview** styling in `LogCleanupForm` by adding it to `layout.js` and referencing it from there.
+- Abstracted the **Points Values Integers** content in `LogCleanupForm` by adding it to `logCleanup.js` and referencing it from there.
+- Abstracted the **text content** in `LogCleanupForm` by adding it to `layout.js` and referencing it from there.
+- Added a section on `ContactPage` for additional ways to contact me, including a placeholder email and possible social media tags.
+- Abstracted the **text content** in `ContactPage` by adding it to `contact.js` and referencing it from there.
+- Abstracted the **text content** in `ContactForm` by adding it to `contact.js` and referencing it from there.
+- Added **placeholder**, **disabled**, and **rows** props to `FormGroup`.
+- Added support for **text area** to `FormGroup` for the **contact form**
+- Added references to **placeholder** and **disabled** to my rendering input component in `ContactForm`.
+
+### Fixed
+
+- Form fields now show **placeholder** text in both `LogCleanupForm` and `ContactForm`.
+- The input fields in `ContactForm` can now be typed in and render correctly.
 
 ---
 
