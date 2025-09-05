@@ -5,6 +5,7 @@ import FormGroup from '../shared/FormGroup';
 import FormButton from '../shared/FormButton';
 import SuccessMessage from '../shared/SuccessMessage';
 import ErrorMessage from '../shared/ErrorMessage';
+import { contactFormContent as content } from '../../content/contact';
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -29,29 +30,29 @@ const ContactForm = () => {
 
   const validateForm = () => {
     if (!formData.name.trim()) {
-      setErrorMessage('Please enter your name');
+      setErrorMessage(content.noNameError);
       return false;
     }
 
     if (!formData.email.trim()) {
-      setErrorMessage('Please enter your email');
+      setErrorMessage(content.noEmailError);
       return false;
     }
 
     // Basic email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(formData.email)) {
-      setErrorMessage('Please enter a valid email address');
+      setErrorMessage(content.emailValError);
       return false;
     }
 
     if (!formData.message.trim()) {
-      setErrorMessage('Please enter a message');
+      setErrorMessage(content.noMsgError);
       return false;
     }
 
     if (formData.message.trim().length < 10) {
-      setErrorMessage('Message must be at least 10 characters long');
+      setErrorMessage(content.msgValError);
       return false;
     }
 
