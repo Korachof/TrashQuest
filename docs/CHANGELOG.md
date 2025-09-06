@@ -682,12 +682,14 @@ This changelog documents key updates to the TrashQuest project. It follows seman
 - Fixed a misnamed content file for `cleanupEntriesList`
 - Fixed **navButtonContent** by making it camalCase instead of PascalCase.
 
-## [0.3.6] 2025-09-05
+## [0.3.6] 2025-09-05 - 2025-09-06
 
 ### Added
 
 - Re-generated the `src_structure.txt` file and replaced the old one to update based on current structure.
 - Created the `ContactForm.jsx` file to house the form for contacting me through the website.
+- Set up logic to connect `ContactForm` to **FireBase**. Information is saved to **FireStore** and accessed from there but admin only.
+- Added **reCAPTCHA v3** to sign in and sign up functions. Added logic to Firebase and connected the site keys.
 
 ### Changed
 
