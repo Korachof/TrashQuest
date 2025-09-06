@@ -1,6 +1,8 @@
 // Contact Form component that lives on ContactPage
-
 import React, { useState } from 'react';
+import { db } from '../../firebase';
+import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
+import { useAuth } from '../../context/AuthContext';
 import FormGroup from '../shared/FormGroup';
 import FormButton from '../shared/FormButton';
 import SuccessMessage from '../shared/SuccessMessage';
@@ -16,6 +18,7 @@ const ContactForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [successMessage, setSuccessMessage] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+  const { currentUser } = useAuth();
 
   const handleChange = (e) => {
     const { id, value } = e.target;
@@ -74,11 +77,17 @@ const ContactForm = () => {
     setIsSubmitting(true);
 
     try {
-      // TODO: Implement actual form submission logic
-      // This could be a Firebase function, API endpoint, etc.
+      // Save to Firestore
+      const contactData = {
+        name: formData.name,
+        email: formData.email,
+        message: formData.message,
+        timestamp: serverTimestamp(),
+        status: 'unread', // To track if you've read it
+        userId: currentUser?.uid || null, // Link to user if logged in
+      };
 
-      // Simulate API call for now
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+      await addDoc(collection(db, 'contactMessages'), contactData);
 
       // Success handling
       setSuccessMessage(
