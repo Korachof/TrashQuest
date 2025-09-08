@@ -13,6 +13,7 @@ const ContactForm = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    emailConfirm: '',
     message: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -49,6 +50,12 @@ const ContactForm = () => {
       return false;
     }
 
+    // Confirm email
+    if (formData.emailConfirm.toLowerCase() !== formData.email.toLowerCase()) {
+      setErrorMessage('Email addresses do not match');
+      return false;
+    }
+
     if (!formData.message.trim()) {
       setErrorMessage(content.noMsgError);
       return false;
@@ -80,7 +87,7 @@ const ContactForm = () => {
       // Save to Firestore
       const contactData = {
         name: formData.name,
-        email: formData.email,
+        email: formData.email.toLowerCase(),
         message: formData.message,
         timestamp: serverTimestamp(),
         status: 'unread', // To track if you've read it
@@ -98,6 +105,7 @@ const ContactForm = () => {
       setFormData({
         name: '',
         email: '',
+        emailConfirm: '',
         message: '',
       });
     } catch (error) {
@@ -132,6 +140,17 @@ const ContactForm = () => {
         onChange={handleChange}
         required
         placeholder="Enter your email"
+        disabled={isSubmitting}
+      />
+
+      <FormGroup
+        label="Confirm Email"
+        id="emailConfirm"
+        type="email"
+        value={formData.emailConfirm}
+        onChange={handleChange}
+        required
+        placeholder="Re-enter your email"
         disabled={isSubmitting}
       />
 
