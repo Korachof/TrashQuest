@@ -58,7 +58,7 @@ export default function SignupPage() {
     try {
       const userCredential = await createUserWithEmailAndPassword(
         auth,
-        email,
+        email.toLowerCase(),
         password
       );
       await updateProfile(userCredential.user, { displayName });
