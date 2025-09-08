@@ -8,6 +8,7 @@ import FormButton from '../shared/FormButton';
 import SuccessMessage from '../shared/SuccessMessage';
 import ErrorMessage from '../shared/ErrorMessage';
 import { contactFormContent as content } from '../../content/contact';
+import HoneypotField from '../shared/HoneypotField';
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -20,6 +21,7 @@ const ContactForm = () => {
   const [successMessage, setSuccessMessage] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const { currentUser } = useAuth();
+  const [honeypot, setHoneypot] = useState('');
 
   const handleChange = (e) => {
     const { id, value } = e.target;
@@ -79,6 +81,14 @@ const ContactForm = () => {
     // Validate form
     if (!validateForm()) {
       return;
+    }
+
+    // Validate that the honeypot field hasn't been typed into, else is a bot
+    if (honeypot) {
+      // Bot detected, silently return
+      setSuccessMessage('Thank you for your message!');
+      setFormData({ name: '', email: '', emailConfirm: '', message: '' });
+      return; // Don't actually save
     }
 
     setIsSubmitting(true);
@@ -164,6 +174,12 @@ const ContactForm = () => {
         placeholder="Enter your message"
         rows={5}
         disabled={isSubmitting}
+      />
+
+      {/* Honeypot field */}
+      <HoneypotField
+        value={honeypot}
+        onChange={(e) => setHoneypot(e.target.value)}
       />
 
       <FormButton type="submit" disabled={isSubmitting}>
