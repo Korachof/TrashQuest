@@ -9,6 +9,7 @@ import SuccessMessage from '../shared/SuccessMessage';
 import ErrorMessage from '../shared/ErrorMessage';
 import { contactFormContent as content } from '../../content/contact';
 import HoneypotField from '../shared/HoneypotField';
+import useRateLimit from '../../hooks/useRateLimit';
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -22,6 +23,10 @@ const ContactForm = () => {
   const [errorMessage, setErrorMessage] = useState('');
   const { currentUser } = useAuth();
   const [honeypot, setHoneypot] = useState('');
+
+  // rate limiter for the form
+  const { isRateLimited, timeRemaining, recordSubmission } =
+    useRateLimit('contactFormSubmit');
 
   const handleChange = (e) => {
     const { id, value } = e.target;
@@ -91,6 +96,14 @@ const ContactForm = () => {
       return; // Don't actually save
     }
 
+    // Check if the rate is limited, and if so, ask user to wait.
+    if (isRateLimited) {
+      setErrorMessage(
+        `Please wait ${timeRemaining} seconds before submitting again`
+      );
+      return;
+    }
+
     setIsSubmitting(true);
 
     try {
@@ -110,6 +123,10 @@ const ContactForm = () => {
       setSuccessMessage(
         "Thank you for your message! We'll get back to you soon."
       );
+
+      // Record the submission time for the rate limiter
+      await addDoc(collection(db, 'contactMessages'), contactData);
+      recordSubmission();
 
       // Reset form
       setFormData({
@@ -182,8 +199,12 @@ const ContactForm = () => {
         onChange={(e) => setHoneypot(e.target.value)}
       />
 
-      <FormButton type="submit" disabled={isSubmitting}>
-        {isSubmitting ? 'Sending...' : 'Send Message'}
+      <FormButton type="submit" disabled={isSubmitting || isRateLimited}>
+        {isSubmitting
+          ? 'Sending...'
+          : isRateLimited
+          ? `Wait ${timeRemaining}s`
+          : 'Send Message'}
       </FormButton>
     </form>
   );
