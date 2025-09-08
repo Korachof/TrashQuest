@@ -710,6 +710,30 @@ This changelog documents key updates to the TrashQuest project. It follows seman
 - Form fields now show **placeholder** text in both `LogCleanupForm` and `ContactForm`.
 - The input fields in `ContactForm` can now be typed in and render correctly.
 
+## [0.3.7]
+
+### Added
+
+- Added an **email confirmation** field to `ContactForm`.
+- Created a `HoneypotField.jsx` component in shared to catch captchas on forms, since we're not currently using **Firebase Blaze**.
+- Added the functionality for `HoneypotField` in `ContactForm`.
+- Created a `useRateLimit` hook to add extra bot protection for relevant forms like `ContactForm`
+- Connected the `useRateLimit` to `ContactForm`.
+
+### Changed
+
+- Changed email field in `ContactForm` to only send **FireStore** the **lowercase email**.
+- Changed email field in `SignupPage` to only send **FireStore** the **lowercase email**.
+- Changed email field in `LoginPage` to only send **FireStore** the **lowercase email**.
+- Changed email field in `ForgotPasswordModal` to only send **FireStore** the **lowercase email**.
+- Added a **placeholder** in `HoneypotField` just in case some weird feature shows the honey pot field.
+
+### Fixed
+
+- Rolled back some changes involving **firebase functions** because I am not on a **Blaze** subscription.
+- Email confirmation fixes possibility of typos for users in `ContactForm`
+- Honeypot and rate limiter fix potential spam or security issues involving bots.
+
 ---
 
 ### Planned (Upcoming)
