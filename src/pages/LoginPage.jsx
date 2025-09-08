@@ -37,7 +37,11 @@ export default function LoginPage() {
 
     // Firebase logic
     try {
-      const result = await signInWithEmailAndPassword(auth, email, password);
+      const result = await signInWithEmailAndPassword(
+        auth,
+        email.toLowerCase(),
+        password
+      );
       const { user } = result;
 
       setSuccessMsg(`Welcome back, ${user.displayName || 'Explorer'}!`);
