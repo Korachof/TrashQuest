@@ -24,7 +24,7 @@ export default function ForgotPasswordModal({ isOpen, onClose }) {
     setSuccessMsg('');
 
     try {
-      await sendPasswordResetEmail(auth, email);
+      await sendPasswordResetEmail(auth, email.toLowerCase());
       setSuccessMsg(forgotPasswordContent.successMsg);
       setEmail(''); // Clear the form
     } catch (error) {
