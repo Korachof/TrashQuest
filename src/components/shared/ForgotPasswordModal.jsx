@@ -61,7 +61,7 @@ export default function ForgotPasswordModal({ isOpen, onClose }) {
 
   return (
     <Modal isOpen={isOpen} onClose={handleClose}>
-      <h2 style={modalHeadingTextStyle}>{forgotPasswordContent.title} 🔑</h2>
+      <h2 style={modalHeadingTextStyle}>{forgotPasswordContent.title}</h2>
       <p style={modalTextStyle}>{forgotPasswordContent.subTitle}</p>
 
       <form onSubmit={handleSubmit} style={formContainer}>

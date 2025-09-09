@@ -50,7 +50,7 @@ describe('TrashTypeSelect', () => {
     expect(screen.getByText('General Trash')).toBeInTheDocument();
     expect(screen.getByText('General Recycling')).toBeInTheDocument();
     expect(screen.getByText('Electronics Recycling')).toBeInTheDocument();
-    expect(screen.getByText('Hazardous Waste Disposal ⚠️')).toBeInTheDocument();
+    expect(screen.getByText('Hazardous Waste Disposal')).toBeInTheDocument();
   });
 
   // Test 3: Displays selected value correctly

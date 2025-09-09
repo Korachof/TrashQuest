@@ -3,11 +3,20 @@ import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import ForgotPasswordModal from '../ForgotPasswordModal';
 import { sendPasswordResetEmail } from 'firebase/auth';
 import { vi } from 'vitest';
+import useRateLimit from '../../../hooks/useRateLimit';
 
 // Mock firebase auth
 vi.mock('firebase/auth', () => ({
   sendPasswordResetEmail: vi.fn(),
   getAuth: vi.fn(() => ({})),
+}));
+
+vi.mock('../../../hooks/useRateLimit', () => ({
+  default: () => ({
+    isRateLimited: false,
+    timeRemaining: 0,
+    recordSubmission: vi.fn(),
+  }),
 }));
 
 describe('ForgotPasswordModal', () => {
@@ -28,7 +37,7 @@ describe('ForgotPasswordModal', () => {
   test('renders with correct heading and instruction text', () => {
     render(<ForgotPasswordModal {...defaultProps} />);
 
-    expect(screen.getByText('Reset Your Password 🔑')).toBeInTheDocument();
+    expect(screen.getByText('Reset Your Password')).toBeInTheDocument();
     expect(
       screen.getByText(
         "Enter your email address and we'll send you a link to reset your password."
