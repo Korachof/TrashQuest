@@ -29,7 +29,7 @@ describe('LogCleanupButton', () => {
         <LogCleanupButton />
       </MemoryRouter>
     );
-    expect(screen.getByText('🌱 Log New Cleanup')).toBeInTheDocument();
+    expect(screen.getByText('Log New Cleanup')).toBeInTheDocument();
   });
 
   // Test 2: Verifies that the button renders with custom text
@@ -39,7 +39,7 @@ describe('LogCleanupButton', () => {
         <LogCleanupButton text="Custom Cleanup Text" />
       </MemoryRouter>
     );
-    expect(screen.getByText('🌱 Custom Cleanup Text')).toBeInTheDocument();
+    expect(screen.getByText('Custom Cleanup Text')).toBeInTheDocument();
   });
 
   // Test 3: Verifies that the button is actually a button element
@@ -49,7 +49,7 @@ describe('LogCleanupButton', () => {
         <LogCleanupButton />
       </MemoryRouter>
     );
-    const button = screen.getByText('🌱 Log New Cleanup');
+    const button = screen.getByText('Log New Cleanup');
     expect(button.tagName).toBe('BUTTON');
   });
 
@@ -60,7 +60,7 @@ describe('LogCleanupButton', () => {
         <LogCleanupButton />
       </MemoryRouter>
     );
-    const button = screen.getByText('🌱 Log New Cleanup');
+    const button = screen.getByText('Log New Cleanup');
     fireEvent.click(button);
 
     expect(mockNavigate).toHaveBeenCalledTimes(1);
@@ -73,7 +73,7 @@ describe('LogCleanupButton', () => {
         <LogCleanupButton />
       </MemoryRouter>
     );
-    const button = screen.getByText('🌱 Log New Cleanup');
+    const button = screen.getByText('Log New Cleanup');
     fireEvent.click(button);
 
     expect(mockNavigate).toHaveBeenCalledWith('/log-cleanup');
