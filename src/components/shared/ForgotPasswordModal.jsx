@@ -10,12 +10,17 @@ import SuccessMessage from './SuccessMessage';
 import { formContainer } from '../../styles/forms';
 import { modalHeadingTextStyle, modalTextStyle } from '../../styles/typography';
 import { forgotPasswordContent } from '../../content/forgotPassword';
+import useRateLimit from '../../hooks/useRateLimit';
 
 export default function ForgotPasswordModal({ isOpen, onClose }) {
   const [email, setEmail] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [successMsg, setSuccessMsg] = useState('');
   const [errorMsg, setErrorMsg] = useState('');
+  const { isRateLimited, timeRemaining, recordSubmission } = useRateLimit(
+    'forgotPasswordSubmit',
+    120
+  );
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -23,8 +28,18 @@ export default function ForgotPasswordModal({ isOpen, onClose }) {
     setErrorMsg('');
     setSuccessMsg('');
 
+    // rate limiter if submission was already submitted recently
+    if (isRateLimited) {
+      setError(
+        `Please wait ${timeRemaining} seconds before requesting another reset`
+      );
+      return;
+    }
+
     try {
       await sendPasswordResetEmail(auth, email.toLowerCase());
+      // Record the submission time for the rate limiter
+      recordSubmission();
       setSuccessMsg(forgotPasswordContent.successMsg);
       setEmail(''); // Clear the form
     } catch (error) {
@@ -59,10 +74,16 @@ export default function ForgotPasswordModal({ isOpen, onClose }) {
         />
 
         <FormButton
-          isLoading={isLoading}
-          loadingText={forgotPasswordContent.loadingText}
+          isLoading={isLoading || isRateLimited}
+          loadingText={
+            isRateLimited
+              ? `Wait ${timeRemaining}s`
+              : forgotPasswordContent.loadingText
+          }
         >
-          {forgotPasswordContent.resetButton}
+          {isRateLimited
+            ? `Wait ${timeRemaining}s`
+            : forgotPasswordContent.resetButton}
         </FormButton>
       </form>
 
