@@ -214,7 +214,7 @@ describe('UpdateCleanupEntryModal', () => {
     );
 
     // Step 2: Verify title is displayed
-    expect(screen.getByRole('heading', { level: 3 })).toHaveTextContent(
+    expect(screen.getByRole('heading', { level: 2 })).toHaveTextContent(
       'Edit Cleanup Entry'
     );
   });
