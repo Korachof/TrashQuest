@@ -24,6 +24,7 @@ import {
   cleanupPointsValues as ptsVal,
   logCleanupFormContent as content,
 } from '../../content/logCleanup';
+import HoneypotField from '../shared/HoneypotField';
 import SuccessMessage from '../shared/SuccessMessage';
 
 // Points values for each size
@@ -64,6 +65,7 @@ export default function LogCleanupForm({
     state: existingEntry?.state || '',
   });
   const [isLoading, setIsLoading] = useState(false);
+  const [honeypot, setHoneypot] = useState('');
   const { updateUserPoints } = usePoints();
 
   // Calculate points based on selected size
@@ -90,6 +92,16 @@ export default function LogCleanupForm({
 
     if (!isFormValid()) {
       alert(content.fieldsUnfilledError);
+      return;
+    }
+
+    // Check if the bot filled the hidden honey pot field
+    if (honeypot) {
+      // Bot detected - fake success and exit
+      alert(
+        `${content.cleanupSuccess} ${calculatePoints()} ${content.ecoPtsMsg}`
+      );
+      navigate('/dashboard');
       return;
     }
 
@@ -260,6 +272,12 @@ export default function LogCleanupForm({
           onChange={(e) => handleInputChange('state', e.target.value)}
           required={false}
           placeholder="Enter state"
+        />
+
+        {/* Honeypot (hidden from users) */}
+        <HoneypotField
+          value={honeypot}
+          onChange={(e) => setHoneypot(e.target.value)}
         />
 
         {/* Points Preview */}
