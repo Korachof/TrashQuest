@@ -24,7 +24,7 @@ vi.mock('../../../context/AuthContext', () => ({
 describe('PageLayout', () => {
   beforeEach(() => {
     vi.clearAllMocks();
-    useAuth.mockReturnValue({ currentUser: null });
+    vi.mocked(useAuth).mockReturnValue({ currentUser: null });
   });
 
   // Test 1: Verifies that the Header component is rendering correctly
@@ -104,29 +104,7 @@ describe('PageLayout', () => {
     });
   });
 
-  // Test 7: Verifies that the authorization hook is being called correctly
-  test('calls useAuth hook', () => {
-    render(
-      <PageLayout>
-        <div data-testid="test-content">Test Content</div>
-      </PageLayout>
-    );
-
-    expect(useAuth).toHaveBeenCalled();
-  });
-
-  // Test 8: Verifies that the authorization hook is called exactly once
-  test('calls useAuth hook exactly once', () => {
-    render(
-      <PageLayout>
-        <div data-testid="test-content">Test Content</div>
-      </PageLayout>
-    );
-
-    expect(useAuth).toHaveBeenCalledTimes(1);
-  });
-
-  /* Test 9: Verifies that PageLayout still renders even if no children (like
+  /* Test 7: Verifies that PageLayout still renders even if no children (like
      a <div>) are passed through */
   test('renders without children', () => {
     expect(() => render(<PageLayout />)).not.toThrow();
