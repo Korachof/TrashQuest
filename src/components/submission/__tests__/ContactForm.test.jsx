@@ -45,6 +45,7 @@ vi.mock('../../shared/FormGroup', () => ({
     return (
       <input
         data-testid={id}
+        id={id}
         type={type || 'text'}
         onChange={onChange}
         value={value}
@@ -102,5 +103,33 @@ describe('ContactForm', () => {
     expect(screen.getByTestId('message')).toBeInTheDocument();
     expect(screen.getByTestId('honeypot')).toBeInTheDocument();
     expect(screen.getByTestId('submit-button')).toBeInTheDocument();
+  });
+
+  // Test 2: Shows error when name is empty
+  test('shows error when name is empty', async () => {
+    render(<ContactForm />);
+
+    const submitButton = screen.getByTestId('submit-button');
+    fireEvent.click(submitButton);
+
+    await waitFor(() => {
+      expect(screen.getByTestId('error-message')).toBeInTheDocument();
+    });
+  });
+
+  // Test 3: Shows error when email is empty
+  test('shows error when email is empty', async () => {
+    render(<ContactForm />);
+
+    // Fill name but not email
+    fireEvent.change(screen.getByTestId('name'), {
+      target: { id: 'name', value: 'John Doe' },
+    });
+
+    fireEvent.click(screen.getByTestId('submit-button'));
+
+    await waitFor(() => {
+      expect(screen.getByTestId('error-message')).toBeInTheDocument();
+    });
   });
 });
