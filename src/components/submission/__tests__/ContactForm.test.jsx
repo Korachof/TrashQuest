@@ -4,12 +4,24 @@ import { vi } from 'vitest';
 import ContactForm from '../ContactForm';
 import { addDoc } from 'firebase/firestore';
 import { useAuth } from '../../../context/AuthContext';
+import FormGroup from '../../shared/FormGroup';
+import FormButton from '../../shared/FormButton';
+import SuccessMessage from '../../shared/SuccessMessage';
+import ErrorMessage from '../../shared/ErrorMessage';
+import HoneypotField from '../../shared/HoneypotField';
+import { db } from '../../../firebase';
 
 // Mock Firebase
 vi.mock('firebase/firestore', () => ({
   collection: vi.fn(),
   addDoc: vi.fn(),
   serverTimestamp: vi.fn(() => 'mock-timestamp'),
+  getFirestore: vi.fn(),
+}));
+
+// Mock firebase.js
+vi.mock('../../firebase', () => ({
+  db: {}, // Mock db object
 }));
 
 // Mock Auth Context

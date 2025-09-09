@@ -2,7 +2,6 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import { vi } from 'vitest';
 import PageLayout from '../PageLayout';
-import { useAuth } from '../../../context/AuthContext';
 
 // Mock all dependencies
 vi.mock('../Header', () => ({
@@ -17,14 +16,9 @@ vi.mock('../MainContainer', () => ({
   default: ({ children }) => <main data-testid="mock-main">{children}</main>,
 }));
 
-vi.mock('../../../context/AuthContext', () => ({
-  useAuth: vi.fn(),
-}));
-
 describe('PageLayout', () => {
   beforeEach(() => {
     vi.clearAllMocks();
-    vi.mocked(useAuth).mockReturnValue({ currentUser: null });
   });
 
   // Test 1: Verifies that the Header component is rendering correctly
