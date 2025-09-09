@@ -6,7 +6,11 @@ import CleanupEntriesList from '../CleanupEntriesList';
 import useCleanupEntries from '../../../hooks/useCleanupEntries';
 import DeleteCleanupEntryModal from '../DeleteCleanupEntryModal';
 import UpdateCleanupEntryModal from '../UpdateCleanupEntryModal';
-import { getButtonStyle } from '../../../styles/buttonStyles';
+import {
+  getButtonStyle,
+  getDeleteButtonStyle,
+  getEditButtonStyle,
+} from '../../../styles/buttonStyles';
 import { colors } from '../../../styles/colors';
 
 // Mock React Router
@@ -62,6 +66,8 @@ vi.mock('../UpdateCleanupEntryModal', () => ({
 // Mock styles
 vi.mock('../../../styles/buttonStyles', () => ({
   getButtonStyle: vi.fn(() => ({ padding: '8px 16px', borderRadius: '4px' })),
+  getDeleteButtonStyle: vi.fn(() => ({ cursor: 'pointer' })),
+  getEditButtonStyle: vi.fn(() => ({ cursor: 'pointer' })),
 }));
 
 vi.mock('../../../styles/colors', () => ({
